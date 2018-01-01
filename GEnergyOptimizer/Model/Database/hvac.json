@@ -1,0 +1,43 @@
+{
+  "gemini-form": [
+    {
+      "index": 1,
+      "section": "HVAC Data Entry",
+      "elements": [
+        {
+          "index": 1,
+          "param": "Appliance",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "Ted, Mike, Miller, Mosses",
+          "id": "d44852e0-9e6e-4606-8abe-6dec790e1b83-1"
+        },
+        {
+          "index": 2,
+          "param": "Cooling Capacity",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "fdcdf4cf-17e6-4160-9242-23f87c678c4c-2"
+        },
+        {
+          "index": 3,
+          "param": "System Type",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "8d022ff6-f99f-4257-9a10-e002c0855578-3"
+        },
+        {
+          "index": 4,
+          "param": "Heat Pumps",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "8d022ff6-f99f-4257-9a10-e002c0855578-4"
+        }
+      ],
+      "id": "a800a9fc-ef5a-4e9e-b9ec-3fec66e58814-5"
+    }
+  ]
+}

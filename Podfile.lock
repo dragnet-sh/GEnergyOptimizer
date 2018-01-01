@@ -1,0 +1,30 @@
+PODS:
+  - Bolts/Tasks (1.8.4)
+  - CleanroomLogger (5.1.1)
+  - CSV.swift (2.1.0)
+  - Eureka (4.0.1)
+  - Gloss (2.0.0-beta.2)
+  - Parse (1.15.3):
+    - Bolts/Tasks (~> 1.8)
+  - PopupDialog (0.6.2)
+
+DEPENDENCIES:
+  - CleanroomLogger (~> 5.1)
+  - CSV.swift (~> 2.1)
+  - Eureka (~> 4.0.0)
+  - Gloss (= 2.0.0-beta.2)
+  - Parse
+  - PopupDialog (~> 0.6)
+
+SPEC CHECKSUMS:
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  CleanroomLogger: d921cc92d8e89c067653c0700b74a96b4e07fdab
+  CSV.swift: a24fb11c17875523783fe963592762ff163ef8ea
+  Eureka: c8bd5cc07143b6f66268c208d28a246c99b41955
+  Gloss: ec2bc49c3d2db468581ced33d49c26117c7343af
+  Parse: cdc0f1f975ee8be0409e66f21b05df4ae067047c
+  PopupDialog: d4336d7274a6aa3af4cb26d8b6691510eba90cc3
+
+PODFILE CHECKSUM: ea706bf7e9b9ab307219ffb427cc45cbffbedc37
+
+COCOAPODS: 1.3.1

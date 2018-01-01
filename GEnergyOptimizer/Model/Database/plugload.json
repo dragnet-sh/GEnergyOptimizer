@@ -1,0 +1,82 @@
+{
+  "gemini-form": [
+    {
+      "index": 1,
+      "section": "PlugLoad Data Entry",
+      "elements": [
+        {
+          "index": 1,
+          "param": "Product Name",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "Griddles,Refrigirators,Ovens",
+          "id": "d44852e0-9e6e-4606-8abe-6dec790e1b83-1"
+        },
+        {
+          "index": 2,
+          "param": "Product Id",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "fdcdf4cf-17e6-4160-9242-23f87c678c4c-2"
+        }
+      ],
+      "id": "xtra-01"
+    },
+    {
+      "index": 2,
+      "section": "Make | Model | Brand",
+      "elements": [
+        {
+          "index": 3,
+          "param": "Make",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "8d022ff6-f99f-4257-9a10-e002c0855578-3"
+        },
+        {
+          "index": 4,
+          "param": "Model",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "8d022ff6-f99f-4257-9a10-e002c0855578-4"
+        },
+        {
+          "index": 5,
+          "param": "Brand",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "8d022ff6-f99f-4257-9a10-e002c0855578-5"
+        }
+      ],
+      "id": "xtra-02"
+    },
+    {
+      "index":3,
+      "section":"Usage",
+      "elements": [
+
+        {
+          "index": 6,
+          "param": "Per Week",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "8d022ff6-f99f-4257-9a10-e002c0855578-6"
+        },
+        {
+          "index": 7,
+          "param": "Per Day",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "8d022ff6-f99f-4257-9a10-e002c0855578-7"
+        }
+      ],
+      "id": "a800a9fc-ef5a-4e9e-b9ec-3fec66e58814-8"
+    }
+  ]
+}

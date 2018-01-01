@@ -1,0 +1,59 @@
+{
+  "gemini-form": [
+    {
+      "index": 1,
+      "section": "Lighting Data Entry",
+      "elements": [
+        {
+          "index": 1,
+          "param": "Space Type",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "Public Spaces With Dark Surroundings,Simple orientation for short temporary visits,Working spaces where visual tasks are only occasionally performed,Performance of visual tasks of high contrast or large size,Performance of visual tasks of medium contrast or small size",
+          "id": "d44852e0-9e6e-4606-8abe-6dec790e1b83-1"
+        },
+        {
+          "index": 3,
+          "param": "Measured Lux",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "fdcdf4cf-17e6-4160-9242-23f87c678c4c-2"
+        },
+        {
+          "index": 4,
+          "param": "Area",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "8d022ff6-f99f-4257-9a10-e002c0855578-3"
+        },
+        {
+          "index": 2,
+          "param": "Units",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "Lumens,Footcandles",
+          "id": "8d022ff6-f99f-4257-9a10-e002c0855578-4"
+        },
+        {
+          "index": 5,
+          "param": "Model Number",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "8d022ff6-f99f-4257-9a10-e002c0855578-5"
+        },
+        {
+          "index": 6,
+          "param": "Num of Lamps",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "8d022ff6-f99f-4257-9a10-e002c0855578-6"
+        }
+      ],
+      "id": "a800a9fc-ef5a-4e9e-b9ec-3fec66e58814-7"
+    }
+  ]
+}
