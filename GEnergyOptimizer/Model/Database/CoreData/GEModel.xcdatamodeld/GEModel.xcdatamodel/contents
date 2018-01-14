@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17C88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDAudit" representedClassName="CDAudit" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="intialSyncStatus" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="syncStatus" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="hasPreAuditFeature" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDPreAudit" inverseName="belongsToAudit" inverseEntity="CDPreAudit" syncable="YES"/>
+        <relationship name="hasRoom" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDRoom" inverseName="belongsToAudit" inverseEntity="CDRoom" syncable="YES"/>
+        <relationship name="hasZone" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDZone" inverseName="belongsToAudit" inverseEntity="CDZone" syncable="YES"/>
+    </entity>
+    <entity name="CDFeatureData" representedClassName="CDFeatureData" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="formId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="syncStatus" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="zoneId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="belongsToZone" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDZone" inverseName="hasFeature" inverseEntity="CDZone" syncable="YES"/>
+    </entity>
+    <entity name="CDPreAudit" representedClassName="CDPreAudit" syncable="YES">
+        <attribute name="auditId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="formId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="syncStatus" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="belongsToAudit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDAudit" inverseName="hasPreAuditFeature" inverseEntity="CDAudit" syncable="YES"/>
+    </entity>
+    <entity name="CDRoom" representedClassName="CDRoom" syncable="YES">
+        <attribute name="auditId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="syncStatus" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="belongsToAudit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDAudit" inverseName="hasRoom" inverseEntity="CDAudit" syncable="YES"/>
+        <relationship name="belongsToZone" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDZone" inverseName="hasRoom" inverseEntity="CDZone" syncable="YES"/>
+    </entity>
+    <entity name="CDZone" representedClassName="CDZone" syncable="YES">
+        <attribute name="auditId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="syncStatus" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="belongsToAudit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDAudit" inverseName="hasZone" inverseEntity="CDAudit" syncable="YES"/>
+        <relationship name="hasFeature" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDFeatureData" inverseName="belongsToZone" inverseEntity="CDFeatureData" syncable="YES"/>
+        <relationship name="hasRoom" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDRoom" inverseName="belongsToZone" inverseEntity="CDRoom" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="CDAudit" positionX="-92" positionY="-552" width="128" height="193"/>
+        <element name="CDPreAudit" positionX="198" positionY="-261" width="128" height="178"/>
+        <element name="CDRoom" positionX="-45" positionY="189" width="128" height="163"/>
+        <element name="CDZone" positionX="-270" positionY="-282" width="128" height="193"/>
+        <element name="CDFeatureData" positionX="-333" positionY="63" width="135" height="178"/>
+    </elements>
+</model>

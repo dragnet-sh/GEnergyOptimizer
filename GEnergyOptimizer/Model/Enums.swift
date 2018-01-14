@@ -5,7 +5,6 @@
 
 import Foundation
 
-
 public enum EZone: String {
     case hvac = "HVAC", lighting = "Lighting", plugload = "PlugLoad"
 }
@@ -23,4 +22,18 @@ public enum EStorage {
 public enum ELogScope: String {
     case parse = "Parse :"
     case gemini = "GEnergy :"
+}
+
+
+
+// *** Accessing Data - Local or Via Network *** //
+public enum Source: String {
+    case local, network
+}
+
+// *** Simplified Error Tagging *** //
+
+enum Result <T> {
+    case Success(T)
+    case Error(String)
 }

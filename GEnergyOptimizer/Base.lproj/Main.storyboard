@@ -14,7 +14,7 @@
         <!--Login View Controller-->
         <scene sceneID="hBe-PN-eAf">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="SFl-9E-R1q" customClass="LoginViewController" customModule="GEnergyOptimizer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="SFl-9E-R1q" customClass="LoginViewController" customModule="GEnergyOptimizer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oB6-kT-vhZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

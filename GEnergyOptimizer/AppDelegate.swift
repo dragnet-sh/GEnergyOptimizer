@@ -50,12 +50,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Log.info?.message("GEnergy - Entry Point")
         Log.message(.info, message: "Parse - Registering DTO - PFObjects")
 
-        PreAuditDTO.registerSubclass()
-        AuditDTO.registerSubclass()
-        ZoneDTO.registerSubclass()
-        RoomDTO.registerSubclass()
+        PFPreAudit.registerSubclass()
+        PFAudit.registerSubclass()
+        PFZone.registerSubclass()
+        PFRoom.registerSubclass()
 
-        Log.message(.info, message: "Parse - Initialization")
+        Log.message(.info, message: "Parse - Initialization - Processing")
         let configuration = ParseClientConfiguration {
             $0.applicationId = self.applicationId
             $0.clientKey = self.clientKey
@@ -64,6 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         Parse.initialize(with: configuration)
+        Log.message(.info, message: "Parse - Initialization - Complete")
 
         return true
     }
