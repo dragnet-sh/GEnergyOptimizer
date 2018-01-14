@@ -16,15 +16,9 @@ class HomeListViewController: UIViewController, UINavigationBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         Log.message(.info, message: "GEnergy - HomeList View Controller")
-
-        tableView.dataSource = self
-        tableView.delegate = self
-        //tableView.tableFooterView = UIView()
-
-        HomeListCell.register(with: tableView)
-
-        // *** Showing the Login View *** //
+        self.initTableView()
         self.present(getLoginViewController(), animated: false)
     }
 
@@ -65,10 +59,6 @@ extension HomeListViewController {
 //Mark: - UITableViewDataSource
 extension HomeListViewController: UITableViewDataSource {
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          return presenter.data.count
     }
@@ -76,6 +66,7 @@ extension HomeListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
          let zone = presenter.data[indexPath.row]
          let cell = HomeListCell.dequeue(from: tableView, for: indexPath, with: zone)
+
          return cell
     }
 }
@@ -83,10 +74,6 @@ extension HomeListViewController: UITableViewDataSource {
 
 //Mark: - UITableViewDelegate
 extension HomeListViewController: UITableViewDelegate {
-
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 130
-    }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedZone = presenter.data[indexPath.item]
@@ -111,6 +98,15 @@ extension HomeListViewController {
         vc.delegate = self
 
         return vc
+    }
+
+    func initTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = 130
+        tableView.backgroundColor = .white
+
+        HomeListCell.register(with: tableView)
     }
 }
 

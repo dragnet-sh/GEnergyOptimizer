@@ -7,6 +7,8 @@ import Foundation
 import CleanroomLogger
 
 typealias HomeDTOSourceBlock = (Source, [HomeListDTO])->Void
+typealias ZoneDTOSourceBlock = (Source, [ZoneListDTO])->Void
+typealias RoomDTOSourceBlock = (Source, [RoomListDTO])->Void
 
 class ModelLayer {
 
@@ -43,9 +45,48 @@ extension ModelLayer {
     }
 }
 
-// To Delete
+//Mark: - Room Data Model
 extension ModelLayer {
-    func loadData(resultsLoaded: @escaping HomeDTOSourceBlock) {
+    func loadRoomData(resultsLoaded: @escaping RoomDTOSourceBlock) {
+        Log.message(.info, message: "Loading Room Data Model")
+
+        var data = [RoomListDTO]()
+        data.append(contentsOf: [
+            RoomListDTO(identifier: "room-1", title: "Room Title 1"),
+            RoomListDTO(identifier: "room-2", title: "Room Title 2"),
+            RoomListDTO(identifier: "room-3", title: "Room Title 3"),
+            RoomListDTO(identifier: "room-4", title: "Room Title 4"),
+            RoomListDTO(identifier: "room-5", title: "Room Title 5")
+        ])
+
+        resultsLoaded(.local, data)
+    }
+}
+
+//Mark: - Zone Data Model
+extension ModelLayer {
+    func loadZoneData(resultsLoaded: @escaping ZoneDTOSourceBlock) {
+        Log.message(.info, message: "Loading Zone Data Model")
+
+        var data = [ZoneListDTO]()
+        data.append(contentsOf: [
+            ZoneListDTO(identifier: "HVAC-1", title: "Zone Title 1"),
+            ZoneListDTO(identifier: "HVAC-2", title: "Zone Title 2"),
+            ZoneListDTO(identifier: "HVAC-3", title: "Zone Title 3"),
+            ZoneListDTO(identifier: "HVAC-4", title: "Zone Title 4"),
+            ZoneListDTO(identifier: "HVAC-5", title: "Zone Title 5"),
+        ])
+
+        resultsLoaded(.local, data)
+    }
+}
+
+
+//Mark: - Home Data Model
+extension ModelLayer {
+    func loadHomeData(resultsLoaded: @escaping HomeDTOSourceBlock) {
+        Log.message(.info, message: "Loading Home Data Model")
+
         var data = [HomeListDTO]()
 
         let countHVAC = 5

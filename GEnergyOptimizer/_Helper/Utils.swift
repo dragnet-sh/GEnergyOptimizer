@@ -5,6 +5,7 @@
 
 import UIKit
 import CleanroomLogger
+import PopupDialog
 
 class ControllerUtils {
     static func fromStoryboard(reference: String) -> UIViewController {
@@ -15,6 +16,40 @@ class ControllerUtils {
         let storyBoard = UIStoryboard(name: reference, bundle: nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: vc)
         return vc
+    }
+
+    static func getPopEdit(addAction: @escaping (String)->Void) -> PopupDialog {
+        let popEditViewController = PopEditViewController(nibName: "PopEditViewController", bundle: nil)
+
+        popEditViewController.activeHeader = "Add Room"
+        popEditViewController.activeEditLine = ""
+
+        let popup = PopupDialog(viewController: popEditViewController, buttonAlignment: .horizontal, gestureDismissal: true)
+
+        let btnCancel = CancelButton(title: "Cancel", height: 40) {
+            //1. Discard the changes
+        }
+        let btnAdd = DefaultButton(title: "Add", height: 40) {
+            guard let input = popEditViewController.txtEditField.text?.trimmingCharacters(in: .whitespaces) else {return}
+            Log.message(.info, message: "Value: \(input)")
+            addAction(input)
+        }
+        popup.addButtons([btnCancel, btnAdd])
+
+        return popup
+    }
+
+    static func getTableEditActions() -> [UITableViewRowAction]{
+        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
+        }
+
+        let editAction = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
+        }
+
+        deleteAction.backgroundColor = UIColor.red
+        editAction.backgroundColor = UIColor.green
+
+        return [deleteAction, editAction]
     }
 }
 
@@ -49,4 +84,5 @@ class GUtils {
             Log.message(.info, message: url.absoluteString)
         }
     }
+
 }
