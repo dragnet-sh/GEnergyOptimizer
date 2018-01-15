@@ -58,6 +58,7 @@ extension RoomListViewController {
 
 //Mark: - UITableViewDataSource
 extension RoomListViewController: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.presenter.data.count
     }
@@ -73,12 +74,16 @@ extension RoomListViewController: UITableViewDataSource {
 
 //Mark: - UITableViewDelegate
 extension RoomListViewController: UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let actions = ControllerUtils.getTableEditActions()
+        let actions = ControllerUtils.getTableEditActions(
+                delete: { row in Log.message(.info, message: "Delete Action - Clouser Executed")},
+                edit: { row in Log.message(.info, message: "Edit Action - Clouser Executed")}
+        )
 
         return actions
     }
@@ -86,6 +91,7 @@ extension RoomListViewController: UITableViewDelegate {
 
 //Mark: - Helper Methods
 extension RoomListViewController {
+
     func initTableView() {
         tableView!.dataSource = self
         tableView!.delegate = self

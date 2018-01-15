@@ -95,7 +95,10 @@ extension  ZoneListViewController: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let actions = ControllerUtils.getTableEditActions()
+        let actions = ControllerUtils.getTableEditActions(
+                delete: { row in Log.message(.info, message: "Delete Action - Clouser Executed @ \(row.description)")},
+                edit: { row in Log.message(.info, message: "Edit Action - Clouser Executed @ \(row.description)")}
+        )
 
         return actions
     }
@@ -103,6 +106,7 @@ extension  ZoneListViewController: UITableViewDelegate {
 
 //Mark: - Helper Methods
 extension ZoneListViewController {
+
     func initTableView() {
         tableView!.dataSource = self
         tableView!.delegate = self

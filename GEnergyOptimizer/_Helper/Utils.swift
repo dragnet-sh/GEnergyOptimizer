@@ -26,9 +26,7 @@ class ControllerUtils {
 
         let popup = PopupDialog(viewController: popEditViewController, buttonAlignment: .horizontal, gestureDismissal: true)
 
-        let btnCancel = CancelButton(title: "Cancel", height: 40) {
-            //1. Discard the changes
-        }
+        let btnCancel = CancelButton(title: "Cancel", height: 40) {}
         let btnAdd = DefaultButton(title: "Add", height: 40) {
             guard let input = popEditViewController.txtEditField.text?.trimmingCharacters(in: .whitespaces) else {return}
             Log.message(.info, message: "Value: \(input)")
@@ -39,17 +37,19 @@ class ControllerUtils {
         return popup
     }
 
-    static func getTableEditActions() -> [UITableViewRowAction]{
-        let deleteAction = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
+    static func getTableEditActions(delete: @escaping (Int)->Void, edit: @escaping (Int)->Void) -> [UITableViewRowAction]{
+        let delete = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
+            delete(indexPath.row)
         }
 
-        let editAction = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
+        let edit = UITableViewRowAction(style: .default, title: "Edit") { (action, indexPath) in
+            edit(indexPath.row)
         }
 
-        deleteAction.backgroundColor = UIColor.red
-        editAction.backgroundColor = UIColor.green
+        delete.backgroundColor = UIColor.red
+        edit.backgroundColor = UIColor.green
 
-        return [deleteAction, editAction]
+        return [delete, edit]
     }
 }
 
@@ -84,5 +84,4 @@ class GUtils {
             Log.message(.info, message: url.absoluteString)
         }
     }
-
 }

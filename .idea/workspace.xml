@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdebb900-8546-433d-8f4a-d7c6778e1601" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomPresenter.swift" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Zone/ZonePresenter.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer.xcworkspace/xcuserdata/bbudhathoki.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/GEnergyOptimizer.xcworkspace/xcuserdata/bbudhathoki.xcuserdatad/UserInterfaceState.xcuserstate" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/GEnergyOptimizer.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer/Base.lproj/Main.storyboard" afterPath="$PROJECT_DIR$/GEnergyOptimizer/Base.lproj/Main.storyboard" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer/Model/ModelLayer.swift" afterPath="$PROJECT_DIR$/GEnergyOptimizer/Model/ModelLayer.swift" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomListViewController.swift" afterPath="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomListViewController.swift" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Zone/ZoneListViewController.swift" afterPath="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Zone/ZoneListViewController.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Home/HomeListViewController.swift" afterPath="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Home/HomeListViewController.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Home/HomePresenter.swift" afterPath="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Home/HomePresenter.swift" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer/_Helper/Utils.swift" afterPath="$PROJECT_DIR$/GEnergyOptimizer/_Helper/Utils.swift" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,26 +20,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HomeListViewController.swift" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Home/HomeListViewController.swift">
+      <file leaf-file-name="AppDelegate.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/AppDelegate.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="39" column="16" lean-forward="false" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
-              <folding>
-                <element signature="e#172#184#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RoomListViewController.swift" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomListViewController.swift">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="626">
-              <caret line="75" column="37" lean-forward="false" selection-start-line="75" selection-start-column="37" selection-end-line="75" selection-end-column="37" />
-              <folding>
-                <element signature="e#172#184#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="663">
+              <caret line="41" column="48" lean-forward="false" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -55,8 +33,8 @@
       <file leaf-file-name="ZoneListViewController.swift" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Zone/ZoneListViewController.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="489">
-              <caret line="97" column="48" lean-forward="true" selection-start-line="97" selection-start-column="48" selection-end-line="97" selection-end-column="48" />
+            <state relative-caret-position="204">
+              <caret line="12" column="6" lean-forward="false" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
               <folding>
                 <element signature="e#174#186#0" expanded="true" />
               </folding>
@@ -64,24 +42,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Utils.swift" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Utils.swift" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/_Helper/Utils.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="41" column="23" lean-forward="false" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="23" />
+            <state relative-caret-position="377">
+              <caret line="26" column="21" lean-forward="false" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
               <folding>
                 <element signature="e#114#126#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BuilderHelper.swift" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/_Helper/BuilderHelper.swift">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -218,7 +186,51 @@
               <item name="" type="efc3779f:XcodeRootNode" />
               <item name="GEnergyOptimizer" type="1d218c8b:XcodeProjectNode" />
               <item name="GEnergyOptimizer" type="fcab9f18:XcodeViewNode" />
+              <item name="Business" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="GEnergyOptimizer" type="1d218c8b:XcodeProjectNode" />
+              <item name="GEnergyOptimizer" type="fcab9f18:XcodeViewNode" />
+              <item name="Factory" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="GEnergyOptimizer" type="1d218c8b:XcodeProjectNode" />
+              <item name="GEnergyOptimizer" type="fcab9f18:XcodeViewNode" />
               <item name="Model" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="GEnergyOptimizer" type="1d218c8b:XcodeProjectNode" />
+              <item name="GEnergyOptimizer" type="fcab9f18:XcodeViewNode" />
+              <item name="Model" type="fcab9f18:XcodeViewNode" />
+              <item name="Database" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="GEnergyOptimizer" type="1d218c8b:XcodeProjectNode" />
+              <item name="GEnergyOptimizer" type="fcab9f18:XcodeViewNode" />
+              <item name="Model" type="fcab9f18:XcodeViewNode" />
+              <item name="Database" type="fcab9f18:XcodeViewNode" />
+              <item name="CoreData" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="GEnergyOptimizer" type="1d218c8b:XcodeProjectNode" />
+              <item name="GEnergyOptimizer" type="fcab9f18:XcodeViewNode" />
+              <item name="Model" type="fcab9f18:XcodeViewNode" />
+              <item name="Database" type="fcab9f18:XcodeViewNode" />
+              <item name="Parse" type="fcab9f18:XcodeViewNode" />
+            </path>
+            <path>
+              <item name="" type="efc3779f:XcodeRootNode" />
+              <item name="GEnergyOptimizer" type="1d218c8b:XcodeProjectNode" />
+              <item name="GEnergyOptimizer" type="fcab9f18:XcodeViewNode" />
+              <item name="Model" type="fcab9f18:XcodeViewNode" />
+              <item name="Database" type="fcab9f18:XcodeViewNode" />
+              <item name="Parse" type="fcab9f18:XcodeViewNode" />
+              <item name="API" type="fcab9f18:XcodeViewNode" />
             </path>
             <path>
               <item name="" type="efc3779f:XcodeRootNode" />
@@ -232,8 +244,7 @@
               <item name="GEnergyOptimizer" type="1d218c8b:XcodeProjectNode" />
               <item name="GEnergyOptimizer" type="fcab9f18:XcodeViewNode" />
               <item name="Model" type="fcab9f18:XcodeViewNode" />
-              <item name="DataObject" type="fcab9f18:XcodeViewNode" />
-              <item name="TableController" type="fcab9f18:XcodeViewNode" />
+              <item name="Translation" type="fcab9f18:XcodeViewNode" />
             </path>
             <path>
               <item name="" type="efc3779f:XcodeRootNode" />
@@ -407,7 +418,7 @@
       <workItem from="1515733501560" duration="6830000" />
       <workItem from="1515749089756" duration="20414000" />
       <workItem from="1515812458416" duration="32104000" />
-      <workItem from="1515929343999" duration="14168000" />
+      <workItem from="1515929343999" duration="17739000" />
     </task>
     <servers />
   </component>
@@ -426,7 +437,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="582771000" />
+    <option name="totallyTimeSpent" value="586342000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -477,13 +488,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/PreAudit/PreAuditViewController.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="97" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Pods/CleanroomLogger/Sources/Log.swift">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1343">
@@ -516,33 +520,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/Database/Parse/ZoneAPI.h" />
     <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/Database/Parse/ZoneAPI.m" />
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Feature/FeatureViewController.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" column="47" lean-forward="false" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/Database/Parse/API/ParseProtocol.swift" />
     <entry file="file://$PROJECT_DIR$/Pods/Parse/Parse/PFQuery.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="326">
           <caret line="710" column="16" lean-forward="false" selection-start-line="710" selection-start-column="16" selection-end-line="710" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/DataObject/FormController/Config/lighting.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/Database/Parse/API/PFPreAuditAPI.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="50" column="87" lean-forward="false" selection-start-line="50" selection-start-column="87" selection-end-line="50" selection-end-column="87" />
         </state>
       </provider>
     </entry>
@@ -574,13 +556,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/Database/Parse/ParseDataModel.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/Database/CoreData/CoreDataStack.swift" />
     <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/Database/CoreData/API/CoreDataAPI.swift" />
     <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/Database/Parse/API/PFRoomAPI.swift">
@@ -601,119 +576,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/DataObject/FormController/FormDataModel.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="31" column="19" lean-forward="false" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/DataObject/FormController/PreAuditFDO.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/DataObject/FormController/ZoneFDO.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/Database/Parse/API/PFAuditAPI.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="20" column="9" lean-forward="false" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Factory/FormBuilder.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="e#115#132#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Factory/FormFactory.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="28" column="8" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Business/GECalculations.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/_Helper/FactoryHelper.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" column="19" lean-forward="false" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/LoginViewController.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="37" column="30" lean-forward="false" selection-start-line="37" selection-start-column="30" selection-end-line="37" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/GEStateController.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-908">
-          <caret line="24" column="23" lean-forward="false" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
-          <folding>
-            <element signature="e#3117#3934#0" expanded="false" />
-            <element signature="e#3960#5429#0" expanded="false" />
-            <element signature="e#5452#7405#0" expanded="false" />
-            <element signature="e#7427#9318#0" expanded="false" />
-            <element signature="e#9340#11500#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/AppDelegate.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="42" column="38" lean-forward="false" selection-start-line="42" selection-start-column="38" selection-end-line="42" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/Translation/TranslationLayer.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding>
-            <element signature="e#114#131#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/Database/DataLayer.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="109" column="20" lean-forward="false" selection-start-line="109" selection-start-column="20" selection-end-line="109" selection-end-column="20" />
-          <folding>
-            <element signature="e#158#175#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -733,18 +596,162 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/DataObject/TableController/HomeDTO.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Home/HomePresenter.swift">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="19" lean-forward="false" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomPresenter.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="45" lean-forward="false" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Home/HomeListViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="39" column="16" lean-forward="false" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
+          <folding>
+            <element signature="e#172#184#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomListViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="47" column="29" lean-forward="true" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
+          <folding>
+            <element signature="e#172#184#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/LoginViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="37" column="27" lean-forward="true" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/_Helper/BuilderHelper.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1231">
+          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/_Helper/FactoryHelper.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="42" column="19" lean-forward="false" selection-start-line="42" selection-start-column="19" selection-end-line="42" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Business/GECalculations.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Factory/FormBuilder.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="e#115#132#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Factory/FormFactory.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-415">
+          <caret line="28" column="8" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/Database/Parse/API/PFAuditAPI.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="20" column="9" lean-forward="false" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/Database/Parse/API/PFPreAuditAPI.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="673">
+          <caret line="50" column="87" lean-forward="false" selection-start-line="50" selection-start-column="87" selection-end-line="50" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/Database/Parse/ParseDataModel.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="24" column="13" lean-forward="false" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/Database/DataLayer.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1961">
+          <caret line="119" column="18" lean-forward="false" selection-start-line="119" selection-start-column="18" selection-end-line="119" selection-end-column="18" />
+          <folding>
+            <element signature="e#158#175#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/DataObject/FormController/Config/lighting.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/DataObject/FormController/FormDataModel.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="31" column="19" lean-forward="false" selection-start-line="31" selection-start-column="19" selection-end-line="31" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/DataObject/FormController/PreAuditFDO.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/DataObject/FormController/ZoneFDO.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/DataObject/TableController/HomeDTO.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -765,20 +772,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/ModelLayer.swift">
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/Translation/TranslationLayer.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="52" lean-forward="false" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
+        <state relative-caret-position="153">
+          <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
           <folding>
             <element signature="e#114#131#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomPresenter.swift">
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/Enums.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="45" lean-forward="false" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+        <state relative-caret-position="646">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/GEStateController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="793">
+          <caret line="87" column="16" lean-forward="false" selection-start-line="87" selection-start-column="16" selection-end-line="87" selection-end-column="16" />
+          <folding>
+            <element signature="e#3117#3934#0" expanded="false" />
+            <element signature="e#3960#5429#0" expanded="false" />
+            <element signature="e#5452#7405#0" expanded="false" />
+            <element signature="e#7427#9318#0" expanded="false" />
+            <element signature="e#9340#11500#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/ModelLayer.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-415">
+          <caret line="29" column="28" lean-forward="true" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+          <folding>
+            <element signature="e#114#131#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/PopEditViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -791,58 +830,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/Enums.swift">
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Feature/FeatureViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        <state relative-caret-position="935">
+          <caret line="58" column="18" lean-forward="true" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/_Helper/BuilderHelper.swift">
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/AppDelegate.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="14" column="8" lean-forward="false" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+        <state relative-caret-position="663">
+          <caret line="41" column="48" lean-forward="false" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Home/HomeListViewController.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="39" column="16" lean-forward="false" selection-start-line="39" selection-start-column="16" selection-end-line="39" selection-end-column="16" />
-          <folding>
-            <element signature="e#172#184#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/_Helper/Utils.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="41" column="23" lean-forward="false" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="23" />
-          <folding>
-            <element signature="e#114#126#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Zone/ZoneListViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="97" column="48" lean-forward="true" selection-start-line="97" selection-start-column="48" selection-end-line="97" selection-end-column="48" />
+        <state relative-caret-position="204">
+          <caret line="12" column="6" lean-forward="false" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
           <folding>
             <element signature="e#174#186#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomListViewController.swift">
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/_Helper/Utils.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="75" column="37" lean-forward="false" selection-start-line="75" selection-start-column="37" selection-end-line="75" selection-end-column="37" />
+        <state relative-caret-position="377">
+          <caret line="26" column="21" lean-forward="false" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="21" />
           <folding>
-            <element signature="e#172#184#0" expanded="true" />
+            <element signature="e#114#126#0" expanded="true" />
           </folding>
         </state>
       </provider>
