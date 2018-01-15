@@ -8,9 +8,11 @@ import Foundation
 class ZoneListDTO {
     var identifier: String
     var title: String
+    var type: String
 
-    init(identifier: String, title: String) {
+    init(identifier: String, title: String, type: String) {
         self.identifier = identifier
         self.title = title
+        self.type = type
     }
 }

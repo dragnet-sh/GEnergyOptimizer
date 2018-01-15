@@ -70,11 +70,11 @@ extension ModelLayer {
 
         var data = [ZoneListDTO]()
         data.append(contentsOf: [
-            ZoneListDTO(identifier: "HVAC-1", title: "Zone Title 1"),
-            ZoneListDTO(identifier: "HVAC-2", title: "Zone Title 2"),
-            ZoneListDTO(identifier: "HVAC-3", title: "Zone Title 3"),
-            ZoneListDTO(identifier: "HVAC-4", title: "Zone Title 4"),
-            ZoneListDTO(identifier: "HVAC-5", title: "Zone Title 5"),
+            ZoneListDTO(identifier: "HVAC-1", title: "Zone Title 1", type: "HVAC"),
+            ZoneListDTO(identifier: "HVAC-2", title: "Zone Title 2", type: "HVAC"),
+            ZoneListDTO(identifier: "HVAC-3", title: "Zone Title 3", type: "HVAC"),
+            ZoneListDTO(identifier: "HVAC-4", title: "Zone Title 4", type: "HVAC"),
+            ZoneListDTO(identifier: "HVAC-5", title: "Zone Title 5", type: "HVAC"),
         ])
 
         resultsLoaded(.local, data)

@@ -4,12 +4,14 @@
 //
 
 import Foundation
+import CleanroomLogger
 
 typealias SourceBlock = (Source) -> Void
 
 class HomePresenter {
     var data = [HomeListDTO]()
     fileprivate var modelLayer = ModelLayer()
+    fileprivate var state = GEStateController.sharedInstance
 }
 
 
@@ -21,9 +23,13 @@ extension HomePresenter {
         }
     }
 
-    func initGEnergyOptimizer() {
-        modelLayer.initGEnergyOptimizer(identifier: auditIdentifier!) {
+    func initGEnergyOptimizer(auditIdentifier: String) {
+        modelLayer.initGEnergyOptimizer(identifier: auditIdentifier) {
             Log.message(.info, message: "Callback -> initGEnergyOptimizer")
         }
+    }
+
+    func setActiveZone(zone: String) {
+        state.registerActiveZone(zone: zone)
     }
 }

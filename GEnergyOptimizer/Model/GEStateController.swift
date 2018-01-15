@@ -20,6 +20,7 @@ class GEStateController {
 
     // *** Global Audit Identifier *** //
     fileprivate var auditIdentifier: String?
+    fileprivate var activeZone: String?
 
     // *** Core Data Objects *** //
     fileprivate var cdAudit: CDAudit?
@@ -83,7 +84,21 @@ extension GEStateController {
         return cdAudit
     }
 
+    public func getActiveZone() -> String? {
+        guard let zone = self.activeZone else {
+            Log.message(.error, message: "Zone Not Set")
+            return nil
+        }
+
+        return zone
+    }
+
     //### Global Audit Registration ###//
+
+    public func registerActiveZone(zone: String) {
+        Log.message(.info, message: "Register : Active Zone")
+        self.activeZone = zone
+    }
 
     public func registerAuditIdentifier(auditIdentifier: String) {
         Log.message(.info, message: "Register : Audit Identifier")

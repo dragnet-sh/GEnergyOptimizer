@@ -18,9 +18,6 @@ class RoomListViewController: UIViewController {
 
     static let cellIdentifier = "roomListCell"
 
-    var activeZone: String?
-    var activeEZone: EZone!
-
     override func viewDidLoad() {
         super.viewDidLoad()
 

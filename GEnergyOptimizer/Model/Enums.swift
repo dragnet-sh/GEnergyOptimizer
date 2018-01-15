@@ -6,7 +6,7 @@
 import Foundation
 
 public enum EZone: String {
-    case hvac = "HVAC", lighting = "Lighting", plugload = "PlugLoad"
+    case hvac = "HVAC", lighting = "Lighting", plugload = "PlugLoad", none
 }
 
 public enum ERoom: String {

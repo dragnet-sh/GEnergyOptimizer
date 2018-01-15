@@ -84,4 +84,10 @@ class GUtils {
             Log.message(.info, message: url.absoluteString)
         }
     }
+
+    static func getEZone(rawValue: String) -> EZone {
+        if let eVal = EZone(rawValue: rawValue) {
+            return eVal
+        } else { return .none }
+    }
 }

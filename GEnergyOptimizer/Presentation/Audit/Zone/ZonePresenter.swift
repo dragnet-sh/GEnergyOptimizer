@@ -4,10 +4,12 @@
 //
 
 import Foundation
+import CleanroomLogger
 
 public class ZonePresenter {
     var data = [ZoneListDTO]()
     fileprivate var modelLayer = ModelLayer()
+    fileprivate var state = GEStateController.sharedInstance
 }
 
 
@@ -17,5 +19,13 @@ extension ZonePresenter {
             self?.data = data
             finished(source)
         }
+    }
+
+    func getActiveZone() -> String? {
+        return state.getActiveZone()
+    }
+
+    func createZone(name: String, type: String) {
+        Log.message(.info, message: "Creating Zone")
     }
 }

@@ -76,15 +76,12 @@ extension HomeListViewController: UITableViewDataSource {
 extension HomeListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedZone = presenter.data[indexPath.item]
+        if let selectedZone = presenter.data[indexPath.item].auditZone {
+            presenter.setActiveZone(zone: selectedZone)
 
-        Log.message(.info, message: (selectedZone.auditZone?.debugDescription)!)
-
-        let vc = ControllerUtils.fromStoryboard(reference: "ZoneListViewController") as! ZoneListViewController
-        vc.activeZone = selectedZone.auditZone!
-        vc.delegate = self
-
-        navigationController?.pushViewController(vc, animated: true)
+            let vc = ControllerUtils.fromStoryboard(reference: "ZoneListViewController") as! ZoneListViewController
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
