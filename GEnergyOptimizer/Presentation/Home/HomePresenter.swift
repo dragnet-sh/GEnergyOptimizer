@@ -20,4 +20,10 @@ extension HomePresenter {
             finished(source)
         }
     }
+
+    func initGEnergyOptimizer() {
+        modelLayer.initGEnergyOptimizer(identifier: auditIdentifier!) {
+            Log.message(.info, message: "Callback -> initGEnergyOptimizer")
+        }
+    }
 }

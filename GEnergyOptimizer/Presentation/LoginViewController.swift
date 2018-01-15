@@ -14,6 +14,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var lblAuditIdentifier: UITextField!
     var auditIdentifier: String?
     var delegate: HomeListViewController!
+    var presenter = HomePresenter()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,12 +35,7 @@ extension LoginViewController {
         }
 
         Log.message(.info, message: "Audit Identifier: \(auditIdentifier!)")
-
-        let modelLayer = ModelLayer()
-        modelLayer.initGEnergyOptimizer(identifier: auditIdentifier!) {
-            Log.message(.info, message: "Callback -> initGEnergyOptimizer")
-        }
-
+        presenter.initGEnergyOptimizer()
         self.dismiss(animated: true)
     }
 }
