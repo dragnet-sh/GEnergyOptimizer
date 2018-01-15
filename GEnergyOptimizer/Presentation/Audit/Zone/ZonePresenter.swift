@@ -15,7 +15,7 @@ public class ZonePresenter {
 
 extension ZonePresenter {
     func loadData(finished: @escaping (Source)->Void) {
-        modelLayer.loadZoneData { [weak self] source, data in
+        modelLayer.loadZone { [weak self] source, data in
             self?.data = data
             finished(source)
         }
@@ -26,6 +26,8 @@ extension ZonePresenter {
     }
 
     func createZone(name: String, type: String) {
-        Log.message(.info, message: "Creating Zone")
+        modelLayer.createZone(name: name, type: type) {
+            Log.message(.info, message: "Finished : Core Data - Create Zone")
+        }
     }
 }

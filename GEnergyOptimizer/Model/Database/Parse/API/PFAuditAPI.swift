@@ -18,8 +18,9 @@ class PFAuditAPI  {
         return Singleton.instance
     } 
 
-    func initialize(identifier: String) {
+    func initialize(identifier: String, complete: @escaping (Bool, PFObject?)->Void) {
         Log.message(.info, message: "Parse - Initializing PFAudit with Identifier - \(identifier)")
+        var status = false
         var audit = PFAudit()
         audit.identifier = identifier
         audit.name = "GEnergy Audit - \(identifier)"
@@ -31,9 +32,8 @@ class PFAuditAPI  {
             EZone.plugload.rawValue: [PFObject]()
         ]
 
-        save(pfAudit: audit) {
-            // *** Global AuditDTO Registration *** //
-            //self.registerAuditDTO(auditDTO: audit)
+        save(pfAudit: audit) { status in
+            complete(status, audit)
         }
     }
 
@@ -55,18 +55,16 @@ class PFAuditAPI  {
         }
     }
 
-    func save(pfAudit: PFAudit, complete: @escaping ()->Void) {
-
+    func save(pfAudit: PFAudit, complete: @escaping (Bool)->Void) {
         pfAudit.saveInBackground { success, error in
             if (success) {
                 Log.message(.info, message: "Parse - PFAudit Data Saved : Successful")
+                complete(true)
             } else {
                 Log.message(.error, message: error.debugDescription)
+                complete(false)
             }
-
-            complete()
         }
-
     }
 
     func delete() {

@@ -4,18 +4,24 @@
 //
 
 import Foundation
+import CleanroomLogger
 
 public class RoomPresenter {
     var data = [RoomListDTO]()
     fileprivate var modelLayer = ModelLayer()
 }
 
-
 extension RoomPresenter {
-    func loadData(finished: @escaping (Source)->Void) {
-        modelLayer.loadRoomData { [weak self] source, data in
-            self?.data = data
-            finished(source)
+    func loadData() {
+        modelLayer.loadRoom { source, data in
+            self.data = data
+            NotificationCenter.default.post(name: .updateRoomTableData, object: nil)
+        }
+    }
+
+    func createRoom(name: String) {
+        modelLayer.createRoom(name: name) {
+            self.loadData()
         }
     }
 }

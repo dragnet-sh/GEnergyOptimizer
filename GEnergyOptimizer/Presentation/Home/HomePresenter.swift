@@ -17,7 +17,7 @@ class HomePresenter {
 
 extension HomePresenter {
     func loadData(finished: @escaping SourceBlock) {
-        modelLayer.loadHomeData { [weak self] source, data in
+        modelLayer.loadHome { [weak self] source, data in
             self?.data = data
             finished(source)
         }

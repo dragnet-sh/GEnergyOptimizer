@@ -2,7 +2,7 @@
 //  CDAudit+CoreDataProperties.swift
 //  GEnergyOptimizer
 //
-//  Created by Binay Budhthoki on 1/13/18.
+//  Created by Binay Budhthoki on 1/15/18.
 //  Copyright © 2018 GeminiEnergyServices. All rights reserved.
 //
 //
@@ -17,13 +17,12 @@ extension CDAudit {
         return NSFetchRequest<CDAudit>(entityName: "CDAudit")
     }
 
+    @NSManaged public var createdAt: NSDate?
     @NSManaged public var identifier: String?
     @NSManaged public var name: String?
-    @NSManaged public var syncStatus: Bool
-    @NSManaged public var createdAt: NSDate?
-    @NSManaged public var updatedAt: NSDate?
     @NSManaged public var objectId: String?
-    @NSManaged public var intialSyncStatus: Bool
+    @NSManaged public var syncStatus: Bool
+    @NSManaged public var updatedAt: NSDate?
     @NSManaged public var hasPreAuditFeature: NSSet?
     @NSManaged public var hasRoom: NSSet?
     @NSManaged public var hasZone: NSSet?

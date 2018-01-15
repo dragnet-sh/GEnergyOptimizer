@@ -32,6 +32,9 @@ class ZoneListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(self.updateZoneTableData), name: .updateZoneTableData, object: nil)
+
         zone = presenter.getActiveZone()
         presenter.loadData { source in
             self.tableView.reloadData()
@@ -112,4 +115,15 @@ extension ZoneListViewController {
             self.lblZoneHeader.text = "Zone - \(zone))"
         }
     }
+
+    @objc func updateZoneTableData() {
+        Log.message(.info, message: "Update Event Table Data - Trigger")
+        presenter.loadData { source in
+            self.tableView.reloadData()
+        }
+    }
+}
+
+extension Notification.Name {
+    static let updateZoneTableData = Notification.Name(rawValue: "updateZoneTableData")
 }

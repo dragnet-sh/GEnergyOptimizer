@@ -35,8 +35,8 @@ class PFZoneAPI {
                         return
                     }
                     object.zoneCollection[type]!.append(zone)
-                    PFAuditAPI.sharedInstance.save(pfAudit: object) {
-                        complete(true)
+                    PFAuditAPI.sharedInstance.save(pfAudit: object) { status in
+                        complete(status)
                     }
                 }
             } else {

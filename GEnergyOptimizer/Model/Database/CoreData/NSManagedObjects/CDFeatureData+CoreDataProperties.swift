@@ -2,7 +2,7 @@
 //  CDFeatureData+CoreDataProperties.swift
 //  GEnergyOptimizer
 //
-//  Created by Binay Budhthoki on 1/13/18.
+//  Created by Binay Budhthoki on 1/15/18.
 //  Copyright © 2018 GeminiEnergyServices. All rights reserved.
 //
 //
@@ -17,14 +17,13 @@ extension CDFeatureData {
         return NSFetchRequest<CDFeatureData>(entityName: "CDFeatureData")
     }
 
+    @NSManaged public var createdAt: NSDate?
     @NSManaged public var formId: String?
     @NSManaged public var key: String?
     @NSManaged public var objectId: String?
-    @NSManaged public var value: String?
-    @NSManaged public var zoneId: String?
-    @NSManaged public var updatedAt: NSDate?
     @NSManaged public var syncStatus: Bool
-    @NSManaged public var createdAt: NSDate?
+    @NSManaged public var updatedAt: NSDate?
+    @NSManaged public var value: String?
     @NSManaged public var belongsToZone: CDZone?
 
 }

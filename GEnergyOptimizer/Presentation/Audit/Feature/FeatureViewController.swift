@@ -98,8 +98,8 @@ extension FeatureViewController {
 
         Log.message(.warning, message: zoneDTO.debugDescription)
 
-        self.state.saveZone(zoneDTO: zoneDTO) {
-            GUtils.message(title: "Parse-Server", message: "Zone Feature : Data Saved", vc: self)
-        }
+//        self.state.saveZone(zoneDTO: zoneDTO) {
+//            GUtils.message(title: "Parse-Server", message: "Zone Feature : Data Saved", vc: self)
+//        }
     }
 }

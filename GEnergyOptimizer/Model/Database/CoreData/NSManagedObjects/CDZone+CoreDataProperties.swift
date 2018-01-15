@@ -2,7 +2,7 @@
 //  CDZone+CoreDataProperties.swift
 //  GEnergyOptimizer
 //
-//  Created by Binay Budhthoki on 1/13/18.
+//  Created by Binay Budhthoki on 1/15/18.
 //  Copyright © 2018 GeminiEnergyServices. All rights reserved.
 //
 //
@@ -17,13 +17,12 @@ extension CDZone {
         return NSFetchRequest<CDZone>(entityName: "CDZone")
     }
 
-    @NSManaged public var auditId: String?
+    @NSManaged public var createdAt: NSDate?
     @NSManaged public var name: String?
     @NSManaged public var objectId: String?
-    @NSManaged public var type: String?
-    @NSManaged public var createdAt: NSDate?
-    @NSManaged public var updatedAt: NSDate?
     @NSManaged public var syncStatus: Bool
+    @NSManaged public var type: String?
+    @NSManaged public var updatedAt: NSDate?
     @NSManaged public var belongsToAudit: CDAudit?
     @NSManaged public var hasFeature: NSSet?
     @NSManaged public var hasRoom: NSSet?

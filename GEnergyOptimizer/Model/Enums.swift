@@ -7,6 +7,8 @@ import Foundation
 
 public enum EZone: String {
     case hvac = "HVAC", lighting = "Lighting", plugload = "PlugLoad", none
+
+    static let getAll = [hvac, lighting, plugload]
 }
 
 public enum ERoom: String {
@@ -36,4 +38,18 @@ public enum Source: String {
 enum Result <T> {
     case Success(T)
     case Error(String)
+}
+
+
+enum EntityTypes: String {
+    case audit = "CDAudit"
+    case preaudit = "CDPreAudit"
+    case zone = "CDZone"
+    case room = "CDRoom"
+    case featureData = "CDFeatureData"
+}
+
+
+enum CellIdentifiers: String {
+    case room = "roomListCell"
 }

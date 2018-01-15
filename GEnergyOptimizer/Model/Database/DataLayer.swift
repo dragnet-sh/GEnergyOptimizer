@@ -25,6 +25,9 @@ class DataLayer {
 
     let state = GEStateController.sharedInstance
     let pfAuditAPI = PFAuditAPI.sharedInstance
+    let pfPreAuditAPI = PFPreAuditAPI.sharedInstance
+    let pfZoneAPI = PFZoneAPI.sharedInstance
+    let pfRoomAPI = PFRoomAPI.sharedInstance
 
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "GEModel")
@@ -36,100 +39,168 @@ class DataLayer {
         return container
     }()
 
-    func loadCoreData(identifier: String) {
+    //ToDo: Move this to some API Layer
+    func getAudit(id: String) -> CDAudit? {
+        Log.message(.info, message: "Core Data : Get Audit")
+        let fetchRequest: NSFetchRequest<CDAudit> = CDAudit.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "identifier = %@", argumentArray: [id])
 
-        Log.message(.info, message: "Core Data : Initializing Audit")
         let managedContext = persistentContainer.viewContext
-
-        guard let auditEntity = NSEntityDescription.entity(forEntityName: "CDAudit", in: managedContext) else {
-            Log.message(.error, message: "Guard failed for NSEntityDescription")
-            return
-        }
-        guard let zoneEntity = NSEntityDescription.entity(forEntityName: "CDZone", in: managedContext) else {
-            return
+        guard let audit = try! managedContext.fetch(fetchRequest).first as? CDAudit else {
+            Log.message(.error, message: "Guard Failed : Core Data - Audit")
+            return nil
         }
 
-        // ### AUDIT
-        Log.message(.info, message: "Creating CDAudit")
-        let audit = CDAudit(context: managedContext)
-        audit.identifier = identifier
-        audit.name = "GEnergy Audit \(identifier)"
-
-        // ### Saving the CDAudit Context
-        try! managedContext.save()
-
-        // ### ZONE
-        Log.message(.info, message: "Creating CDZone - 1")
-        let zone1 = CDZone(context: managedContext)
-        zone1.name = "Zone One"
-        zone1.type = "HVAC"
-        zone1.belongsToAudit = audit
-
-        Log.message(.info, message: "Creating CDZone - 2")
-        let zone2 = CDZone(context: managedContext)
-        zone2.name = "Zone Two"
-        zone2.type = "PlugLoad"
-        zone2.belongsToAudit = audit
-
-        // ### Saving the CDZone Context
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            Log.message(.error, message: "Could Not Save \(error.userInfo)")
-        }
-
+        return audit
     }
 
-    func loadAuditLocal(identifier: String, finished: () -> Void) {
 
-        GUtils.applicationDocumentsDirectory()
+    public func sync(complete: @escaping ()->Void) {
+        Log.message(.info, message: "Data Sync - In Progress")
 
-        let fetchRequest: NSFetchRequest<CDAudit> = CDAudit.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "identifier = %@", argumentArray: [identifier])
-        Log.message(.info, message: fetchRequest.debugDescription)
-        do {
-            let audit = try persistentContainer.viewContext.fetch(fetchRequest)
+        guard let auditIdentifier = self.state.getIdentifier() else {
+            Log.message(.error, message: "Audit Identifier is Nil")
+            return
+        }
 
-            guard let record = audit.first as? CDAudit else {
-                Log.message(.error, message: "Guard failed for CDAudit")
+        guard let pfAudit = self.state.getPFAudit() else  {
+            Log.message(.error, message: "PFAudit in Nil")
+            return
+        }
+
+        let managedContext = persistentContainer.viewContext
+        if let copy = getAudit(id: auditIdentifier) {
+            Log.message(.info, message: "Deleting Older Copy - Core Data - Audit")
+            managedContext.delete(copy)
+        }
+
+        // Audit
+        let audit = CDAudit(context: managedContext)
+        audit.identifier = auditIdentifier
+        audit.name = pfAudit.name
+
+        try! managedContext.save()
+
+        // PreAudit
+        if let preAuditId = pfAudit.preAudit.objectId {
+            pfPreAuditAPI.get(objectId: preAuditId) { status, object in
+                guard let object = object as? PFPreAudit else {
+                    Log.message(.error, message: "Guard Failed : Parse PreAudit")
+                    return
+                }
+
+                for (elementId, data) in object.featureData {
+                    let formId = elementId
+                    let formTitle = data[0] as? String
+                    let formValue = data[1] as? String
+
+                    let data = CDPreAudit(context: managedContext)
+                    data.belongsToAudit = audit
+                    data.formId = formId
+                    data.key = formTitle
+                    data.value = formValue
+                }
+
+                try! managedContext.save()
+            }
+        }
+
+        try! managedContext.save()
+
+        // Zone
+        let zoneType = EZone.getAll
+        zoneType.forEach { zone in
+            let rawValue = zone.rawValue
+            guard let objects = pfAudit.zoneCollection[rawValue] as? [PFZone] else {
                 return
             }
 
-            state.registerCDAudit(cdAudit: record)
+            objects.forEach { zone in
 
-            if let zones = record.hasZone {
-                for eachZone in zones {
-                    guard let zone = eachZone as? CDZone else {
-                        Log.message(.error, message: "Guard failed for Zone")
-                        return
+                guard let id = zone.objectId else {
+                    Log.message(.error, message: "Guard Fail")
+                    return
+                }
+
+                pfZoneAPI.get(objectId: id) { status, object in
+                    let dataZone = CDZone(context: managedContext)
+                    dataZone.belongsToAudit = audit
+                    dataZone.name = zone.name
+                    dataZone.type = zone.type
+
+                    for (elementId, data) in zone.featureData {
+                        let formId = elementId
+                        let formTitle = data[0] as? String
+                        let formValue = data[1] as? String
+
+                        let dataFeature = CDZoneFeature(context: managedContext)
+                        dataFeature.belongsToZone = dataZone
+                        dataFeature.form_id = formId
+                        dataFeature.key = formTitle
+                        dataFeature.value = formValue
                     }
 
-                    if let name = zone.name, let type = zone.type {
-                        Log.message(.info, message: name)
-                        Log.message(.info, message: type)
-                    }
+                    try! managedContext.save()
                 }
             }
+        }
 
-        } catch let error as NSError {
-            Log.message(.error, message: "Audit Fetch Error \(error.userInfo)")
-            finished()
+        //Room
+        guard let objects = pfAudit.roomCollection as? [PFRoom] else {
+            return
+        }
+
+        objects.forEach { room in
+
+            guard let id = room.objectId else {
+                Log.message(.error, message: "Guard Fail")
+                return
+            }
+
+            pfRoomAPI.get(objectId: id) { status, object in
+                let dataRoom = CDRoom(context: managedContext)
+                dataRoom.belongsToAudit = audit
+                dataRoom.name = room.name
+                dataRoom.objectId = room.objectId
+
+                try! managedContext.save()
+            }
+        }
+
+        complete()
+    }
+
+    func loadAuditLocal(identifier: String, finished: () -> Void) {
+        GUtils.applicationDocumentsDirectory()
+        if let audit = self.getAudit(id: identifier) {
+            state.registerCDAudit(cdAudit: audit)
         }
     }
 
     func loadAuditNetwork(identifier: String, finished: @escaping () -> Void) {
-        Log.message(.info, message: "PFAudit - Loading form Server : Audit Identifier - \(identifier)")
+        Log.message(.info, message: "Loading Audit Via Network - Parse Server")
 
-
-        pfAuditAPI.get(id: identifier) { status, object in
-            guard let object = object as? PFAudit else {
-                Log.message(.error, message: "Guard Failed - PFAudit")
-                self.pfAuditAPI.initialize(identifier: identifier)
-                return
+        func fetchAudit(complete: @escaping ()->Void) {
+            self.pfAuditAPI.get(id: identifier) { status, object in
+                guard let object = object as? PFAudit else {
+                    Log.message(.error, message: "Guard Failed - PFAudit")
+                    self.pfAuditAPI.initialize(identifier: identifier) { status, object in
+                        guard let object = object as? PFAudit else {
+                            Log.message(.error, message: "Guard Failed")
+                            return
+                        }
+                        self.state.registerPFAudit(pfAudit: object)
+                        complete()
+                    }
+                    return
+                }
+                self.state.registerPFAudit(pfAudit: object)
+                complete()
             }
-
-            self.state.registerPFAudit(pfAudit: object)
         }
 
+        fetchAudit() {
+            finished()
+        }
     }
 }

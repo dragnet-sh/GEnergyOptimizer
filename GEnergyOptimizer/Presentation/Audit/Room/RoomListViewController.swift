@@ -16,7 +16,7 @@ class RoomListViewController: UIViewController {
     var state = GEStateController.sharedInstance
     var presenter = RoomPresenter()
 
-    static let cellIdentifier = "roomListCell"
+    static let cellIdentifier = CellIdentifiers.room.rawValue
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +27,10 @@ class RoomListViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        presenter.loadData()
 
-        presenter.loadData { source in
-            self.tableView.reloadData()
-        }
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(self.updateRoomTableData), name: .updateRoomTableData, object: nil)
     }
 }
 
@@ -38,14 +38,14 @@ class RoomListViewController: UIViewController {
 //Mark: - Touch Events
 extension RoomListViewController {
 
-    //Add Room Button Pressed
     @IBAction func addRoomButtonPressed(_ sender: Any) {
-        Log.message(.info, message: "Add New Room")
         let popup = ControllerUtils.getPopEdit() { name in
             if (name.isEmpty) {
                 GUtils.message(title: "Alert", message: "Room Name Cannot be Empty", vc: self)
                 return
             }
+
+            self.presenter.createRoom(name: name)
         }
 
         //Present Dialog
@@ -89,9 +89,24 @@ extension RoomListViewController: UITableViewDelegate {
 //Mark: - Helper Methods
 extension RoomListViewController {
 
-    func initTableView() {
+    fileprivate func initTableView() {
         tableView!.dataSource = self
         tableView!.delegate = self
         tableView!.rowHeight = 60
     }
+
+    @objc func updateRoomTableData() {
+        Log.message(.info, message: "Update Room Table Data - Called")
+        refreshTableData()
+    }
+
+    fileprivate func refreshTableData() {
+        Log.message(.info, message: "Refresh Table Data !!")
+        self.tableView.reloadData()
+    }
+}
+
+
+extension Notification.Name {
+    static let updateRoomTableData = Notification.Name(rawValue: "updateRoomTableData")
 }

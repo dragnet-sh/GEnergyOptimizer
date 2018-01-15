@@ -5,6 +5,7 @@
 
 import Foundation
 import CleanroomLogger
+import CoreData
 
 typealias HomeDTOSourceBlock = (Source, [HomeListDTO])->Void
 typealias ZoneDTOSourceBlock = (Source, [ZoneListDTO])->Void
@@ -15,6 +16,9 @@ class ModelLayer {
     fileprivate var dataLayer = DataLayer.sharedInstance
     fileprivate var translationLayer = TranslationLayer.sharedInstance
     fileprivate var state = GEStateController.sharedInstance
+
+    var persistentContainer = DataLayer.sharedInstance.persistentContainer
+    var managedContext = DataLayer.sharedInstance.persistentContainer.viewContext
 }
 
 extension ModelLayer {
@@ -28,7 +32,7 @@ extension ModelLayer {
             loadFromDB(from: .local)
 
             dataLayer.loadAuditNetwork(identifier: identifier) {
-                self.state.sync() {
+                self.dataLayer.sync() {
                     Log.message(.info, message: "Sync -- Callback")
                 }
                 loadFromDB(from: .network)
@@ -37,7 +41,7 @@ extension ModelLayer {
 
         func loadFromDB(from source: Source) {
             dataLayer.loadAuditLocal(identifier: identifier) {
-                translationLayer.mapObjectModel()
+                Log.message(.info, message: "Loading Audit - Local")
             }
         }
 
@@ -45,27 +49,72 @@ extension ModelLayer {
     }
 }
 
+
+//Mark: - Audit Data Model
+extension ModelLayer {
+    func getAudit(id: String) -> CDAudit? {
+        Log.message(.info, message: "Core Data : Get Audit")
+        let fetchRequest: NSFetchRequest<CDAudit> = CDAudit.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "identifier = %@", argumentArray: [id])
+
+        guard let audit = try! managedContext.fetch(fetchRequest).first as? CDAudit else {
+            Log.message(.error, message: "Guard Failed : Core Data - Audit")
+            return nil
+        }
+
+        return audit
+    }
+}
+
+
 //Mark: - Room Data Model
 extension ModelLayer {
-    func loadRoomData(resultsLoaded: @escaping RoomDTOSourceBlock) {
+    func loadRoom(finished: @escaping RoomDTOSourceBlock) {
         Log.message(.info, message: "Loading Room Data Model")
 
-        var data = [RoomListDTO]()
-        data.append(contentsOf: [
-            RoomListDTO(identifier: "room-1", title: "Room Title 1"),
-            RoomListDTO(identifier: "room-2", title: "Room Title 2"),
-            RoomListDTO(identifier: "room-3", title: "Room Title 3"),
-            RoomListDTO(identifier: "room-4", title: "Room Title 4"),
-            RoomListDTO(identifier: "room-5", title: "Room Title 5")
-        ])
+        if let identifier = state.getIdentifier() {
+            if let audit = getAudit(id: identifier) {
+                let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: true)
 
-        resultsLoaded(.local, data)
+                guard let fetchedResults = audit.hasRoom?.sortedArray(using: [sortDescriptor]) as? [CDRoom] else {
+                    Log.message(.error, message: "Guard Failed : Fetched Results - Core Data Room")
+                    return
+                }
+
+                let data = fetchedResults.map { RoomListDTO(identifier: "N/A", title: $0.name!) }
+                finished(.local, data)
+            }
+        }
+    }
+
+    func createRoom(name: String, finished: @escaping ()->Void) {
+        Log.message(.info, message: "Core Data : Create Room")
+
+        if let identifier = state.getIdentifier() {
+            guard let cdAudit = getAudit(id: identifier) else {
+                Log.message(.error, message: "Guard Failed : CDAudit")
+                return
+            }
+
+            let room = CDRoom(context: managedContext)
+            room.name = name
+            room.createdAt = NSDate()
+            room.belongsToAudit = cdAudit
+
+            do {
+                try managedContext.save()
+            } catch let error as NSError {
+                Log.message(.error, message: error.userInfo.debugDescription)
+            }
+
+            finished()
+        }
     }
 }
 
 //Mark: - Zone Data Model
 extension ModelLayer {
-    func loadZoneData(resultsLoaded: @escaping ZoneDTOSourceBlock) {
+    func loadZone(resultsLoaded: @escaping ZoneDTOSourceBlock) {
         Log.message(.info, message: "Loading Zone Data Model")
 
         var data = [ZoneListDTO]()
@@ -79,12 +128,35 @@ extension ModelLayer {
 
         resultsLoaded(.local, data)
     }
+
+    func createZone(name: String, type: String, finished: @escaping ()->Void) {
+        Log.message(.info, message: "Core Data : Create Zone")
+
+
+        guard let cdAudit = state.getCDAudit() as? CDAudit else {
+            Log.message(.error, message: "Guard Failed : CDAudit")
+            return
+        }
+
+        let zone = CDZone(context: managedContext)
+        zone.type = type
+        zone.name = name
+        zone.belongsToAudit = cdAudit
+
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            Log.message(.error, message: error.userInfo.debugDescription)
+        }
+
+        finished()
+    }
 }
 
 
 //Mark: - Home Data Model
 extension ModelLayer {
-    func loadHomeData(resultsLoaded: @escaping HomeDTOSourceBlock) {
+    func loadHome(resultsLoaded: @escaping HomeDTOSourceBlock) {
         Log.message(.info, message: "Loading Home Data Model")
 
         var data = [HomeListDTO]()

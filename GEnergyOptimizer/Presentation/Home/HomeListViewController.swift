@@ -92,8 +92,6 @@ extension HomeListViewController {
     // *** Show up the Login Screen on-top of Home List View Controller *** //
     func getLoginViewController() -> LoginViewController {
         let vc = ControllerUtils.fromStoryboard(reference: "Main", vc: "LoginViewController") as! LoginViewController
-        vc.delegate = self
-
         return vc
     }
 

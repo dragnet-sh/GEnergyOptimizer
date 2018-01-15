@@ -90,9 +90,9 @@ extension PreAuditViewController {
 
         Log.message(.warning, message: preAuditDTO.debugDescription)
 
-        self.state.savePreAudit(preAudit: preAuditDTO) {
-            GUtils.message(title: "Parse-Server", message: "PreAudit : Data Saved", vc: self)
-        }
+//        self.state.savePreAudit(preAudit: preAuditDTO) {
+//            GUtils.message(title: "Parse-Server", message: "PreAudit : Data Saved", vc: self)
+//        }
     }
 }
 

@@ -32,8 +32,8 @@ class PFRoomAPI {
                             return
                         }
                         object.roomCollection.append(room)
-                        PFAuditAPI.sharedInstance.save(pfAudit: object) {
-                            complete(true)
+                        PFAuditAPI.sharedInstance.save(pfAudit: object) { status in
+                            complete(status)
                         }
                     }
                 } else {

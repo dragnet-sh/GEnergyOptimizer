@@ -21,7 +21,7 @@ class ControllerUtils {
     static func getPopEdit(addAction: @escaping (String)->Void) -> PopupDialog {
         let popEditViewController = PopEditViewController(nibName: "PopEditViewController", bundle: nil)
 
-        popEditViewController.activeHeader = "Add Room"
+        popEditViewController.activeHeader = "Add"
         popEditViewController.activeEditLine = ""
 
         let popup = PopupDialog(viewController: popEditViewController, buttonAlignment: .horizontal, gestureDismissal: true)
@@ -29,7 +29,6 @@ class ControllerUtils {
         let btnCancel = CancelButton(title: "Cancel", height: 40) {}
         let btnAdd = DefaultButton(title: "Add", height: 40) {
             guard let input = popEditViewController.txtEditField.text?.trimmingCharacters(in: .whitespaces) else {return}
-            Log.message(.info, message: "Value: \(input)")
             addAction(input)
         }
         popup.addButtons([btnCancel, btnAdd])
@@ -81,7 +80,7 @@ class GUtils {
 
     static func applicationDocumentsDirectory() {
         if let url = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).last {
-            Log.message(.info, message: url.absoluteString)
+            Log.message(.info, message: "\(url.absoluteString)Application Support/GEModel.sqlite")
         }
     }
 
