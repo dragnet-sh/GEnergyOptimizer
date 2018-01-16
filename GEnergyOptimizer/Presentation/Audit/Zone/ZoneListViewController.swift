@@ -101,7 +101,7 @@ extension ZoneListViewController {
 
     func setZoneHeader() {
         if let zone  = presenter.getActiveZone() {
-            self.lblZoneHeader.text = "Zone - \(zone))"
+            self.lblZoneHeader.text = "Zone - \(zone)"
         }
     }
 

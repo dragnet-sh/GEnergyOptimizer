@@ -47,6 +47,18 @@ class PFRoomAPI {
         }
     }
 
+    func getAll(objects: [PFObject], complete: @escaping (Bool, [PFObject])->Void) {
+        Log.message(.info, message: "Parse - Bulk Get Room")
+        PFRoom.fetchAll(inBackground: objects) { objects, error in
+            guard let objects = objects as? [PFRoom] else {
+                Log.message(.error, message: "Guard Failed - Bulk Fetch PFRoom")
+                return
+            }
+            complete(true, objects)
+        }
+    }
+
+
     // *** Note: Once the Room is saved successfully - Add this to Audit Room Collection
     func save(pfRoom: PFRoom, complete: @escaping (Bool)->Void) {
         Log.message(.info, message: "Parse - Save Room")

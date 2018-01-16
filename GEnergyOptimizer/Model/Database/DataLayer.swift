@@ -92,29 +92,31 @@ class DataLayer {
                 return
             }
 
-            objects.forEach { zone in
+            pfZoneAPI.getAll(objects: objects) { status, objects in
+                if (status) {
+                    guard let pfZones = objects as? [PFZone] else {
+                        Log.message(.error, message: "Guard Fails - Bulk Fetch PFZones")
+                        return
+                    }
 
-                guard let id = zone.objectId else {
-                    Log.message(.error, message: "Guard Fail")
-                    return
-                }
+                    _ = pfZones.map {
+                        let zone = CDZone(context: managedContext)
+                        zone.belongsToAudit = audit
+                        zone.name = $0.name
+                        zone.type = $0.type
+                        zone.objectId = $0.objectId
 
-                pfZoneAPI.get(objectId: id) { status, object in
-                    let dataZone = CDZone(context: managedContext)
-                    dataZone.belongsToAudit = audit
-                    dataZone.name = zone.name
-                    dataZone.type = zone.type
+                        for (elementId, data) in $0.featureData {
+                            let formId = elementId
+                            let formTitle = data[0] as? String
+                            let formValue = data[1] as? String
 
-                    for (elementId, data) in zone.featureData {
-                        let formId = elementId
-                        let formTitle = data[0] as? String
-                        let formValue = data[1] as? String
-
-                        let dataFeature = CDZoneFeature(context: managedContext)
-                        dataFeature.belongsToZone = dataZone
-                        dataFeature.form_id = formId
-                        dataFeature.key = formTitle
-                        dataFeature.value = formValue
+                            let dataFeature = CDZoneFeature(context: managedContext)
+                            dataFeature.belongsToZone = zone
+                            dataFeature.form_id = formId
+                            dataFeature.key = formTitle
+                            dataFeature.value = formValue
+                        }
                     }
 
                     try! managedContext.save()
@@ -123,25 +125,24 @@ class DataLayer {
         }
 
         // 4. Sync Room
-        guard let objects = pfAudit.roomCollection as? [PFRoom] else {
+        guard let rooms = pfAudit.roomCollection as? [PFRoom] else {
             return
         }
 
-        objects.forEach { room in
-
-            guard let id = room.objectId else {
-                Log.message(.error, message: "Guard Fail")
+        pfRoomAPI.getAll(objects: rooms) { status, objects in
+            guard let pfRooms = objects as? [PFRoom] else {
+                Log.message(.error, message: "Guard Failed - Bulk PFRoom")
                 return
             }
 
-            pfRoomAPI.get(objectId: id) { status, object in
-                let dataRoom = CDRoom(context: managedContext)
-                dataRoom.belongsToAudit = audit
-                dataRoom.name = room.name
-                dataRoom.objectId = room.objectId
-
-                try! managedContext.save()
+            _ = pfRooms.map {
+                let room = CDRoom(context: managedContext)
+                room.belongsToAudit = audit
+                room.name = $0.name
+                room.objectId = $0.objectId
             }
+
+            try! managedContext.save()
         }
 
         complete()

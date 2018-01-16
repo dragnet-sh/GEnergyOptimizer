@@ -47,6 +47,17 @@ class PFZoneAPI {
         }
     }
 
+    func getAll(objects: [PFObject], complete: @escaping (Bool, [PFObject])->Void) {
+        Log.message(.info, message: "Parse - Bulk Get Zone")
+        PFZone.fetchAll(inBackground: objects) { objects, error in
+            guard let objects = objects as? [PFZone] else {
+                Log.message(.error, message: "Guard Failed - Bulk Fetch PFZone")
+                return
+            }
+            complete(true, objects)
+        }
+    }
+
     func save(pfZone: PFZone, complete: @escaping (Bool)->Void) {
         Log.message(.info, message: "Parse - Save Zone")
         pfZone.saveInBackground { success, error in
