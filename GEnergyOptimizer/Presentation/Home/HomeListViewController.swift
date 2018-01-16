@@ -56,7 +56,7 @@ extension HomeListViewController {
 }
 
 
-//Mark: - UITableViewDataSource
+//Mark: - Data Source
 extension HomeListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -72,7 +72,7 @@ extension HomeListViewController: UITableViewDataSource {
 }
 
 
-//Mark: - UITableViewDelegate
+//Mark: - Delegate Events
 extension HomeListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

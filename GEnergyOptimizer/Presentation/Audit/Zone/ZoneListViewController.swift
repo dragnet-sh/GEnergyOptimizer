@@ -16,15 +16,12 @@ class ZoneListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
 
     var presenter = ZonePresenter()
-    var zone: String?
-
-    static let cellIdentifier = "zoneListCell"
+    static let cellIdentifier = CellIdentifiers.zone.rawValue
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         Log.message(.info, message: "GEnergy - ZoneList View Controller")
-
         self.initTableView()
         self.setZoneHeader()
     }
@@ -35,7 +32,6 @@ class ZoneListViewController: UIViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.updateZoneTableData), name: .updateZoneTableData, object: nil)
 
-        zone = presenter.getActiveZone()
         presenter.loadData()
     }
 }
@@ -51,7 +47,7 @@ extension ZoneListViewController {
                 return
             }
 
-            if let zone = self.zone {
+            if let zone = self.presenter.getActiveZone() {
                 self.presenter.createZone(name: name, type: zone)
             }
         }
@@ -60,7 +56,7 @@ extension ZoneListViewController {
     }
 }
 
-//Mark: - UITableViewDataSource
+//Mark: - Data Source
 extension ZoneListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,7 +72,7 @@ extension ZoneListViewController: UITableViewDataSource {
     }
 }
 
-//Mark: - UITableViewDelegate
+//Mark: - Delegate Event
 extension  ZoneListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -104,7 +100,7 @@ extension ZoneListViewController {
     }
 
     func setZoneHeader() {
-        if let zone  = zone {
+        if let zone  = presenter.getActiveZone() {
             self.lblZoneHeader.text = "Zone - \(zone))"
         }
     }
