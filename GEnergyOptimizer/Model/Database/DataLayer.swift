@@ -66,16 +66,19 @@ class DataLayer {
                     return
                 }
 
+                var tmp = [CDPreAudit]()
                 for (elementId, data) in object.featureData {
                     let formId = elementId
                     let formTitle = data[0] as? String
                     let formValue = data[1] as? String
 
-                    let data = CDPreAudit(context: managedContext)
-                    data.belongsToAudit = audit
-                    data.formId = formId
-                    data.key = formTitle
-                    data.value = formValue
+                    let cdPreAudit = CDPreAudit(context: managedContext)
+                    cdPreAudit.belongsToAudit = audit
+                    cdPreAudit.formId = formId
+                    cdPreAudit.key = formTitle
+                    cdPreAudit.value = formValue
+
+                    tmp.append(cdPreAudit)
                 }
 
                 try! managedContext.save()

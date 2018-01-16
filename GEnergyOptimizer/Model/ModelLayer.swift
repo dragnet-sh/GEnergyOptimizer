@@ -11,6 +11,7 @@ import Parse
 typealias HomeDTOSourceBlock = (Source, [HomeListDTO])->Void
 typealias ZoneDTOSourceBlock = (Source, [ZoneListDTO])->Void
 typealias RoomDTOSourceBlock = (Source, [RoomListDTO])->Void
+typealias PreAuditSourceBlock = (Source, [String: [String]])->Void
 
 class ModelLayer {
 
@@ -57,18 +58,18 @@ extension ModelLayer {
 //Mark: - Room Data Model
 extension ModelLayer {
     func loadRoom(finished: @escaping RoomDTOSourceBlock) {
-        Log.message(.info, message: "Loading Room Data Model")
+        Log.message(.info, message: "Loadieg Room Data Model")
 
         if let identifier = state.getIdentifier() {
             if let audit = coreDataAPI.getAudit(id: identifier) {
                 let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: true)
 
-                guard let fetchedResults = audit.hasRoom?.sortedArray(using: [sortDescriptor]) as? [CDRoom] else {
+                guard let results = audit.hasRoom?.sortedArray(using: [sortDescriptor]) as? [CDRoom] else {
                     Log.message(.error, message: "Guard Failed : Fetched Results - Core Data Room")
                     return
                 }
 
-                let data = fetchedResults.map { RoomListDTO(identifier: "N/A", title: $0.name!) }
+                let data = results.map { RoomListDTO(identifier: "N/A", title: $0.name!) }
                 finished(.local, data)
             }
         }
@@ -94,13 +95,14 @@ extension ModelLayer {
             if let audit = coreDataAPI.getAudit(id: identifier) {
                 let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: true)
 
-                guard let fetchedResults = audit.hasZone?.sortedArray(using: [sortDescriptor]) as? [CDZone] else {
+                guard let results = audit.hasZone?.sortedArray(using: [sortDescriptor]) as? [CDZone] else {
                     Log.message(.error, message: "Guard Failed : Fetched Results - Core Data Zone")
                     return
                 }
 
-                let dataByZone = fetchedResults.filter { $0.type == zone }
-                let data = dataByZone.map { ZoneListDTO(identifier: "N/A", title: $0.name!, type: $0.type!) }
+                let data = results.filter { $0.type == zone }.map {
+                    ZoneListDTO(identifier: "N/A", title: $0.name!, type: $0.type!)
+                }
 
                 finished(.local, data)
             }
@@ -121,7 +123,7 @@ extension ModelLayer {
 
 //Mark: - Home Data Model
 extension ModelLayer {
-    func loadHome(resultsLoaded: @escaping HomeDTOSourceBlock) {
+    func loadHome(finished: @escaping HomeDTOSourceBlock) {
         Log.message(.info, message: "Loading Home Data Model")
 
         var data = [HomeListDTO]()
@@ -136,7 +138,32 @@ extension ModelLayer {
             HomeListDTO(auditZone: "PlugLoad", count: countPlugLoad.description)
         ])
 
-        resultsLoaded(.local, data)
+        finished(.local, data)
     }
 }
 
+
+//Mark: - PreAudit Data Model
+extension ModelLayer {
+    func loadPreAudit(finished: @escaping PreAuditSourceBlock) {
+        Log.message(.info, message: "Loading PreAudit Data")
+
+        if let identifier = state.getIdentifier() {
+            if let audit = coreDataAPI.getAudit(id: identifier) {
+                guard let fetchResults = audit.hasPreAuditFeature?.allObjects as? [CDPreAudit] else {
+                    Log.message(.error, message: "Guard Failed : Fetched Results - PreAudit Data")
+                    return
+                }
+
+                var data = fetchResults.reduce(into: [String: [String]]()) { (aggregate, data) in
+                    if let key = data.formId, let label = data.key, let value = data.value {
+                        aggregate[key] = [label, value]
+                    }
+                }
+
+                Log.message(.info, message: data.debugDescription)
+                finished(.local, data)
+            }
+        }
+    }
+}

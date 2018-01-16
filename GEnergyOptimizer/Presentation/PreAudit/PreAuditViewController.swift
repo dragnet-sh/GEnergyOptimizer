@@ -16,6 +16,9 @@ class PreAuditViewController: GEFormViewController {
     let state = GEStateController.sharedInstance
     var activeZone: PFZone?
 
+    let presenter = PreAuditPresenter()
+    let modelLayer = ModelLayer()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         Log.info?.message("GEnergy - PreAudit View Controller")
@@ -30,6 +33,7 @@ class PreAuditViewController: GEFormViewController {
         }
 
         loadFormData()
+        presenter.loadData()
     }
 
     // This holds the bundle reference to Parse //
@@ -46,53 +50,55 @@ extension PreAuditViewController {
     fileprivate func loadFormData() {
         Log.message(.info, message: "PreAudit - Loading Form Data")
 
-        guard let preAuditDTO = self.state.getPreAuditDTO() else {
-            Log.message(.error, message: "PreAudit DTO Object Unavailable")
+        guard let auditDTO = self.state.getPFAudit() else {
+            Log.message(.error, message: "Audit DTO Object Unavailable")
             return
         }
 
-        Log.message(.warning, message: preAuditDTO.debugDescription)
-        var formData = Dictionary<String, Any?>()
-        for (elementId, data) in preAuditDTO.featureData {
-           formData[elementId] = data[1]
-        }
+        modelLayer.loadPreAudit { source, collection in
+            var formData = Dictionary<String, Any?>()
+            for (elementId, data) in collection {
+                formData[elementId] = data[1]
+            }
 
-        Log.message(.warning, message: formData.debugDescription)
-        self.form.setValues(formData)
-        self.tableView.reloadData()
+            Log.message(.warning, message: formData.debugDescription)
+            self.form.setValues(formData)
+            self.tableView.reloadData()
+        }
     }
 
     // *** Saving the Form Data *** //
     fileprivate func saveFormData() {
         Log.message(.info, message: "PreAudit - Data Save")
         let formData = self.form.values()
-        Log.message(.warning, message: formData.debugDescription)
 
-        guard let preAuditDTO = self.state.getPreAuditDTO() else {
-            Log.message(.error, message: "PreAudit DTO Object Unavailable")
+        guard let auditDTO = self.state.getPFAudit() else {
+            Log.message(.error, message: "Audit DTO Object Unavailable")
             return
         }
 
-        let idToElement = BuilderHelper.mapIdToElements(dto: super.getFormDTO())
-        Log.message(.warning, message: idToElement.debugDescription)
+        PFPreAuditAPI.sharedInstance.get(objectId: auditDTO.preAudit.objectId!) { status, object in
+            if (status) {
+                let idToElement = BuilderHelper.mapIdToElements(dto: super.getFormDTO())
 
-        formData.forEach { tuple in
-            //PreAudit Data Structure to Save
-            //***** Id -> (name, value)
+                guard let object = object as? PFPreAudit else {
+                    Log.message(.error, message: "Guard Failed : PFPreAudit")
+                    return
+                }
 
-            if let value = tuple.value {
-                Log.message(.warning, message: tuple.key.description)
-                Log.message(.warning, message: tuple.value.debugDescription)
+                formData.forEach { tuple in
+                    if let value = tuple.value {
+                        Log.message(.warning, message: tuple.key.description)
+                        Log.message(.warning, message: tuple.value.debugDescription)
 
-                preAuditDTO.featureData[tuple.key] = [idToElement![tuple.key]?.param, value] //ToDo: Forced Unwrapping - Recipe for disaster
+                        object.featureData[tuple.key] = [idToElement![tuple.key]?.param, value]
+                    }
+                }
+                PFPreAuditAPI.sharedInstance.save(pfPreAudit: object) {
+                    GUtils.message(title: "Parse-Server", message: "PreAudit : Data Saved", vc: self)
+                }
             }
         }
-
-        Log.message(.warning, message: preAuditDTO.debugDescription)
-
-//        self.state.savePreAudit(preAudit: preAuditDTO) {
-//            GUtils.message(title: "Parse-Server", message: "PreAudit : Data Saved", vc: self)
-//        }
     }
 }
 
