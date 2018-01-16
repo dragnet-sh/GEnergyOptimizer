@@ -44,7 +44,7 @@ class CoreDataAPI {
         return audit
     }
 
-    func createRoom(name: String, finished: @escaping ()->Void) {
+    func createRoom(name: String, finished: @escaping (Result<CDRoom>)->Void) {
         Log.message(.info, message: "Core Data : Create Room")
         if let identifier = state.getIdentifier() {
             guard let cdAudit = getAudit(id: identifier) else {
@@ -59,15 +59,15 @@ class CoreDataAPI {
 
             do {
                 try managedContext.save()
+                finished(.Success(room))
             } catch let error as NSError {
                 Log.message(.error, message: error.userInfo.debugDescription)
+                finished(.Error(error.userInfo.debugDescription))
             }
-
-            finished()
         }
     }
 
-    func createZone(type: String, name: String, finished: @escaping ()->Void) {
+    func createZone(type: String, name: String, finished: @escaping (Result<CDZone>)->Void) {
         Log.message(.info, message: "Core Data : Create Zone")
         guard let cdAudit = state.getCDAudit() as? CDAudit else {
             Log.message(.error, message: "Guard Failed : CDAudit")
@@ -77,14 +77,15 @@ class CoreDataAPI {
         let zone = CDZone(context: managedContext)
         zone.type = type
         zone.name = name
+        zone.createdAt = NSDate()
         zone.belongsToAudit = cdAudit
 
         do {
             try managedContext.save()
+            finished(.Success(zone))
         } catch let error as NSError {
             Log.message(.error, message: error.userInfo.debugDescription)
+            finished(.Error(error.userInfo.debugDescription))
         }
-
-        finished()
     }
 }

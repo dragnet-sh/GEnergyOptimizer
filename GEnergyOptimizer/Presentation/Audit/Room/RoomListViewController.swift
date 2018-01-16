@@ -48,7 +48,6 @@ extension RoomListViewController {
             self.presenter.createRoom(name: name)
         }
 
-        //Present Dialog
         self.present(popup, animated: true, completion: nil)
     }
 }
@@ -72,10 +71,6 @@ extension RoomListViewController: UITableViewDataSource {
 //Mark: - UITableViewDelegate
 extension RoomListViewController: UITableViewDelegate {
 
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let actions = ControllerUtils.getTableEditActions(
                 delete: { row in Log.message(.info, message: "Delete Action - Clouser Executed")},
@@ -96,12 +91,11 @@ extension RoomListViewController {
     }
 
     @objc func updateRoomTableData() {
-        Log.message(.info, message: "Update Room Table Data - Called")
         refreshTableData()
     }
 
     fileprivate func refreshTableData() {
-        Log.message(.info, message: "Refresh Table Data !!")
+        Log.message(.info, message: "Room List View Controller - Refreshing Table Data !!")
         self.tableView.reloadData()
     }
 }

@@ -29,31 +29,8 @@ class DataLayer {
     let pfZoneAPI = PFZoneAPI.sharedInstance
     let pfRoomAPI = PFRoomAPI.sharedInstance
 
-    lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "GEModel")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-
-    //ToDo: Move this to some API Layer
-    func getAudit(id: String) -> CDAudit? {
-        Log.message(.info, message: "Core Data : Get Audit")
-        let fetchRequest: NSFetchRequest<CDAudit> = CDAudit.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "identifier = %@", argumentArray: [id])
-
-        let managedContext = persistentContainer.viewContext
-        guard let audit = try! managedContext.fetch(fetchRequest).first as? CDAudit else {
-            Log.message(.error, message: "Guard Failed : Core Data - Audit")
-            return nil
-        }
-
-        return audit
-    }
-
+    let coreDataAPI = CoreDataAPI.sharedInstance
+    let persistentContainer = CoreDataAPI.sharedInstance.persistentContainer
 
     public func sync(complete: @escaping ()->Void) {
         Log.message(.info, message: "Data Sync - In Progress")
@@ -69,19 +46,19 @@ class DataLayer {
         }
 
         let managedContext = persistentContainer.viewContext
-        if let copy = getAudit(id: auditIdentifier) {
+        if let copy = coreDataAPI.getAudit(id: auditIdentifier) {
             Log.message(.info, message: "Deleting Older Copy - Core Data - Audit")
             managedContext.delete(copy)
         }
 
-        // Audit
+        // 1. Sync Audit
         let audit = CDAudit(context: managedContext)
         audit.identifier = auditIdentifier
         audit.name = pfAudit.name
 
         try! managedContext.save()
 
-        // PreAudit
+        // 2. Sync PreAudit
         if let preAuditId = pfAudit.preAudit.objectId {
             pfPreAuditAPI.get(objectId: preAuditId) { status, object in
                 guard let object = object as? PFPreAudit else {
@@ -107,7 +84,7 @@ class DataLayer {
 
         try! managedContext.save()
 
-        // Zone
+        // 3. Sync Zone
         let zoneType = EZone.getAll
         zoneType.forEach { zone in
             let rawValue = zone.rawValue
@@ -145,7 +122,7 @@ class DataLayer {
             }
         }
 
-        //Room
+        // 4. Sync Room
         guard let objects = pfAudit.roomCollection as? [PFRoom] else {
             return
         }
@@ -171,8 +148,9 @@ class DataLayer {
     }
 
     func loadAuditLocal(identifier: String, finished: () -> Void) {
+        Log.message(.info, message: "Loading Audit Local - Core Data")
         GUtils.applicationDocumentsDirectory()
-        if let audit = self.getAudit(id: identifier) {
+        if let audit = self.coreDataAPI.getAudit(id: identifier) {
             state.registerCDAudit(cdAudit: audit)
         }
     }

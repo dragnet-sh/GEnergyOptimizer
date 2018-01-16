@@ -36,9 +36,7 @@ class ZoneListViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(self.updateZoneTableData), name: .updateZoneTableData, object: nil)
 
         zone = presenter.getActiveZone()
-        presenter.loadData { source in
-            self.tableView.reloadData()
-        }
+        presenter.loadData()
     }
 }
 
@@ -82,15 +80,10 @@ extension ZoneListViewController: UITableViewDataSource {
 extension  ZoneListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
         let featureViewController = ControllerUtils.fromStoryboard(reference: String(describing: FeatureViewController.self)) as? FeatureViewController
         navigationController?.pushViewController(featureViewController!, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let actions = ControllerUtils.getTableEditActions(
                 delete: { row in Log.message(.info, message: "Delete Action - Clouser Executed @ \(row.description)")},
@@ -111,16 +104,18 @@ extension ZoneListViewController {
     }
 
     func setZoneHeader() {
-        if let zone = zone {
+        if let zone  = zone {
             self.lblZoneHeader.text = "Zone - \(zone))"
         }
     }
 
     @objc func updateZoneTableData() {
-        Log.message(.info, message: "Update Event Table Data - Trigger")
-        presenter.loadData { source in
-            self.tableView.reloadData()
-        }
+        refreshTableData()
+    }
+
+    func refreshTableData() {
+        Log.message(.info, message: "Zone List View Controller - Refreshing Table Data !!")
+        self.tableView.reloadData()
     }
 }
 

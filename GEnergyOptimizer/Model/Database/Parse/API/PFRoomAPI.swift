@@ -23,28 +23,15 @@ class PFRoomAPI {
 
         save(pfRoom: room) { status in
             if (status) {
-                if let identifier = GEStateController.sharedInstance.getIdentifier() {
-                    PFAuditAPI.sharedInstance.get(id: identifier) { status, object in
-                        guard let object = object as? PFAudit else {
-                            Log.message(.error, message: "PFAudit is NULL")
-                            Log.message(.error, message: "PFAudit to PFRoom - Association Failed")
-                            complete(false)
-                            return
-                        }
-                        object.roomCollection.append(room)
-                        PFAuditAPI.sharedInstance.save(pfAudit: object) { status in
-                            complete(status)
-                        }
-                    }
-                } else {
-                    Log.message(.error, message: "Audit Identifier is not Registered")
-                    Log.message(.error, message: "PFAudit to PFRoom - Association Failed")
+                self.linkRoomToAudit(room: room) { status in
+                    complete(status)
                 }
             }
         }
     }
 
     func get(objectId: String, complete: @escaping (Bool, PFObject?)->Void) {
+        Log.message(.info, message: "Parse - Get Room")
         if let query = PFRoom.query() {
 
             var status = false
@@ -62,6 +49,7 @@ class PFRoomAPI {
 
     // *** Note: Once the Room is saved successfully - Add this to Audit Room Collection
     func save(pfRoom: PFRoom, complete: @escaping (Bool)->Void) {
+        Log.message(.info, message: "Parse - Save Room")
         var status = false
         pfRoom.saveInBackground { success, error in
             if (success) {
@@ -75,8 +63,29 @@ class PFRoomAPI {
         }
     }
 
+    func linkRoomToAudit(room: PFRoom, complete: @escaping (Bool)->Void) {
+        Log.message(.info, message: "Parse - Link Room to Audit")
+        if let identifier = GEStateController.sharedInstance.getIdentifier() {
+            PFAuditAPI.sharedInstance.get(id: identifier) { status, object in
+                guard let object = object as? PFAudit else {
+                    Log.message(.error, message: "PFAudit is NULL")
+                    Log.message(.error, message: "PFAudit to PFRoom - Association Failed")
+                    complete(false)
+                    return
+                }
+                object.roomCollection.append(room)
+                PFAuditAPI.sharedInstance.save(pfAudit: object) { status in
+                    complete(status)
+                }
+            }
+        } else {
+            Log.message(.error, message: "Audit Identifier is not Registered")
+            Log.message(.error, message: "PFAudit to PFRoom - Association Failed")
+        }
+    }
+
     // *** Note: Remove from the Zone Room Collection -- Audit Room Collection
     func delete() {
-
+        Log.message(.info, message: "Parse - Delete Room")
     }
 }

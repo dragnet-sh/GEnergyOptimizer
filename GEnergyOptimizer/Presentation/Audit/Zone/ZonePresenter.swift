@@ -12,12 +12,11 @@ public class ZonePresenter {
     fileprivate var state = GEStateController.sharedInstance
 }
 
-
 extension ZonePresenter {
-    func loadData(finished: @escaping (Source)->Void) {
-        modelLayer.loadZone { [weak self] source, data in
-            self?.data = data
-            finished(source)
+    func loadData() {
+        modelLayer.loadZone { source, data in
+            self.data = data
+            NotificationCenter.default.post(name: .updateZoneTableData, object: nil)
         }
     }
 
@@ -27,7 +26,7 @@ extension ZonePresenter {
 
     func createZone(name: String, type: String) {
         modelLayer.createZone(name: name, type: type) {
-            Log.message(.info, message: "Finished : Core Data - Create Zone")
+            self.loadData()
         }
     }
 }
