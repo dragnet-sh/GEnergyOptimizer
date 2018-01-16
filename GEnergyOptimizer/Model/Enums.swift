@@ -52,4 +52,5 @@ enum EntityTypes: String {
 
 enum CellIdentifiers: String {
     case room = "roomListCell"
+    case zone = "zoneListCell"
 }
