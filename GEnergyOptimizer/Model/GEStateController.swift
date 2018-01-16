@@ -78,7 +78,7 @@ extension GEStateController {
     //### Global Audit Registration ###//
 
     public func registerActiveZone(zone: String) {
-        Log.message(.info, message: "Register : Active Zone")
+        Log.message(.info, message: "Register : Active Zone :: \(zone)")
         self.activeZone = zone
     }
 
