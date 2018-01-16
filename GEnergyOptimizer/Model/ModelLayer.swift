@@ -90,7 +90,7 @@ extension ModelLayer {
     func loadZone(finished: @escaping ZoneDTOSourceBlock) {
         Log.message(.info, message: "Loading Zone Data Model")
 
-        if let identifier = state.getIdentifier() {
+        if let identifier = state.getIdentifier(), let zone = state.getActiveZone() {
             if let audit = coreDataAPI.getAudit(id: identifier) {
                 let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: true)
 
@@ -99,7 +99,9 @@ extension ModelLayer {
                     return
                 }
 
-                let data = fetchedResults.map { ZoneListDTO(identifier: "N/A", title: $0.name!, type: $0.type!) }
+                let dataByZone = fetchedResults.filter { $0.type == zone }
+                let data = dataByZone.map { ZoneListDTO(identifier: "N/A", title: $0.name!, type: $0.type!) }
+
                 finished(.local, data)
             }
         }
