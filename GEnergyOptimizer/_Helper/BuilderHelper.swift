@@ -10,7 +10,7 @@ import CleanroomLogger
 class BuilderHelper {
 
     // *** Decoding JSON *** //
-    public static func decodeJSON(bundleResource: String) -> GEnergyFormDTO? {
+    public static func decodeJSON(bundleResource: String) -> GEnergyFormModel? {
 
         let url = Bundle.main.url(forResource: bundleResource, withExtension: "json")!
         let data = try! Data(contentsOf: url)
@@ -20,7 +20,7 @@ class BuilderHelper {
         let dictionary = json as? [String: Any]
 
         if let dictionary = dictionary {
-            return GEnergyFormDTO(json: dictionary)
+            return GEnergyFormModel(json: dictionary)
         }
 
         Log.message(.error, message: "JSON Serialization Failed")
@@ -28,28 +28,28 @@ class BuilderHelper {
     }
 
     // *** Mapping Section Ids to GElements *** //
-    public static func mapSectionIdsToElements(dto: GEnergyFormDTO) -> Dictionary<String, [GElements]>? {
-        return self.Mapper(dto: dto).mapSIdToGElements
+    public static func mapSectionIdsToElements(model: GEnergyFormModel) -> Dictionary<String, [GElements]>? {
+        return self.Mapper(model: model).mapSIdToGElements
     }
 
     // *** Mapping Section Id to Section Name *** //
-    public static func mapSectionIdsToName(dto: GEnergyFormDTO) -> Dictionary<String, String>? {
-        return self.Mapper(dto: dto).mapSIdToSName
+    public static func mapSectionIdsToName(model: GEnergyFormModel) -> Dictionary<String, String>? {
+        return self.Mapper(model: model).mapSIdToSName
     }
 
     // *** Mapping Element Id to GElements *** //
-    public static func mapIdToElements(dto: GEnergyFormDTO) -> Dictionary<String, GElements>? {
-        return self.Mapper(dto: dto).mapEIdToGElements
+    public static func mapIdToElements(model: GEnergyFormModel) -> Dictionary<String, GElements>? {
+        return self.Mapper(model: model).mapEIdToGElements
     }
 
     // *** Get Section Id as an Array (Sorted) *** //
-    public static func sortedElementIds(dto: GEnergyFormDTO) -> [String]? {
-        return self.Sorter(mapIndex: self.Mapper(dto: dto).mapIndexSID).sortedIds
+    public static func sortedElementIds(model: GEnergyFormModel) -> [String]? {
+        return self.Sorter(mapIndex: self.Mapper(model: model).mapIndexSID).sortedIds
     }
 
     // *** Get Form Id as an Array (Sorted) *** //
-    public static func sortedFormElementIds(dto: GEnergyFormDTO) -> [String]? {
-        return self.Sorter(mapIndex: self.Mapper(dto: dto).mapIndexEID).sortedIds
+    public static func sortedFormElementIds(model: GEnergyFormModel) -> [String]? {
+        return self.Sorter(mapIndex: self.Mapper(model: model).mapIndexEID).sortedIds
     }
 }
 
@@ -97,10 +97,10 @@ extension BuilderHelper {
         public var mapIndexSID: Dictionary<Int, String>
         public var mapIndexEID: Dictionary<Int, String>
 
-        public let dto: GEnergyFormDTO
+        public let model: GEnergyFormModel
 
-        init(dto: GEnergyFormDTO) {
-            self.dto = dto
+        init(model: GEnergyFormModel) {
+            self.model = model
 
             self.mapSIdToSName = Dictionary<String, String>()
             self.mapSIdToGElements = Dictionary<String, [GElements]>()
@@ -114,12 +114,12 @@ extension BuilderHelper {
 
         fileprivate func mapSId() {
 
-            guard let dtoForm = dto.form else {
+            guard let form = model.form else {
                 Log.message(.error, message: "Empty DTO Form")
                 return
             }
 
-            for block in dtoForm {
+            for block in form {
                 if let sectionId = block.sectionId, let index = block.index, let gElements = block.elements, let sectionName = block.section {
                     self.mapSIdToGElements[sectionId] = gElements
                     self.mapSIdToSName[sectionId] = sectionName

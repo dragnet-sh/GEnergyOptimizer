@@ -41,7 +41,7 @@ extension RoomListViewController {
     @IBAction func addRoomButtonPressed(_ sender: Any) {
         let popup = ControllerUtils.getPopEdit() { name in
             if (name.isEmpty) {
-                GUtils.message(title: "Alert", message: "Room Name Cannot be Empty", vc: self)
+                GUtils.message(title: "Alert", message: "Room Name Cannot be Empty", vc: self, type: .alert)
                 return
             }
 

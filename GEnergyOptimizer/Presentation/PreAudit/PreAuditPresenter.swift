@@ -6,14 +6,23 @@
 import Foundation
 
 class PreAuditPresenter {
-    fileprivate var data = [String: [String]]()
+    var data = Dictionary<String, Any?>()
     fileprivate var modelLayer = ModelLayer()
 }
 
 extension PreAuditPresenter {
     func loadData() {
-        modelLayer.loadPreAudit() { source, data in
-            self.data = data
+        modelLayer.loadPreAudit() { source, collection in
+            for (formId, data) in collection {
+                self.data[formId] = data[1]
+            }
+            NotificationCenter.default.post(name: .loadPreAuditForm, object: nil)
+        }
+    }
+
+    func saveData(data: [String: Any?], model: GEnergyFormModel, finished: @escaping (Bool)->Void) {
+        modelLayer.savePreAudit(data: data, model: model) { status in
+           finished(status)
         }
     }
 }

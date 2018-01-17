@@ -7,7 +7,7 @@ import Foundation
 import Gloss
 import CleanroomLogger
 
-public struct GEnergyFormDTO: JSONDecodable {
+public struct GEnergyFormModel: JSONDecodable {
     public let form: [GFormBlock]?
 
     public init?(json: JSON) {

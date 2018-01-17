@@ -26,7 +26,7 @@ extension LoginViewController {
     @IBAction func loginButtonPressed(_ sender: Any) {
         if let id = lblAuditIdentifier.text?.trimmingCharacters(in: .whitespaces) {
             if (id.isEmpty) {
-                GUtils.message(title: "Alert", message: "Empty Audit Identifier", vc: self)
+                GUtils.message(title: "Alert", message: "Empty Audit Identifier", vc: self, type: .alert)
                 return
             }
 

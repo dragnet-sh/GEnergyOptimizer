@@ -81,7 +81,7 @@ extension FeatureViewController {
             return
         }
 
-        let idToElement = BuilderHelper.mapIdToElements(dto: super.getFormDTO())
+        let idToElement = BuilderHelper.mapIdToElements(model: super.getFormDTO())
         Log.message(.warning, message: idToElement.debugDescription)
 
         formData.forEach { tuple in

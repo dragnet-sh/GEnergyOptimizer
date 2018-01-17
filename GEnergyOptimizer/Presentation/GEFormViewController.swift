@@ -9,16 +9,16 @@ import CleanroomLogger
 
 class GEFormViewController: FormViewController {
 
-    fileprivate var formDTO: GEnergyFormDTO!
+    fileprivate var formModel: GEnergyFormModel!
 
     open override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let dto = BuilderHelper.decodeJSON(bundleResource: getBundleResource()) else {
+        guard let model = BuilderHelper.decodeJSON(bundleResource: getBundleResource()) else {
             Log.message(.error, message: "JSON Decoding Failed")
             return
         }
-        self.formDTO = dto
+        self.formModel = model
 
         initializeForm()
     }
@@ -29,8 +29,8 @@ class GEFormViewController: FormViewController {
         fatalError("Must be over-ridden")
     }
 
-    public func getFormDTO() -> GEnergyFormDTO! {
-        return self.formDTO
+    public func getFormDTO() -> GEnergyFormModel! {
+        return self.formModel
     }
 }
 
@@ -43,7 +43,7 @@ extension GEFormViewController {
         //1. Decode the JSON
         //2. Map Sections to Elements
         Log.message(.info, message: "GEForm - Initialization")
-        guard let gForm = BuilderHelper.mapSectionIdsToElements(dto: formDTO!) else {
+        guard let gForm = BuilderHelper.mapSectionIdsToElements(model: formModel!) else {
             Log.error?.message("GEnergy - Form Element is Empty")
             return
         }
@@ -55,8 +55,8 @@ extension GEFormViewController {
 
         let formBuilder = FormBuilder(form: self.form)
 
-        if let indexSortedSection = BuilderHelper.sortedElementIds(dto: formDTO!) {
-            if let mapIdToName = BuilderHelper.mapSectionIdsToName(dto: formDTO!) {
+        if let indexSortedSection = BuilderHelper.sortedElementIds(model: formModel!) {
+            if let mapIdToName = BuilderHelper.mapSectionIdsToName(model: formModel!) {
                 indexSortedSection.forEach { sectionId in
                     Log.message(.info, message: sectionId.debugDescription)
                     formBuilder.build(section: mapIdToName[sectionId]!, elements: gForm[sectionId]!) //ToDo: Forced Unwrapping !!

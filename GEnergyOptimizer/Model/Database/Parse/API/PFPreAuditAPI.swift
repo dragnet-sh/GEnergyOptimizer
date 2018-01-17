@@ -21,10 +21,7 @@ class PFPreAuditAPI {
         var pfPreAudit = PFPreAudit()
         pfPreAudit.featureData = Dictionary<String, [Any]>()
 
-        save(pfPreAudit: pfPreAudit) {
-            //*** Global PreAuditDTO Registration ***//
-            //self.registerPreAuditDTO(preAuditDTO: preAudit)
-        }
+        save(pfPreAudit: pfPreAudit) { status in }
 
         return pfPreAudit
     }
@@ -45,15 +42,15 @@ class PFPreAuditAPI {
         }
     }
 
-    func save(pfPreAudit: PFPreAudit, complete: @escaping ()->Void) {
+    func save(pfPreAudit: PFPreAudit, complete: @escaping (Bool)->Void) {
         pfPreAudit.saveInBackground { success, error in
             if (success) {
+                complete(true)
                 Log.message(.info, message: "Parse - PFPreAudit Data Saved : Successful")
             } else {
+                complete(false)
                 Log.message(.error, message: error.debugDescription)
             }
-
-            complete()
         }
     }
 

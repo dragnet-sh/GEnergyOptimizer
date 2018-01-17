@@ -43,7 +43,7 @@ extension ZoneListViewController {
         Log.message(.info, message: "Add New Zone")
         let popup = ControllerUtils.getPopEdit() { name in
             if (name.isEmpty) {
-                GUtils.message(title: "Alert", message: "Zone Name Cannot be Empty", vc: self)
+                GUtils.message(title: "Alert", message: "Zone Name Cannot be Empty", vc: self, type: .alert)
                 return
             }
 

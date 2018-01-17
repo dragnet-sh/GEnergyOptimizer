@@ -12,6 +12,7 @@ typealias HomeDTOSourceBlock = (Source, [HomeListDTO])->Void
 typealias ZoneDTOSourceBlock = (Source, [ZoneListDTO])->Void
 typealias RoomDTOSourceBlock = (Source, [RoomListDTO])->Void
 typealias PreAuditSourceBlock = (Source, [String: [String]])->Void
+typealias PreAuditSaveBlock = (Bool)->Void
 
 class ModelLayer {
 
@@ -22,6 +23,7 @@ class ModelLayer {
     fileprivate var coreDataAPI = CoreDataAPI.sharedInstance
     fileprivate var pfRoomAPI = PFRoomAPI.sharedInstance
     fileprivate var pfZoneAPI = PFZoneAPI.sharedInstance
+    fileprivate var pfPreAuditAPI = PFPreAuditAPI.sharedInstance
 
     var persistentContainer = DataLayer.sharedInstance.persistentContainer
     var managedContext = DataLayer.sharedInstance.persistentContainer.viewContext
@@ -143,7 +145,7 @@ extension ModelLayer {
 }
 
 
-//Mark: - PreAudit Data Model
+//Mark: - Form Data Model
 extension ModelLayer {
     func loadPreAudit(finished: @escaping PreAuditSourceBlock) {
         Log.message(.info, message: "Loading PreAudit Data")
@@ -161,9 +163,37 @@ extension ModelLayer {
                     }
                 }
 
-                Log.message(.info, message: data.debugDescription)
                 finished(.local, data)
             }
+        }
+    }
+
+    func savePreAudit(data: [String: Any?], model: GEnergyFormModel, finished: @escaping PreAuditSaveBlock) {
+        guard let pfAudit = self.state.getPFAudit() else {
+            Log.message(.error, message: "Guard Failed : PF Audit Object Unavailable")
+            finished(false)
+            return
+        }
+
+        pfPreAuditAPI.get(objectId: pfAudit.preAudit.objectId!) { status, object in
+            if (status) {
+                let idToElement = BuilderHelper.mapIdToElements(model: model)
+
+                guard let object = object as? PFPreAudit else {
+                    Log.message(.error, message: "Guard Failed : PFPreAudit")
+                    finished(false)
+                    return
+                }
+
+                data.forEach { tuple in
+                    if let value = tuple.value {
+                        object.featureData[tuple.key] = [idToElement![tuple.key]?.param, value]
+                    }
+                }
+                self.pfPreAuditAPI.save(pfPreAudit: object) { status in
+                    finished(status)
+                }
+            } else { finished(false) }
         }
     }
 }

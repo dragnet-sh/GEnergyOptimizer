@@ -40,6 +40,13 @@ enum Result <T> {
     case Error(String)
 }
 
+enum FileResource: String {
+    case preaudit
+}
+
+enum EMessageType {
+    case toast, alert
+}
 
 enum EntityTypes: String {
     case audit = "CDAudit"
