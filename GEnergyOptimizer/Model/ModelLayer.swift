@@ -158,8 +158,8 @@ extension ModelLayer {
                 }
 
                 var data = fetchResults.reduce(into: [String: [String]]()) { (aggregate, data) in
-                    if let key = data.formId, let label = data.key, let value = data.value {
-                        aggregate[key] = [label, value]
+                    if let key = data.formId, let label = data.key, let value = data.value, let type = data.dataType {
+                        aggregate[key] = [label, value, type]
                     }
                 }
 

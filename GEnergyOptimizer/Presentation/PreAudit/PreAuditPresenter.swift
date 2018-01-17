@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import CleanroomLogger
 
 class PreAuditPresenter {
     var data = Dictionary<String, Any?>()
@@ -14,7 +15,7 @@ extension PreAuditPresenter {
     func loadData() {
         modelLayer.loadPreAudit() { source, collection in
             for (formId, data) in collection {
-                self.data[formId] = data[1]
+                self.data[formId] = GUtils.transform(value: data[1], type: data[2])
             }
             NotificationCenter.default.post(name: .loadPreAuditForm, object: nil)
         }

@@ -96,4 +96,17 @@ class GUtils {
             return eVal
         } else { return .none }
     }
+
+    static func transform(value: String, type: String) -> Any? {
+        guard let baseRowType = InitEnumMapper.sharedInstance.enumMap[type] else {
+            Log.error?.message("Base Row Type Not Found - \(type)")
+            return nil
+        }
+
+        switch baseRowType {
+            case .intRow: return Int(value)
+            case .decimalRow: return NSDecimalNumber(string: value)
+            default: return value
+        }
+    }
 }
