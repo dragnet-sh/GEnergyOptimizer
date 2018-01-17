@@ -69,14 +69,16 @@ class DataLayer {
                 var tmp = [CDPreAudit]()
                 for (elementId, data) in object.featureData {
                     let formId = elementId
-                    let formTitle = data[0] as? String
-                    let formValue = data[1] as? String
+                    let formTitle = String(describing: data[0])
+                    let formValue = String(describing: data[1])
+                    let formDataType = String(describing: data[2])
 
                     let cdPreAudit = CDPreAudit(context: managedContext)
                     cdPreAudit.belongsToAudit = audit
                     cdPreAudit.formId = formId
                     cdPreAudit.key = formTitle
                     cdPreAudit.value = formValue
+                    cdPreAudit.dataType = formDataType
 
                     tmp.append(cdPreAudit)
                 }
@@ -153,7 +155,6 @@ class DataLayer {
 
     func loadAuditLocal(identifier: String, finished: () -> Void) {
         Log.message(.info, message: "Loading Audit Local - Core Data")
-        GUtils.applicationDocumentsDirectory()
         if let audit = self.coreDataAPI.getAudit(id: identifier) {
             state.registerCDAudit(cdAudit: audit)
         }

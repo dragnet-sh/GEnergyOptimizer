@@ -66,6 +66,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.initialize(with: configuration)
         Log.message(.info, message: "Parse - Initialization - Complete")
 
+        GUtils.applicationDocumentsDirectory()
+
         return true
     }
 }

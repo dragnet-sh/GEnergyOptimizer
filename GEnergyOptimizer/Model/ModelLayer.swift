@@ -187,7 +187,7 @@ extension ModelLayer {
 
                 data.forEach { tuple in
                     if let value = tuple.value {
-                        object.featureData[tuple.key] = [idToElement![tuple.key]?.param, value]
+                        object.featureData[tuple.key] = [idToElement![tuple.key]?.param, value, idToElement![tuple.key]?.dataType]
                     }
                 }
                 self.pfPreAuditAPI.save(pfPreAudit: object) { status in

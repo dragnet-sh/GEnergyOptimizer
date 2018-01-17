@@ -2,7 +2,7 @@
 //  CDZone+CoreDataProperties.swift
 //  GEnergyOptimizer
 //
-//  Created by Binay Budhthoki on 1/15/18.
+//  Created by Binay Budhthoki on 1/17/18.
 //  Copyright © 2018 GeminiEnergyServices. All rights reserved.
 //
 //
