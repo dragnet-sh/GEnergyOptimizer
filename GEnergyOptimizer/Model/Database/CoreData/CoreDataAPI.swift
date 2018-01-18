@@ -88,4 +88,68 @@ class CoreDataAPI {
             finished(.Error(error.userInfo.debugDescription))
         }
     }
+
+    func getPreAudit(finished: @escaping (Result<[CDPreAudit]>)->Void) {
+        if let identifier = state.getIdentifier() {
+            if let audit = getAudit(id: identifier) {
+                guard let preAudit = audit.hasPreAuditFeature?.allObjects as? [CDPreAudit] else {
+                    Log.message(.error, message: "Guard Failed : Fetched Results - PreAudit Data")
+                    finished(.Error("Unable to Fetch PreAudit"))
+                    return
+                }
+                finished(.Success(preAudit))
+            }
+        }
+    }
+
+    func savePreAudit(data: [String: Any?], model: GEnergyFormModel, finished: @escaping (Result<[CDPreAudit]>)->Void) {
+        let preAudit = getPreAudit { result in
+            switch result {
+                case .Success(let data): data.forEach { cdPreAudit in self.managedContext.delete(cdPreAudit) }
+                case .Error(let message): return
+            }
+        }
+
+        guard let idToElement = BuilderHelper.mapIdToElements(model: model) else {
+            Log.message(.error, message: "Guard Failed : GElements")
+            return
+        }
+
+        if let audit = state.getCDAudit() {
+
+            var preAudit = [CDPreAudit]()
+
+            do {
+                data.forEach { tuple in
+
+                    let formId = tuple.key
+                    if let value = tuple.value {
+                        if let dataType = idToElement[formId]?.dataType, let label = idToElement[formId]?.param {
+
+                            let pa = CDPreAudit(context: self.managedContext)
+                            pa.belongsToAudit = audit
+                            pa.formId = formId
+                            pa.dataType = dataType
+                            pa.key = label
+
+                            if let eBaseType = InitEnumMapper.sharedInstance.enumMap[dataType] as? BaseRowType {
+                                switch eBaseType {
+                                case .intRow: pa.value_int = (value as! NSNumber).int64Value
+                                case .decimalRow: pa.value_double = value as! Double
+                                default: pa.value_string = value as! String
+                                }
+                            }
+
+                            preAudit.append(pa)
+                        }
+                    }
+                }
+                try managedContext.save()
+                finished(.Success(preAudit))
+            } catch let error as NSError {
+                Log.message(.error, message: error.userInfo.debugDescription)
+                finished(.Error(error.userInfo.debugDescription))
+            }
+        }
+    }
 }

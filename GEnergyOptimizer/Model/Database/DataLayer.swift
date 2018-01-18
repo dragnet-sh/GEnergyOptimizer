@@ -70,17 +70,24 @@ class DataLayer {
                 for (elementId, data) in object.featureData {
                     let formId = elementId
                     let formTitle = String(describing: data[0])
-                    let formValue = String(describing: data[1])
-                    let formDataType = String(describing: data[2])
+                    let formValue = data[1]
+                    let formDataType = data[2] as! String
 
-                    let cdPreAudit = CDPreAudit(context: managedContext)
-                    cdPreAudit.belongsToAudit = audit
-                    cdPreAudit.formId = formId
-                    cdPreAudit.key = formTitle
-                    cdPreAudit.value = formValue
-                    cdPreAudit.dataType = formDataType
+                    let pa = CDPreAudit(context: managedContext)
+                    pa.belongsToAudit = audit
+                    pa.formId = formId
+                    pa.key = formTitle
+                    pa.dataType = formDataType
 
-                    tmp.append(cdPreAudit)
+                    if let eBaseType = InitEnumMapper.sharedInstance.enumMap[formDataType] as? BaseRowType {
+                        switch eBaseType {
+                        case .intRow: pa.value_int = (formValue as! NSNumber).int64Value
+                        case .decimalRow: pa.value_double = formValue as! Double
+                        default: pa.value_string = String(describing: formValue)
+                        }
+                    }
+
+                    tmp.append(pa)
                 }
 
                 try! managedContext.save()

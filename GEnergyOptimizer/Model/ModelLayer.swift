@@ -11,7 +11,7 @@ import Parse
 typealias HomeDTOSourceBlock = (Source, [HomeListDTO])->Void
 typealias ZoneDTOSourceBlock = (Source, [ZoneListDTO])->Void
 typealias RoomDTOSourceBlock = (Source, [RoomListDTO])->Void
-typealias PreAuditSourceBlock = (Source, [String: [String]])->Void
+typealias PreAuditSourceBlock = (Source, [String: Any?])->Void
 typealias PreAuditSaveBlock = (Bool)->Void
 
 class ModelLayer {
@@ -157,43 +157,66 @@ extension ModelLayer {
                     return
                 }
 
-                var data = fetchResults.reduce(into: [String: [String]]()) { (aggregate, data) in
-                    if let key = data.formId, let label = data.key, let value = data.value, let type = data.dataType {
-                        aggregate[key] = [label, value, type]
+                var data = fetchResults.reduce(into: [String: Any?]()) { (aggregate, data) in
+                    if let key = data.formId, let label = data.key, let type = data.dataType {
+                        aggregate[key] = transform(type: type, data: data)
                     }
                 }
-
                 finished(.local, data)
             }
+        }
+
+        func transform(type: String, data: CDPreAudit) -> Any? {
+            if let eBaseType = InitEnumMapper.sharedInstance.enumMap[type] as? BaseRowType {
+                switch eBaseType {
+                case .intRow: return (data.value_int as NSNumber?)?.intValue
+                case .decimalRow: return data.value_double
+                default: return data.value_string
+                }
+            }
+            return nil
         }
     }
 
     func savePreAudit(data: [String: Any?], model: GEnergyFormModel, finished: @escaping PreAuditSaveBlock) {
-        guard let pfAudit = self.state.getPFAudit() else {
-            Log.message(.error, message: "Guard Failed : PF Audit Object Unavailable")
-            finished(false)
-            return
+
+        coreDataAPI.savePreAudit(data: data, model: model) { result in
+            switch result {
+            case .Success(let data): saveOnNetwork()
+            case .Error(let message): Log.message(.info, message: message)
+            }
         }
 
-        pfPreAuditAPI.get(objectId: pfAudit.preAudit.objectId!) { status, object in
-            if (status) {
-                let idToElement = BuilderHelper.mapIdToElements(model: model)
+        func saveOnNetwork() {
 
-                guard let object = object as? PFPreAudit else {
-                    Log.message(.error, message: "Guard Failed : PFPreAudit")
-                    finished(false)
-                    return
-                }
+            guard let pfAudit = self.state.getPFAudit() else {
+                Log.message(.error, message: "Guard Failed : PF Audit Object Unavailable")
+                finished(false)
+                return
+            }
 
-                data.forEach { tuple in
-                    if let value = tuple.value {
-                        object.featureData[tuple.key] = [idToElement![tuple.key]?.param, value, idToElement![tuple.key]?.dataType]
+            pfPreAuditAPI.get(objectId: pfAudit.preAudit.objectId!) { status, object in
+                if (status) {
+                    let idToElement = BuilderHelper.mapIdToElements(model: model)
+
+                    guard let object = object as? PFPreAudit else {
+                        Log.message(.error, message: "Guard Failed : PFPreAudit")
+                        finished(false)
+                        return
                     }
+
+                    data.forEach { tuple in
+                        if let value = tuple.value {
+                            object.featureData[tuple.key] = [idToElement![tuple.key]?.param, value, idToElement![tuple.key]?.dataType]
+                        }
+                    }
+                    self.pfPreAuditAPI.save(pfPreAudit: object) { status in
+                        finished(status)
+                    }
+                } else {
+                    finished(false)
                 }
-                self.pfPreAuditAPI.save(pfPreAudit: object) { status in
-                    finished(status)
-                }
-            } else { finished(false) }
+            }
         }
     }
 }

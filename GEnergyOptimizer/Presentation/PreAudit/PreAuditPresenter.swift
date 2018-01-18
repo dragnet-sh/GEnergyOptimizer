@@ -13,10 +13,8 @@ class PreAuditPresenter {
 
 extension PreAuditPresenter {
     func loadData() {
-        modelLayer.loadPreAudit() { source, collection in
-            for (formId, data) in collection {
-                self.data[formId] = GUtils.transform(value: data[1], type: data[2])
-            }
+        modelLayer.loadPreAudit() { source, data in
+            self.data = data
             NotificationCenter.default.post(name: .loadPreAuditForm, object: nil)
         }
     }

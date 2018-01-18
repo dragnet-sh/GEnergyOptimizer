@@ -58,7 +58,7 @@ extension GEFormViewController {
         if let indexSortedSection = BuilderHelper.sortedElementIds(model: formModel!) {
             if let mapIdToName = BuilderHelper.mapSectionIdsToName(model: formModel!) {
                 indexSortedSection.forEach { sectionId in
-                    Log.message(.info, message: sectionId.debugDescription)
+                    //Log.message(.info, message: sectionId.debugDescription)
                     formBuilder.build(section: mapIdToName[sectionId]!, elements: gForm[sectionId]!) //ToDo: Forced Unwrapping !!
                 }
             }
