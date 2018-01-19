@@ -111,23 +111,39 @@ class DataLayer {
                         return
                     }
 
-                    _ = pfZones.map {
-                        let zone = CDZone(context: managedContext)
-                        zone.belongsToAudit = audit
-                        zone.name = $0.name
-                        zone.type = $0.type
-                        zone.objectId = $0.objectId
+                    var zoneToSave = [CDZone]()
+                    var zoneFeatureDataToSave = [CDPreAudit]()
 
-                        for (elementId, data) in $0.featureData {
+                    for pfZone in pfZones {
+                        let cdZone = CDZone(context: managedContext)
+                        cdZone.belongsToAudit = audit
+                        cdZone.name = pfZone.name
+                        cdZone.type = pfZone.type
+                        cdZone.objectId = pfZone.objectId
+
+                        zoneToSave.append(cdZone)
+
+                        for(elementId, data) in pfZone.featureData {
                             let formId = elementId
-                            let formTitle = data[0] as? String
-                            let formValue = data[1] as? String
+                            let formTitle = String(describing: data[0])
+                            let formValue = data[1]
+                            let formDataType = data[2] as! String
 
-                            let dataFeature = CDZoneFeature(context: managedContext)
-                            dataFeature.belongsToZone = zone
-                            dataFeature.form_id = formId
-                            dataFeature.key = formTitle
-                            dataFeature.value = formValue
+                            let pa = CDPreAudit(context: managedContext)
+                            pa.belongsToZone = cdZone
+                            pa.formId = formId
+                            pa.key = formTitle
+                            pa.dataType = formDataType
+
+                            if let eBaseType = InitEnumMapper.sharedInstance.enumMap[formDataType] as? BaseRowType {
+                                switch eBaseType {
+                                case .intRow: pa.value_int = (formValue as! NSNumber).int64Value
+                                case .decimalRow: pa.value_double = formValue as! Double
+                                default: pa.value_string = String(describing: formValue)
+                                }
+                            }
+
+                            zoneFeatureDataToSave.append(pa)
                         }
                     }
 

@@ -9,7 +9,6 @@
 import UIKit
 import CleanroomLogger
 import Eureka
-import CSV
 
 class FeatureViewController: GEFormViewController {
 
@@ -34,7 +33,11 @@ class FeatureViewController: GEFormViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.loadFeatureDataForm), name: .loadFeatureDataForm, object: nil)
 
-        presenter.loadData()
+        presenter.loadData(vc: self)
+    }
+
+    override func dataBelongsTo() -> EntityType {
+        return EntityType.zone
     }
 
     override func getBundleResource() -> String! {
@@ -53,7 +56,7 @@ extension FeatureViewController {
     fileprivate func saveFormData() {
         Log.message(.info, message: "Feature - Data Save")
 
-        presenter.saveData(data: self.form.values(), model: super.getFormDTO()) { status in
+        presenter.saveData(data: self.form.values(), model: super.getFormDTO(), vc: self) { status in
             if (status) {
                 GUtils.message(title: "Feature Save", message: "Feature Data Save - Successful", vc: self, type: .toast)
                 self.navigationController?.popViewController(animated: true)

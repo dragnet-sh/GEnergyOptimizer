@@ -26,14 +26,14 @@ class GEStateController {
     fileprivate var cdAudit: CDAudit?
     fileprivate var cdPreAudit: CDPreAudit?
     fileprivate var cdRoom: [CDRoom]?
-    fileprivate var cdZone: [CDZone]?
+    fileprivate var cdZone: CDZone?
     fileprivate var cdZoneFeature: [CDZoneFeature]?
 
     // *** Parse Data Objects *** //
     fileprivate var pfAudit: PFAudit?
     fileprivate var pfPreAudit: PFPreAudit?
     fileprivate var pfRoom: [PFRoom]?
-    fileprivate var pfZone: [PFZone]?
+    fileprivate var pfZone: PFZone?
 }
 
 //Mark: - Get | Set
@@ -64,6 +64,15 @@ extension GEStateController {
         }
 
         return cdAudit
+    }
+
+    public func getActiveCDZone() -> CDZone? {
+        guard let cdZone = self.cdZone else {
+            Log.message(.error, message: "CDZone Not Set")
+            return nil
+        }
+
+        return cdZone
     }
 
     public func getActiveZone() -> String? {
@@ -97,11 +106,6 @@ extension GEStateController {
         self.pfPreAudit = pfPreAudit
     }
 
-    public func registerPFZone(pfZone: [PFZone]) {
-        Log.message(.info, message: "Register : Parse Zone")
-        self.pfZone = pfZone
-    }
-
     public func registerPFRoom(pfRoom: [PFRoom]) {
         Log.message(.info, message: "Register : Parse Room")
         self.pfRoom = pfRoom
@@ -112,8 +116,8 @@ extension GEStateController {
         self.cdAudit = cdAudit
     }
 
-    public func registerCDZone(cdZone: [CDZone]) {
-        Log.message(.info, message: "Register : Core Data Zones")
+    public func registerCDZone(cdZone: CDZone) {
+        Log.message(.info, message: "Register : Core Data Zone")
         self.cdZone = cdZone
     }
 

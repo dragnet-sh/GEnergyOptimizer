@@ -102,7 +102,7 @@ class CoreDataAPI {
         }
     }
 
-    func savePreAudit(data: [String: Any?], model: GEnergyFormModel, finished: @escaping (Result<[CDPreAudit]>)->Void) {
+    func savePreAudit(data: [String: Any?], model: GEnergyFormModel, vc: GEFormViewController, finished: @escaping (Result<[CDPreAudit]>)->Void) {
         let preAudit = getPreAudit { result in
             switch result {
                 case .Success(let data): data.forEach { cdPreAudit in self.managedContext.delete(cdPreAudit) }
@@ -127,10 +127,21 @@ class CoreDataAPI {
                         if let dataType = idToElement[formId]?.dataType, let label = idToElement[formId]?.param {
 
                             let pa = CDPreAudit(context: self.managedContext)
-                            pa.belongsToAudit = audit
                             pa.formId = formId
                             pa.dataType = dataType
                             pa.key = label
+
+                            switch vc.dataBelongsTo() {
+                            case .preaudit: pa.belongsToAudit = audit
+                            case .zone: {
+                                if let activeCDZone = self.state.getActiveCDZone() {
+                                    pa.belongsToZone = activeCDZone
+                                } else {
+                                    finished(.Error("Active Core Data Zone is NIL - Core Data Save Failed !!"))
+                                }
+                            }()
+                            default: finished(.Error("Unable to figure out Entity to Associate !!"))
+                            }
 
                             if let eBaseType = InitEnumMapper.sharedInstance.enumMap[dataType] as? BaseRowType {
                                 switch eBaseType {
@@ -144,6 +155,7 @@ class CoreDataAPI {
                         }
                     }
                 }
+
                 try managedContext.save()
                 finished(.Success(preAudit))
             } catch let error as NSError {

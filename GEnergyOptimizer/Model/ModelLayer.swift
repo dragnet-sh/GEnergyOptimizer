@@ -102,8 +102,8 @@ extension ModelLayer {
                     return
                 }
 
-                let data = results.filter { $0.type == zone }.map {
-                    ZoneListDTO(identifier: "N/A", title: $0.name!, type: $0.type!)
+                let data = results.filter { $0.type! == zone }.map {
+                    ZoneListDTO(identifier: "N/A", title: $0.name!, type: $0.type!, cdZone: $0, objectId: $0.objectId!)
                 }
 
                 finished(.local, data)
@@ -147,7 +147,7 @@ extension ModelLayer {
 
 //Mark: - Form Data Model
 extension ModelLayer {
-    func loadPreAudit(finished: @escaping PreAuditSourceBlock) {
+    func loadPreAudit(vc: GEFormViewController, finished: @escaping PreAuditSourceBlock) {
         Log.message(.info, message: "Loading PreAudit Data")
 
         if let identifier = state.getIdentifier() {
@@ -157,14 +157,24 @@ extension ModelLayer {
                     return
                 }
 
-                var data = fetchResults.reduce(into: [String: Any?]()) { (aggregate, data) in
-                    if let key = data.formId, let label = data.key, let type = data.dataType {
-                        if let value = transform(type: type, data: data) {
-                            aggregate[key] = value
+                switch vc.dataBelongsTo() {
+                case .preaudit: {
+                    var data = fetchResults.reduce(into: [String: Any?]()) { (aggregate, data) in
+                        if let key = data.formId, let label = data.key, let type = data.dataType {
+                            if let value = transform(type: type, data: data) {
+                                aggregate[key] = value
+                            }
                         }
                     }
+                    finished(.local, data)
+                }()
+                case .zone: {
+                    if let cdZone = state.getActiveCDZone() {
+
+                    }
+                }()
+                default: Log.message(.error, message: "Unable to figure out Entity to Associate !!")
                 }
-                finished(.local, data)
             }
         }
 
@@ -180,9 +190,9 @@ extension ModelLayer {
         }
     }
 
-    func savePreAudit(data: [String: Any?], model: GEnergyFormModel, finished: @escaping PreAuditSaveBlock) {
+    func savePreAudit(data: [String: Any?], model: GEnergyFormModel, vc: GEFormViewController,finished: @escaping PreAuditSaveBlock) {
 
-        coreDataAPI.savePreAudit(data: data, model: model) { result in
+        coreDataAPI.savePreAudit(data: data, model: model, vc: vc) { result in
             switch result {
             case .Success(let data): saveOnNetwork()
             case .Error(let message): Log.message(.info, message: message)
@@ -190,34 +200,39 @@ extension ModelLayer {
         }
 
         func saveOnNetwork() {
-
-            guard let pfAudit = self.state.getPFAudit() else {
-                Log.message(.error, message: "Guard Failed : PF Audit Object Unavailable")
-                finished(false)
-                return
-            }
-
-            pfPreAuditAPI.get(objectId: pfAudit.preAudit.objectId!) { status, object in
-                if (status) {
-                    let idToElement = BuilderHelper.mapIdToElements(model: model)
-
-                    guard let object = object as? PFPreAudit else {
-                        Log.message(.error, message: "Guard Failed : PFPreAudit")
-                        finished(false)
-                        return
-                    }
-
-                    data.forEach { tuple in
-                        if let value = tuple.value {
-                            object.featureData[tuple.key] = [idToElement![tuple.key]?.param, value, idToElement![tuple.key]?.dataType]
-                        }
-                    }
-                    self.pfPreAuditAPI.save(pfPreAudit: object) { status in
-                        finished(status)
-                    }
-                } else {
+            switch vc.dataBelongsTo() {
+            case .preaudit: {
+                guard let pfAudit = self.state.getPFAudit() else {
+                    Log.message(.error, message: "Guard Failed : PF Audit Object Unavailable")
                     finished(false)
+                    return
                 }
+
+                pfPreAuditAPI.get(objectId: pfAudit.preAudit.objectId!) { status, object in
+                    if (status) {
+                        let idToElement = BuilderHelper.mapIdToElements(model: model)
+
+                        guard let object = object as? PFPreAudit else {
+                            Log.message(.error, message: "Guard Failed : PFPreAudit")
+                            finished(false)
+                            return
+                        }
+
+                        data.forEach { tuple in
+                            if let value = tuple.value {
+                                object.featureData[tuple.key] = [idToElement![tuple.key]?.param, value, idToElement![tuple.key]?.dataType]
+                            }
+                        }
+                        self.pfPreAuditAPI.save(pfPreAudit: object) { status in
+                            finished(status)
+                        }
+                    } else {
+                        finished(false)
+                    }
+                }
+            }()
+            case .zone: {}()
+            default: Log.message(.error, message: "Unable to figure out Entity to save over Network !!")
             }
         }
     }

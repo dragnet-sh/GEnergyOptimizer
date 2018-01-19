@@ -2,7 +2,7 @@
 //  CDZone+CoreDataProperties.swift
 //  GEnergyOptimizer
 //
-//  Created by Binay Budhthoki on 1/18/18.
+//  Created by Binay Budhthoki on 1/19/18.
 //  Copyright © 2018 GeminiEnergyServices. All rights reserved.
 //
 //
@@ -33,10 +33,10 @@ extension CDZone {
 extension CDZone {
 
     @objc(addHasFeatureObject:)
-    @NSManaged public func addToHasFeature(_ value: CDFeatureData)
+    @NSManaged public func addToHasFeature(_ value: CDPreAudit)
 
     @objc(removeHasFeatureObject:)
-    @NSManaged public func removeFromHasFeature(_ value: CDFeatureData)
+    @NSManaged public func removeFromHasFeature(_ value: CDPreAudit)
 
     @objc(addHasFeature:)
     @NSManaged public func addToHasFeature(_ values: NSSet)

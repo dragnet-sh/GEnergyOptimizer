@@ -35,7 +35,11 @@ class PreAuditViewController: GEFormViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.loadPreAuditForm), name: .loadPreAuditForm, object: nil)
 
-        presenter.loadData()
+        presenter.loadData(vc: self)
+    }
+
+    override func dataBelongsTo() -> EntityType {
+        return EntityType.preaudit
     }
 
     override func getBundleResource() -> String! {
@@ -51,7 +55,7 @@ extension PreAuditViewController{
     fileprivate func saveFormData() {
         Log.message(.info, message: "PreAudit - Data Save")
 
-        presenter.saveData(data: self.form.values(), model: super.getFormDTO()) { status in
+        presenter.saveData(data: self.form.values(), model: super.getFormDTO(), vc: self) { status in
             if (status) {
                 GUtils.message(title: "PreAudit Save", message: "PreAudit Data Save - Successful", vc: self, type: .toast)
                 self.navigationController?.popViewController(animated: true)

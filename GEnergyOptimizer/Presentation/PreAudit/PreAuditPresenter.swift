@@ -13,15 +13,15 @@ class PreAuditPresenter {
 }
 
 extension PreAuditPresenter {
-    func loadData() {
-        modelLayer.loadPreAudit() { source, data in
+    func loadData(vc: GEFormViewController) {
+        modelLayer.loadPreAudit(vc: vc) { source, data in
             self.data = data
             NotificationCenter.default.post(name: .loadPreAuditForm, object: nil)
         }
     }
 
-    func saveData(data: [String: Any?], model: GEnergyFormModel, finished: @escaping (Bool)->Void) {
-        modelLayer.savePreAudit(data: data, model: model) { status in
+    func saveData(data: [String: Any?], model: GEnergyFormModel, vc: GEFormViewController,finished: @escaping (Bool)->Void) {
+        modelLayer.savePreAudit(data: data, model: model, vc: vc) { status in
            finished(status)
         }
     }

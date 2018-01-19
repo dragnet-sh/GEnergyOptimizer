@@ -29,4 +29,8 @@ extension ZonePresenter {
             self.loadData()
         }
     }
+
+    func setActiveCDZone(cdZone: CDZone) {
+        state.registerCDZone(cdZone: cdZone)
+    }
 }

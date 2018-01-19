@@ -65,6 +65,7 @@ extension ZoneListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let zone = presenter.data[indexPath.row]
+        presenter.setActiveCDZone(cdZone: zone.cdZone) //ToDo: Is this the best way to set things ??
         let cell = tableView.dequeueReusableCell(withIdentifier: ZoneListViewController.cellIdentifier, for: indexPath)
         cell.textLabel?.text = zone.title
 

@@ -48,7 +48,7 @@ enum EMessageType {
     case toast, alert
 }
 
-enum EntityTypes: String {
+enum EntityType: String {
     case audit = "CDAudit"
     case preaudit = "CDPreAudit"
     case zone = "CDZone"

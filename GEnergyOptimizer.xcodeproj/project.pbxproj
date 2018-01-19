@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1318636F1FE6B63800864276 /* ge_green_world_logo_large.png in Resources */ = {isa = PBXBuildFile; fileRef = 1318636E1FE6B63800864276 /* ge_green_world_logo_large.png */; };
-		13230991200734DD00A6DF1F /* GEModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1323098F200734DD00A6DF1F /* GEModel.xcdatamodeld */; };
 		1335BF3E1FD0118800402515 /* GeminiLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1335BF3D1FD0118800402515 /* GeminiLogo.jpg */; };
 		13792E2E1FC8263F007C525C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13792E2D1FC8263F007C525C /* AppDelegate.swift */; };
 		13792E331FC8263F007C525C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13792E311FC8263F007C525C /* Main.storyboard */; };
@@ -56,6 +55,7 @@
 		487C094E23AF17E65CEB23A2 /* CoreDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0853D485C19C3121BC98 /* CoreDataAPI.swift */; };
 		487C098E7053A832C7DE6BBF /* plugload.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C046F2324ACBDDD52E289 /* plugload.json */; };
 		487C099A6B6530AF97F55601 /* FactoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0A72B41F6A46089909DB /* FactoryHelper.swift */; };
+		487C099DBD49CF3A405F13AE /* GEModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 487C03227842BF37A6ECBE24 /* GEModel.xcdatamodel */; };
 		487C0A4D069561BD894028D3 /* preaudit.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0A39AC6B004B52564DAC /* preaudit.json */; };
 		487C0A68C9DF4736E834A8F7 /* CDRoom+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C00AAA27BF40E11193B1F /* CDRoom+CoreDataClass.swift */; };
 		487C0A8CEF5276FE93C4333C /* RoomDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C001332D8A6CAF12B0256 /* RoomDTO.swift */; };
@@ -90,7 +90,6 @@
 
 /* Begin PBXFileReference section */
 		1318636E1FE6B63800864276 /* ge_green_world_logo_large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ge_green_world_logo_large.png; sourceTree = "<group>"; };
-		13230990200734DD00A6DF1F /* GEModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GEModel.xcdatamodel; sourceTree = "<group>"; };
 		1335BF3D1FD0118800402515 /* GeminiLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GeminiLogo.jpg; sourceTree = "<group>"; };
 		13792E2A1FC8263F007C525C /* GEnergyOptimizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GEnergyOptimizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13792E2D1FC8263F007C525C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +118,7 @@
 		487C02926DAC42E68D5F059F /* ZonePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZonePresenter.swift; sourceTree = "<group>"; };
 		487C02C5135F34CDA4F2531A /* hvac.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hvac.json; sourceTree = "<group>"; };
 		487C02E0126554B9837987E8 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		487C03227842BF37A6ECBE24 /* GEModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GEModel.xcdatamodel; sourceTree = "<group>"; };
 		487C0339D9331C97B1CAD730 /* ZoneListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ZoneListViewController.storyboard; sourceTree = "<group>"; };
 		487C03A2F6887784350EBCCB /* TranslationLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationLayer.swift; sourceTree = "<group>"; };
 		487C03A4D202FD6C8C0DCAB7 /* CDAudit+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDAudit+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -388,6 +388,7 @@
 				487C07B0EA82F5776353E414 /* CDPreAuditFeature+CoreDataProperties.swift */,
 				487C0DEF54A934C9CEDD885C /* CDPreAuditFeature+CoreDataClass.swift */,
 				487C00AAA27BF40E11193B1F /* CDRoom+CoreDataClass.swift */,
+				487C03227842BF37A6ECBE24 /* GEModel.xcdatamodel */,
 			);
 			path = NSManagedObjects;
 			sourceTree = "<group>";
@@ -395,7 +396,6 @@
 		487C0ACAA4DAAD1FDAD6D75F /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				1323098F200734DD00A6DF1F /* GEModel.xcdatamodeld */,
 				487C090808A231BEC1EC6145 /* NSManagedObjects */,
 				487C0853D485C19C3121BC98 /* CoreDataAPI.swift */,
 			);
@@ -700,7 +700,6 @@
 				487C019C0D3C363716BA6B56 /* ParseDataModel.swift in Sources */,
 				487C0773AFF050B77B0374E3 /* GECalculations.swift in Sources */,
 				13E2E303200A3454003F54A4 /* CDPreAudit+CoreDataProperties.swift in Sources */,
-				13230991200734DD00A6DF1F /* GEModel.xcdatamodeld in Sources */,
 				487C03A3082A6110BA557C96 /* Enums.swift in Sources */,
 				487C03CF177C48AA7845A46D /* PreAuditViewController.swift in Sources */,
 				13E2E304200A3454003F54A4 /* CDFeatureData+CoreDataClass.swift in Sources */,
@@ -736,6 +735,7 @@
 				487C0350F97BF238C6584EAC /* RoomPresenter.swift in Sources */,
 				487C094E23AF17E65CEB23A2 /* CoreDataAPI.swift in Sources */,
 				487C0320ABA9E0540BBE0F64 /* PreAuditPresenter.swift in Sources */,
+				487C099DBD49CF3A405F13AE /* GEModel.xcdatamodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -986,19 +986,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		1323098F200734DD00A6DF1F /* GEModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				13230990200734DD00A6DF1F /* GEModel.xcdatamodel */,
-			);
-			currentVersion = 13230990200734DD00A6DF1F /* GEModel.xcdatamodel */;
-			path = GEModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 13792E221FC8263F007C525C /* Project object */;
 }

@@ -29,6 +29,11 @@ class GEFormViewController: FormViewController {
         fatalError("Must be over-ridden")
     }
 
+    open func dataBelongsTo() -> EntityType {
+        Log.message(.error, message: "Please override method dataBelongsTo")
+        fatalError("Must be over-ridden")
+    }
+
     public func getFormDTO() -> GEnergyFormModel! {
         return self.formModel
     }

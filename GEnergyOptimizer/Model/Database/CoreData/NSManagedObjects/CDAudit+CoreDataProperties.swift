@@ -2,7 +2,7 @@
 //  CDAudit+CoreDataProperties.swift
 //  GEnergyOptimizer
 //
-//  Created by Binay Budhthoki on 1/18/18.
+//  Created by Binay Budhthoki on 1/19/18.
 //  Copyright © 2018 GeminiEnergyServices. All rights reserved.
 //
 //
