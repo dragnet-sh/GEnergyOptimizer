@@ -16,7 +16,7 @@ class PFZoneAPI {
         return Singleton.instance
     }
 
-    func initialize(name: String, type: String, complete: @escaping (Bool)->Void) {
+    func initialize(name: String, type: String, complete: @escaping (Bool, PFZone)->Void) {
         Log.message(.info, message: "Parse - Initializing ZoneDTO")
         var zone = PFZone()
         zone.type = type
@@ -27,7 +27,7 @@ class PFZoneAPI {
         save(pfZone: zone) { status in
             self.linkZoneToAudit(zone: zone) { status in
                 if (status) {
-                    complete(status)
+                    complete(status, zone)
                 }
             }
         }

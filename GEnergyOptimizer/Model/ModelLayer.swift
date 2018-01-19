@@ -103,7 +103,7 @@ extension ModelLayer {
                 }
 
                 let data = results.filter { $0.type! == zone }.map {
-                    ZoneListDTO(identifier: "N/A", title: $0.name!, type: $0.type!, cdZone: $0, objectId: $0.objectId!)
+                    ZoneListDTO(identifier: "N/A", title: $0.name!, type: $0.type!, cdZone: $0, objectId: "")
                 }
 
                 finished(.local, data)
@@ -114,10 +114,13 @@ extension ModelLayer {
     func createZone(name: String, type: String, finished: @escaping ()->Void) {
         coreDataAPI.createZone(type: type, name: name) { result in
             switch result {
-            case .Success(let data): self.pfZoneAPI.initialize(name: name, type: type) { status in }
+            case .Success(let data): self.pfZoneAPI.initialize(name: name, type: type) { status, pfZone in
+                if (status) {
+                    finished()
+                }
+            }
             case .Error(let message): Log.message(.info, message: message)
             }
-            finished()
         }
     }
 }
