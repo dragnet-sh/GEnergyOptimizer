@@ -9,6 +9,7 @@ import CleanroomLogger
 class PreAuditPresenter {
     var data = Dictionary<String, Any?>()
     fileprivate var modelLayer = ModelLayer()
+    fileprivate var state = GEStateController.sharedInstance
 }
 
 extension PreAuditPresenter {
@@ -23,5 +24,10 @@ extension PreAuditPresenter {
         modelLayer.savePreAudit(data: data, model: model) { status in
            finished(status)
         }
+    }
+
+    func getActiveZone() -> String {
+        if let zone = state.getActiveZone() { return zone }
+        else { return EZone.none.rawValue }
     }
 }
