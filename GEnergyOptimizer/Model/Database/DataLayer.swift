@@ -23,7 +23,7 @@ class DataLayer {
         return Singleton.instance
     }
 
-    let state = GEStateController.sharedInstance
+    let state = StateController.sharedInstance
     let pfAuditAPI = PFAuditAPI.sharedInstance
     let pfPreAuditAPI = PFPreAuditAPI.sharedInstance
     let pfZoneAPI = PFZoneAPI.sharedInstance

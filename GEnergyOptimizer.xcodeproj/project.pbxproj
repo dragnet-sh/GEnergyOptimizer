@@ -44,7 +44,7 @@
 		487C07B9ACDB3E1C830EA66E /* DataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0ABC563E7E0A7C3C9BA8 /* DataLayer.swift */; };
 		487C07CA55227074D34FFA9F /* CDZone+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C006036B1A5E29BBBBB79 /* CDZone+CoreDataClass.swift */; };
 		487C08271D80D022563955CC /* CDZone+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0CC29DB67E6191A4E1FE /* CDZone+CoreDataProperties.swift */; };
-		487C08913815E01DE6006DB7 /* GEStateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0FA36CFC01D2BB775C77 /* GEStateController.swift */; };
+		487C08913815E01DE6006DB7 /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0FA36CFC01D2BB775C77 /* StateController.swift */; };
 		487C094E23AF17E65CEB23A2 /* CoreDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0853D485C19C3121BC98 /* CoreDataAPI.swift */; };
 		487C098E7053A832C7DE6BBF /* plugload.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C046F2324ACBDDD52E289 /* plugload.json */; };
 		487C099A6B6530AF97F55601 /* FactoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0A72B41F6A46089909DB /* FactoryHelper.swift */; };
@@ -139,7 +139,7 @@
 		487C0E669C84568C8E88B6FD /* RoomPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomPresenter.swift; sourceTree = "<group>"; };
 		487C0EA5FE353F7749BA6F8C /* FeaturePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturePresenter.swift; sourceTree = "<group>"; };
 		487C0F0E28D1D0C27B2D8DF2 /* FeatureViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeatureViewController.storyboard; sourceTree = "<group>"; };
-		487C0FA36CFC01D2BB775C77 /* GEStateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GEStateController.swift; sourceTree = "<group>"; };
+		487C0FA36CFC01D2BB775C77 /* StateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
 		487C0FCA5F1D6B41467DBCAD /* HomeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeListViewController.swift; sourceTree = "<group>"; };
 		A01F77AED5091697259E640E /* Pods_GEnergyOptimizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GEnergyOptimizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A15D3624ECE18A4520C55D2A /* Pods-GEnergyOptimizer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GEnergyOptimizer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -427,7 +427,7 @@
 				487C005EA506AC52A2F0E6EA /* Translation */,
 				487C0489EBC89721CE5398E8 /* DataObject */,
 				487C0C4CF6406C592B05CEC4 /* Enums.swift */,
-				487C0FA36CFC01D2BB775C77 /* GEStateController.swift */,
+				487C0FA36CFC01D2BB775C77 /* StateController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -682,7 +682,7 @@
 				487C0A68C9DF4736E834A8F7 /* CDRoom+CoreDataClass.swift in Sources */,
 				487C032E297B6E2BA9FBAEAC /* PFPreAuditAPI.swift in Sources */,
 				487C0CED17CC60EB955C7C01 /* PFRoomAPI.swift in Sources */,
-				487C08913815E01DE6006DB7 /* GEStateController.swift in Sources */,
+				487C08913815E01DE6006DB7 /* StateController.swift in Sources */,
 				487C05DEA266805FF524BBBF /* ZonePresenter.swift in Sources */,
 				487C0350F97BF238C6584EAC /* RoomPresenter.swift in Sources */,
 				487C094E23AF17E65CEB23A2 /* CoreDataAPI.swift in Sources */,

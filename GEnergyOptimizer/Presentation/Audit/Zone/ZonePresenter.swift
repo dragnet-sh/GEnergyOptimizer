@@ -9,7 +9,7 @@ import CleanroomLogger
 public class ZonePresenter {
     var data = [ZoneListDTO]()
     fileprivate var modelLayer = ModelLayer()
-    fileprivate var state = GEStateController.sharedInstance
+    fileprivate var state = StateController.sharedInstance
 }
 
 extension ZonePresenter {

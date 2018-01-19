@@ -11,14 +11,14 @@ import Parse
 typealias HomeDTOSourceBlock = (Source, [HomeListDTO])->Void
 typealias ZoneDTOSourceBlock = (Source, [ZoneListDTO])->Void
 typealias RoomDTOSourceBlock = (Source, [RoomListDTO])->Void
-typealias PreAuditSourceBlock = (Source, [String: Any?])->Void
-typealias PreAuditSaveBlock = (Bool)->Void
+typealias FeatureDataSourceBlock = (Source, [String: Any?])->Void
+typealias FeatureDataSaveBlock = (Bool)->Void
 
 class ModelLayer {
 
     fileprivate var dataLayer = DataLayer.sharedInstance
     fileprivate var translationLayer = TranslationLayer.sharedInstance
-    fileprivate var state = GEStateController.sharedInstance
+    fileprivate var state = StateController.sharedInstance
 
     fileprivate var coreDataAPI = CoreDataAPI.sharedInstance
     fileprivate var pfRoomAPI = PFRoomAPI.sharedInstance
@@ -151,7 +151,7 @@ extension ModelLayer {
 
 //Mark: - Form Data Model
 extension ModelLayer {
-    func loadPreAudit(vc: GEFormViewController, finished: @escaping PreAuditSourceBlock) {
+    func loadPreAudit(vc: GEFormViewController, finished: @escaping FeatureDataSourceBlock) {
         Log.message(.info, message: "Loading PreAudit Data")
 
         if let identifier = state.getIdentifier() {
@@ -164,15 +164,7 @@ extension ModelLayer {
                         return
                     }
 
-                    var data = fetchResults.reduce(into: [String: Any?]()) { (aggregate, data) in
-                        if let key = data.formId, let label = data.key, let type = data.dataType {
-                            if let value = transform(type: type, data: data) {
-                                aggregate[key] = value
-                            }
-                        }
-                    }
-
-                    finished(.local, data)
+                    finished(.local, mapToFormData(featureData: fetchResults))
                 }()
                 case .zone: {
                     if let cdZone = state.getActiveCDZone() {
@@ -181,20 +173,24 @@ extension ModelLayer {
                             return
                         }
 
-                        var data = fetchResults.reduce(into: [String: Any?]()) { (aggregate, data) in
-                            if let key = data.formId, let label = data.key, let type = data.dataType {
-                                if let value = transform(type: type, data: data) {
-                                    aggregate[key] = value
-                                }
-                            }
-                        }
-
-                        finished(.local, data)
+                        finished(.local, mapToFormData(featureData: fetchResults))
                     }
                 }()
                 default: Log.message(.error, message: "Unable to figure out Entity to Associate !!")
                 }
             }
+        }
+
+        func mapToFormData(featureData: [CDFeatureData]) -> [String: Any?] {
+            var data = featureData.reduce(into: [String: Any?]()) { (aggregate, data) in
+                if let key = data.formId, let label = data.key, let type = data.dataType {
+                    if let value = transform(type: type, data: data) {
+                        aggregate[key] = value
+                    }
+                }
+            }
+
+            return data
         }
 
         func transform(type: String, data: CDFeatureData) -> Any? {
@@ -209,9 +205,9 @@ extension ModelLayer {
         }
     }
 
-    func savePreAudit(data: [String: Any?], model: GEnergyFormModel, vc: GEFormViewController,finished: @escaping PreAuditSaveBlock) {
+    func saveFeatureData(data: [String: Any?], model: GEnergyFormModel, vc: GEFormViewController, finished: @escaping FeatureDataSaveBlock) {
 
-        coreDataAPI.savePreAudit(data: data, model: model, vc: vc) { result in
+        coreDataAPI.saveFeatureData(data: data, model: model, vc: vc) { result in
             switch result {
             case .Success(let data): saveOnNetwork()
             case .Error(let message): Log.message(.info, message: message)
@@ -231,7 +227,7 @@ extension ModelLayer {
                     if (status) {
                         let idToElement = BuilderHelper.mapIdToElements(model: model)
 
-                        guard let object = object as? PFPreAudit else {
+                        guard let pfPreAudit = object as? PFPreAudit else {
                             Log.message(.error, message: "Guard Failed : PFPreAudit")
                             finished(false)
                             return
@@ -239,10 +235,10 @@ extension ModelLayer {
 
                         data.forEach { tuple in
                             if let value = tuple.value {
-                                object.featureData[tuple.key] = [idToElement![tuple.key]?.param, value, idToElement![tuple.key]?.dataType]
+                                pfPreAudit.featureData[tuple.key] = [idToElement![tuple.key]?.param, value, idToElement![tuple.key]?.dataType]
                             }
                         }
-                        self.pfPreAuditAPI.save(pfPreAudit: object) { status in
+                        self.pfPreAuditAPI.save(pfPreAudit: pfPreAudit) { status in
                             finished(status)
                         }
                     } else {

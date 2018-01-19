@@ -11,7 +11,7 @@ typealias SourceBlock = (Source) -> Void
 class HomePresenter {
     var data = [HomeListDTO]()
     fileprivate var modelLayer = ModelLayer()
-    fileprivate var state = GEStateController.sharedInstance
+    fileprivate var state = StateController.sharedInstance
 }
 
 

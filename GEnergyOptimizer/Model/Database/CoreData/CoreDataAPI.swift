@@ -15,7 +15,7 @@ class CoreDataAPI {
         return Singleton.instance
     }
 
-    let state = GEStateController.sharedInstance
+    let state = StateController.sharedInstance
 
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "GEModel")
@@ -119,7 +119,7 @@ class CoreDataAPI {
         }
     }
 
-    func savePreAudit(data: [String: Any?], model: GEnergyFormModel, vc: GEFormViewController, finished: @escaping (Result<[CDFeatureData]>)->Void) {
+    func saveFeatureData(data: [String: Any?], model: GEnergyFormModel, vc: GEFormViewController, finished: @escaping (Result<[CDFeatureData]>)->Void) {
         let preAudit = getPreAudit(type: vc.dataBelongsTo()) { result in
             switch result {
                 case .Success(let data): data.forEach { cdPreAudit in self.managedContext.delete(cdPreAudit) }

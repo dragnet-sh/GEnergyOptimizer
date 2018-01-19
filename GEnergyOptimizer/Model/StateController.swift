@@ -6,14 +6,13 @@
 import Foundation
 
 import Foundation
-import Parse
 import CleanroomLogger
 
-class GEStateController {
+class StateController {
 
-    class var sharedInstance: GEStateController {
+    class var sharedInstance: StateController {
         struct Singleton {
-            static let instance = GEStateController()
+            static let instance = StateController()
         }
         return Singleton.instance
     }
@@ -24,13 +23,11 @@ class GEStateController {
 
     // *** Core Data Objects *** //
     fileprivate var cdAudit: CDAudit?
-    fileprivate var cdRoom: [CDRoom]?
     fileprivate var cdZone: CDZone?
 
     // *** Parse Data Objects *** //
     fileprivate var pfAudit: PFAudit?
     fileprivate var pfPreAudit: PFPreAudit?
-    fileprivate var pfRoom: [PFRoom]?
     fileprivate var pfZone: PFZone?
 
     // *** Parse - Core Data >> Cross Over Link *** //
@@ -41,8 +38,9 @@ class GEStateController {
     }
 }
 
-//Mark: - Get | Set
-extension GEStateController {
+extension StateController {
+
+    // *** Access Point *** //
 
     public func getIdentifier() -> String? {
         guard let identifier = self.auditIdentifier else {
@@ -93,7 +91,7 @@ extension GEStateController {
         return crosswalk[uuid]
     }
 
-    //### Global Audit Registration ###//
+    // *** Global Registration *** //
 
     public func registerActiveZone(zone: String) {
         Log.message(.info, message: "Register : Active Zone :: \(zone)")
@@ -115,11 +113,6 @@ extension GEStateController {
         self.pfPreAudit = pfPreAudit
     }
 
-    public func registerPFRoom(pfRoom: [PFRoom]) {
-        Log.message(.info, message: "Register : Parse Room")
-        self.pfRoom = pfRoom
-    }
-
     public func registerCDAudit(cdAudit: CDAudit) {
         Log.message(.info, message: "Register : Core Data Audit")
         self.cdAudit = cdAudit
@@ -134,25 +127,4 @@ extension GEStateController {
         Log.message(.info, message: "Register : Crosswalk")
         self.crosswalk[uuid] = pfZone
     }
-
-    //### Flush Active Objects if Exists ###//
-    fileprivate func flush() {
-        Log.message(.info, message: "Flushing GEnergy State Controller")
-        self.auditIdentifier = nil
-        self.pfAudit = nil
-        self.cdAudit = nil
-    }
 }
-
-//Mark: - To Be Deleted
-extension GEStateController {
-    public func getPreAuditDTO() -> PFPreAudit? {
-        guard let preAuditDTO = self.pfPreAudit else {
-            Log.message(.error, message: "Pre Audit DTO Not Set")
-            return nil
-        }
-
-        return preAuditDTO
-    }
-}
-

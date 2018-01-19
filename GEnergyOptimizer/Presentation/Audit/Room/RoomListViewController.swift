@@ -13,7 +13,7 @@ import PopupDialog
 class RoomListViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var state = GEStateController.sharedInstance
+    var state = StateController.sharedInstance
     var presenter = RoomPresenter()
 
     static let cellIdentifier = CellIdentifiers.room.rawValue
