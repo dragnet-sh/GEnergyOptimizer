@@ -17,6 +17,7 @@ extension PreAuditPresenter {
         modelLayer.loadPreAudit(vc: vc) { source, data in
             self.data = data
             NotificationCenter.default.post(name: .loadPreAuditForm, object: nil)
+            NotificationCenter.default.post(name: .loadFeatureDataForm, object: nil)
         }
     }
 

@@ -23,6 +23,7 @@ extension CDZone {
     @NSManaged public var syncStatus: Bool
     @NSManaged public var type: String?
     @NSManaged public var updatedAt: NSDate?
+    @NSManaged public var uuid: String?
     @NSManaged public var belongsToAudit: CDAudit?
     @NSManaged public var hasFeature: NSSet?
     @NSManaged public var hasRoom: NSSet?

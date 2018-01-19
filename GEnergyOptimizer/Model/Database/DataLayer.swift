@@ -121,6 +121,10 @@ class DataLayer {
                         cdZone.type = pfZone.type
                         cdZone.objectId = pfZone.objectId
 
+                        let uuid = UUID().uuidString
+                        cdZone.uuid = uuid
+                        self.state.registerCrosswalk(uuid: uuid, pfZone: pfZone)
+
                         zoneToSave.append(cdZone)
 
                         for(elementId, data) in pfZone.featureData {

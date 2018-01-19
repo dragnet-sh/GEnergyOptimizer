@@ -79,6 +79,7 @@ class CoreDataAPI {
         zone.name = name
         zone.createdAt = NSDate()
         zone.belongsToAudit = cdAudit
+        zone.uuid = UUID().uuidString
 
         do {
             try managedContext.save()
@@ -89,21 +90,37 @@ class CoreDataAPI {
         }
     }
 
-    func getPreAudit(finished: @escaping (Result<[CDPreAudit]>)->Void) {
-        if let identifier = state.getIdentifier() {
-            if let audit = getAudit(id: identifier) {
-                guard let preAudit = audit.hasPreAuditFeature?.allObjects as? [CDPreAudit] else {
-                    Log.message(.error, message: "Guard Failed : Fetched Results - PreAudit Data")
-                    finished(.Error("Unable to Fetch PreAudit"))
+    func getPreAudit(type: EntityType, finished: @escaping (Result<[CDPreAudit]>)->Void) {
+
+        switch type {
+        case .preaudit: {
+            if let identifier = self.state.getIdentifier() {
+                if let audit = getAudit(id: identifier) {
+                    guard let preAudit = audit.hasPreAuditFeature?.allObjects as? [CDPreAudit] else {
+                        Log.message(.error, message: "Guard Failed : Fetched Results - PreAudit Data")
+                        finished(.Error("Unable to Fetch PreAudit"))
+                        return
+                    }
+                    finished(.Success(preAudit))
+                }
+            }
+        }()
+        case .zone: {
+            if let activeZone = self.state.getActiveCDZone() {
+                guard let zone = activeZone.hasFeature?.allObjects as? [CDPreAudit] else {
+                    Log.message(.error, message: "Guard Failed : Fetched Results - PreAudit Data - ZONE")
+                    finished(.Error("Unable to Fetch PreAudit - Zone"))
                     return
                 }
-                finished(.Success(preAudit))
+                finished(.Success(zone))
             }
+        }()
+        default: Log.message(.error, message: "Unknown Entity Type")
         }
     }
 
     func savePreAudit(data: [String: Any?], model: GEnergyFormModel, vc: GEFormViewController, finished: @escaping (Result<[CDPreAudit]>)->Void) {
-        let preAudit = getPreAudit { result in
+        let preAudit = getPreAudit(type: vc.dataBelongsTo()) { result in
             switch result {
                 case .Success(let data): data.forEach { cdPreAudit in self.managedContext.delete(cdPreAudit) }
                 case .Error(let message): return

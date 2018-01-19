@@ -103,7 +103,7 @@ extension ModelLayer {
                 }
 
                 let data = results.filter { $0.type! == zone }.map {
-                    ZoneListDTO(identifier: "N/A", title: $0.name!, type: $0.type!, cdZone: $0, objectId: "")
+                    ZoneListDTO(identifier: "N/A", title: $0.name!, type: $0.type!, cdZone: $0)
                 }
 
                 finished(.local, data)
@@ -115,6 +115,7 @@ extension ModelLayer {
         coreDataAPI.createZone(type: type, name: name) { result in
             switch result {
             case .Success(let data): self.pfZoneAPI.initialize(name: name, type: type) { status, pfZone in
+                self.state.registerCrosswalk(uuid: data.uuid!, pfZone: pfZone)
                 if (status) {
                     finished()
                 }
@@ -155,13 +156,14 @@ extension ModelLayer {
 
         if let identifier = state.getIdentifier() {
             if let audit = coreDataAPI.getAudit(id: identifier) {
-                guard let fetchResults = audit.hasPreAuditFeature?.allObjects as? [CDPreAudit] else {
-                    Log.message(.error, message: "Guard Failed : Fetched Results - PreAudit Data")
-                    return
-                }
 
                 switch vc.dataBelongsTo() {
                 case .preaudit: {
+                    guard let fetchResults = audit.hasPreAuditFeature?.allObjects as? [CDPreAudit] else {
+                        Log.message(.error, message: "Guard Failed : Fetched Results - PreAudit Data")
+                        return
+                    }
+
                     var data = fetchResults.reduce(into: [String: Any?]()) { (aggregate, data) in
                         if let key = data.formId, let label = data.key, let type = data.dataType {
                             if let value = transform(type: type, data: data) {
@@ -169,11 +171,25 @@ extension ModelLayer {
                             }
                         }
                     }
+
                     finished(.local, data)
                 }()
                 case .zone: {
                     if let cdZone = state.getActiveCDZone() {
+                        guard let fetchResults = cdZone.hasFeature?.allObjects as? [CDPreAudit] else {
+                            Log.message(.error, message: "Guard Failed : Fetched Results - PreAudit Data")
+                            return
+                        }
 
+                        var data = fetchResults.reduce(into: [String: Any?]()) { (aggregate, data) in
+                            if let key = data.formId, let label = data.key, let type = data.dataType {
+                                if let value = transform(type: type, data: data) {
+                                    aggregate[key] = value
+                                }
+                            }
+                        }
+
+                        finished(.local, data)
                     }
                 }()
                 default: Log.message(.error, message: "Unable to figure out Entity to Associate !!")
@@ -234,7 +250,26 @@ extension ModelLayer {
                     }
                 }
             }()
-            case .zone: {}()
+            case .zone: {
+                if let cdZone = self.state.getActiveCDZone() {
+                    if let pfZone = self.state.getLinkedPFZone(uuid: cdZone.uuid!) {
+
+                        let idToElement = BuilderHelper.mapIdToElements(model: model)
+
+                        data.forEach { tuple in
+                            if let value = tuple.value {
+                                pfZone.featureData[tuple.key] = [idToElement![tuple.key]?.param, value, idToElement![tuple.key]?.dataType]
+                            }
+                        }
+                        self.pfZoneAPI.save(pfZone: pfZone) { status in
+                            finished(status)
+                        }
+                    } else {
+                        finished(false)
+                    }
+                }
+
+            }()
             default: Log.message(.error, message: "Unable to figure out Entity to save over Network !!")
             }
         }

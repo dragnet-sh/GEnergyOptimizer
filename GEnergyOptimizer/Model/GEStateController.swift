@@ -34,6 +34,13 @@ class GEStateController {
     fileprivate var pfPreAudit: PFPreAudit?
     fileprivate var pfRoom: [PFRoom]?
     fileprivate var pfZone: PFZone?
+
+    // *** Parse - Core Data >> Cross Over Link *** //
+    fileprivate var crosswalk: Dictionary<String, PFZone>
+
+    init() {
+        self.crosswalk = Dictionary<String, PFZone>()
+    }
 }
 
 //Mark: - Get | Set
@@ -84,6 +91,10 @@ extension GEStateController {
         return zone
     }
 
+    public func getLinkedPFZone(uuid: String) -> PFZone? {
+        return crosswalk[uuid]
+    }
+
     //### Global Audit Registration ###//
 
     public func registerActiveZone(zone: String) {
@@ -119,6 +130,11 @@ extension GEStateController {
     public func registerCDZone(cdZone: CDZone) {
         Log.message(.info, message: "Register : Core Data Zone")
         self.cdZone = cdZone
+    }
+
+    public func registerCrosswalk(uuid: String, pfZone: PFZone) {
+        Log.message(.info, message: "Register : Crosswalk")
+        self.crosswalk[uuid] = pfZone
     }
 
     //### Flush Active Objects if Exists ###//
