@@ -90,13 +90,13 @@ class CoreDataAPI {
         }
     }
 
-    func getPreAudit(type: EntityType, finished: @escaping (Result<[CDPreAudit]>)->Void) {
+    func getPreAudit(type: EntityType, finished: @escaping (Result<[CDFeatureData]>)->Void) {
 
         switch type {
         case .preaudit: {
             if let identifier = self.state.getIdentifier() {
                 if let audit = getAudit(id: identifier) {
-                    guard let preAudit = audit.hasPreAuditFeature?.allObjects as? [CDPreAudit] else {
+                    guard let preAudit = audit.hasPreAuditFeature?.allObjects as? [CDFeatureData] else {
                         Log.message(.error, message: "Guard Failed : Fetched Results - PreAudit Data")
                         finished(.Error("Unable to Fetch PreAudit"))
                         return
@@ -107,7 +107,7 @@ class CoreDataAPI {
         }()
         case .zone: {
             if let activeZone = self.state.getActiveCDZone() {
-                guard let zone = activeZone.hasFeature?.allObjects as? [CDPreAudit] else {
+                guard let zone = activeZone.hasFeature?.allObjects as? [CDFeatureData] else {
                     Log.message(.error, message: "Guard Failed : Fetched Results - PreAudit Data - ZONE")
                     finished(.Error("Unable to Fetch PreAudit - Zone"))
                     return
@@ -119,7 +119,7 @@ class CoreDataAPI {
         }
     }
 
-    func savePreAudit(data: [String: Any?], model: GEnergyFormModel, vc: GEFormViewController, finished: @escaping (Result<[CDPreAudit]>)->Void) {
+    func savePreAudit(data: [String: Any?], model: GEnergyFormModel, vc: GEFormViewController, finished: @escaping (Result<[CDFeatureData]>)->Void) {
         let preAudit = getPreAudit(type: vc.dataBelongsTo()) { result in
             switch result {
                 case .Success(let data): data.forEach { cdPreAudit in self.managedContext.delete(cdPreAudit) }
@@ -134,7 +134,7 @@ class CoreDataAPI {
 
         if let audit = state.getCDAudit() {
 
-            var preAudit = [CDPreAudit]()
+            var preAudit = [CDFeatureData]()
 
             do {
                 data.forEach { tuple in
@@ -143,7 +143,7 @@ class CoreDataAPI {
                     if let value = tuple.value {
                         if let dataType = idToElement[formId]?.dataType, let label = idToElement[formId]?.param {
 
-                            let pa = CDPreAudit(context: self.managedContext)
+                            let pa = CDFeatureData(context: self.managedContext)
                             pa.formId = formId
                             pa.dataType = dataType
                             pa.key = label

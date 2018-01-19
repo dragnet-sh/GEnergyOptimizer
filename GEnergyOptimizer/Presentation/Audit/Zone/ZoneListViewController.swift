@@ -77,8 +77,9 @@ extension ZoneListViewController: UITableViewDataSource {
 extension  ZoneListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let featureViewController = ControllerUtils.fromStoryboard(reference: String(describing: FeatureViewController.self)) as? FeatureViewController
-        navigationController?.pushViewController(featureViewController!, animated: true)
+        let featureViewController = ControllerUtils.fromStoryboard(reference: "FeatureViewController") as! FeatureViewController
+        featureViewController.entityType = EntityType.zone
+        navigationController?.pushViewController(featureViewController, animated: true)
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

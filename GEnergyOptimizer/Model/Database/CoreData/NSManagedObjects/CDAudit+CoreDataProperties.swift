@@ -33,10 +33,10 @@ extension CDAudit {
 extension CDAudit {
 
     @objc(addHasPreAuditFeatureObject:)
-    @NSManaged public func addToHasPreAuditFeature(_ value: CDPreAudit)
+    @NSManaged public func addToHasPreAuditFeature(_ value: CDFeatureData)
 
     @objc(removeHasPreAuditFeatureObject:)
-    @NSManaged public func removeFromHasPreAuditFeature(_ value: CDPreAudit)
+    @NSManaged public func removeFromHasPreAuditFeature(_ value: CDFeatureData)
 
     @objc(addHasPreAuditFeature:)
     @NSManaged public func addToHasPreAuditFeature(_ values: NSSet)

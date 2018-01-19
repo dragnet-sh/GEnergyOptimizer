@@ -14,8 +14,6 @@
 		13792E351FC8263F007C525C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13792E341FC8263F007C525C /* Assets.xcassets */; };
 		13792E381FC8263F007C525C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13792E361FC8263F007C525C /* LaunchScreen.storyboard */; };
 		13C23BFB1FFF9185009D79A9 /* TestEnergyCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C23BFA1FFF9185009D79A9 /* TestEnergyCalculations.swift */; };
-		13E2E302200A3454003F54A4 /* CDPreAudit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2E2FE200A3454003F54A4 /* CDPreAudit+CoreDataClass.swift */; };
-		13E2E303200A3454003F54A4 /* CDPreAudit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2E2FF200A3454003F54A4 /* CDPreAudit+CoreDataProperties.swift */; };
 		13E2E304200A3454003F54A4 /* CDFeatureData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2E300200A3454003F54A4 /* CDFeatureData+CoreDataClass.swift */; };
 		13E2E305200A3454003F54A4 /* CDFeatureData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2E301200A3454003F54A4 /* CDFeatureData+CoreDataProperties.swift */; };
 		13F4FCA91FD99924005E808C /* PopEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F4FCA71FD99924005E808C /* PopEditViewController.swift */; };
@@ -24,28 +22,23 @@
 		487C00005D78424CF25339AD /* FormBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C09E7BFD390D46EFB6FB0 /* FormBuilder.swift */; };
 		487C004B0A4AB306D31D874B /* FeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0D51983BDBEB57429FBE /* FeatureViewController.swift */; };
 		487C006DF8715ED7C1E8F9EE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C02E0126554B9837987E8 /* Utils.swift */; };
-		487C00E86CBB1F55D7ED9932 /* CDZoneFeature+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0EB1E49F5345E3021797 /* CDZoneFeature+CoreDataProperties.swift */; };
-		487C015FEA4B1CD05CEB7BD0 /* CDPreAuditFeature+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C07B0EA82F5776353E414 /* CDPreAuditFeature+CoreDataProperties.swift */; };
 		487C018F6D5AC4056E24A868 /* FormFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C06949DEE6E459B24DF35 /* FormFactory.swift */; };
 		487C019C0D3C363716BA6B56 /* ParseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0176A47699294D68D8CC /* ParseDataModel.swift */; };
 		487C01FA258D297F629D6C9C /* ZoneListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 487C0339D9331C97B1CAD730 /* ZoneListViewController.storyboard */; };
 		487C02892678BC45AF096F1B /* HomeListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 487C06A0ABFB535F6533D603 /* HomeListCell.xib */; };
 		487C02AE3BD1F8DEE8D310B9 /* PFAuditAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0C8AC85C3BD96316E2D9 /* PFAuditAPI.swift */; };
-		487C02CCC2C93A4ACB31F221 /* PreAuditFDO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0AB5A4F38512C994056A /* PreAuditFDO.swift */; };
-		487C0320ABA9E0540BBE0F64 /* PreAuditPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0491EA0371FA2218BC03 /* PreAuditPresenter.swift */; };
 		487C032E297B6E2BA9FBAEAC /* PFPreAuditAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C00092FADBF381F0283C0 /* PFPreAuditAPI.swift */; };
 		487C0350F97BF238C6584EAC /* RoomPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0E669C84568C8E88B6FD /* RoomPresenter.swift */; };
 		487C03A3082A6110BA557C96 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0C4CF6406C592B05CEC4 /* Enums.swift */; };
 		487C03B6B438672D212C51DC /* FormDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C07623C4CF0D16624DE2B /* FormDataModel.swift */; };
 		487C03CE29609B28D298703B /* lighting.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0258D2F9D57C51A3D46B /* lighting.json */; };
-		487C03CF177C48AA7845A46D /* PreAuditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0B9291E5CC3B70F776DB /* PreAuditViewController.swift */; };
 		487C0469C3EE3AE7A780D354 /* GEFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0C8D7C0CD8F8E871A36C /* GEFormViewController.swift */; };
 		487C04748BDB90E7EB1E7B03 /* HomeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C00F2E0F041240EEC4824 /* HomeDTO.swift */; };
 		487C04A7BBE09E7BDB69268E /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C07C91AE8796EA65944E2 /* RoomListViewController.swift */; };
 		487C052060FEF15FE2A76A65 /* PFZoneAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0AD00AFF79848118D6B3 /* PFZoneAPI.swift */; };
-		487C0546AC6748B61A6C770A /* CDPreAuditFeature+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0DEF54A934C9CEDD885C /* CDPreAuditFeature+CoreDataClass.swift */; };
 		487C05DEA266805FF524BBBF /* ZonePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C02926DAC42E68D5F059F /* ZonePresenter.swift */; };
 		487C05E9F03B7AB099E31A39 /* hvac.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C02C5135F34CDA4F2531A /* hvac.json */; };
+		487C068B4B5228504614B94E /* GEModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 487C0B30FABF88B4BBCA9B97 /* GEModel.xcdatamodel */; };
 		487C06E6388F1EB4A9A3DCCE /* HomeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0D0F28FCED867B8E41F1 /* HomeListCell.swift */; };
 		487C0773AFF050B77B0374E3 /* GECalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0ACEA8899C6F74495BAF /* GECalculations.swift */; };
 		487C07B9ACDB3E1C830EA66E /* DataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0ABC563E7E0A7C3C9BA8 /* DataLayer.swift */; };
@@ -55,7 +48,6 @@
 		487C094E23AF17E65CEB23A2 /* CoreDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0853D485C19C3121BC98 /* CoreDataAPI.swift */; };
 		487C098E7053A832C7DE6BBF /* plugload.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C046F2324ACBDDD52E289 /* plugload.json */; };
 		487C099A6B6530AF97F55601 /* FactoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0A72B41F6A46089909DB /* FactoryHelper.swift */; };
-		487C099DBD49CF3A405F13AE /* GEModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 487C03227842BF37A6ECBE24 /* GEModel.xcdatamodel */; };
 		487C0A4D069561BD894028D3 /* preaudit.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0A39AC6B004B52564DAC /* preaudit.json */; };
 		487C0A68C9DF4736E834A8F7 /* CDRoom+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C00AAA27BF40E11193B1F /* CDRoom+CoreDataClass.swift */; };
 		487C0A8CEF5276FE93C4333C /* RoomDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C001332D8A6CAF12B0256 /* RoomDTO.swift */; };
@@ -64,14 +56,12 @@
 		487C0B3ECCB3C8DF1E40F26C /* CDAudit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C03A4D202FD6C8C0DCAB7 /* CDAudit+CoreDataClass.swift */; };
 		487C0B3FDCBE627C600FA736 /* BuilderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0280CCB7182409BBE8E9 /* BuilderHelper.swift */; };
 		487C0B7B14EB4882F55BFAA4 /* HomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0FCA5F1D6B41467DBCAD /* HomeListViewController.swift */; };
-		487C0BA00C22867F374494F7 /* PreAuditViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 487C0A028EA9CB599C74F8C0 /* PreAuditViewController.storyboard */; };
-		487C0BCD1A5FF5CD933D5C8F /* ZoneFDO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0576BB8F9CA1FDA04913 /* ZoneFDO.swift */; };
 		487C0BD7F1DF0AFEFB05050A /* TranslationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C03A2F6887784350EBCCB /* TranslationLayer.swift */; };
 		487C0BF151EE9CF3667008E6 /* CDAudit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C087930871E54E6748664 /* CDAudit+CoreDataProperties.swift */; };
+		487C0C0B6AAD6438E6CF398B /* FeaturePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0EA5FE353F7749BA6F8C /* FeaturePresenter.swift */; };
 		487C0C838825086E0770A59D /* FeatureViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 487C0F0E28D1D0C27B2D8DF2 /* FeatureViewController.storyboard */; };
 		487C0CCCF0F2E54CD6D191E9 /* RoomListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 487C0403FCD811A5A3C6AA70 /* RoomListViewController.storyboard */; };
 		487C0CED17CC60EB955C7C01 /* PFRoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0E4C4EE333D6EFAA7215 /* PFRoomAPI.swift */; };
-		487C0CFA3530C31C4D84945E /* CDZoneFeature+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C045F0A2BD579DE153807 /* CDZoneFeature+CoreDataClass.swift */; };
 		487C0E30377A91EDC24DA2BD /* ZoneListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0436148EC05FE2581AC2 /* ZoneListViewController.swift */; };
 		487C0E36EADA87230EAAC067 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C004CEC4297383988FF70 /* LoginViewController.swift */; };
 		487C0E503E431AD787C0F05A /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0D834F81B2B629A69126 /* HomePresenter.swift */; };
@@ -100,8 +90,6 @@
 		13C23BF01FFF912F009D79A9 /* GEnergyOptimizerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GEnergyOptimizerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13C23BF41FFF9130009D79A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13C23BFA1FFF9185009D79A9 /* TestEnergyCalculations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestEnergyCalculations.swift; sourceTree = "<group>"; };
-		13E2E2FE200A3454003F54A4 /* CDPreAudit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDPreAudit+CoreDataClass.swift"; sourceTree = "<group>"; };
-		13E2E2FF200A3454003F54A4 /* CDPreAudit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDPreAudit+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		13E2E300200A3454003F54A4 /* CDFeatureData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDFeatureData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		13E2E301200A3454003F54A4 /* CDFeatureData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDFeatureData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		13F4FCA71FD99924005E808C /* PopEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopEditViewController.swift; sourceTree = "<group>"; };
@@ -118,34 +106,27 @@
 		487C02926DAC42E68D5F059F /* ZonePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZonePresenter.swift; sourceTree = "<group>"; };
 		487C02C5135F34CDA4F2531A /* hvac.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hvac.json; sourceTree = "<group>"; };
 		487C02E0126554B9837987E8 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
-		487C03227842BF37A6ECBE24 /* GEModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GEModel.xcdatamodel; sourceTree = "<group>"; };
 		487C0339D9331C97B1CAD730 /* ZoneListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ZoneListViewController.storyboard; sourceTree = "<group>"; };
 		487C03A2F6887784350EBCCB /* TranslationLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationLayer.swift; sourceTree = "<group>"; };
 		487C03A4D202FD6C8C0DCAB7 /* CDAudit+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDAudit+CoreDataClass.swift"; sourceTree = "<group>"; };
 		487C0403FCD811A5A3C6AA70 /* RoomListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RoomListViewController.storyboard; sourceTree = "<group>"; };
 		487C0436148EC05FE2581AC2 /* ZoneListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneListViewController.swift; sourceTree = "<group>"; };
-		487C045F0A2BD579DE153807 /* CDZoneFeature+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDZoneFeature+CoreDataClass.swift"; sourceTree = "<group>"; };
 		487C046F2324ACBDDD52E289 /* plugload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = plugload.json; sourceTree = "<group>"; };
-		487C0491EA0371FA2218BC03 /* PreAuditPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreAuditPresenter.swift; sourceTree = "<group>"; };
-		487C0576BB8F9CA1FDA04913 /* ZoneFDO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneFDO.swift; sourceTree = "<group>"; };
 		487C066BFB512554E5BB460A /* CDRoom+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDRoom+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		487C06949DEE6E459B24DF35 /* FormFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormFactory.swift; sourceTree = "<group>"; };
 		487C06A0ABFB535F6533D603 /* HomeListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListCell.xib; sourceTree = "<group>"; };
 		487C07623C4CF0D16624DE2B /* FormDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDataModel.swift; sourceTree = "<group>"; };
-		487C07B0EA82F5776353E414 /* CDPreAuditFeature+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDPreAuditFeature+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		487C07C91AE8796EA65944E2 /* RoomListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListViewController.swift; sourceTree = "<group>"; };
 		487C080941112BEE2DFCA5A6 /* ZoneDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneDTO.swift; sourceTree = "<group>"; };
 		487C0853D485C19C3121BC98 /* CoreDataAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataAPI.swift; sourceTree = "<group>"; };
 		487C087930871E54E6748664 /* CDAudit+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDAudit+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		487C09E7BFD390D46EFB6FB0 /* FormBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormBuilder.swift; sourceTree = "<group>"; };
-		487C0A028EA9CB599C74F8C0 /* PreAuditViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PreAuditViewController.storyboard; sourceTree = "<group>"; };
 		487C0A39AC6B004B52564DAC /* preaudit.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = preaudit.json; sourceTree = "<group>"; };
 		487C0A72B41F6A46089909DB /* FactoryHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactoryHelper.swift; sourceTree = "<group>"; };
-		487C0AB5A4F38512C994056A /* PreAuditFDO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreAuditFDO.swift; sourceTree = "<group>"; };
 		487C0ABC563E7E0A7C3C9BA8 /* DataLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataLayer.swift; sourceTree = "<group>"; };
 		487C0ACEA8899C6F74495BAF /* GECalculations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GECalculations.swift; sourceTree = "<group>"; };
 		487C0AD00AFF79848118D6B3 /* PFZoneAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFZoneAPI.swift; sourceTree = "<group>"; };
-		487C0B9291E5CC3B70F776DB /* PreAuditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreAuditViewController.swift; sourceTree = "<group>"; };
+		487C0B30FABF88B4BBCA9B97 /* GEModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GEModel.xcdatamodel; sourceTree = "<group>"; };
 		487C0C4CF6406C592B05CEC4 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		487C0C8AC85C3BD96316E2D9 /* PFAuditAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFAuditAPI.swift; sourceTree = "<group>"; };
 		487C0C8D7C0CD8F8E871A36C /* GEFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GEFormViewController.swift; sourceTree = "<group>"; };
@@ -154,10 +135,9 @@
 		487C0D51983BDBEB57429FBE /* FeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureViewController.swift; sourceTree = "<group>"; };
 		487C0D834F81B2B629A69126 /* HomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		487C0D8958381B7E48757E65 /* ModelLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelLayer.swift; sourceTree = "<group>"; };
-		487C0DEF54A934C9CEDD885C /* CDPreAuditFeature+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDPreAuditFeature+CoreDataClass.swift"; sourceTree = "<group>"; };
 		487C0E4C4EE333D6EFAA7215 /* PFRoomAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFRoomAPI.swift; sourceTree = "<group>"; };
 		487C0E669C84568C8E88B6FD /* RoomPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomPresenter.swift; sourceTree = "<group>"; };
-		487C0EB1E49F5345E3021797 /* CDZoneFeature+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDZoneFeature+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		487C0EA5FE353F7749BA6F8C /* FeaturePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturePresenter.swift; sourceTree = "<group>"; };
 		487C0F0E28D1D0C27B2D8DF2 /* FeatureViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeatureViewController.storyboard; sourceTree = "<group>"; };
 		487C0FA36CFC01D2BB775C77 /* GEStateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GEStateController.swift; sourceTree = "<group>"; };
 		487C0FCA5F1D6B41467DBCAD /* HomeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeListViewController.swift; sourceTree = "<group>"; };
@@ -267,16 +247,6 @@
 			path = Translation;
 			sourceTree = "<group>";
 		};
-		487C010277C139773569CC94 /* PreAudit */ = {
-			isa = PBXGroup;
-			children = (
-				487C0B9291E5CC3B70F776DB /* PreAuditViewController.swift */,
-				487C0A028EA9CB599C74F8C0 /* PreAuditViewController.storyboard */,
-				487C0491EA0371FA2218BC03 /* PreAuditPresenter.swift */,
-			);
-			path = PreAudit;
-			sourceTree = "<group>";
-		};
 		487C01F5FC90E0212CF08B6E /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,6 +279,7 @@
 			children = (
 				487C0F0E28D1D0C27B2D8DF2 /* FeatureViewController.storyboard */,
 				487C0D51983BDBEB57429FBE /* FeatureViewController.swift */,
+				487C0EA5FE353F7749BA6F8C /* FeaturePresenter.swift */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -316,8 +287,6 @@
 		487C05DF8827F337104C6F84 /* Form */ = {
 			isa = PBXGroup;
 			children = (
-				487C0576BB8F9CA1FDA04913 /* ZoneFDO.swift */,
-				487C0AB5A4F38512C994056A /* PreAuditFDO.swift */,
 				487C0BAC889522046325BCCB /* Config */,
 				487C07623C4CF0D16624DE2B /* FormDataModel.swift */,
 			);
@@ -374,21 +343,14 @@
 		487C090808A231BEC1EC6145 /* NSManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
-				13E2E2FE200A3454003F54A4 /* CDPreAudit+CoreDataClass.swift */,
-				13E2E2FF200A3454003F54A4 /* CDPreAudit+CoreDataProperties.swift */,
 				13E2E300200A3454003F54A4 /* CDFeatureData+CoreDataClass.swift */,
 				13E2E301200A3454003F54A4 /* CDFeatureData+CoreDataProperties.swift */,
 				487C066BFB512554E5BB460A /* CDRoom+CoreDataProperties.swift */,
 				487C006036B1A5E29BBBBB79 /* CDZone+CoreDataClass.swift */,
 				487C0CC29DB67E6191A4E1FE /* CDZone+CoreDataProperties.swift */,
 				487C087930871E54E6748664 /* CDAudit+CoreDataProperties.swift */,
-				487C045F0A2BD579DE153807 /* CDZoneFeature+CoreDataClass.swift */,
-				487C0EB1E49F5345E3021797 /* CDZoneFeature+CoreDataProperties.swift */,
 				487C03A4D202FD6C8C0DCAB7 /* CDAudit+CoreDataClass.swift */,
-				487C07B0EA82F5776353E414 /* CDPreAuditFeature+CoreDataProperties.swift */,
-				487C0DEF54A934C9CEDD885C /* CDPreAuditFeature+CoreDataClass.swift */,
 				487C00AAA27BF40E11193B1F /* CDRoom+CoreDataClass.swift */,
-				487C03227842BF37A6ECBE24 /* GEModel.xcdatamodel */,
 			);
 			path = NSManagedObjects;
 			sourceTree = "<group>";
@@ -398,6 +360,7 @@
 			children = (
 				487C090808A231BEC1EC6145 /* NSManagedObjects */,
 				487C0853D485C19C3121BC98 /* CoreDataAPI.swift */,
+				487C0B30FABF88B4BBCA9B97 /* GEModel.xcdatamodel */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -407,7 +370,6 @@
 			children = (
 				487C0F1CD64F054BB8F04D10 /* Audit */,
 				487C01F5FC90E0212CF08B6E /* Home */,
-				487C010277C139773569CC94 /* PreAudit */,
 				487C004CEC4297383988FF70 /* LoginViewController.swift */,
 				487C0C8D7C0CD8F8E871A36C /* GEFormViewController.swift */,
 			);
@@ -593,7 +555,6 @@
 				487C0C838825086E0770A59D /* FeatureViewController.storyboard in Resources */,
 				487C0CCCF0F2E54CD6D191E9 /* RoomListViewController.storyboard in Resources */,
 				487C01FA258D297F629D6C9C /* ZoneListViewController.storyboard in Resources */,
-				487C0BA00C22867F374494F7 /* PreAuditViewController.storyboard in Resources */,
 				487C02892678BC45AF096F1B /* HomeListCell.xib in Resources */,
 				487C03CE29609B28D298703B /* lighting.json in Resources */,
 				487C0A4D069561BD894028D3 /* preaudit.json in Resources */,
@@ -699,9 +660,7 @@
 				487C07B9ACDB3E1C830EA66E /* DataLayer.swift in Sources */,
 				487C019C0D3C363716BA6B56 /* ParseDataModel.swift in Sources */,
 				487C0773AFF050B77B0374E3 /* GECalculations.swift in Sources */,
-				13E2E303200A3454003F54A4 /* CDPreAudit+CoreDataProperties.swift in Sources */,
 				487C03A3082A6110BA557C96 /* Enums.swift in Sources */,
-				487C03CF177C48AA7845A46D /* PreAuditViewController.swift in Sources */,
 				13E2E304200A3454003F54A4 /* CDFeatureData+CoreDataClass.swift in Sources */,
 				487C018F6D5AC4056E24A868 /* FormFactory.swift in Sources */,
 				487C00005D78424CF25339AD /* FormBuilder.swift in Sources */,
@@ -712,8 +671,6 @@
 				487C04748BDB90E7EB1E7B03 /* HomeDTO.swift in Sources */,
 				487C0A8CEF5276FE93C4333C /* RoomDTO.swift in Sources */,
 				487C0ADDE2C3C39DA7A63D23 /* ZoneDTO.swift in Sources */,
-				487C0BCD1A5FF5CD933D5C8F /* ZoneFDO.swift in Sources */,
-				487C02CCC2C93A4ACB31F221 /* PreAuditFDO.swift in Sources */,
 				487C03B6B438672D212C51DC /* FormDataModel.swift in Sources */,
 				487C02AE3BD1F8DEE8D310B9 /* PFAuditAPI.swift in Sources */,
 				487C052060FEF15FE2A76A65 /* PFZoneAPI.swift in Sources */,
@@ -721,12 +678,7 @@
 				487C07CA55227074D34FFA9F /* CDZone+CoreDataClass.swift in Sources */,
 				487C08271D80D022563955CC /* CDZone+CoreDataProperties.swift in Sources */,
 				487C0BF151EE9CF3667008E6 /* CDAudit+CoreDataProperties.swift in Sources */,
-				487C0CFA3530C31C4D84945E /* CDZoneFeature+CoreDataClass.swift in Sources */,
-				487C00E86CBB1F55D7ED9932 /* CDZoneFeature+CoreDataProperties.swift in Sources */,
 				487C0B3ECCB3C8DF1E40F26C /* CDAudit+CoreDataClass.swift in Sources */,
-				487C015FEA4B1CD05CEB7BD0 /* CDPreAuditFeature+CoreDataProperties.swift in Sources */,
-				487C0546AC6748B61A6C770A /* CDPreAuditFeature+CoreDataClass.swift in Sources */,
-				13E2E302200A3454003F54A4 /* CDPreAudit+CoreDataClass.swift in Sources */,
 				487C0A68C9DF4736E834A8F7 /* CDRoom+CoreDataClass.swift in Sources */,
 				487C032E297B6E2BA9FBAEAC /* PFPreAuditAPI.swift in Sources */,
 				487C0CED17CC60EB955C7C01 /* PFRoomAPI.swift in Sources */,
@@ -734,8 +686,8 @@
 				487C05DEA266805FF524BBBF /* ZonePresenter.swift in Sources */,
 				487C0350F97BF238C6584EAC /* RoomPresenter.swift in Sources */,
 				487C094E23AF17E65CEB23A2 /* CoreDataAPI.swift in Sources */,
-				487C0320ABA9E0540BBE0F64 /* PreAuditPresenter.swift in Sources */,
-				487C099DBD49CF3A405F13AE /* GEModel.xcdatamodel in Sources */,
+				487C068B4B5228504614B94E /* GEModel.xcdatamodel in Sources */,
+				487C0C0B6AAD6438E6CF398B /* FeaturePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

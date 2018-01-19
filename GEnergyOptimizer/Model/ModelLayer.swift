@@ -159,7 +159,7 @@ extension ModelLayer {
 
                 switch vc.dataBelongsTo() {
                 case .preaudit: {
-                    guard let fetchResults = audit.hasPreAuditFeature?.allObjects as? [CDPreAudit] else {
+                    guard let fetchResults = audit.hasPreAuditFeature?.allObjects as? [CDFeatureData] else {
                         Log.message(.error, message: "Guard Failed : Fetched Results - PreAudit Data")
                         return
                     }
@@ -176,7 +176,7 @@ extension ModelLayer {
                 }()
                 case .zone: {
                     if let cdZone = state.getActiveCDZone() {
-                        guard let fetchResults = cdZone.hasFeature?.allObjects as? [CDPreAudit] else {
+                        guard let fetchResults = cdZone.hasFeature?.allObjects as? [CDFeatureData] else {
                             Log.message(.error, message: "Guard Failed : Fetched Results - PreAudit Data")
                             return
                         }
@@ -197,7 +197,7 @@ extension ModelLayer {
             }
         }
 
-        func transform(type: String, data: CDPreAudit) -> Any? {
+        func transform(type: String, data: CDFeatureData) -> Any? {
             if let eBaseType = InitEnumMapper.sharedInstance.enumMap[type] as? BaseRowType {
                 switch eBaseType {
                 case .intRow: return (data.value_int as NSNumber?)?.intValue

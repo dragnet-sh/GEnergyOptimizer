@@ -54,6 +54,7 @@ enum EntityType: String {
     case zone = "CDZone"
     case room = "CDRoom"
     case featureData = "CDFeatureData"
+    case none
 }
 
 

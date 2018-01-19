@@ -45,8 +45,9 @@ extension HomeListViewController {
 
     // *** Loading the PreAudit View Controller *** //
     @IBAction func preAuditButtonPressed(_ sender: Any) {
-        let vc = ControllerUtils.fromStoryboard(reference: "PreAuditViewController") as! PreAuditViewController
-        navigationController?.pushViewController(vc, animated: true)
+        let featureViewController = ControllerUtils.fromStoryboard(reference: "FeatureViewController") as! FeatureViewController
+        featureViewController.entityType = EntityType.preaudit
+        navigationController?.pushViewController(featureViewController, animated: true)
     }
 
     // *** Loading the Login View Controller post Logout *** //

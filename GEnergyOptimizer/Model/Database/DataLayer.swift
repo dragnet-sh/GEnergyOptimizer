@@ -66,14 +66,14 @@ class DataLayer {
                     return
                 }
 
-                var tmp = [CDPreAudit]()
+                var tmp = [CDFeatureData]()
                 for (elementId, data) in object.featureData {
                     let formId = elementId
                     let formTitle = String(describing: data[0])
                     let formValue = data[1]
                     let formDataType = data[2] as! String
 
-                    let pa = CDPreAudit(context: managedContext)
+                    let pa = CDFeatureData(context: managedContext)
                     pa.belongsToAudit = audit
                     pa.formId = formId
                     pa.key = formTitle
@@ -112,7 +112,7 @@ class DataLayer {
                     }
 
                     var zoneToSave = [CDZone]()
-                    var zoneFeatureDataToSave = [CDPreAudit]()
+                    var zoneFeatureDataToSave = [CDFeatureData]()
 
                     for pfZone in pfZones {
                         let cdZone = CDZone(context: managedContext)
@@ -133,7 +133,7 @@ class DataLayer {
                             let formValue = data[1]
                             let formDataType = data[2] as! String
 
-                            let pa = CDPreAudit(context: managedContext)
+                            let pa = CDFeatureData(context: managedContext)
                             pa.belongsToZone = cdZone
                             pa.formId = formId
                             pa.key = formTitle

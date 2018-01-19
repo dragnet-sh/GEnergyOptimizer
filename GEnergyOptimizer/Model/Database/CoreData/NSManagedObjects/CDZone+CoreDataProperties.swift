@@ -34,10 +34,10 @@ extension CDZone {
 extension CDZone {
 
     @objc(addHasFeatureObject:)
-    @NSManaged public func addToHasFeature(_ value: CDPreAudit)
+    @NSManaged public func addToHasFeature(_ value: CDFeatureData)
 
     @objc(removeHasFeatureObject:)
-    @NSManaged public func removeFromHasFeature(_ value: CDPreAudit)
+    @NSManaged public func removeFromHasFeature(_ value: CDFeatureData)
 
     @objc(addHasFeature:)
     @NSManaged public func addToHasFeature(_ values: NSSet)

@@ -6,17 +6,16 @@
 import Foundation
 import CleanroomLogger
 
-class PreAuditPresenter {
+class FeaturePresenter {
     var data = Dictionary<String, Any?>()
     fileprivate var modelLayer = ModelLayer()
     fileprivate var state = GEStateController.sharedInstance
 }
 
-extension PreAuditPresenter {
+extension FeaturePresenter {
     func loadData(vc: GEFormViewController) {
         modelLayer.loadPreAudit(vc: vc) { source, data in
             self.data = data
-            NotificationCenter.default.post(name: .loadPreAuditForm, object: nil)
             NotificationCenter.default.post(name: .loadFeatureDataForm, object: nil)
         }
     }

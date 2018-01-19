@@ -24,10 +24,8 @@ class GEStateController {
 
     // *** Core Data Objects *** //
     fileprivate var cdAudit: CDAudit?
-    fileprivate var cdPreAudit: CDPreAudit?
     fileprivate var cdRoom: [CDRoom]?
     fileprivate var cdZone: CDZone?
-    fileprivate var cdZoneFeature: [CDZoneFeature]?
 
     // *** Parse Data Objects *** //
     fileprivate var pfAudit: PFAudit?

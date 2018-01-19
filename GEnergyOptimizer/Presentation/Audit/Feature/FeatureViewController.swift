@@ -12,7 +12,8 @@ import Eureka
 
 class FeatureViewController: GEFormViewController {
 
-    let presenter = PreAuditPresenter()
+    let presenter = FeaturePresenter()
+    var entityType: EntityType?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +38,19 @@ class FeatureViewController: GEFormViewController {
     }
 
     override func dataBelongsTo() -> EntityType {
-        return EntityType.zone
+        if let entityType = entityType {
+            return entityType
+        } else { return EntityType.none}
     }
 
     override func getBundleResource() -> String! {
-        return presenter.getActiveZone().lowercased()
+        if let entityType = entityType {
+            switch entityType {
+            case .preaudit: return FileResource.preaudit.rawValue
+            case .zone: return presenter.getActiveZone().lowercased()
+            default: Log.message(.error, message: "Unknown Entity Type"); return EntityType.none.rawValue
+            }
+        } else { return EntityType.none.rawValue }
     }
 }
 
