@@ -14,7 +14,6 @@ import Toaster
 class PreAuditViewController: GEFormViewController {
 
     let resource = FileResource.preaudit.rawValue
-    let state = GEStateController.sharedInstance
     let presenter = PreAuditPresenter()
 
     override func viewDidLoad() {
