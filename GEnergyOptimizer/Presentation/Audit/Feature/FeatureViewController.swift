@@ -13,6 +13,7 @@ import Eureka
 class FeatureViewController: GEFormViewController {
 
     let presenter = FeaturePresenter()
+    //Note: Entity Type is to be set as a delegate.
     var entityType: EntityType?
 
     override func viewDidLoad() {
@@ -40,7 +41,7 @@ class FeatureViewController: GEFormViewController {
     override func dataBelongsTo() -> EntityType {
         if let entityType = entityType {
             return entityType
-        } else { return EntityType.none}
+        } else { Log.message(.error, message: "Entity Type : None"); return EntityType.none }
     }
 
     override func getBundleResource() -> String! {
@@ -48,15 +49,14 @@ class FeatureViewController: GEFormViewController {
             switch entityType {
             case .preaudit: return FileResource.preaudit.rawValue
             case .zone: return presenter.getActiveZone().lowercased()
-            default: Log.message(.error, message: "Unknown Entity Type"); return EntityType.none.rawValue
+            default: Log.message(.error, message: "Entity Type : None"); return EntityType.none.rawValue
             }
-        } else { return EntityType.none.rawValue }
+        } else { Log.message(.error, message: "Entity Type : None"); return EntityType.none.rawValue }
     }
 }
 
 
 //Mark: - Save | Load Form Data
-
 extension FeatureViewController {
     @objc func loadFeatureDataForm() {
         self.loadFormData()

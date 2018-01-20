@@ -9,8 +9,8 @@
           "param": "Name",
           "data-type": "pickerinputrow",
           "validation": "",
-          "default-values": "Ted, Mike, Miller, Mosses",
-          "id": "d44852e0-9e6e-4606-8abe-6dec790e1b83"
+          "default-values": "Anthony, Ron, Johnny, Eli",
+          "id": "d12eac15-e623-4dc4-9818-cf69c8c5917d"
         },
         {
           "index": 2,
@@ -18,7 +18,7 @@
           "data-type": "emailrow",
           "validation": "",
           "default-values": "",
-          "id": "fdcdf4cf-17e6-4160-9242-23f87c678c4c"
+          "id": "e56ca5b7-892e-4a95-b099-a09018dceac1"
         },
         {
           "index": 3,
@@ -26,10 +26,10 @@
           "data-type": "phonerow",
           "validation": "",
           "default-values": "",
-          "id": "8d022ff6-f99f-4257-9a10-e002c0855578"
+          "id": "68ab6b03-8429-4ba8-ae2c-3a6aecfa4849"
         }
       ],
-      "id": "a800a9fc-ef5a-4e9e-b9ec-3fec66e58814"
+      "id": "e6cbe5b6-35df-47a1-bf26-0fe92fb6c303"
     },
     {
       "index": 5,
@@ -41,7 +41,7 @@
           "data-type": "textrow",
           "validation": "",
           "default-values": "",
-          "id": "5f1d9fce-e4cb-4d78-928d-bbe7aefba84d"
+          "id": "6d58173e-eee0-4b0d-b7d8-85098bab77a8"
         },
         {
           "index": 6,
@@ -49,7 +49,7 @@
           "data-type": "textrow",
           "validation": "",
           "default-values": "",
-          "id": "e0cc266e-89a2-45ff-8fbb-820025b6f733"
+          "id": "f233ed0e-ba0a-4fe4-b45a-532fb025b310"
         },
         {
           "index": 7,
@@ -57,7 +57,7 @@
           "data-type": "emailrow",
           "validation": "",
           "default-values": "",
-          "id": "a9988551-607d-4912-92b7-6b2f3bdb49e7"
+          "id": "8c6bfa5c-cf7b-4d8b-b140-43758d557fc4"
         },
         {
           "index": 8,
@@ -65,7 +65,7 @@
           "data-type": "phonerow",
           "validation": "",
           "default-values": "",
-          "id": "4f94431f-8d50-4227-9bc0-b75ff770852c"
+          "id": "335ee318-19a2-4f59-98b4-f6dbeaa84ded"
         },
         {
           "index": 9,
@@ -73,10 +73,10 @@
           "data-type": "textrow",
           "validation": "",
           "default-values": "",
-          "id": "22f1ac77-c926-4d54-95b9-451342053a55"
+          "id": "f66d70e3-52e1-42bd-86ae-8991ce839abf"
         }
       ],
-      "id": "e399f54c-cf86-4e7d-9eb1-5ce167effde5"
+      "id": "200602a7-1c3a-4585-8314-5448b80187bf"
     },
     {
       "index": 11,
@@ -88,10 +88,10 @@
           "data-type": "textarearow",
           "validation": "",
           "default-values": "",
-          "id": "51064e8e-3b92-4847-b508-2c281e83193b"
+          "id": "e9ed7580-1b69-4494-8cbb-119326b95639"
         }
       ],
-      "id": "55a2468b-f9f8-40ff-a180-4e589c5d31e1"
+      "id": "87e3db94-7c9d-446e-8b43-ece552ca80a4"
     },
     {
       "index": 13,
@@ -103,7 +103,7 @@
           "data-type": "textrow",
           "validation": "",
           "default-values": "",
-          "id": "d7ca64f9-b509-479d-81bc-5fe4083e3c6b"
+          "id": "bc7a1a44-66f7-457c-8fc9-5b689f3de83f"
         },
         {
           "index": 14,
@@ -111,7 +111,7 @@
           "data-type": "textrow",
           "validation": "",
           "default-values": "",
-          "id": "d208ea50-e9ef-4531-b780-bd761808eee5"
+          "id": "6c5094aa-1911-4526-ae38-a1f91584f363"
         },
         {
           "index": 15,
@@ -119,7 +119,7 @@
           "data-type": "emailrow",
           "validation": "",
           "default-values": "",
-          "id": "bd997260-32ac-4a3f-9d53-05eb4f52f7b2"
+          "id": "c10a19cd-63a9-41ec-b35b-0d0384aa0ed3"
         },
         {
           "index": 16,
@@ -127,10 +127,10 @@
           "data-type": "phonerow",
           "validation": "",
           "default-values": "",
-          "id": "f471b53e-45d5-4b77-baa6-d3c5b6eec3e1"
+          "id": "0f95b86c-93c6-42b0-b9a8-9240409ae657"
         }
       ],
-      "id": "e3fbfd0e-bfc5-41c3-b1a4-42285466370d"
+      "id": "06893802-5f1b-493c-a116-71586bfc5c4a"
     },
     {
       "index": 18,
@@ -138,53 +138,217 @@
       "elements": [
         {
           "index": 18,
-          "param": "Operating Hours Per Day",
-          "data-type": "decimalrow",
-          "validation": "",
-          "default-values": "",
-          "id": "8be35fed-fcbf-403a-9af9-d328b95357f4"
-        },
-        {
-          "index": 19,
-          "param": "Number of Vacation Days",
+          "param": "Number of Vacation days",
           "data-type": "introw",
           "validation": "",
           "default-values": "",
-          "id": "d0b0ee55-6859-4346-adc6-2178a8119264"
-        }
-      ],
-      "id": "24cd8095-8b74-489f-8c55-dec8314c7d4e"
-    },
-    {
-      "index": 21,
-      "section": "Sample Section",
-      "elements": [
+          "id": "9522072b-74b3-40cc-b61f-90b38b9bcbf6"
+        },
         {
-          "index": 21,
-          "param": "Param_1",
-          "data-type": "textrow",
+          "index": 19,
+          "param": "Monday Operating Hours",
+          "data-type": "decimalrow",
           "validation": "",
           "default-values": "",
-          "id": "892141a7-e914-4afb-a00c-60b5f7969ab6"
+          "id": "058cd431-2ab9-4227-aa85-396a436cb94f"
+        },
+        {
+          "index": 20,
+          "param": "Tuesday Operating Hours",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "5a4ef21d-d27d-4d4d-82f6-94b2d8021435"
+        },
+        {
+          "index": 21,
+          "param": "Wednesday Operating Hours",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "1970ec3e-3a75-424c-b9e3-09fc13a13705"
         },
         {
           "index": 22,
-          "param": "Param_2",
-          "data-type": "phonerow",
+          "param": "Thursday Operating Hours",
+          "data-type": "decimalrow",
           "validation": "",
           "default-values": "",
-          "id": "809fbd8b-334c-41ad-8320-201a6f09698b"
+          "id": "76890044-37a3-40f5-8cad-f46489341924"
         },
         {
           "index": 23,
-          "param": "Param_3",
-          "data-type": "pickerinputrow",
+          "param": "Friday Operating Hours",
+          "data-type": "decimalrow",
           "validation": "",
-          "default-values": "option_1,option_2,option_3,option_4",
-          "id": "158650c0-f3df-4a9c-9c3d-70989d272f7c"
+          "default-values": "",
+          "id": "9699a2bd-51c8-444d-8250-197c15374ca5"
+        },
+        {
+          "index": 24,
+          "param": "Saturday Operating Hours",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "0bc8abdb-f385-48de-ac0d-42628fc0512c"
+        },
+        {
+          "index": 25,
+          "param": "Sunday Operating Hours",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "4d6afa16-955b-47e4-a53a-e6c25866b7c8"
         }
       ],
-      "id": "073a6593-afbb-4f82-a028-19f8cdf89210"
+      "id": "009b6064-6237-4317-b672-a45dc8a5ba8f"
+    },
+    {
+      "index": 27,
+      "section": "Area",
+      "elements": [
+        {
+          "index": 27,
+          "param": "Total",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "20c5b365-7028-4604-8639-448c1da5e45d"
+        }
+      ],
+      "id": "60377ad3-9e67-431c-b3f9-9db63e0adbbd"
+    },
+    {
+      "index": 29,
+      "section": "Age",
+      "elements": [
+        {
+          "index": 29,
+          "param": "Building Year",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "ba6db147-aecb-4687-86a0-fe559bdf1a27"
+        },
+        {
+          "index": 30,
+          "param": "Lighting Year",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "4877e33e-dbae-43c8-a988-ea4fd00bf189"
+        },
+        {
+          "index": 31,
+          "param": "HVAC Year",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "5f257127-2fa6-42fb-82ec-b487f8ebf105"
+        },
+        {
+          "index": 32,
+          "param": "Kitchen Equipment",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "7fbb2311-3c78-46c2-b096-683fde9890b0"
+        }
+      ],
+      "id": "998210fb-1bec-4acd-9f69-867f0ca20b51"
+    },
+    {
+      "index": 34,
+      "section": "Maintenace Interval",
+      "elements": [
+        {
+          "index": 34,
+          "param": "Lighting",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "cc085b2e-106c-4ce7-a62b-fdbcea9e6ad9"
+        },
+        {
+          "index": 35,
+          "param": "HVAC",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "3826d2ea-f04b-4de9-8961-e99da7a8efe5"
+        },
+        {
+          "index": 36,
+          "param": "Kitchen Equipment",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "c8de41f2-71a9-4b09-92b1-7428e82a0fac"
+        }
+      ],
+      "id": "61d848af-9e63-4d5d-8bcc-c9afdf673feb"
+    },
+    {
+      "index": 38,
+      "section": "Others",
+      "elements": [
+        {
+          "index": 38,
+          "param": "Facility Type",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "d5536942-78f8-44b9-baae-ac9a83a77b98"
+        },
+        {
+          "index": 39,
+          "param": "Utility Company",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "PGE",
+          "id": "65ab48cb-b4c1-45dc-b4dd-9e260b523f4f"
+        },
+        {
+          "index": 40,
+          "param": "Gas Rate Structure",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "G-NR1",
+          "id": "a44e68ed-01a6-48c4-bbc3-d3fa769d3512"
+        },
+        {
+          "index": 41,
+          "param": "Electric Rate Structure",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "A-1, A-1 TOU, A-6 TOU, A-10, A-10 TOU, E-19 TOU",
+          "id": "0cc45406-82f8-428f-92f2-bb399b99d1d7"
+        }
+      ],
+      "id": "620115f0-c664-47d1-b819-325da9f0650d"
+    },
+    {
+      "index": 43,
+      "section": "Additions",
+      "elements": [
+        {
+          "index": 43,
+          "param": "Where is your package unit",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "f33611b6-2231-41d3-8924-026f1ae69bc0"
+        },
+        {
+          "index": 44,
+          "param": "Are you able to provide access to all areas including the roof?",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "Yes, No",
+          "id": "53d5bd14-ab81-486c-ad3f-6f9f87c2d5f9"
+        }
+      ],
+      "id": "014a100e-aa6d-42f7-a710-1f595628222a"
     }
   ]
 }

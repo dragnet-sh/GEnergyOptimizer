@@ -46,6 +46,8 @@ class DataLayer {
         }
 
         let managedContext = persistentContainer.viewContext
+        //ToDo: Alternative to not wipe out the complete data state - Incremental Sync
+        //ToDo: What if there were some residual data that was not being synced earlier due to Network Failure
         if let copy = coreDataAPI.getAudit(id: auditIdentifier) {
             Log.message(.info, message: "Deleting Older Copy - Core Data - Audit")
             managedContext.delete(copy)
@@ -66,28 +68,28 @@ class DataLayer {
                     return
                 }
 
-                var tmp = [CDFeatureData]()
+                var featureDataToSave = [CDFeatureData]()
                 for (elementId, data) in object.featureData {
                     let formId = elementId
                     let formTitle = String(describing: data[0])
                     let formValue = data[1]
                     let formDataType = data[2] as! String
 
-                    let pa = CDFeatureData(context: managedContext)
-                    pa.belongsToAudit = audit
-                    pa.formId = formId
-                    pa.key = formTitle
-                    pa.dataType = formDataType
+                    let preAudit = CDFeatureData(context: managedContext)
+                    preAudit.belongsToAudit = audit
+                    preAudit.formId = formId
+                    preAudit.key = formTitle
+                    preAudit.dataType = formDataType
 
                     if let eBaseType = InitEnumMapper.sharedInstance.enumMap[formDataType] as? BaseRowType {
                         switch eBaseType {
-                        case .intRow: pa.value_int = (formValue as! NSNumber).int64Value
-                        case .decimalRow: pa.value_double = formValue as! Double
-                        default: pa.value_string = String(describing: formValue)
+                        case .intRow: preAudit.value_int = (formValue as! NSNumber).int64Value
+                        case .decimalRow: preAudit.value_double = formValue as! Double
+                        default: preAudit.value_string = String(describing: formValue)
                         }
                     }
 
-                    tmp.append(pa)
+                    featureDataToSave.append(preAudit)
                 }
 
                 try! managedContext.save()
@@ -112,7 +114,7 @@ class DataLayer {
                     }
 
                     var zoneToSave = [CDZone]()
-                    var zoneFeatureDataToSave = [CDFeatureData]()
+                    var featureDataToSave = [CDFeatureData]()
 
                     for pfZone in pfZones {
                         let cdZone = CDZone(context: managedContext)
@@ -133,21 +135,21 @@ class DataLayer {
                             let formValue = data[1]
                             let formDataType = data[2] as! String
 
-                            let pa = CDFeatureData(context: managedContext)
-                            pa.belongsToZone = cdZone
-                            pa.formId = formId
-                            pa.key = formTitle
-                            pa.dataType = formDataType
+                            let zone = CDFeatureData(context: managedContext)
+                            zone.belongsToZone = cdZone
+                            zone.formId = formId
+                            zone.key = formTitle
+                            zone.dataType = formDataType
 
                             if let eBaseType = InitEnumMapper.sharedInstance.enumMap[formDataType] as? BaseRowType {
                                 switch eBaseType {
-                                case .intRow: pa.value_int = (formValue as! NSNumber).int64Value
-                                case .decimalRow: pa.value_double = formValue as! Double
-                                default: pa.value_string = String(describing: formValue)
+                                case .intRow: zone.value_int = (formValue as! NSNumber).int64Value
+                                case .decimalRow: zone.value_double = formValue as! Double
+                                default: zone.value_string = String(describing: formValue)
                                 }
                             }
 
-                            zoneFeatureDataToSave.append(pa)
+                            featureDataToSave.append(zone)
                         }
                     }
 
