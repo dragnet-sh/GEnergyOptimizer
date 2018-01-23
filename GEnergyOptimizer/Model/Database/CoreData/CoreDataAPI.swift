@@ -79,7 +79,7 @@ class CoreDataAPI {
         zone.name = name
         zone.createdAt = NSDate()
         zone.belongsToAudit = cdAudit
-        zone.uuid = UUID().uuidString
+        zone.guid = UUID().uuidString
 
         do {
             try managedContext.save()
@@ -90,10 +90,11 @@ class CoreDataAPI {
         }
     }
 
-    func getPreAudit(type: EntityType, finished: @escaping (Result<[CDFeatureData]>)->Void) {
-
+    func getFeatureData(type: EntityType, finished: @escaping (Result<[CDFeatureData]>)->Void) {
+        Log.message(.info, message: "Core Data : Fetch Feature Data")
         switch type {
         case .preaudit: {
+            Log.message(.info, message: "Core Data : PreAudit - Feature Data")
             if let identifier = self.state.getIdentifier() {
                 if let audit = getAudit(id: identifier) {
                     guard let preAudit = audit.hasPreAuditFeature?.allObjects as? [CDFeatureData] else {
@@ -106,6 +107,7 @@ class CoreDataAPI {
             }
         }()
         case .zone: {
+            Log.message(.info, message: "Core Data : Zone - Feature Data")
             if let activeZone = self.state.getActiveCDZone() {
                 guard let zone = activeZone.hasFeature?.allObjects as? [CDFeatureData] else {
                     Log.message(.error, message: "Guard Failed : Fetched Results - PreAudit Data - ZONE")
@@ -120,10 +122,12 @@ class CoreDataAPI {
     }
 
     func saveFeatureData(data: [String: Any?], model: GEnergyFormModel, vc: GEFormViewController, finished: @escaping (Result<[CDFeatureData]>)->Void) {
-        let preAudit = getPreAudit(type: vc.dataBelongsTo()) { result in
+        Log.message(.info, message: "Core Data : Save Feature Data")
+        let preAudit = self.getFeatureData(type: vc.dataBelongsTo()) { result in
             switch result {
+                //Note: Deleting the previous set of Feature Data and saving the fresh one from the Form
                 case .Success(let data): data.forEach { cdPreAudit in self.managedContext.delete(cdPreAudit) }
-                case .Error(let message): return
+                case .Error(let message): Log.message(.error, message: "Core Data : Unable to Get Feature Data"); return
             }
         }
 
@@ -132,7 +136,7 @@ class CoreDataAPI {
             return
         }
 
-        if let audit = state.getCDAudit() {
+        if let audit = self.state.getCDAudit() {
 
             var preAudit = [CDFeatureData]()
 
@@ -145,8 +149,11 @@ class CoreDataAPI {
 
                             let pa = CDFeatureData(context: self.managedContext)
                             pa.formId = formId
-                            pa.dataType = dataType
+                            pa.type = dataType
                             pa.key = label
+                            pa.createdAt = NSDate()
+                            pa.updatedAt = NSDate()
+                            pa.sync = false
 
                             switch vc.dataBelongsTo() {
                             case .preaudit: pa.belongsToAudit = audit
@@ -173,7 +180,7 @@ class CoreDataAPI {
                     }
                 }
 
-                try managedContext.save()
+                try self.managedContext.save()
                 finished(.Success(preAudit))
             } catch let error as NSError {
                 Log.message(.error, message: error.userInfo.debugDescription)

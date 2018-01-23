@@ -37,20 +37,24 @@ class PFAuditAPI  {
         }
     }
 
-    func get(id: String, complete: @escaping (Bool, PFObject?)->Void) {
+    func get(id: String, complete: @escaping (Bool, PFObject?, GError?)->Void) {
         Log.message(.info, message: "Parse - Querying Audit Object for ID : \(id)")
         if let query = PFAudit.query() {
-
-            var status = false
             query.whereKey("identifier", equalTo: id)
             query.getFirstObjectInBackground { object, error in
                 if (error == nil) {
-                    status = true
                     Log.message(.info, message: "Parse - AuditDTO Query - No Errors")
+                    complete(true, object, nil)
                 } else {
                     Log.message(.error, message: error.debugDescription)
+                    if let error = error as? NSError {
+                        if (error.code == 100) {
+                            complete(false, object, .noNetwork)
+                        } else {
+                            complete(false, object, .none)
+                        }
+                    }
                 }
-                complete(status, object)
             }
         }
     }
@@ -61,6 +65,7 @@ class PFAuditAPI  {
                 Log.message(.info, message: "Parse - PFAudit Data Saved : Successful")
                 complete(true)
             } else {
+                //ToDo : Exception handling for Code - 100 - Could not connect to the server
                 Log.message(.error, message: error.debugDescription)
                 complete(false)
             }

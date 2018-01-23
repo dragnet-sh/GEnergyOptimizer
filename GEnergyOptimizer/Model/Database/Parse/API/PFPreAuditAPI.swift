@@ -48,6 +48,7 @@ class PFPreAuditAPI {
                 complete(true)
                 Log.message(.info, message: "Parse - PFPreAudit Data Saved : Successful")
             } else {
+                // ToDo : Handle Error Code 100 - Could not connect to the server
                 complete(false)
                 Log.message(.error, message: error.debugDescription)
             }

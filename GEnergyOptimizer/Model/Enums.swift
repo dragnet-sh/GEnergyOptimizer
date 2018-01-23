@@ -62,3 +62,8 @@ enum CellIdentifiers: String {
     case room = "roomListCell"
     case zone = "zoneListCell"
 }
+
+enum GError: Error {
+    case noNetwork
+    case none
+}

@@ -43,6 +43,7 @@ extension StateController {
     // *** Access Point *** //
 
     public func getIdentifier() -> String? {
+        Log.message(.info, message: "State : Get Identifier")
         guard let identifier = self.auditIdentifier else {
             Log.message(.error, message: "Audit Identifier Not Set")
             return nil
@@ -52,6 +53,7 @@ extension StateController {
     }
 
     public func getPFAudit() -> PFAudit? {
+        Log.message(.info, message: "State : Get PFAudit")
         guard let pfAudit = self.pfAudit else {
             Log.message(.error, message: "PFAudit Not Set")
             return nil
@@ -61,6 +63,7 @@ extension StateController {
     }
 
     public func getCDAudit() -> CDAudit? {
+        Log.message(.info, message: "State : Get CDAudit")
         guard let cdAudit = self.cdAudit else {
             Log.message(.error, message: "CDAudit Not Set")
             return nil
@@ -70,6 +73,7 @@ extension StateController {
     }
 
     public func getActiveCDZone() -> CDZone? {
+        Log.message(.info, message: "State : Get Active CDZone")
         guard let cdZone = self.cdZone else {
             Log.message(.error, message: "CDZone Not Set")
             return nil
@@ -79,6 +83,7 @@ extension StateController {
     }
 
     public func getActiveZone() -> String? {
+        Log.message(.info, message: "State : Get Active Zone")
         guard let zone = self.activeZone else {
             Log.message(.error, message: "Zone Not Set")
             return nil
@@ -87,8 +92,9 @@ extension StateController {
         return zone
     }
 
-    public func getLinkedPFZone(uuid: String) -> PFZone? {
-        return crosswalk[uuid]
+    public func getLinkedPFZone(guid: String) -> PFZone? {
+        Log.message(.info, message: "State : Get Linked PFZone via GUID Map")
+        return crosswalk[guid]
     }
 
     // *** Global Registration *** //
@@ -123,8 +129,8 @@ extension StateController {
         self.cdZone = cdZone
     }
 
-    public func registerCrosswalk(uuid: String, pfZone: PFZone) {
+    public func registerCrosswalk(guid: String, pfZone: PFZone) {
         Log.message(.info, message: "Register : Crosswalk")
-        self.crosswalk[uuid] = pfZone
+        self.crosswalk[guid] = pfZone
     }
 }

@@ -1,0 +1,42 @@
+solid_door_freezers_retrofits,,,,,,,,,
+da39a3ee5e,7a1994999d,b039698805,5bd8664d0d,4645d0c664,565d0ed318,87b186df78,a7da1edf3a,0556753e18,d96159ff30
+,Company,Model Number,Style Type,Total Volume (cu. ft.),Daily Energy Use (kWh),Rebate (per unit),PG&E Measure Code,Purchase Price per unit,Vendor
+griddles_retrofits,,,,,,,,,,,,,,,,
+da39a3ee5e,7a1994999d,b039698805,6f2e407abb,3917cc63a2,2437d85f94,c5ac8cbc99,df83f2b60b,c5ace0d5ca,df83f2b60b,c5ace0d5ca,70d4098400,af6990d46c,87b186df78,a7da1edf3a,0556753e18,d96159ff30
+,Company,Model Number,Single or Double Sided,Fuel Type,Nominal Width (ft),Surface Area (ft²),Gas (Btu),Electric (Wh),Gas (Btu),Electric (Wh),Energy Efficiency (%),Production Capacity (lbs/h),Rebate (per unit),PG&E Measure Code,Purchase Price per unit,Vendor
+glass_door_refrig_retrofits,,,,,,,,,
+da39a3ee5e,7a1994999d,b039698805,5bd8664d0d,4645d0c664,565d0ed318,87b186df78,a7da1edf3a,0556753e18,d96159ff30
+,Company,Model Number,Style Type,Total Volume (cu. ft.),Daily Energy Use (kWh),Rebate (per unit),PG&E Measure Code,Purchase Price per unit,Vendor
+convection_ovens_retrofits,,,,,,,,,,,,,,,
+da39a3ee5e,7a1994999d,b039698805,27aa674794,616b54fd61,3917cc63a2,46a4225621,4a6e425f93,a332c0e873,70d4098400,af6990d46c,24848d2440,e18a327930,a7da1edf3a,0556753e18,d96159ff30
+,Company,Model Number,Oven Size,Test Pan Capacity,Fuel Type,Rated Energy Input Rate (Btu or kWh),Preheat Energy (Btu or kWh),Idle Energy Rate (Btu/h or kW),Energy Efficiency (%),Production Capacity (lbs/h),Fan/Control Energy (kW),Rebate (per cavity),PG&E Measure Code,Purchase Price per unit,Vendor
+hfc_retrofits,,,,,,,,,
+da39a3ee5e,7a1994999d,b039698805,b7152342a2,f50ffe08e6,e1c2333997,87b186df78,a7da1edf3a,0556753e18,d96159ff30
+,Company,Model Number,Size,Cabinet Volume (cu. ft.),Idle Energy Rate (Watts/cu. ft.),Rebate (per unit),PG&E Measure Code,Purchase Price per unit,Vendor
+ice_makers_retrofits,,,,,,,,,,
+da39a3ee5e,7a1994999d,f7f2814385,b039698805,e73ceb4fad,f26ef202ba,1a66224a02,87b186df78,a7da1edf3a,0556753e18,d96159ff30
+,Company,Machine Type,Model Number,Ice Type,Ice Harvest Rate (lbs/day),Energy Use Rate (kWh/100 lbs),Rebate (per unit),PG&E Measure Code,Purchase Price per unit,Vendor
+conveyor_ovens_retrofits,,,,,,,,,,,,,,
+da39a3ee5e,7a1994999d,78a99e3c27,b039698805,b704a135af,3917cc63a2,d598cfb451,731b33ec2b,70d4098400,af6990d46c,d24fa043e5,ed74e67aeb,a7da1edf3a,0556753e18,d96159ff30
+,Company,Model Name,Model Number,Conveyor Width (in),Fuel Type,Preheat Energy (Btu),Idle Rate (Btu/h),Energy Efficiency (%),Production Capacity (lbs/h),Fan/Control Energy Rate (kW),Rebate (per oven),PG&E Measure Code,Purchase Price per unit,Vendor
+rack_ovens_retrofits,,,,,,,,,,,,,
+da39a3ee5e,7a1994999d,b039698805,b7152342a2,3917cc63a2,d598cfb451,a332c0e873,70d4098400,af6990d46c,d24fa043e5,ed74e67aeb,a7da1edf3a,0556753e18,d96159ff30
+,Company,Model Number,Size,Fuel Type,Preheat Energy (Btu),Idle Energy Rate (Btu/h or kW),Energy Efficiency (%),Production Capacity (lbs/h),Fan/Control Energy Rate (kW),Rebate (per oven),PG&E Measure Code,Purchase Price per unit,Vendor
+fryers_retrofits,,,,,,,,,,,,,
+da39a3ee5e,7a1994999d,b039698805,d1ce18617b,ed47b74a2a,3917cc63a2,4a6e425f93,a332c0e873,70d4098400,af6990d46c,f260cf5a07,a7da1edf3a,0556753e18,d96159ff30
+,Company,Model Number,Vat Width,Shortening Capacity (lb),Fuel Type,Preheat Energy (Btu or kWh),Idle Energy Rate (Btu/h or kW),Energy Efficiency (%),Production Capacity (lbs/h),Rebate (per vat),PG&E Measure Code,Purchase Price per unit,Vendor
+combination_ovens_retrofits,,,,,,,,,,,,,,,,,
+da39a3ee5e,7a1994999d,b039698805,689ab27a20,3917cc63a2,4a6e425f93,d9064ff6b4,70d4098400,af6990d46c,188a9bc220,d9064ff6b4,70d4098400,af6990d46c,188a9bc220,ed74e67aeb,a7da1edf3a,0556753e18,d96159ff30
+,Company,Model Number,Size (Steam Pans),Fuel Type,Preheat Energy (Btu or kWh),Idle Rate (Btu/h or kW),Energy Efficiency (%),Production Capacity (lbs/h),Cooking Water Use (gph),Idle Rate (Btu/h or kW),Energy Efficiency (%),Production Capacity (lbs/h),Cooking Water Use (gph),Rebate (per oven),PG&E Measure Code,Purchase Price per unit,Vendor
+dishwashers_2017,,,,,,,,
+da39a3ee5e,7a1994999d,b039698805,3deb745651,44b412d15e,e4e35a21f4,d515e3818e,87b186df78,a7da1edf3a
+,Company,Model Number,Type,Sanitation Method,Idle Energy Rate (kW),Water Consumption (gal/rack),Rebate (per unit),PG&E Measure Code
+solid_door_refrig_retrofits,,,,,,,,,
+da39a3ee5e,7a1994999d,b039698805,5bd8664d0d,4645d0c664,565d0ed318,87b186df78,a7da1edf3a,0556753e18,d96159ff30
+,Company,Model Number,Style Type,Total Volume (cu. ft.),Daily Energy Use (kWh),Rebate (per unit),PG&E Measure Code,Purchase Price per unit,Vendor
+pre-rinse_valves_2017,,,,,
+da39a3ee5e,8599f5cc48,b039698805,8eff95f380,7f60eae146,a7da1edf3a
+,Company Name,Model Number,Flow Rate (GPM),Rebate,PG&E Measure Code
+steam_cookers_retrofits,,,,,,,,,,,,,,
+da39a3ee5e,7a1994999d,b039698805,c8976542ca,b5072e07e4,3917cc63a2,4a6e425f93,a332c0e873,70d4098400,83f06bba5b,7d03e24244,adb0c8c651,a7da1edf3a,0556753e18,d96159ff30
+,Company,Model Number,Steamer Type,Pan Capacity,Fuel Type,Preheat Energy (Btu or kWh),Idle Energy Rate (Btu/h or kW),Energy Efficiency (%),Production Capacity (lb/h),Water Use (gph),Rebate (per compartment),PG&E Measure Code,Purchase Price per unit,Vendor

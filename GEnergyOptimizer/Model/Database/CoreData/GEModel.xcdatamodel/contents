@@ -2,10 +2,11 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17C88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="CDAudit" representedClassName="CDAudit" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="syncStatus" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sync" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="hasPreAuditFeature" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDFeatureData" inverseName="belongsToAudit" inverseEntity="CDFeatureData" syncable="YES"/>
         <relationship name="hasRoom" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDRoom" inverseName="belongsToAudit" inverseEntity="CDRoom" syncable="YES"/>
@@ -13,11 +14,11 @@
     </entity>
     <entity name="CDFeatureData" representedClassName="CDFeatureData" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="dataType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="formId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="key" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="syncStatus" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sync" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="value_double" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="value_int" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -27,29 +28,30 @@
     </entity>
     <entity name="CDRoom" representedClassName="CDRoom" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="syncStatus" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sync" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="belongsToAudit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDAudit" inverseName="hasRoom" inverseEntity="CDAudit" syncable="YES"/>
         <relationship name="belongsToZone" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDZone" inverseName="hasRoom" inverseEntity="CDZone" syncable="YES"/>
     </entity>
     <entity name="CDZone" representedClassName="CDZone" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="objectId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="syncStatus" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="sync" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="uuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="belongsToAudit" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDAudit" inverseName="hasZone" inverseEntity="CDAudit" syncable="YES"/>
         <relationship name="hasFeature" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDFeatureData" inverseName="belongsToZone" inverseEntity="CDFeatureData" syncable="YES"/>
         <relationship name="hasRoom" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDRoom" inverseName="belongsToZone" inverseEntity="CDRoom" syncable="YES"/>
     </entity>
     <elements>
-        <element name="CDAudit" positionX="-27" positionY="-610" width="128" height="178"/>
+        <element name="CDAudit" positionX="-27" positionY="-610" width="128" height="195"/>
         <element name="CDFeatureData" positionX="-486" positionY="-522" width="128" height="225"/>
-        <element name="CDRoom" positionX="-45" positionY="189" width="128" height="148"/>
-        <element name="CDZone" positionX="-270" positionY="-282" width="128" height="193"/>
+        <element name="CDRoom" positionX="-45" positionY="189" width="128" height="165"/>
+        <element name="CDZone" positionX="-270" positionY="-282" width="128" height="195"/>
     </elements>
 </model>

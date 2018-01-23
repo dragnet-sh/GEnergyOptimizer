@@ -115,7 +115,7 @@ extension ModelLayer {
         coreDataAPI.createZone(type: type, name: name) { result in
             switch result {
             case .Success(let data): self.pfZoneAPI.initialize(name: name, type: type) { status, pfZone in
-                self.state.registerCrosswalk(uuid: data.uuid!, pfZone: pfZone)
+                self.state.registerCrosswalk(guid: data.guid!, pfZone: pfZone)
                 if (status) {
                     finished()
                 }
@@ -183,7 +183,7 @@ extension ModelLayer {
 
         func mapToFormData(featureData: [CDFeatureData]) -> [String: Any?] {
             var data = featureData.reduce(into: [String: Any?]()) { (aggregate, data) in
-                if let key = data.formId, let label = data.key, let type = data.dataType {
+                if let key = data.formId, let label = data.key, let type = data.type {
                     if let value = transform(type: type, data: data) {
                         aggregate[key] = value
                     }
@@ -209,8 +209,8 @@ extension ModelLayer {
 
         coreDataAPI.saveFeatureData(data: data, model: model, vc: vc) { result in
             switch result {
-            case .Success(let data): saveOnNetwork()
-            case .Error(let message): Log.message(.info, message: message)
+            case .Success(let data): Log.message(.info, message: "Success Callback - Save Feature Data"); finished(true) //saveOnNetwork()
+            case .Error(let message): Log.message(.error, message: message); finished(false)
             }
         }
 
@@ -248,7 +248,7 @@ extension ModelLayer {
             }()
             case .zone: {
                 if let cdZone = self.state.getActiveCDZone() {
-                    if let pfZone = self.state.getLinkedPFZone(uuid: cdZone.uuid!) {
+                    if let pfZone = self.state.getLinkedPFZone(guid: cdZone.guid!) {
 
                         let idToElement = BuilderHelper.mapIdToElements(model: model)
 

@@ -74,7 +74,7 @@ class PFZoneAPI {
     func linkZoneToAudit(zone: PFZone, complete: @escaping (Bool)->Void) {
         Log.message(.info, message: "Parse - Link Zone to Audit")
         if let identifier = StateController.sharedInstance.getIdentifier() {
-            PFAuditAPI.sharedInstance.get(id: identifier) { status, object in
+            PFAuditAPI.sharedInstance.get(id: identifier) { status, object, error in
                 guard let object = object as? PFAudit else {
                     Log.message(.error, message: "PFAudit is NULL")
                     Log.message(.error, message: "PFAudit to Zone - Association Failed")

@@ -78,7 +78,7 @@ class PFRoomAPI {
     func linkRoomToAudit(room: PFRoom, complete: @escaping (Bool)->Void) {
         Log.message(.info, message: "Parse - Link Room to Audit")
         if let identifier = StateController.sharedInstance.getIdentifier() {
-            PFAuditAPI.sharedInstance.get(id: identifier) { status, object in
+            PFAuditAPI.sharedInstance.get(id: identifier) { status, object, error in
                 guard let object = object as? PFAudit else {
                     Log.message(.error, message: "PFAudit is NULL")
                     Log.message(.error, message: "PFAudit to PFRoom - Association Failed")

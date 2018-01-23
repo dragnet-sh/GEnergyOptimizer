@@ -79,7 +79,7 @@ class DataLayer {
                     preAudit.belongsToAudit = audit
                     preAudit.formId = formId
                     preAudit.key = formTitle
-                    preAudit.dataType = formDataType
+                    preAudit.type = formDataType
 
                     if let eBaseType = InitEnumMapper.sharedInstance.enumMap[formDataType] as? BaseRowType {
                         switch eBaseType {
@@ -123,9 +123,9 @@ class DataLayer {
                         cdZone.type = pfZone.type
                         cdZone.objectId = pfZone.objectId
 
-                        let uuid = UUID().uuidString
-                        cdZone.uuid = uuid
-                        self.state.registerCrosswalk(uuid: uuid, pfZone: pfZone)
+                        let guid = UUID().uuidString
+                        cdZone.guid = guid
+                        self.state.registerCrosswalk(guid: guid, pfZone: pfZone)
 
                         zoneToSave.append(cdZone)
 
@@ -139,7 +139,7 @@ class DataLayer {
                             zone.belongsToZone = cdZone
                             zone.formId = formId
                             zone.key = formTitle
-                            zone.dataType = formDataType
+                            zone.type = formDataType
 
                             if let eBaseType = InitEnumMapper.sharedInstance.enumMap[formDataType] as? BaseRowType {
                                 switch eBaseType {
@@ -193,17 +193,27 @@ class DataLayer {
         Log.message(.info, message: "Loading Audit Via Network - Parse Server")
 
         func fetchAudit(complete: @escaping ()->Void) {
-            self.pfAuditAPI.get(id: identifier) { status, object in
+            self.pfAuditAPI.get(id: identifier) { status, object, error in
+
                 guard let object = object as? PFAudit else {
                     Log.message(.error, message: "Guard Failed - PFAudit")
-                    self.pfAuditAPI.initialize(identifier: identifier) { status, object in
-                        guard let object = object as? PFAudit else {
-                            Log.message(.error, message: "Guard Failed")
-                            return
-                        }
-                        self.state.registerPFAudit(pfAudit: object)
-                        complete()
+                    if (error == .noNetwork) {
+                        Log.message(.error, message: "Load Audit : No Network Connectivity")
+                    } else {
+                        initialize() { complete() }
                     }
+                    return
+                }
+
+                self.state.registerPFAudit(pfAudit: object)
+                complete()
+            }
+        }
+
+        func initialize(complete: @escaping ()->Void) {
+            self.pfAuditAPI.initialize(identifier: identifier) { status, object in
+                guard let object = object as? PFAudit else {
+                    Log.message(.error, message: "PFAudit Initialize : Guard Failed")
                     return
                 }
                 self.state.registerPFAudit(pfAudit: object)
