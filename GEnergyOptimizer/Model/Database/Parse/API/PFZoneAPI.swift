@@ -26,9 +26,7 @@ class PFZoneAPI {
 
         save(pfZone: zone) { status in
             self.linkZoneToAudit(zone: zone) { status in
-                if (status) {
-                    complete(status, zone)
-                }
+                complete(status, zone)
             }
         }
     }
