@@ -65,7 +65,6 @@ extension ZoneListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let zone = presenter.data[indexPath.row]
-        presenter.setActiveCDZone(cdZone: zone.cdZone) //ToDo: Is this the best way to set things ??
         let cell = tableView.dequeueReusableCell(withIdentifier: ZoneListViewController.cellIdentifier, for: indexPath)
         cell.textLabel?.text = zone.title
 
@@ -79,6 +78,7 @@ extension  ZoneListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let featureViewController = ControllerUtils.fromStoryboard(reference: "FeatureViewController") as! FeatureViewController
         featureViewController.entityType = EntityType.zone
+        presenter.setActiveCDZone(cdZone: presenter.data[indexPath.row].cdZone)
         navigationController?.pushViewController(featureViewController, animated: true)
     }
     
