@@ -14,7 +14,7 @@ class FeaturePresenter {
 
 extension FeaturePresenter {
     func loadData(vc: GEFormViewController) {
-        modelLayer.loadPreAudit(vc: vc) { source, data in
+        modelLayer.loadFeatureData(vc: vc) { source, data in
             self.data = data
             NotificationCenter.default.post(name: .loadFeatureDataForm, object: nil)
         }
