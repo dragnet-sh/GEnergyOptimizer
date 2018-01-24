@@ -11,12 +11,13 @@ class ZoneListDTO {
     var type: String
     var cdZone: CDZone
     var objectId: String?
-    var uuid: String?
+    var guid: String
 
-    init(identifier: String, title: String, type: String, cdZone: CDZone) {
+    init(identifier: String, title: String, type: String, cdZone: CDZone, guid: String) {
         self.identifier = identifier
         self.title = title
         self.type = type
         self.cdZone = cdZone
+        self.guid = guid
     }
 }
