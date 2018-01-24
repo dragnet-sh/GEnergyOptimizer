@@ -103,7 +103,7 @@ extension ModelLayer {
                 }
 
                 let data = results.filter { $0.type! == zone }.map {
-                    ZoneListDTO(identifier: "N/A", title: $0.name!, type: $0.type!, cdZone: $0)
+                    ZoneListDTO(identifier: "N/A", title: $0.name!, type: $0.type!, cdZone: $0, guid: $0.guid!)
                 }
 
                 finished(.local, data)
@@ -115,11 +115,13 @@ extension ModelLayer {
         coreDataAPI.createZone(type: type, name: name) { result in
             switch result {
             case .Success(let data): self.pfZoneAPI.initialize(name: name, type: type) { status, pfZone in
-                self.state.registerCrosswalk(guid: data.guid!, pfZone: pfZone)
                 if (status) {
-                    finished()
+                    Log.message(.info, message: "Parse API : Initialize Zone - Registering Crosswalk")
+                    self.state.registerCrosswalk(guid: data.guid!, pfZone: pfZone)
                 }
             }
+            finished()
+
             case .Error(let message): Log.message(.info, message: message)
             }
         }
@@ -151,8 +153,8 @@ extension ModelLayer {
 
 //Mark: - Form Data Model
 extension ModelLayer {
-    func loadPreAudit(vc: GEFormViewController, finished: @escaping FeatureDataSourceBlock) {
-        Log.message(.info, message: "Loading PreAudit Data")
+    func loadFeatureData(vc: GEFormViewController, finished: @escaping FeatureDataSourceBlock) {
+        Log.message(.info, message: "Loading Feature Data")
 
         if let identifier = state.getIdentifier() {
             if let audit = coreDataAPI.getAudit(id: identifier) {
