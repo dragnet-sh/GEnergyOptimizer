@@ -12,6 +12,7 @@ class CoreDataAPI {
         struct Singleton {
             static let instance = CoreDataAPI()
         }
+
         return Singleton.instance
     }
 
@@ -30,6 +31,13 @@ class CoreDataAPI {
     lazy var managedContext: NSManagedObjectContext = {
         return persistentContainer.viewContext
     }()
+}
+
+//Mark: - Audit
+
+extension CoreDataAPI {
+
+    // *** Audit : GET *** //
 
     func getAudit(id: String) -> CDAudit? {
         Log.message(.info, message: "Core Data : Get Audit")
@@ -43,18 +51,27 @@ class CoreDataAPI {
 
         return audit
     }
+}
 
-    func createRoom(name: String, finished: @escaping (Result<CDRoom>)->Void) {
+
+//Mark: - Room
+
+extension CoreDataAPI {
+
+    // *** POST *** //
+
+    func createRoom(name: String, finished: @escaping (Result<CDRoom>) -> Void) {
         Log.message(.info, message: "Core Data : Create Room")
         if let identifier = state.getIdentifier() {
             guard let cdAudit = getAudit(id: identifier) else {
-                Log.message(.error, message: "Guard Failed : CDAudit")
+                Log.message(.error, message: "Guard Failed : Core Data - Create Room")
                 return
             }
 
             let room = CDRoom(context: managedContext)
             room.name = name
             room.createdAt = NSDate()
+            room.guid = UUID().uuidString
             room.belongsToAudit = cdAudit
 
             do {
@@ -67,7 +84,36 @@ class CoreDataAPI {
         }
     }
 
-    func createZone(type: String, name: String, finished: @escaping (Result<CDZone>)->Void) {
+    // *** DELETE *** //
+
+    func deleteRoom(guid: String, finished: @escaping (Bool) -> Void) {
+        Log.message(.info, message: "Core Data : Delete Room")
+        let fetchRequest: NSFetchRequest<CDRoom> = CDRoom.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "guid = %@", argumentArray: [guid])
+
+        do {
+            guard let room = try managedContext.fetch(fetchRequest).first as? CDRoom else {
+                Log.message(.error, message: "Guard Failed : Core Data - Get Room")
+                finished(false)
+                return
+            }
+
+            try managedContext.delete(room)
+            finished(true)
+        } catch let error as NSError {
+            Log.message(.error, message: error.userInfo.debugDescription)
+            finished(false)
+        }
+    }
+}
+
+//Mark: - Zone
+
+extension CoreDataAPI {
+
+    // *** Zone : POST *** //
+
+    func createZone(type: String, name: String, finished: @escaping (Result<CDZone>) -> Void) {
         Log.message(.info, message: "Core Data : Create Zone")
         guard let cdAudit = state.getCDAudit() as? CDAudit else {
             Log.message(.error, message: "Guard Failed : CDAudit")
@@ -89,6 +135,13 @@ class CoreDataAPI {
             finished(.Error(error.userInfo.debugDescription))
         }
     }
+}
+
+//Mark: - Feature Data
+
+extension CoreDataAPI {
+
+    // *** Feature Data : GET *** //
 
     func getFeatureData(type: EntityType, finished: @escaping (Result<[CDFeatureData]>)->Void) {
         Log.message(.info, message: "Core Data : Fetch Feature Data")
@@ -120,6 +173,8 @@ class CoreDataAPI {
         default: Log.message(.error, message: "Unknown Entity Type")
         }
     }
+
+    // *** Feature Data : POST *** //
 
     func saveFeatureData(data: [String: Any?], model: GEnergyFormModel, vc: GEFormViewController, finished: @escaping (Result<[CDFeatureData]>)->Void) {
         Log.message(.info, message: "Core Data : Save Feature Data")

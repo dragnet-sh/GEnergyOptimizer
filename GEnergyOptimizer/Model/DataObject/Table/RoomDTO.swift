@@ -8,9 +8,11 @@ import Foundation
 class RoomListDTO {
     var identifier: String
     var title: String
+    var guid: String
 
-    init(identifier: String, title: String) {
+    init(identifier: String, title: String, guid: String) {
         self.identifier = identifier
         self.title = title
+        self.guid = guid
     }
 }

@@ -24,4 +24,10 @@ extension RoomPresenter {
             self.loadData()
         }
     }
+
+    func deleteRoom(guid: String) {
+        modelLayer.deleteRoom(guid: guid) {
+            self.loadData()
+        }
+    }
 }

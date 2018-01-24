@@ -72,8 +72,9 @@ extension RoomListViewController: UITableViewDataSource {
 extension RoomListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let guid = self.presenter.data[indexPath.row].guid
         let actions = ControllerUtils.getTableEditActions(
-                delete: { row in Log.message(.info, message: "Delete Action - Clouser Executed")},
+                delete: { row in self.presenter.deleteRoom(guid: guid) },
                 edit: { row in Log.message(.info, message: "Edit Action - Clouser Executed")}
         )
 

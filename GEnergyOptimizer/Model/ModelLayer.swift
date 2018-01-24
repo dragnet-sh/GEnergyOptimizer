@@ -60,7 +60,7 @@ extension ModelLayer {
 //Mark: - Room Data Model
 extension ModelLayer {
     func loadRoom(finished: @escaping RoomDTOSourceBlock) {
-        Log.message(.info, message: "Loadieg Room Data Model")
+        Log.message(.info, message: "Loading Room Data Model")
 
         if let identifier = state.getIdentifier() {
             if let audit = coreDataAPI.getAudit(id: identifier) {
@@ -71,7 +71,7 @@ extension ModelLayer {
                     return
                 }
 
-                let data = results.map { RoomListDTO(identifier: "N/A", title: $0.name!) }
+                let data = results.map { RoomListDTO(identifier: "N/A", title: $0.name!, guid: $0.guid!) }
                 finished(.local, data)
             }
         }
@@ -83,6 +83,12 @@ extension ModelLayer {
             case .Success(let data): self.pfRoomAPI.initialize(name: name) { status in }
             case .Error(let message): Log.message(.info, message: message)
             }
+            finished()
+        }
+    }
+
+    func deleteRoom(guid: String, finished: @escaping ()->Void) {
+        coreDataAPI.deleteRoom(guid: guid) { status in
             finished()
         }
     }
