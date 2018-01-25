@@ -171,7 +171,7 @@ extension ModelLayer {
                 let countPlugLoad = zones.filter { $0.type! == EZone.plugload.rawValue }.count
 
                 data.append(contentsOf: [
-                    HomeListDTO(auditZone: EZone.hvac.rawValue, count: countHVAC.description),
+//                    HomeListDTO(auditZone: EZone.hvac.rawValue, count: countHVAC.description),
                     HomeListDTO(auditZone: EZone.lighting.rawValue, count: countLighting.description),
                     HomeListDTO(auditZone: EZone.plugload.rawValue, count: countPlugLoad.description)
                 ])
