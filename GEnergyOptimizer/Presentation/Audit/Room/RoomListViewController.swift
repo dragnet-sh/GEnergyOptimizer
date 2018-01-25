@@ -40,11 +40,7 @@ extension RoomListViewController {
 
     @IBAction func addRoomButtonPressed(_ sender: Any) {
         let popup = ControllerUtils.getPopEdit() { name in
-            if (name.isEmpty) {
-                GUtils.message(title: "Alert", message: "Room Name Cannot be Empty", vc: self, type: .alert)
-                return
-            }
-
+            if self.isNameEmpty(name: name) {return}
             self.presenter.createRoom(name: name)
         }
 
@@ -72,10 +68,16 @@ extension RoomListViewController: UITableViewDataSource {
 extension RoomListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let guid = self.presenter.data[indexPath.row].guid
+        let room = self.presenter.data[indexPath.row]
         let actions = ControllerUtils.getTableEditActions(
-                delete: { row in self.presenter.deleteRoom(guid: guid) },
-                edit: { row in Log.message(.info, message: "Edit Action - Clouser Executed")}
+                delete: { row in self.presenter.deleteRoom(guid: room.guid) },
+                edit: { row in
+                    let popup = ControllerUtils.getPopEdit(editLine: room.title) { name in
+                        if self.isNameEmpty(name: name) {return}
+                        self.presenter.updateRoom(guid: room.guid, name: name)
+                    }
+                    self.present(popup, animated: true, completion: nil)
+                }
         )
 
         return actions
@@ -98,6 +100,14 @@ extension RoomListViewController {
     fileprivate func refreshTableData() {
         Log.message(.info, message: "Room List View Controller - Refreshing Table Data !!")
         self.tableView.reloadData()
+    }
+
+    fileprivate func isNameEmpty(name: String) -> Bool {
+        if (name.isEmpty) {
+            GUtils.message(title: "Alert", message: "Room Name Cannot be Empty", vc: self, type: .alert)
+            return true
+        }
+        return false
     }
 }
 

@@ -30,4 +30,10 @@ extension RoomPresenter {
             self.loadData()
         }
     }
+
+    func updateRoom(guid: String, name: String) {
+        modelLayer.updateRoom(guid: guid, name: name) {
+            self.loadData()
+        }
+    }
 }

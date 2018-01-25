@@ -92,6 +92,12 @@ extension ModelLayer {
             finished()
         }
     }
+
+    func updateRoom(guid: String, name: String, finished: @escaping ()->Void) {
+        coreDataAPI.updateRoom(guid: guid, name: name) { status in
+            finished()
+        }
+    }
 }
 
 //Mark: - Zone Data Model

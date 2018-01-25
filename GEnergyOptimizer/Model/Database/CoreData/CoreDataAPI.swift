@@ -105,6 +105,31 @@ extension CoreDataAPI {
             finished(false)
         }
     }
+
+    // *** UPDATE *** //
+
+    func updateRoom(guid: String, name: String, finished: @escaping (Bool) -> Void) {
+        Log.message(.info, message: "Core Data : Update Room")
+        let fetchRequest: NSFetchRequest<CDRoom> = CDRoom.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "guid = %@", argumentArray: [guid])
+
+        do {
+            guard let room = try managedContext.fetch(fetchRequest).first as? CDRoom else {
+                Log.message(.error, message: "Guard Failed : Core Data - Get Room")
+                finished(false)
+                return
+            }
+
+            room.name = name
+            room.updatedAt = NSDate()
+
+            try managedContext.save()
+            finished(true)
+        } catch let error as NSError {
+            Log.message(.error, message: error.userInfo.debugDescription)
+            finished(false)
+        }
+    }
 }
 
 //Mark: - Zone

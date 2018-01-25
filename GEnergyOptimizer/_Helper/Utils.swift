@@ -19,11 +19,11 @@ class ControllerUtils {
         return vc
     }
 
-    static func getPopEdit(addAction: @escaping (String)->Void) -> PopupDialog {
+    static func getPopEdit(editLine: String = "", addAction: @escaping (String)->Void) -> PopupDialog {
         let popEditViewController = PopEditViewController(nibName: "PopEditViewController", bundle: nil)
 
         popEditViewController.activeHeader = "Add"
-        popEditViewController.activeEditLine = ""
+        popEditViewController.activeEditLine = editLine
 
         let popup = PopupDialog(viewController: popEditViewController, buttonAlignment: .horizontal, gestureDismissal: true)
 
