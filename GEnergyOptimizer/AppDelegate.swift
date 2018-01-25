@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var clientKey = ""
     var server = ""
 
-    //*** Parse Configuration - Local ***//
+    //*** Parse Configuration - Local Server ***//
     let applicationIdLocal = "NLI214vDqkoFTJSTtIE2xLqMme6Evd0kA1BbJ20S"
     let clientKeyLocal = "lgEhciURXhAjzITTgLUlXAEdiMJyIF4ZBXdwfpUr"
     let serverLocal = "http://localhost:1337/parse"

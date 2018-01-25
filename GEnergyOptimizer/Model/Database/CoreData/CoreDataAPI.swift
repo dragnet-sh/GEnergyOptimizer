@@ -46,6 +46,17 @@ extension CoreDataAPI {
 
         guard let audit = try! managedContext.fetch(fetchRequest).first as? CDAudit else {
             Log.message(.error, message: "Guard Failed : Core Data - Audit")
+
+            // Let's initialize the Audit // ToDo: Change this later !! IMP
+
+            let audit = CDAudit(context: managedContext)
+            audit.identifier = id
+            audit.name = "Test - \(id.description)"
+
+            try! managedContext.save()
+
+            state.registerCDAudit(cdAudit: audit)
+
             return nil
         }
 
