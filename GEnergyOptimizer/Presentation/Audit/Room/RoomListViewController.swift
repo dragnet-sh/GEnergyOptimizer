@@ -39,7 +39,7 @@ class RoomListViewController: UIViewController {
 extension RoomListViewController {
 
     @IBAction func addRoomButtonPressed(_ sender: Any) {
-        let popup = ControllerUtils.getPopEdit() { name in
+        let popup = ControllerUtils.getPopEdit(headerLine: "Add Room") { name in
             if self.isNameEmpty(name: name) {return}
             self.presenter.createRoom(name: name)
         }
