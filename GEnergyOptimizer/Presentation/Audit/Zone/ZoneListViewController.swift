@@ -41,7 +41,7 @@ extension ZoneListViewController {
 
     @IBAction func btnAddZonePressed(_ sender: Any) {
         Log.message(.info, message: "Add New Zone")
-        let popup = ControllerUtils.getPopEdit() { name in
+        let popup = ControllerUtils.getPopEdit(headerLine: "Add Zone") { name in
             if (name.isEmpty) {
                 GUtils.message(title: "Alert", message: "Zone Name Cannot be Empty", vc: self, type: .alert)
                 return
@@ -83,9 +83,16 @@ extension  ZoneListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let zone = self.presenter.data[indexPath.row]
         let actions = ControllerUtils.getTableEditActions(
-                delete: { row in Log.message(.info, message: "Delete Action - Clouser Executed @ \(row.description)")},
-                edit: { row in Log.message(.info, message: "Edit Action - Clouser Executed @ \(row.description)")}
+                delete: { row in self.presenter.deleteZone(guid: zone.guid)},
+                edit: { row in
+                    let popup = ControllerUtils.getPopEdit(editLine: zone.title, headerLine: "Edit Zone") { name in
+                        if self.isNameEmpty(name: name) {return}
+                        self.presenter.updateZone(guid: zone.guid, name: name)
+                    }
+                    self.present(popup, animated: true, completion: nil)
+                }
         )
 
         return actions
@@ -114,6 +121,14 @@ extension ZoneListViewController {
     func refreshTableData() {
         Log.message(.info, message: "Zone List View Controller - Refreshing Table Data !!")
         self.tableView.reloadData()
+    }
+
+    fileprivate func isNameEmpty(name: String) -> Bool {
+        if (name.isEmpty) {
+            GUtils.message(title: "Alert", message: "Room Name Cannot be Empty", vc: self, type: .alert)
+            return true
+        }
+        return false
     }
 }
 

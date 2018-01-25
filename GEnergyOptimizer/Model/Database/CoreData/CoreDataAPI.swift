@@ -136,7 +136,7 @@ extension CoreDataAPI {
 
 extension CoreDataAPI {
 
-    // *** Zone : POST *** //
+    // *** POST *** //
 
     func createZone(type: String, name: String, finished: @escaping (Result<CDZone>) -> Void) {
         Log.message(.info, message: "Core Data : Create Zone")
@@ -158,6 +158,53 @@ extension CoreDataAPI {
         } catch let error as NSError {
             Log.message(.error, message: error.userInfo.debugDescription)
             finished(.Error(error.userInfo.debugDescription))
+        }
+    }
+
+    // *** DELETE *** //
+
+    func deleteZone(guid: String, finished: @escaping (Bool) -> Void) {
+        Log.message(.info, message: "Core Data : Delete Zone")
+        let fetchRequest: NSFetchRequest<CDZone> = CDZone.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "guid = %@", argumentArray: [guid])
+
+        do {
+            guard let zone = try managedContext.fetch(fetchRequest).first as? CDZone else {
+                Log.message(.error, message: "Guard Failed : Core Data - Get Zone")
+                finished(false)
+                return
+            }
+
+            try managedContext.delete(zone)
+            finished(true)
+        } catch let error as NSError {
+            Log.message(.error, message: error.userInfo.debugDescription)
+            finished(false)
+        }
+    }
+
+    // *** UPDATE *** //
+
+    func updateZone(guid: String, name: String, finished: @escaping (Bool) -> Void) {
+        Log.message(.info, message: "Core Data : Update Zone")
+        let fetchRequest: NSFetchRequest<CDZone> = CDZone.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "guid = %@", argumentArray: [guid])
+
+        do {
+            guard let zone = try managedContext.fetch(fetchRequest).first as? CDZone else {
+                Log.message(.error, message: "Guard Failed : Core Data - Get Zone")
+                finished(false)
+                return
+            }
+
+            zone.name = name
+            zone.updatedAt = NSDate()
+
+            try managedContext.save()
+            finished(true)
+        } catch let error as NSError {
+            Log.message(.error, message: error.userInfo.debugDescription)
+            finished(false)
         }
     }
 }

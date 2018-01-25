@@ -72,7 +72,7 @@ extension RoomListViewController: UITableViewDelegate {
         let actions = ControllerUtils.getTableEditActions(
                 delete: { row in self.presenter.deleteRoom(guid: room.guid) },
                 edit: { row in
-                    let popup = ControllerUtils.getPopEdit(editLine: room.title) { name in
+                    let popup = ControllerUtils.getPopEdit(editLine: room.title, headerLine: "Edit Room") { name in
                         if self.isNameEmpty(name: name) {return}
                         self.presenter.updateRoom(guid: room.guid, name: name)
                     }

@@ -20,14 +20,26 @@ extension ZonePresenter {
         }
     }
 
-    func getActiveZone() -> String? {
-        return state.getActiveZone()
-    }
-
     func createZone(name: String, type: String) {
         modelLayer.createZone(name: name, type: type) {
             self.loadData()
         }
+    }
+
+    func deleteZone(guid: String) {
+        modelLayer.deleteZone(guid: guid) {
+            self.loadData()
+        }
+    }
+
+    func updateZone(guid: String, name: String) {
+        modelLayer.updateZone(guid: guid, name: name) {
+            self.loadData()
+        }
+    }
+
+    func getActiveZone() -> String? {
+        return state.getActiveZone()
     }
 
     func setActiveCDZone(cdZone: CDZone) {

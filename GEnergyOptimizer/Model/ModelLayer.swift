@@ -138,6 +138,18 @@ extension ModelLayer {
             }
         }
     }
+
+    func deleteZone(guid: String, finished: @escaping ()->Void) {
+        coreDataAPI.deleteZone(guid: guid) { status in
+            finished()
+        }
+    }
+
+    func updateZone(guid: String, name: String, finished: @escaping ()->Void) {
+        coreDataAPI.updateZone(guid: guid, name: name) { status in
+            finished()
+        }
+    }
 }
 
 

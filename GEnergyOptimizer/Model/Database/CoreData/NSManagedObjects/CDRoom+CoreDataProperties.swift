@@ -2,7 +2,7 @@
 //  CDRoom+CoreDataProperties.swift
 //  GEnergyOptimizer
 //
-//  Created by Binay Budhthoki on 1/23/18.
+//  Created by Binay Budhthoki on 1/25/18.
 //  Copyright © 2018 GeminiEnergyServices. All rights reserved.
 //
 //
@@ -18,11 +18,11 @@ extension CDRoom {
     }
 
     @NSManaged public var createdAt: NSDate?
+    @NSManaged public var guid: String?
     @NSManaged public var name: String?
     @NSManaged public var objectId: String?
     @NSManaged public var sync: Bool
     @NSManaged public var updatedAt: NSDate?
-    @NSManaged public var guid: String?
     @NSManaged public var belongsToAudit: CDAudit?
     @NSManaged public var belongsToZone: NSSet?
 
