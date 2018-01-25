@@ -31,7 +31,7 @@ extension LoginViewController {
             }
 
             Log.message(.info, message: "Audit Identifier: \(id)")
-            presenter.initGEnergyOptimizer(auditIdentifier: id)
+            presenter.initGEnergyOptimizer(auditIdentifier: id.lowercased())
             self.dismiss(animated: true)
         }
     }
