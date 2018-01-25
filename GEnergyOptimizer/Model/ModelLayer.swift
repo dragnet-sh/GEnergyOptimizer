@@ -159,18 +159,26 @@ extension ModelLayer {
         Log.message(.info, message: "Loading Home Data Model")
 
         var data = [HomeListDTO]()
+        if let id = state.getIdentifier() {
+            if let audit = coreDataAPI.getAudit(id: id) {
+                guard let zones = audit.hasZone?.allObjects as? [CDZone] else {
+                    Log.message(.error, message: "Guard Failed : Fetched Results - Audit Zones")
+                    return
+                }
 
-        let countHVAC = 5
-        let countLighting = 7
-        let countPlugLoad = 10
+                let countHVAC = zones.filter { $0.type! == EZone.hvac.rawValue }.count
+                let countLighting = zones.filter { $0.type! == EZone.lighting.rawValue }.count
+                let countPlugLoad = zones.filter { $0.type! == EZone.plugload.rawValue }.count
 
-        data.append(contentsOf: [
-            HomeListDTO(auditZone: "HVAC", count: countHVAC.description),
-            HomeListDTO(auditZone: "Lighting", count: countLighting.description),
-            HomeListDTO(auditZone: "PlugLoad", count: countPlugLoad.description)
-        ])
+                data.append(contentsOf: [
+                    HomeListDTO(auditZone: EZone.hvac.rawValue, count: countHVAC.description),
+                    HomeListDTO(auditZone: EZone.lighting.rawValue, count: countLighting.description),
+                    HomeListDTO(auditZone: EZone.plugload.rawValue, count: countPlugLoad.description)
+                ])
 
-        finished(.local, data)
+                finished(.local, data)
+            }
+        }
     }
 }
 
