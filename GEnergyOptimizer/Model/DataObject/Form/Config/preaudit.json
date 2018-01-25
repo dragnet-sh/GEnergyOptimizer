@@ -349,6 +349,155 @@
         }
       ],
       "id": "014a100e-aa6d-42f7-a710-1f595628222a"
+    },
+    {
+      "index": 91,
+      "section": "HVAC - General Info",
+      "elements": [
+        {
+          "index": 1,
+          "param": "Type",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "a48622c7-8ba9-4d02-8bc7-6db762d3eea0"
+        },
+        {
+          "index": 2,
+          "param": "Make",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "b197f5dd-7985-4cc4-bbea-8df75fae6726"
+        },
+        {
+          "index": 3,
+          "param": "Model #",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "bacbda6d-62ca-4f55-9f8b-f07d62337804"
+        },
+        {
+          "index": 4,
+          "param": "EER",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "c710433e-bc91-4e1b-91e3-64b4949a8630"
+        },
+        {
+          "index": 5,
+          "param": "SEER",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "cae0026b-f9c9-49e2-adbc-35ea961721b0"
+        },
+        {
+          "index": 6,
+          "param": "HSPF",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "3cc90ad4-2602-43be-8f59-eda25d5dbf31"
+        }
+      ],
+      "id": "02ca4702-6ced-44a9-96f3-d927844378a3"
+    },
+    {
+      "index": 97,
+      "section": "HVAC - Cooling / Heating",
+      "elements": [
+        {
+          "index": 7,
+          "param": "Cooling Capacity (Btu/hr)",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "1f658426-a055-4a43-b81f-9b649938fd21"
+        },
+        {
+          "index": 8,
+          "param": "Heating Capacity (Btu/hr)",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "d22e9c31-ded0-410b-9497-0d36bd8462a2"
+        },
+        {
+          "index": 9,
+          "param": "Heating Type",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "ab9d3567-4cf5-4995-a5b2-f368ee9e5df2"
+        },
+        {
+          "index": 10,
+          "param": "Heating Power",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "b9b5fbde-3cbd-4815-902a-3a0c87892896"
+        }
+      ],
+      "id": "4868d105-c29e-4444-af39-adc9ea50a0a9"
+    },
+    {
+      "index": 911,
+      "section": "HVAC - Hours / Peak",
+      "elements": [
+        {
+          "index": 11,
+          "param": "Hours (%)",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "7e4c10e7-481b-4489-a7b8-f8709b602376"
+        },
+        {
+          "index": 12,
+          "param": "Off Peak Hours",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "3e4e8f51-8b65-45ec-85b7-e6ca3037f871"
+        },
+        {
+          "index": 13,
+          "param": "Part Peak Hours",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "95436d26-06b6-44c6-aae8-2f394310c135"
+        },
+        {
+          "index": 14,
+          "param": "Peak Hours",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "39860420-40c7-4852-9241-a07f0f4fa383"
+        }
+      ],
+      "id": "bef57057-31e2-42f7-9b9c-5b3b4cf6e728"
+    },
+    {
+      "index": 915,
+      "section": "HVAC - Installation",
+      "elements": [
+        {
+          "index": 15,
+          "param": "Year Installed",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "555270e5-7c8c-4683-8f9e-1f8afd1479f6"
+        }
+      ],
+      "id": "3f2169da-fb37-4c11-96a5-30359f75826e"
     }
+
   ]
 }
