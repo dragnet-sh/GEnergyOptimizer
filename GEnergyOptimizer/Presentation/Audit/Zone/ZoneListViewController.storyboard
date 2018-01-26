@@ -39,9 +39,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wkl-X6-7a0">
-                                <rect key="frame" x="144" y="527" width="86" height="66"/>
+                                <rect key="frame" x="169" y="527" width="36" height="66"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
-                                <state key="normal" title="Add Zone"/>
+                                <state key="normal" title="Add"/>
                                 <connections>
                                     <action selector="btnAddZonePressed:" destination="4v7-jz-Xix" eventType="touchUpInside" id="oxn-Ay-nDt"/>
                                 </connections>

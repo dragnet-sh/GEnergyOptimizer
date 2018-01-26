@@ -12,8 +12,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PopEditViewController" customModule="GEnergyOptimizer" customModuleProvider="target">
             <connections>
-                <outlet property="lblEditHeader" destination="6qh-yb-O4G" id="htA-Rh-sGi"/>
-                <outlet property="txtEditField" destination="hw9-sW-4lF" id="yD8-ui-5ih"/>
                 <outlet property="view" destination="dib-tq-bqJ" id="sfO-Be-64O"/>
             </connections>
         </placeholder>
@@ -33,6 +31,11 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jWT-ZY-hGM">
+                    <rect key="frame" x="195" y="92" width="37" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Done"/>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="hw9-sW-4lF" firstAttribute="leading" secondItem="yWx-xQ-nm0" secondAttribute="leading" constant="42" id="4pF-Kc-Efh"/>
@@ -46,7 +49,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="yWx-xQ-nm0"/>
-            <point key="canvasLocation" x="-172.5" y="147"/>
+            <point key="canvasLocation" x="-140" y="-13"/>
         </view>
     </objects>
 </document>

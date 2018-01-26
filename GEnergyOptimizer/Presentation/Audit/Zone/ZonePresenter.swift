@@ -10,15 +10,18 @@ public class ZonePresenter {
     var data = [ZoneListDTO]()
     fileprivate var modelLayer = ModelLayer()
     fileprivate var state = StateController.sharedInstance
-}
 
-extension ZonePresenter {
     func loadData() {
         modelLayer.loadZone { source, data in
             self.data = data
             NotificationCenter.default.post(name: .updateZoneTableData, object: nil)
         }
     }
+}
+
+//Mark: - Zone Model CRUD
+
+extension ZonePresenter {
 
     func createZone(name: String, type: String) {
         modelLayer.createZone(name: name, type: type) {
@@ -37,6 +40,11 @@ extension ZonePresenter {
             self.loadData()
         }
     }
+}
+
+//Mark: - Helper Methods
+
+extension ZonePresenter {
 
     func getActiveZone() -> String? {
         return state.getActiveZone()
@@ -44,5 +52,27 @@ extension ZonePresenter {
 
     func setActiveCDZone(cdZone: CDZone) {
         state.registerCDZone(cdZone: cdZone)
+    }
+
+    func counter(action: Action, zone: String, vc: UIViewController) {
+        switch action {
+            case .push: state.counterZLV[GUtils.getEZone(rawValue: zone)]!.append(vc)
+            case .pop: state.counterZLV[GUtils.getEZone(rawValue: zone)]!.popLast()
+        }
+    }
+
+    func getCount(type: EZone) -> Int {
+        return state.counterZLV[type]!.count
+    }
+
+    func getZoneHeader() -> String {
+        if (getCount(type: .plugload) == 1) { return "Appliances" }
+        else {
+            if let zone = state.getActiveZone() {
+                return zone
+            }
+        }
+
+        return EZone.none.rawValue
     }
 }

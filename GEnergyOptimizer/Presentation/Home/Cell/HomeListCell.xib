@@ -25,14 +25,14 @@
                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Zone Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="upf-z1-oie">
-                        <rect key="frame" x="20" y="19" width="176" height="48"/>
+                        <rect key="frame" x="20" y="18" width="176" height="48"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="26"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Counter" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J9G-Fo-n0s">
-                        <rect key="frame" x="252" y="19" width="144" height="48"/>
+                        <rect key="frame" x="252" y="18" width="144" height="48"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <viewLayoutGuide key="safeArea" id="sQ6-W5-yRd"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="26"/>
@@ -46,7 +46,7 @@
                 <outlet property="counterLabel" destination="J9G-Fo-n0s" id="gJz-gV-og7"/>
                 <outlet property="zoneLabel" destination="upf-z1-oie" id="kPE-Vr-PPY"/>
             </connections>
-            <point key="canvasLocation" x="173.5" y="-55"/>
+            <point key="canvasLocation" x="56" y="-69"/>
         </tableViewCell>
     </objects>
 </document>

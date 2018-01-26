@@ -7,15 +7,20 @@
 //
 
 import UIKit
-import PopupDialog
 import CleanroomLogger
+import Presentr
 
-class PopEditViewController: UIViewController {
+class PopEditViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     @IBOutlet weak var txtEditField: UITextField!
     @IBOutlet weak var lblEditHeader: UILabel!
     
+    @IBOutlet weak var aeuaeu: UIPickerView!
     var activeHeader: String?
     var activeEditLine: String?
+
+    @IBOutlet weak var pickerView: UIPickerView!
+    
+    var pickerDataSource = ["White", "Red", "Green", "Blue"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,21 +28,41 @@ class PopEditViewController: UIViewController {
         txtEditField.delegate = self
         lblEditHeader.text = activeHeader!
         txtEditField.text = activeEditLine!
-
-        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(endEditing)))
+        
+        self.pickerView.dataSource = self
+        self.pickerView.delegate = self
+               
+    }
+    
+    @IBAction func didSelectDone(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
 
-    @objc func endEditing() {
-        view.endEditing(true)
-        //self.dismiss(animated: true)
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerDataSource.count
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerDataSource[row]
+    }
+}
+
+
+
+extension PopEditViewController: PresentrDelegate {
+    func presentrShouldDismiss(keyboardShowing: Bool) -> Bool {
+        Log.message(.info, message: "Dismissing View Controller")
+        return !keyboardShowing
     }
 }
 
 extension PopEditViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        Log.message(.info, message: "Text Field Should Return")
-        Log.message(.info, message: textField.text.debugDescription)
-        endEditing()
+        txtEditField.resignFirstResponder()
         return true
     }
 }

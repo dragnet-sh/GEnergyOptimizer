@@ -16,6 +16,7 @@
 		13C23BFB1FFF9185009D79A9 /* TestEnergyCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C23BFA1FFF9185009D79A9 /* TestEnergyCalculations.swift */; };
 		13E2E304200A3454003F54A4 /* CDFeatureData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2E300200A3454003F54A4 /* CDFeatureData+CoreDataClass.swift */; };
 		13E2E305200A3454003F54A4 /* CDFeatureData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2E301200A3454003F54A4 /* CDFeatureData+CoreDataProperties.swift */; };
+		13E5A77E201B907B00AB88E1 /* PresenterModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E5A77D201B907B00AB88E1 /* PresenterModal.storyboard */; };
 		13F4FCA91FD99924005E808C /* PopEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F4FCA71FD99924005E808C /* PopEditViewController.swift */; };
 		13F4FCAA1FD99924005E808C /* PopEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13F4FCA81FD99924005E808C /* PopEditViewController.xib */; };
 		34DCCF82941666505C8DA62B /* Pods_GEnergyOptimizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A01F77AED5091697259E640E /* Pods_GEnergyOptimizer.framework */; };
@@ -93,6 +94,7 @@
 		13C23BFA1FFF9185009D79A9 /* TestEnergyCalculations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestEnergyCalculations.swift; sourceTree = "<group>"; };
 		13E2E300200A3454003F54A4 /* CDFeatureData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDFeatureData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		13E2E301200A3454003F54A4 /* CDFeatureData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDFeatureData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		13E5A77D201B907B00AB88E1 /* PresenterModal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresenterModal.storyboard; sourceTree = "<group>"; };
 		13F4FCA71FD99924005E808C /* PopEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopEditViewController.swift; sourceTree = "<group>"; };
 		13F4FCA81FD99924005E808C /* PopEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopEditViewController.xib; sourceTree = "<group>"; };
 		487C00092FADBF381F0283C0 /* PFPreAuditAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFPreAuditAPI.swift; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 				487C051B4EB1272E8F8136C3 /* Feature */,
 				487C0D622CD54B4DEA03E8AE /* Room */,
 				487C06161F14F38EA9572A0A /* Zone */,
+				13E5A77D201B907B00AB88E1 /* PresenterModal.storyboard */,
 			);
 			path = Audit;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				13792E351FC8263F007C525C /* Assets.xcassets in Resources */,
 				13792E331FC8263F007C525C /* Main.storyboard in Resources */,
 				1318636F1FE6B63800864276 /* ge_green_world_logo_large.png in Resources */,
+				13E5A77E201B907B00AB88E1 /* PresenterModal.storyboard in Resources */,
 				13F4FCAA1FD99924005E808C /* PopEditViewController.xib in Resources */,
 				487C0C838825086E0770A59D /* FeatureViewController.storyboard in Resources */,
 				487C0CCCF0F2E54CD6D191E9 /* RoomListViewController.storyboard in Resources */,
@@ -599,6 +603,7 @@
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
+				"${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework",
 				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -610,6 +615,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gloss.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Presentr.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

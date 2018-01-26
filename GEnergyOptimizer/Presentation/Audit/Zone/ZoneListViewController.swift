@@ -9,6 +9,7 @@
 import UIKit
 import CleanroomLogger
 import PopupDialog
+import Presentr
 
 class ZoneListViewController: UIViewController {
 
@@ -24,6 +25,7 @@ class ZoneListViewController: UIViewController {
         Log.message(.info, message: "GEnergy - ZoneList View Controller")
         self.initTableView()
         self.setZoneHeader()
+        presenter.counter(action: .push, zone: presenter.getActiveZone()!, vc: self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +36,14 @@ class ZoneListViewController: UIViewController {
 
         presenter.loadData()
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        if (self.isMovingFromParentViewController) {
+            presenter.counter(action: .pop, zone: presenter.getActiveZone()!, vc: self)
+        }
+    }
 }
 
 //Mark: - Touch Events
@@ -41,18 +51,26 @@ extension ZoneListViewController {
 
     @IBAction func btnAddZonePressed(_ sender: Any) {
         Log.message(.info, message: "Add New Zone")
-        let popup = ControllerUtils.getPopEdit(headerLine: "Add Zone") { name in
-            if (name.isEmpty) {
-                GUtils.message(title: "Alert", message: "Zone Name Cannot be Empty", vc: self, type: .alert)
-                return
-            }
+//        let popup = ControllerUtils.getPopEdit(headerLine: "Add Zone") { name in
+//            if (name.isEmpty) {
+//                GUtils.message(title: "Alert", message: "Zone Name Cannot be Empty", vc: self, type: .alert)
+//                return
+//            }
+//
+//            if let zone = self.presenter.getActiveZone() {
+//                self.presenter.createZone(name: name, type: zone)
+//            }
+//        }
 
-            if let zone = self.presenter.getActiveZone() {
-                self.presenter.createZone(name: name, type: zone)
-            }
-        }
+        let vc = ControllerUtils.fromStoryboard(reference: "PresenterModal") as! PopEditViewController
 
-        self.present(popup, animated: true, completion: nil)
+        vc.activeHeader = "Bla Bla Bla - active header"
+        vc.activeEditLine = "Bla Bla Bla - active edit line"
+
+        let presenter = Presentr(presentationType: .bottomHalf)
+        presenter.dismissOnSwipe = true
+        customPresentViewController(presenter, viewController: vc, animated: true) {}
+
     }
 }
 
@@ -76,10 +94,27 @@ extension ZoneListViewController: UITableViewDataSource {
 extension  ZoneListViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let featureViewController = ControllerUtils.fromStoryboard(reference: "FeatureViewController") as! FeatureViewController
-        featureViewController.entityType = EntityType.zone
-        presenter.setActiveCDZone(cdZone: presenter.data[indexPath.row].cdZone)
-        navigationController?.pushViewController(featureViewController, animated: true)
+        //ToDo - Review Code !!
+        if let activeZone = presenter.getActiveZone() {
+            switch activeZone {
+            case EZone.plugload.rawValue:
+
+                if (presenter.getCount(type: EZone.plugload) == 1) {
+                    let vc = ControllerUtils.fromStoryboard(reference: "ZoneListViewController") as! ZoneListViewController
+                    navigationController?.pushViewController(vc, animated: true)
+                } else {
+                    let vc = ControllerUtils.fromStoryboard(reference: "FeatureViewController") as! FeatureViewController
+                    vc.entityType = EntityType.appliances
+                    navigationController?.pushViewController(vc, animated: true)
+                }
+
+            default:
+                let vc = ControllerUtils.fromStoryboard(reference: "FeatureViewController") as! FeatureViewController
+                vc.entityType = EntityType.zone
+                presenter.setActiveCDZone(cdZone: presenter.data[indexPath.row].cdZone)
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -109,9 +144,7 @@ extension ZoneListViewController {
     }
 
     func setZoneHeader() {
-        if let zone  = presenter.getActiveZone() {
-            self.lblZoneHeader.text = "Zone - \(zone)"
-        }
+        self.lblZoneHeader.text = presenter.getZoneHeader()
     }
 
     @objc func updateZoneTableData() {
