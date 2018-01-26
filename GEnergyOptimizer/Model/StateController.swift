@@ -4,8 +4,6 @@
 //
 
 import Foundation
-
-import Foundation
 import CleanroomLogger
 
 class StateController {
@@ -33,8 +31,19 @@ class StateController {
     // *** Parse - Core Data >> Cross Over Link *** //
     fileprivate var crosswalk: Dictionary<String, PFZone>
 
+    // *** Zone List View Controller - Stack Counter *** //
+    public var counterZLV: Dictionary<EZone, Array<Any>>
+
     init() {
         self.crosswalk = Dictionary<String, PFZone>()
+        self.counterZLV = Dictionary<EZone, Array<Any>>()
+        initCounter()
+    }
+
+    fileprivate func initCounter() {
+            EZone.getAll.forEach { eZone in
+                self.counterZLV[eZone] = Array<Any>()
+        }
     }
 }
 
