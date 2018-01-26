@@ -2,7 +2,7 @@
 //  CDZone+CoreDataProperties.swift
 //  GEnergyOptimizer
 //
-//  Created by Binay Budhthoki on 1/25/18.
+//  Created by Binay Budhthoki on 1/26/18.
 //  Copyright © 2018 GeminiEnergyServices. All rights reserved.
 //
 //
@@ -27,6 +27,7 @@ extension CDZone {
     @NSManaged public var belongsToAudit: CDAudit?
     @NSManaged public var hasFeature: NSSet?
     @NSManaged public var hasRoom: NSSet?
+    @NSManaged public var parent: CDZone?
 
 }
 

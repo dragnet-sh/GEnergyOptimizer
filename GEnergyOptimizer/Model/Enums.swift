@@ -54,6 +54,7 @@ enum EntityType: String {
     case zone = "CDZone"
     case room = "CDRoom"
     case featureData = "CDFeatureData"
+    case appliances
     case none
 }
 
@@ -66,4 +67,15 @@ enum CellIdentifiers: String {
 enum GError: Error {
     case noNetwork
     case none
+}
+
+
+enum EApplianceType: String {
+    case griddle, steamCooker, fryer, hotFoodCabinets, freezerFridge, icemaker
+    case conveyorOven, convectionOven, combinationOven
+    case rackOven
+}
+
+enum Action {
+    case push, pop
 }
