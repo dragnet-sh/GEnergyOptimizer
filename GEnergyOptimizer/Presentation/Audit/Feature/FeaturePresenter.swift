@@ -30,4 +30,19 @@ extension FeaturePresenter {
         if let zone = state.getActiveZone() { return zone }
         else { return EZone.none.rawValue }
     }
+
+    func getApplianceType() -> String {
+        return "hvac"
+    }
+
+    func bundleResource(entityType: EntityType?) -> String {
+        if let entityType = entityType {
+            switch entityType {
+            case .preaudit: return FileResource.preaudit.rawValue
+            case .appliances: return getApplianceType()
+            case .zone: return getActiveZone().lowercased()
+            default: Log.message(.error, message: "Entity Type : None"); return EntityType.none.rawValue
+            }
+        } else { Log.message(.error, message: "Entity Type : None"); return EntityType.none.rawValue }
+    }
 }
