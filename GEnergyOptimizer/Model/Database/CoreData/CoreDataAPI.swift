@@ -149,10 +149,15 @@ extension CoreDataAPI {
 
     // *** POST *** //
 
-    func createZone(type: String, name: String, finished: @escaping (Result<CDZone>) -> Void) {
+    func createZone(type: String, name: String, parent: CDZone? = nil, finished: @escaping (Result<CDZone>) -> Void) {
         Log.message(.info, message: "Core Data : Create Zone")
         guard let cdAudit = state.getCDAudit() as? CDAudit else {
             Log.message(.error, message: "Guard Failed : CDAudit")
+            return
+        }
+
+        if (type.isEmpty || name.isEmpty) {
+            Log.message(.error, message: "Type or Name is Empty")
             return
         }
 
@@ -162,6 +167,10 @@ extension CoreDataAPI {
         zone.createdAt = NSDate()
         zone.belongsToAudit = cdAudit
         zone.guid = UUID().uuidString
+
+        if let parent = parent {
+            zone.parent = parent
+        }
 
         do {
             try managedContext.save()

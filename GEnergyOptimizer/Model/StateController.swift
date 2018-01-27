@@ -32,11 +32,11 @@ class StateController {
     fileprivate var crosswalk: Dictionary<String, PFZone>
 
     // *** Zone List View Controller - Stack Counter *** //
-    public var counterZLV: Array<Any>
+    public var counterZLV: Array<ZoneDTO>
 
     init() {
         self.crosswalk = Dictionary<String, PFZone>()
-        self.counterZLV = Array<Any>()
+        self.counterZLV = Array<ZoneDTO>()
     }
 }
 

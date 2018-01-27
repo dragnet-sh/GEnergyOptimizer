@@ -47,12 +47,12 @@
         <relationship name="belongsToAudit" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDAudit" inverseName="hasZone" inverseEntity="CDAudit" syncable="YES"/>
         <relationship name="hasFeature" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDFeatureData" inverseName="belongsToZone" inverseEntity="CDFeatureData" syncable="YES"/>
         <relationship name="hasRoom" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDRoom" inverseName="belongsToZone" inverseEntity="CDRoom" syncable="YES"/>
-        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDZone" inverseName="parent" inverseEntity="CDZone" syncable="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDZone" syncable="YES"/>
     </entity>
     <elements>
         <element name="CDAudit" positionX="-63" positionY="-531" width="128" height="195"/>
         <element name="CDFeatureData" positionX="-486" positionY="-522" width="128" height="225"/>
         <element name="CDRoom" positionX="117" positionY="-93" width="128" height="165"/>
-        <element name="CDZone" positionX="-315" positionY="-198" width="128" height="208"/>
+        <element name="CDZone" positionX="-315" positionY="-198" width="128" height="210"/>
     </elements>
 </model>

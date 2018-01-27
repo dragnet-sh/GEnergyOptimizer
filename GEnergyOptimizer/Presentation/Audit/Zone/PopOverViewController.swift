@@ -15,22 +15,12 @@ class PopOverViewController: FormViewController {
 
     var activeHeader: String?
     var activeEditLine: String?
+    var delegate: ZonePresenter?
     let presenter = PopOverPresenter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        presenter.loadData(vc: self)
         self.buildForm()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(self.loadPopOverDataForm), name: .loadPopOverDataForm, object: nil)
-
-        presenter.loadData(vc: self)
     }
 }
 
@@ -39,19 +29,19 @@ extension PopOverViewController {
 
         //Name Row
         let sectionZoneInfo = Section("GEnergy : Zone Info")
-        let nameRow = TextRow(tag: "po-name")
+        let nameRow = TextRow(tag: ETagPO.name.rawValue)
         nameRow.placeholder = "Name"
         sectionZoneInfo.append(nameRow)
 
         //Appliance Picker Row
         let sectionAppliance = Section("Select : Appliance Type")
-        let applianceRow = PickerInputRow<String>(tag: "po-appliance")
+        let applianceRow = PickerInputRow<String>(tag: ETagPO.type.rawValue)
         applianceRow.options = EApplianceType.getAllRaw
         sectionAppliance.append(applianceRow)
 
         //Save Button Row
         let sectionSave = Section()
-        let saveRow = ButtonRow(tag: "po-save")
+        let saveRow = ButtonRow(tag: ETagPO.save.rawValue)
         saveRow.title = "SAVE"
         saveRow.onCellSelection { cellOf, rowOf in
             self.dismiss(animated: true, completion: nil)
@@ -71,31 +61,8 @@ extension PopOverViewController {
 
 
 extension PopOverViewController {
-    @objc func loadPopOverDataForm() {
-        //self.loadFormData()
-    }
-
     fileprivate func saveFormData() {
         Log.message(.info, message: "PopOver - Saving Form Data")
-
-        presenter.saveData(data: self.form.values(), vc: self) { status in
-//            if (status) {
-//                GUtils.message(title: "Feature Save", message: "Feature Data Save - Successful", vc: self, type: .toast)
-//                self.navigationController?.popViewController(animated: true)
-//            } else {
-//                GUtils.message(title: "Feature Save", message: "Feature Data Save - Failed", vc: self, type: .toast)
-//            }
-        }
+        presenter.saveData(data: self.form.values(), vc: self, delegate: delegate!)
     }
-
-    fileprivate func loadFormData() {
-        Log.message(.info, message: "PopOver - Loading Form Data")
-
-//        self.form.setValues(presenter.data)
-//        self.tableView.reloadData()
-    }
-}
-
-extension Notification.Name {
-    static let loadPopOverDataForm = Notification.Name(rawValue: "loadPopOverDataForm")
 }

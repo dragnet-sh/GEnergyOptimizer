@@ -9,12 +9,6 @@ class PopOverPresenter {
     var data = Dictionary<String, Any?>()
     fileprivate var modelLayer = ModelLayer()
     fileprivate var state = StateController.sharedInstance
-
-    func loadData(vc: PopOverViewController) {
-        modelLayer.loadPopOverData(vc: vc) { source, data in
-            self.data = data
-        }
-    }
 }
 
 extension PopOverPresenter {
@@ -22,9 +16,12 @@ extension PopOverPresenter {
         return state.getCount()
     }
 
-    func saveData(data: [String: Any?], vc: PopOverViewController, finished: @escaping (Bool)->Void) {
+    func saveData(data: [String: Any?], vc: PopOverViewController, delegate: ZonePresenter) {
         modelLayer.savePopOverData(data: data, vc: vc) { status in
-            finished(status)
+            if (status) {
+                delegate.loadData()
+                GUtils.message(title: "N/A", message: "Operation Complete", vc: vc, type: .toast)
+            }
         }
     }
 }

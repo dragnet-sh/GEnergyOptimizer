@@ -105,24 +105,62 @@ extension ModelLayer {
 //Mark: - Zone Data Model
 extension ModelLayer {
     func loadZone(finished: @escaping ZoneDTOSourceBlock) {
-        Log.message(.info, message: "Loading Zone Data Model")
 
-        if let identifier = state.getIdentifier(), let zone = state.getActiveZone() {
-            if let audit = coreDataAPI.getAudit(id: identifier) {
-                let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: true)
+        func mainLoader() {
+            Log.message(.info, message: "Loading Zone Data Model")
 
-                guard let results = audit.hasZone?.sortedArray(using: [sortDescriptor]) as? [CDZone] else {
-                    Log.message(.error, message: "Guard Failed : Fetched Results - Core Data Zone")
-                    return
+            switch state.getActiveZone()! {
+            case EZone.plugload.rawValue:
+                switch state.getCount() {
+                case .parent: loadParent()
+                case .child: loadChild()
                 }
 
-                let data = results.filter { $0.type! == zone }.map {
-                    ZoneDTO(identifier: "N/A", title: $0.name!, type: $0.type!, cdZone: $0, guid: $0.guid!)
-                }
+            case EZone.lighting.rawValue: loadParent()
 
-                finished(.local, data)
+            default: Log.message(.info, message: "MUST BE - HVAC")
             }
         }
+
+        func loadChild() {
+            let parent = state.counterZLV[ENode.parent.rawValue] as? ZoneDTO
+            let fetchRequest: NSFetchRequest<CDZone> = CDZone.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "parent = %@", argumentArray: [parent?.cdZone])
+
+            let result = try! managedContext.fetch(fetchRequest)
+
+            let data = result.map {
+                ZoneDTO(identifier: "N/A", title: $0.name!,
+                        type: $0.type!, cdZone: $0, guid: $0.guid!)
+            }
+
+            finished(.local, data)
+        }
+
+        func loadParent() {
+
+            if let identifier = state.getIdentifier(), let zone = state.getActiveZone() {
+                if let audit = coreDataAPI.getAudit(id: identifier) {
+                    let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: true)
+
+                    guard let results = audit.hasZone?.sortedArray(using: [sortDescriptor]) as? [CDZone] else {
+                        Log.message(.error, message: "Guard Failed : Fetched Results - Core Data Zone")
+                        return
+                    }
+
+                    let data = results.filter {
+                        $0.type! == zone
+                    }.map {
+                        ZoneDTO(identifier: "N/A", title: $0.name!,
+                                type: $0.type!, cdZone: $0, guid: $0.guid!)
+                    }
+
+                    finished(.local, data)
+                }
+            }
+        }
+
+        mainLoader()
     }
 
     func createZone(name: String, type: String, finished: @escaping ()->Void) {
@@ -310,20 +348,49 @@ extension ModelLayer {
 
 //Mark: - Pop Over Data Model
 extension ModelLayer {
-    func loadPopOverData(vc: PopOverViewController, finished: @escaping PopOverDataSourceBlock) {
-        Log.message(.info, message: "Pop Over - Data Load")
-    }
 
     func savePopOverData(data: [String: Any?], vc: PopOverViewController, finished: @escaping PopOverDataSaveBlock) {
         Log.message(.info, message: "Pop Over - Data Save")
 
-        switch state.getCount() {
-            case .parent: {
-
-            }()
-            case .child: Log.message(.error, message: "Child Node")
-            default: Log.message(.error, message: "Stack Count Unknown !!")
+        guard let _name = data[ETagPO.name.rawValue]! else {
+            Log.message(.error, message: "Guard Failed : Extracting Name from Form Data")
+            return
         }
+
+        let name = String(describing: _name)
+
+        switch state.getActiveZone()! {
+        case EZone.plugload.rawValue:
+            switch state.getCount() {
+
+            case .parent:
+                let type = EZone.plugload.rawValue
+                coreDataAPI.createZone(type: type, name: name) { result in
+                    finished(true)
+                }
+
+            case .child:
+                guard let _type = data[ETagPO.type.rawValue]! else {
+                    Log.message(.error, message: "Guard Failed: Extracting Type form Form Data")
+                    return
+                }
+
+                let type = String(describing: _type)
+                let parent = state.counterZLV[ENode.parent.rawValue] as ZoneDTO
+                coreDataAPI.createZone(type: type, name: name, parent: parent.cdZone) { result in
+                    finished(true)
+                }
+            }
+
+        case EZone.lighting.rawValue:
+            let type = EZone.lighting.rawValue
+            coreDataAPI.createZone(type: type, name: name) { result in
+                finished(true)
+            }
+
+        default: Log.message(.info, message: "MUST BE - HVAC")
+        }
+
 
     }
 }

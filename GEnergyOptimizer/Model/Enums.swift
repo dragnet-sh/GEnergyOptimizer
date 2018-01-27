@@ -87,3 +87,9 @@ enum Action {
 enum ENode: Int {
     case parent = 0, child
 }
+
+enum ETagPO: String {
+    case name = "po-name"
+    case type = "po-appliance"
+    case save = "po-save"
+}

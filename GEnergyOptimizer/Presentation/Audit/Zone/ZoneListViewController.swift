@@ -60,6 +60,7 @@ extension ZoneListViewController {
         Log.message(.info, message: "Add New Zone")
 
         let vc = ControllerUtils.fromStoryboard(reference: "PresenterModal") as! PopOverViewController
+        vc.delegate = self.presenter
         let presenter = Presentr(presentationType: .popup)
         presenter.dismissOnSwipe = true
         customPresentViewController(presenter, viewController: vc, animated: true) {}
