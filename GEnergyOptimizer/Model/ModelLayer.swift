@@ -8,9 +8,9 @@ import CleanroomLogger
 import CoreData
 import Parse
 
-typealias HomeDTOSourceBlock = (Source, [HomeListDTO])->Void
-typealias ZoneDTOSourceBlock = (Source, [ZoneListDTO])->Void
-typealias RoomDTOSourceBlock = (Source, [RoomListDTO])->Void
+typealias HomeDTOSourceBlock = (Source, [HomeDTO])->Void
+typealias ZoneDTOSourceBlock = (Source, [ZoneDTO])->Void
+typealias RoomDTOSourceBlock = (Source, [RoomDTO])->Void
 typealias FeatureDataSourceBlock = (Source, [String: Any?])->Void
 typealias FeatureDataSaveBlock = (Bool)->Void
 typealias PopOverDataSourceBlock = (Source, [String: Any?])->Void
@@ -73,7 +73,7 @@ extension ModelLayer {
                     return
                 }
 
-                let data = results.map { RoomListDTO(identifier: "N/A", title: $0.name!, guid: $0.guid!) }
+                let data = results.map { RoomDTO(identifier: "N/A", title: $0.name!, guid: $0.guid!) }
                 finished(.local, data)
             }
         }
@@ -117,7 +117,7 @@ extension ModelLayer {
                 }
 
                 let data = results.filter { $0.type! == zone }.map {
-                    ZoneListDTO(identifier: "N/A", title: $0.name!, type: $0.type!, cdZone: $0, guid: $0.guid!)
+                    ZoneDTO(identifier: "N/A", title: $0.name!, type: $0.type!, cdZone: $0, guid: $0.guid!)
                 }
 
                 finished(.local, data)
@@ -160,7 +160,7 @@ extension ModelLayer {
     func loadHome(finished: @escaping HomeDTOSourceBlock) {
         Log.message(.info, message: "Loading Home Data Model")
 
-        var data = [HomeListDTO]()
+        var data = [HomeDTO]()
         if let id = state.getIdentifier() {
             if let audit = coreDataAPI.getAudit(id: id) {
                 guard let zones = audit.hasZone?.allObjects as? [CDZone] else {
@@ -174,8 +174,8 @@ extension ModelLayer {
 
                 data.append(contentsOf: [
 //                    HomeListDTO(auditZone: EZone.hvac.rawValue, count: countHVAC.description),
-                    HomeListDTO(auditZone: EZone.lighting.rawValue, count: countLighting.description),
-                    HomeListDTO(auditZone: EZone.plugload.rawValue, count: countPlugLoad.description)
+                    HomeDTO(auditZone: EZone.lighting.rawValue, count: countLighting.description),
+                    HomeDTO(auditZone: EZone.plugload.rawValue, count: countPlugLoad.description)
                 ])
 
                 finished(.local, data)
@@ -318,8 +318,10 @@ extension ModelLayer {
         Log.message(.info, message: "Pop Over - Data Save")
 
         switch state.getCount() {
-            case 1: Log.message(.error, message: "Parent Node")
-            case 2: Log.message(.error, message: "Child Node")
+            case .parent: {
+
+            }()
+            case .child: Log.message(.error, message: "Child Node")
             default: Log.message(.error, message: "Stack Count Unknown !!")
         }
 

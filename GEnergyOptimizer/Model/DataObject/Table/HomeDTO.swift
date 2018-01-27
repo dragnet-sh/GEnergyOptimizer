@@ -6,7 +6,7 @@
 import Foundation
 
 // *** Data Table Object - Home List View Controller *** //
-public class HomeListDTO {
+public class HomeDTO {
     var auditZone: String?
     var count: String?
 

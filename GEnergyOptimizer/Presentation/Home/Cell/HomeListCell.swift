@@ -13,7 +13,7 @@ class HomeListCell: UITableViewCell {
     @IBOutlet weak var zoneLabel: UILabel?
     @IBOutlet weak var counterLabel: UILabel?
 
-    func configureWithData(data: HomeListDTO) {
+    func configureWithData(data: HomeDTO) {
         self.zoneLabel!.text = data.auditZone
         self.counterLabel!.text = data.count
     }
@@ -38,7 +38,7 @@ extension HomeListCell {
         tableView.register(HomeListCell.nib, forCellReuseIdentifier: HomeListCell.cellId)
     }
 
-    public static func dequeue(from tableView: UITableView, for indexPath: IndexPath, with homeListDTO: HomeListDTO) -> HomeListCell {
+    public static func dequeue(from tableView: UITableView, for indexPath: IndexPath, with homeListDTO: HomeDTO) -> HomeListCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: HomeListCell.cellId, for: indexPath) as! HomeListCell
         cell.configureWithData(data: homeListDTO)
 

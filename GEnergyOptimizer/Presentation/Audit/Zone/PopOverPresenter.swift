@@ -18,7 +18,7 @@ class PopOverPresenter {
 }
 
 extension PopOverPresenter {
-    func getCount() -> Int {
+    func getCount() -> ENode {
         return state.getCount()
     }
 

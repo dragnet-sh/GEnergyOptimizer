@@ -62,7 +62,7 @@ extension PopOverViewController {
         //Checking the Stack Count for PlugLoad to find if it's the Parent Node or the Child Node
         //For PlugLoad - Only the Child has Appliance Type
         form.append(sectionZoneInfo)
-        if (presenter.getCount() == 2) {
+        if (presenter.getCount() == ENode.child) {
             form.append(sectionAppliance)
         }
         form.append(sectionSave)

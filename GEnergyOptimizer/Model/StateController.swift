@@ -106,8 +106,9 @@ extension StateController {
         }
     }
 
-    func getCount() -> Int {
-        return counterZLV.count
+    func getCount() -> ENode {
+        Log.message(.error, message: "Get Count \(counterZLV.count)")
+        return ENode(rawValue: counterZLV.count)!
     }
 
     // *** Global Registration *** //

@@ -26,8 +26,6 @@ public enum ELogScope: String {
     case gemini = "GEnergy :"
 }
 
-
-
 // *** Accessing Data - Local or Via Network *** //
 public enum Source: String {
     case local, network
@@ -84,4 +82,8 @@ enum EApplianceType: String {
 
 enum Action {
     case push, pop
+}
+
+enum ENode: Int {
+    case none = 0, parent, child
 }

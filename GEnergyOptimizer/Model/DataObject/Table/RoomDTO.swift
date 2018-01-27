@@ -5,7 +5,7 @@
 
 import Foundation
 
-class RoomListDTO {
+class RoomDTO {
     var identifier: String
     var title: String
     var guid: String

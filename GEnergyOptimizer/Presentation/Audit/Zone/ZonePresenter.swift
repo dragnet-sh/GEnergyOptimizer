@@ -7,7 +7,7 @@ import Foundation
 import CleanroomLogger
 
 public class ZonePresenter {
-    var data = [ZoneListDTO]()
+    var data = [ZoneDTO]()
     fileprivate var modelLayer = ModelLayer()
     fileprivate var state = StateController.sharedInstance
 
@@ -58,12 +58,12 @@ extension ZonePresenter {
         state.counter(action: action, vc: vc)
     }
 
-    func getCount() -> Int {
+    func getCount() -> ENode {
         return state.getCount()
     }
 
     func getZoneHeader() -> String {
-        if (getCount() == 1) { return "Appliances" }
+        if (getCount() == .parent) { return "Appliances" }
         else {
             if let zone = state.getActiveZone() {
                 return zone

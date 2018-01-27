@@ -5,7 +5,7 @@
 
 import Foundation
 
-class ZoneListDTO {
+class ZoneDTO {
     var identifier: String
     var title: String
     var type: String

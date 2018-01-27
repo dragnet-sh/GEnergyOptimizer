@@ -85,7 +85,7 @@ extension  ZoneListViewController: UITableViewDelegate {
             switch activeZone {
             case EZone.plugload.rawValue:
 
-                if (presenter.getCount() == 1) {
+                if (presenter.getCount() == .parent) {
                     let vc = ControllerUtils.fromStoryboard(reference: "ZoneListViewController") as! ZoneListViewController
                     navigationController?.pushViewController(vc, animated: true)
                 } else {

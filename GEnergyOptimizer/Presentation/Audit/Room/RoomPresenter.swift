@@ -7,7 +7,7 @@ import Foundation
 import CleanroomLogger
 
 public class RoomPresenter {
-    var data = [RoomListDTO]()
+    var data = [RoomDTO]()
     fileprivate var modelLayer = ModelLayer()
 }
 
