@@ -51,23 +51,9 @@ extension ZoneListViewController {
 
     @IBAction func btnAddZonePressed(_ sender: Any) {
         Log.message(.info, message: "Add New Zone")
-//        let popup = ControllerUtils.getPopEdit(headerLine: "Add Zone") { name in
-//            if (name.isEmpty) {
-//                GUtils.message(title: "Alert", message: "Zone Name Cannot be Empty", vc: self, type: .alert)
-//                return
-//            }
-//
-//            if let zone = self.presenter.getActiveZone() {
-//                self.presenter.createZone(name: name, type: zone)
-//            }
-//        }
 
         let vc = ControllerUtils.fromStoryboard(reference: "PresenterModal") as! PopEditViewController
-
-        vc.activeHeader = "Bla Bla Bla - active header"
-        vc.activeEditLine = "Bla Bla Bla - active edit line"
-
-        let presenter = Presentr(presentationType: .bottomHalf)
+        let presenter = Presentr(presentationType: .popup)
         presenter.dismissOnSwipe = true
         customPresentViewController(presenter, viewController: vc, animated: true) {}
 
@@ -121,13 +107,7 @@ extension  ZoneListViewController: UITableViewDelegate {
         let zone = self.presenter.data[indexPath.row]
         let actions = ControllerUtils.getTableEditActions(
                 delete: { row in self.presenter.deleteZone(guid: zone.guid)},
-                edit: { row in
-                    let popup = ControllerUtils.getPopEdit(editLine: zone.title, headerLine: "Edit Zone") { name in
-                        if self.isNameEmpty(name: name) {return}
-                        self.presenter.updateZone(guid: zone.guid, name: name)
-                    }
-                    self.present(popup, animated: true, completion: nil)
-                }
+                edit: { row in Log.message(.info, message: "Edit - Zone List View Controller")}
         )
 
         return actions
