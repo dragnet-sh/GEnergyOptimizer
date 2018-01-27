@@ -71,9 +71,15 @@ enum GError: Error {
 
 
 enum EApplianceType: String {
-    case griddle, steamCooker, fryer, hotFoodCabinets, freezerFridge, icemaker
-    case conveyorOven, convectionOven, combinationOven
-    case rackOven
+    case griddle = "Griddle", steamCooker = "Steam Cooker", fryer = "Fryer", hotFoodCabinets = "Hot Food Cabinets"
+    case freezerFridge = "Freezer Fridge", iceMaker = "Ice Maker"
+    case conveyorOven = "Conveyor Oven", convectionOven = "Convection Oven", combinationOven = "Combination Oven"
+    case rackOven = "Rack Oven"
+
+    static let getAll = [griddle, steamCooker, fryer, hotFoodCabinets, freezerFridge, iceMaker, conveyorOven,
+                         convectionOven, combinationOven, rackOven]
+    static let getAllRaw = getAll.map { $0.rawValue }
+    static let getDefault = getAllRaw[0]
 }
 
 enum Action {
