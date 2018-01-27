@@ -54,8 +54,8 @@ extension ZonePresenter {
         state.registerCDZone(cdZone: cdZone)
     }
 
-    func counter(action: Action, vc: UIViewController) {
-        state.counter(action: action, vc: vc)
+    func counter(action: Action, dto: ZoneDTO? = nil) {
+        state.counter(action: action, dto: dto)
     }
 
     func getCount() -> ENode {
@@ -63,7 +63,7 @@ extension ZonePresenter {
     }
 
     func getZoneHeader() -> String {
-        if (getCount() == .parent) { return "Appliances" }
+        if (getCount() == .child) { return "Appliances" }
         else {
             if let zone = state.getActiveZone() {
                 return zone
