@@ -15,25 +15,34 @@ class PopEditViewController: FormViewController {
 
     var activeHeader: String?
     var activeEditLine: String?
-    var pickerDataSource = ["White", "Red", "Green", "Blue"]
+    let state = StateController.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        form +++ Section("Something New")
-        <<< TextRow() {
-            $0.title = "Text Row"
-        }
+        let sectionZoneInfo = Section("GEnergy : Zone Info")
+        let nameRow = TextRow(tag: "GE-1")
+        nameRow.placeholder = "Name"
+        sectionZoneInfo.append(nameRow)
 
-                <<< PickerInputRow<String>("Picker Input Row"){
-            $0.title = "Options"
-            $0.options = []
-            for i in 1...10{
-                $0.options.append("option \(i)")
-            }
-            $0.value = $0.options.first
-        }
+        let sectionAppliance = Section("Select : Appliance Type")
+        let applianceRow = PickerInputRow<String>(tag: "GE-2")
+        applianceRow.options = EApplianceType.getAllRaw
+        sectionAppliance.append(applianceRow)
 
+        let sectionSave = Section()
+        let saveRow = ButtonRow(tag: "GE-3")
+        saveRow.title = "SAVE"
+        saveRow.onCellSelection { cellOf, rowOf in
+            self.dismiss(animated: true, completion: nil)
+        }
+        sectionSave.append(saveRow)
+
+        form.append(sectionZoneInfo)
+        if (state.getCount(type: EZone.plugload) == 2) {
+            form.append(sectionAppliance)
+        }
+        form.append(sectionSave)
     }
 }
 
