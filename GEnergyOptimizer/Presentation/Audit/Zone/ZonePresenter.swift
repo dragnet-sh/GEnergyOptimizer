@@ -55,14 +55,11 @@ extension ZonePresenter {
     }
 
     func counter(action: Action, zone: String, vc: UIViewController) {
-        switch action {
-            case .push: state.counterZLV[GUtils.getEZone(rawValue: zone)]!.append(vc)
-            case .pop: state.counterZLV[GUtils.getEZone(rawValue: zone)]!.popLast()
-        }
+        state.counter(action: action, zone: zone, vc: vc)
     }
 
     func getCount(type: EZone) -> Int {
-        return state.counterZLV[type]!.count
+        return state.getCount(type: type)
     }
 
     func getZoneHeader() -> String {
