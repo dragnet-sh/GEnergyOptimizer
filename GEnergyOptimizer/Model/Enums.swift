@@ -85,5 +85,5 @@ enum Action {
 }
 
 enum ENode: Int {
-    case none = 0, parent, child
+    case parent = 0, child
 }
