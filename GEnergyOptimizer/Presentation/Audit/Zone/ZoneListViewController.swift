@@ -25,7 +25,8 @@ class ZoneListViewController: UIViewController {
         Log.message(.info, message: "GEnergy - ZoneList View Controller")
         self.initTableView()
         self.setZoneHeader()
-        presenter.counter(action: .push, vc: self)
+        Log.message(.info, message: "View Did Load")
+        Log.message(.error, message: String(describing: presenter.getCount().rawValue))
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +34,8 @@ class ZoneListViewController: UIViewController {
 
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.updateZoneTableData), name: .updateZoneTableData, object: nil)
+        Log.message(.error, message: "View Will Appear")
+        Log.message(.error, message: String(describing: presenter.getCount().rawValue))
 
         presenter.loadData()
     }
@@ -41,7 +44,11 @@ class ZoneListViewController: UIViewController {
         super.viewWillDisappear(animated)
 
         if (self.isMovingFromParentViewController) {
-            presenter.counter(action: .pop, vc: self)
+            if (presenter.getActiveZone() == EZone.plugload.rawValue) {
+                Log.message(.error, message: "Moving From Parent View Controller")
+                Log.message(.error, message: "POP")
+                presenter.counter(action: .pop)
+            }
         }
     }
 }
@@ -78,20 +85,31 @@ extension ZoneListViewController: UITableViewDataSource {
 
 //Mark: - Delegate Event
 extension  ZoneListViewController: UITableViewDelegate {
-
+    //ToDo: Code Review
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //ToDo - Review Code !!
+
+
+        Log.message(.error, message: "Selection Zone List Item")
+        Log.message(.error, message: String(describing: presenter.getCount().rawValue))
+
         if let activeZone = presenter.getActiveZone() {
             switch activeZone {
             case EZone.plugload.rawValue:
 
                 if (presenter.getCount() == .parent) {
+
+                    Log.message(.error, message: "PUSH")
+                    presenter.counter(action: .push, dto: presenter.data[indexPath.row])
+
                     let vc = ControllerUtils.fromStoryboard(reference: "ZoneListViewController") as! ZoneListViewController
                     navigationController?.pushViewController(vc, animated: true)
-                } else {
+
+                } else if (presenter.getCount() == .child) {
+
                     let vc = ControllerUtils.fromStoryboard(reference: "FeatureViewController") as! FeatureViewController
                     vc.entityType = EntityType.appliances
                     navigationController?.pushViewController(vc, animated: true)
+
                 }
 
             default:
