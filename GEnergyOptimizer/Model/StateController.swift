@@ -99,9 +99,9 @@ extension StateController {
         return crosswalk[guid]
     }
 
-    func counter(action: Action, vc: UIViewController) {
+    func counter(action: Action, dto: ZoneDTO?) {
         switch action {
-        case .push: counterZLV.append(vc)
+        case .push: counterZLV.append(dto!)
         case .pop: counterZLV.popLast()
         }
     }
