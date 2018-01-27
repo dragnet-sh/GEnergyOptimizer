@@ -19,24 +19,6 @@ class ControllerUtils {
         return vc
     }
 
-    static func getPopEdit(editLine: String = "", headerLine: String = "Add", addAction: @escaping (String)->Void) -> PopupDialog {
-        let popEditViewController = PopEditViewController(nibName: "PopEditViewController", bundle: nil)
-
-        popEditViewController.activeHeader = headerLine
-        popEditViewController.activeEditLine = editLine
-
-        let popup = PopupDialog(viewController: popEditViewController, buttonAlignment: .horizontal, gestureDismissal: true)
-
-        let btnCancel = CancelButton(title: "Cancel", height: 40) {}
-        let btnAdd = DefaultButton(title: "Add", height: 40) {
-            guard let input = popEditViewController.txtEditField.text?.trimmingCharacters(in: .whitespaces) else {return}
-            addAction(input)
-        }
-        popup.addButtons([btnCancel, btnAdd])
-
-        return popup
-    }
-
     static func getTableEditActions(delete: @escaping (Int)->Void, edit: @escaping (Int)->Void) -> [UITableViewRowAction]{
         let delete = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
             delete(indexPath.row)
