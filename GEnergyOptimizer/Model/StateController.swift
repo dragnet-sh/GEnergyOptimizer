@@ -32,18 +32,11 @@ class StateController {
     fileprivate var crosswalk: Dictionary<String, PFZone>
 
     // *** Zone List View Controller - Stack Counter *** //
-    public var counterZLV: Dictionary<EZone, Array<Any>>
+    public var counterZLV: Array<Any>
 
     init() {
         self.crosswalk = Dictionary<String, PFZone>()
-        self.counterZLV = Dictionary<EZone, Array<Any>>()
-        initCounter()
-    }
-
-    fileprivate func initCounter() {
-            EZone.getAll.forEach { eZone in
-                self.counterZLV[eZone] = Array<Any>()
-        }
+        self.counterZLV = Array<Any>()
     }
 }
 
@@ -106,15 +99,15 @@ extension StateController {
         return crosswalk[guid]
     }
 
-    func counter(action: Action, zone: String, vc: UIViewController) {
+    func counter(action: Action, vc: UIViewController) {
         switch action {
-        case .push: counterZLV[GUtils.getEZone(rawValue: zone)]!.append(vc)
-        case .pop: counterZLV[GUtils.getEZone(rawValue: zone)]!.popLast()
+        case .push: counterZLV.append(vc)
+        case .pop: counterZLV.popLast()
         }
     }
 
-    func getCount(type: EZone) -> Int {
-        return counterZLV[type]!.count
+    func getCount() -> Int {
+        return counterZLV.count
     }
 
     // *** Global Registration *** //

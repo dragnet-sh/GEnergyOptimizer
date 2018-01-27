@@ -39,12 +39,12 @@ class RoomListViewController: UIViewController {
 extension RoomListViewController {
 
     @IBAction func addRoomButtonPressed(_ sender: Any) {
-        let popup = ControllerUtils.getPopEdit(headerLine: "Add Room") { name in
-            if self.isNameEmpty(name: name) {return}
-            self.presenter.createRoom(name: name)
-        }
-
-        self.present(popup, animated: true, completion: nil)
+//        let popup = ControllerUtils.getPopEdit(headerLine: "Add Room") { name in
+//            if self.isNameEmpty(name: name) {return}
+//            self.presenter.createRoom(name: name)
+//        }
+//
+//        self.present(popup, animated: true, completion: nil)
     }
 }
 
@@ -72,11 +72,11 @@ extension RoomListViewController: UITableViewDelegate {
         let actions = ControllerUtils.getTableEditActions(
                 delete: { row in self.presenter.deleteRoom(guid: room.guid) },
                 edit: { row in
-                    let popup = ControllerUtils.getPopEdit(editLine: room.title, headerLine: "Edit Room") { name in
-                        if self.isNameEmpty(name: name) {return}
-                        self.presenter.updateRoom(guid: room.guid, name: name)
-                    }
-                    self.present(popup, animated: true, completion: nil)
+//                    let popup = ControllerUtils.getPopEdit(editLine: room.title, headerLine: "Edit Room") { name in
+//                        if self.isNameEmpty(name: name) {return}
+//                        self.presenter.updateRoom(guid: room.guid, name: name)
+//                    }
+//                    self.present(popup, animated: true, completion: nil)
                 }
         )
 

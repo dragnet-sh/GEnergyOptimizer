@@ -13,6 +13,8 @@ typealias ZoneDTOSourceBlock = (Source, [ZoneListDTO])->Void
 typealias RoomDTOSourceBlock = (Source, [RoomListDTO])->Void
 typealias FeatureDataSourceBlock = (Source, [String: Any?])->Void
 typealias FeatureDataSaveBlock = (Bool)->Void
+typealias PopOverDataSourceBlock = (Source, [String: Any?])->Void
+typealias PopOverDataSaveBlock = (Bool)->Void
 
 class ModelLayer {
 
@@ -303,5 +305,23 @@ extension ModelLayer {
             default: Log.message(.error, message: "Unable to figure out Entity to save over Network !!")
             }
         }
+    }
+}
+
+//Mark: - Pop Over Data Model
+extension ModelLayer {
+    func loadPopOverData(vc: PopOverViewController, finished: @escaping PopOverDataSourceBlock) {
+        Log.message(.info, message: "Pop Over - Data Load")
+    }
+
+    func savePopOverData(data: [String: Any?], vc: PopOverViewController, finished: @escaping PopOverDataSaveBlock) {
+        Log.message(.info, message: "Pop Over - Data Save")
+
+        switch state.getCount() {
+            case 1: Log.message(.error, message: "Parent Node")
+            case 2: Log.message(.error, message: "Child Node")
+            default: Log.message(.error, message: "Stack Count Unknown !!")
+        }
+
     }
 }

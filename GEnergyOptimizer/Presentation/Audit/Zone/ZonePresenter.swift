@@ -54,16 +54,16 @@ extension ZonePresenter {
         state.registerCDZone(cdZone: cdZone)
     }
 
-    func counter(action: Action, zone: String, vc: UIViewController) {
-        state.counter(action: action, zone: zone, vc: vc)
+    func counter(action: Action, vc: UIViewController) {
+        state.counter(action: action, vc: vc)
     }
 
-    func getCount(type: EZone) -> Int {
-        return state.getCount(type: type)
+    func getCount() -> Int {
+        return state.getCount()
     }
 
     func getZoneHeader() -> String {
-        if (getCount(type: .plugload) == 1) { return "Appliances" }
+        if (getCount() == 1) { return "Appliances" }
         else {
             if let zone = state.getActiveZone() {
                 return zone

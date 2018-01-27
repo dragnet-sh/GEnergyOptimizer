@@ -25,7 +25,7 @@ class ZoneListViewController: UIViewController {
         Log.message(.info, message: "GEnergy - ZoneList View Controller")
         self.initTableView()
         self.setZoneHeader()
-        presenter.counter(action: .push, zone: presenter.getActiveZone()!, vc: self)
+        presenter.counter(action: .push, vc: self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +41,7 @@ class ZoneListViewController: UIViewController {
         super.viewWillDisappear(animated)
 
         if (self.isMovingFromParentViewController) {
-            presenter.counter(action: .pop, zone: presenter.getActiveZone()!, vc: self)
+            presenter.counter(action: .pop, vc: self)
         }
     }
 }
@@ -52,7 +52,7 @@ extension ZoneListViewController {
     @IBAction func btnAddZonePressed(_ sender: Any) {
         Log.message(.info, message: "Add New Zone")
 
-        let vc = ControllerUtils.fromStoryboard(reference: "PresenterModal") as! PopEditViewController
+        let vc = ControllerUtils.fromStoryboard(reference: "PresenterModal") as! PopOverViewController
         let presenter = Presentr(presentationType: .popup)
         presenter.dismissOnSwipe = true
         customPresentViewController(presenter, viewController: vc, animated: true) {}
@@ -85,7 +85,7 @@ extension  ZoneListViewController: UITableViewDelegate {
             switch activeZone {
             case EZone.plugload.rawValue:
 
-                if (presenter.getCount(type: EZone.plugload) == 1) {
+                if (presenter.getCount() == 1) {
                     let vc = ControllerUtils.fromStoryboard(reference: "ZoneListViewController") as! ZoneListViewController
                     navigationController?.pushViewController(vc, animated: true)
                 } else {

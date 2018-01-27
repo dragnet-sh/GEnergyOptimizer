@@ -16,9 +16,6 @@
 		13C23BFB1FFF9185009D79A9 /* TestEnergyCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C23BFA1FFF9185009D79A9 /* TestEnergyCalculations.swift */; };
 		13E2E304200A3454003F54A4 /* CDFeatureData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2E300200A3454003F54A4 /* CDFeatureData+CoreDataClass.swift */; };
 		13E2E305200A3454003F54A4 /* CDFeatureData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2E301200A3454003F54A4 /* CDFeatureData+CoreDataProperties.swift */; };
-		13E5A77E201B907B00AB88E1 /* PresenterModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13E5A77D201B907B00AB88E1 /* PresenterModal.storyboard */; };
-		13F4FCA91FD99924005E808C /* PopEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F4FCA71FD99924005E808C /* PopEditViewController.swift */; };
-		13F4FCAA1FD99924005E808C /* PopEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13F4FCA81FD99924005E808C /* PopEditViewController.xib */; };
 		34DCCF82941666505C8DA62B /* Pods_GEnergyOptimizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A01F77AED5091697259E640E /* Pods_GEnergyOptimizer.framework */; };
 		487C00005D78424CF25339AD /* FormBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C09E7BFD390D46EFB6FB0 /* FormBuilder.swift */; };
 		487C004B0A4AB306D31D874B /* FeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0D51983BDBEB57429FBE /* FeatureViewController.swift */; };
@@ -50,6 +47,7 @@
 		487C094E23AF17E65CEB23A2 /* CoreDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0853D485C19C3121BC98 /* CoreDataAPI.swift */; };
 		487C098E7053A832C7DE6BBF /* plugload.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C046F2324ACBDDD52E289 /* plugload.json */; };
 		487C099A6B6530AF97F55601 /* FactoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0A72B41F6A46089909DB /* FactoryHelper.swift */; };
+		487C0A324EC41B198CFA67E1 /* PopOverPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0150969D65E1245C202F /* PopOverPresenter.swift */; };
 		487C0A4D069561BD894028D3 /* preaudit.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0A39AC6B004B52564DAC /* preaudit.json */; };
 		487C0A68C9DF4736E834A8F7 /* CDRoom+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C00AAA27BF40E11193B1F /* CDRoom+CoreDataClass.swift */; };
 		487C0A8CEF5276FE93C4333C /* RoomDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C001332D8A6CAF12B0256 /* RoomDTO.swift */; };
@@ -58,6 +56,7 @@
 		487C0B3ECCB3C8DF1E40F26C /* CDAudit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C03A4D202FD6C8C0DCAB7 /* CDAudit+CoreDataClass.swift */; };
 		487C0B3FDCBE627C600FA736 /* BuilderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0280CCB7182409BBE8E9 /* BuilderHelper.swift */; };
 		487C0B7B14EB4882F55BFAA4 /* HomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0FCA5F1D6B41467DBCAD /* HomeListViewController.swift */; };
+		487C0B8B666530A679BF79AA /* PopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C033249F5BAF45A4E2AFA /* PopOverViewController.swift */; };
 		487C0BD7F1DF0AFEFB05050A /* TranslationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C03A2F6887784350EBCCB /* TranslationLayer.swift */; };
 		487C0BF151EE9CF3667008E6 /* CDAudit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C087930871E54E6748664 /* CDAudit+CoreDataProperties.swift */; };
 		487C0C0B6AAD6438E6CF398B /* FeaturePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0EA5FE353F7749BA6F8C /* FeaturePresenter.swift */; };
@@ -67,6 +66,7 @@
 		487C0E30377A91EDC24DA2BD /* ZoneListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0436148EC05FE2581AC2 /* ZoneListViewController.swift */; };
 		487C0E36EADA87230EAAC067 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C004CEC4297383988FF70 /* LoginViewController.swift */; };
 		487C0E503E431AD787C0F05A /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0D834F81B2B629A69126 /* HomePresenter.swift */; };
+		487C0ED7A66DF107592432AB /* PresenterModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 487C078014FACE4006AD6F7A /* PresenterModal.storyboard */; };
 		487C0EF2551E185C1C343764 /* CDRoom+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C066BFB512554E5BB460A /* CDRoom+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,21 +94,20 @@
 		13C23BFA1FFF9185009D79A9 /* TestEnergyCalculations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestEnergyCalculations.swift; sourceTree = "<group>"; };
 		13E2E300200A3454003F54A4 /* CDFeatureData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDFeatureData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		13E2E301200A3454003F54A4 /* CDFeatureData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDFeatureData+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		13E5A77D201B907B00AB88E1 /* PresenterModal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresenterModal.storyboard; sourceTree = "<group>"; };
-		13F4FCA71FD99924005E808C /* PopEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopEditViewController.swift; sourceTree = "<group>"; };
-		13F4FCA81FD99924005E808C /* PopEditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopEditViewController.xib; sourceTree = "<group>"; };
 		487C00092FADBF381F0283C0 /* PFPreAuditAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFPreAuditAPI.swift; sourceTree = "<group>"; };
 		487C001332D8A6CAF12B0256 /* RoomDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDTO.swift; sourceTree = "<group>"; };
 		487C004CEC4297383988FF70 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		487C006036B1A5E29BBBBB79 /* CDZone+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDZone+CoreDataClass.swift"; sourceTree = "<group>"; };
 		487C00AAA27BF40E11193B1F /* CDRoom+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDRoom+CoreDataClass.swift"; sourceTree = "<group>"; };
 		487C00F2E0F041240EEC4824 /* HomeDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeDTO.swift; sourceTree = "<group>"; };
+		487C0150969D65E1245C202F /* PopOverPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopOverPresenter.swift; sourceTree = "<group>"; };
 		487C0176A47699294D68D8CC /* ParseDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseDataModel.swift; sourceTree = "<group>"; };
 		487C0258D2F9D57C51A3D46B /* lighting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lighting.json; sourceTree = "<group>"; };
 		487C0280CCB7182409BBE8E9 /* BuilderHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuilderHelper.swift; sourceTree = "<group>"; };
 		487C02926DAC42E68D5F059F /* ZonePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZonePresenter.swift; sourceTree = "<group>"; };
 		487C02C5135F34CDA4F2531A /* hvac.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hvac.json; sourceTree = "<group>"; };
 		487C02E0126554B9837987E8 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		487C033249F5BAF45A4E2AFA /* PopOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopOverViewController.swift; sourceTree = "<group>"; };
 		487C0339D9331C97B1CAD730 /* ZoneListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ZoneListViewController.storyboard; sourceTree = "<group>"; };
 		487C03A2F6887784350EBCCB /* TranslationLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationLayer.swift; sourceTree = "<group>"; };
 		487C03A4D202FD6C8C0DCAB7 /* CDAudit+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDAudit+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -119,6 +118,7 @@
 		487C06949DEE6E459B24DF35 /* FormFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormFactory.swift; sourceTree = "<group>"; };
 		487C06A0ABFB535F6533D603 /* HomeListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListCell.xib; sourceTree = "<group>"; };
 		487C07623C4CF0D16624DE2B /* FormDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDataModel.swift; sourceTree = "<group>"; };
+		487C078014FACE4006AD6F7A /* PresenterModal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresenterModal.storyboard; sourceTree = "<group>"; };
 		487C07C91AE8796EA65944E2 /* RoomListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListViewController.swift; sourceTree = "<group>"; };
 		487C080941112BEE2DFCA5A6 /* ZoneDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneDTO.swift; sourceTree = "<group>"; };
 		487C0853D485C19C3121BC98 /* CoreDataAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataAPI.swift; sourceTree = "<group>"; };
@@ -304,6 +304,9 @@
 				487C0339D9331C97B1CAD730 /* ZoneListViewController.storyboard */,
 				487C0436148EC05FE2581AC2 /* ZoneListViewController.swift */,
 				487C02926DAC42E68D5F059F /* ZonePresenter.swift */,
+				487C078014FACE4006AD6F7A /* PresenterModal.storyboard */,
+				487C033249F5BAF45A4E2AFA /* PopOverViewController.swift */,
+				487C0150969D65E1245C202F /* PopOverPresenter.swift */,
 			);
 			path = Zone;
 			sourceTree = "<group>";
@@ -423,12 +426,9 @@
 		487C0F1CD64F054BB8F04D10 /* Audit */ = {
 			isa = PBXGroup;
 			children = (
-				13F4FCA71FD99924005E808C /* PopEditViewController.swift */,
-				13F4FCA81FD99924005E808C /* PopEditViewController.xib */,
 				487C051B4EB1272E8F8136C3 /* Feature */,
 				487C0D622CD54B4DEA03E8AE /* Room */,
 				487C06161F14F38EA9572A0A /* Zone */,
-				13E5A77D201B907B00AB88E1 /* PresenterModal.storyboard */,
 			);
 			path = Audit;
 			sourceTree = "<group>";
@@ -565,8 +565,6 @@
 				13792E351FC8263F007C525C /* Assets.xcassets in Resources */,
 				13792E331FC8263F007C525C /* Main.storyboard in Resources */,
 				1318636F1FE6B63800864276 /* ge_green_world_logo_large.png in Resources */,
-				13E5A77E201B907B00AB88E1 /* PresenterModal.storyboard in Resources */,
-				13F4FCAA1FD99924005E808C /* PopEditViewController.xib in Resources */,
 				487C0C838825086E0770A59D /* FeatureViewController.storyboard in Resources */,
 				487C0CCCF0F2E54CD6D191E9 /* RoomListViewController.storyboard in Resources */,
 				487C01FA258D297F629D6C9C /* ZoneListViewController.storyboard in Resources */,
@@ -576,6 +574,7 @@
 				487C05E9F03B7AB099E31A39 /* hvac.json in Resources */,
 				487C098E7053A832C7DE6BBF /* plugload.json in Resources */,
 				487C00846D6D5773850606F6 /* header.csv in Resources */,
+				487C0ED7A66DF107592432AB /* PresenterModal.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,7 +667,6 @@
 				487C0B7B14EB4882F55BFAA4 /* HomeListViewController.swift in Sources */,
 				13E2E305200A3454003F54A4 /* CDFeatureData+CoreDataProperties.swift in Sources */,
 				487C006DF8715ED7C1E8F9EE /* Utils.swift in Sources */,
-				13F4FCA91FD99924005E808C /* PopEditViewController.swift in Sources */,
 				487C0B3FDCBE627C600FA736 /* BuilderHelper.swift in Sources */,
 				487C004B0A4AB306D31D874B /* FeatureViewController.swift in Sources */,
 				487C04A7BBE09E7BDB69268E /* RoomListViewController.swift in Sources */,
@@ -706,6 +704,8 @@
 				487C094E23AF17E65CEB23A2 /* CoreDataAPI.swift in Sources */,
 				487C068B4B5228504614B94E /* GEModel.xcdatamodel in Sources */,
 				487C0C0B6AAD6438E6CF398B /* FeaturePresenter.swift in Sources */,
+				487C0B8B666530A679BF79AA /* PopOverViewController.swift in Sources */,
+				487C0A324EC41B198CFA67E1 /* PopOverPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

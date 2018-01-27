@@ -13,7 +13,7 @@
         <!--Pop Edit View Controller-->
         <scene sceneID="0b7-lP-hND">
             <objects>
-                <viewController storyboardIdentifier="PresenterModal" id="uEW-u0-ruJ" customClass="PopEditViewController" customModule="GEnergyOptimizer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PresenterModal" id="uEW-u0-ruJ" customClass="PopOverViewController" customModule="GEnergyOptimizer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nCn-bF-f5V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
