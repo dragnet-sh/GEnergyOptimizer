@@ -106,6 +106,17 @@ extension StateController {
         return crosswalk[guid]
     }
 
+    func counter(action: Action, zone: String, vc: UIViewController) {
+        switch action {
+        case .push: counterZLV[GUtils.getEZone(rawValue: zone)]!.append(vc)
+        case .pop: counterZLV[GUtils.getEZone(rawValue: zone)]!.popLast()
+        }
+    }
+
+    func getCount(type: EZone) -> Int {
+        return counterZLV[type]!.count
+    }
+
     // *** Global Registration *** //
 
     public func registerActiveZone(zone: String) {
@@ -142,4 +153,6 @@ extension StateController {
         Log.message(.info, message: "Register : Crosswalk")
         self.crosswalk[guid] = pfZone
     }
+
+
 }
