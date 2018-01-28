@@ -1,0 +1,35 @@
+{
+  "gemini-form": [
+    {
+      "index": 0,
+      "section": "Convection Oven",
+      "elements": [
+        {
+          "index": 0,
+          "param": "Capacity",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "0ab29447-972f-4916-ae97-6eaee00c7024"
+        },
+        {
+          "index": 1,
+          "param": "Size",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "b92eb3e1-58be-462a-b694-ba9eaf5ad49f"
+        },
+        {
+          "index": 2,
+          "param": "Fuel Type",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "Gas,Electric",
+          "id": "efd0a05d-2e85-4dbb-87bc-b42709455de7"
+        }
+      ],
+      "id": "ac936fc5-7c94-47cf-8c45-28998d854778"
+    }
+  ]
+}

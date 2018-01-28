@@ -1,0 +1,27 @@
+{
+  "gemini-form": [
+    {
+      "index": 0,
+      "section": "Combination Oven",
+      "elements": [
+        {
+          "index": 0,
+          "param": "Size",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "653d2200-3c7a-42a3-ab85-a59709d2ccdf"
+        },
+        {
+          "index": 1,
+          "param": "Fuel Type",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "Gas,Electric",
+          "id": "ad93beca-8a82-4693-8c4b-77a5933a40a5"
+        }
+      ],
+      "id": "71335ad1-6337-42e3-bd82-f49d2c11c99c"
+    }
+  ]
+}

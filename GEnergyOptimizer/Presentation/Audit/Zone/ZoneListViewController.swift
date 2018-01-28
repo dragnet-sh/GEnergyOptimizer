@@ -103,6 +103,7 @@ extension  ZoneListViewController: UITableViewDelegate {
 
                     let vc = ControllerUtils.fromStoryboard(reference: "FeatureViewController") as! FeatureViewController
                     vc.entityType = EntityType.appliances
+                    vc.applianceType = EApplianceType(rawValue: presenter.data[indexPath.row].type)
                     navigationController?.pushViewController(vc, animated: true)
 
                 }

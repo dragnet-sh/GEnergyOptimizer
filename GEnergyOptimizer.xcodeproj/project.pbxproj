@@ -21,6 +21,7 @@
 		487C004B0A4AB306D31D874B /* FeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0D51983BDBEB57429FBE /* FeatureViewController.swift */; };
 		487C006DF8715ED7C1E8F9EE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C02E0126554B9837987E8 /* Utils.swift */; };
 		487C00846D6D5773850606F6 /* header.csv in Resources */ = {isa = PBXBuildFile; fileRef = 487C0F4762FDB1D0CBC61919 /* header.csv */; };
+		487C010D17623C382DA68C42 /* RackOven.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C041DBF1F5B6753C98C31 /* RackOven.json */; };
 		487C018F6D5AC4056E24A868 /* FormFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C06949DEE6E459B24DF35 /* FormFactory.swift */; };
 		487C019C0D3C363716BA6B56 /* ParseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0176A47699294D68D8CC /* ParseDataModel.swift */; };
 		487C01FA258D297F629D6C9C /* ZoneListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 487C0339D9331C97B1CAD730 /* ZoneListViewController.storyboard */; };
@@ -28,6 +29,7 @@
 		487C02AE3BD1F8DEE8D310B9 /* PFAuditAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0C8AC85C3BD96316E2D9 /* PFAuditAPI.swift */; };
 		487C032E297B6E2BA9FBAEAC /* PFPreAuditAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C00092FADBF381F0283C0 /* PFPreAuditAPI.swift */; };
 		487C0350F97BF238C6584EAC /* RoomPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0E669C84568C8E88B6FD /* RoomPresenter.swift */; };
+		487C035CC3BCB3AA7D479197 /* CombinationOven.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C020E3B2B71833AE67D0C /* CombinationOven.json */; };
 		487C03A3082A6110BA557C96 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0C4CF6406C592B05CEC4 /* Enums.swift */; };
 		487C03B6B438672D212C51DC /* FormDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C07623C4CF0D16624DE2B /* FormDataModel.swift */; };
 		487C03CE29609B28D298703B /* lighting.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0258D2F9D57C51A3D46B /* lighting.json */; };
@@ -35,8 +37,10 @@
 		487C04748BDB90E7EB1E7B03 /* HomeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C00F2E0F041240EEC4824 /* HomeDTO.swift */; };
 		487C04A7BBE09E7BDB69268E /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C07C91AE8796EA65944E2 /* RoomListViewController.swift */; };
 		487C052060FEF15FE2A76A65 /* PFZoneAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0AD00AFF79848118D6B3 /* PFZoneAPI.swift */; };
+		487C05DC291146F71E1F1DCB /* ConveyorOven.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0C9CB71D4A5A50E2C03A /* ConveyorOven.json */; };
 		487C05DEA266805FF524BBBF /* ZonePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C02926DAC42E68D5F059F /* ZonePresenter.swift */; };
 		487C05E9F03B7AB099E31A39 /* hvac.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C02C5135F34CDA4F2531A /* hvac.json */; };
+		487C066EE8889AF35C22D0EC /* Fryer.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C09419395638280CC7684 /* Fryer.json */; };
 		487C068B4B5228504614B94E /* GEModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 487C0B30FABF88B4BBCA9B97 /* GEModel.xcdatamodel */; };
 		487C06E6388F1EB4A9A3DCCE /* HomeListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0D0F28FCED867B8E41F1 /* HomeListCell.swift */; };
 		487C0773AFF050B77B0374E3 /* GECalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0ACEA8899C6F74495BAF /* GECalculations.swift */; };
@@ -47,6 +51,7 @@
 		487C094E23AF17E65CEB23A2 /* CoreDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0853D485C19C3121BC98 /* CoreDataAPI.swift */; };
 		487C098E7053A832C7DE6BBF /* plugload.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C046F2324ACBDDD52E289 /* plugload.json */; };
 		487C099A6B6530AF97F55601 /* FactoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0A72B41F6A46089909DB /* FactoryHelper.swift */; };
+		487C09D2571A0F8F3F802EF5 /* Griddle.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0F7134A7B1A04679CFD0 /* Griddle.json */; };
 		487C0A324EC41B198CFA67E1 /* PopOverPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0150969D65E1245C202F /* PopOverPresenter.swift */; };
 		487C0A4D069561BD894028D3 /* preaudit.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0A39AC6B004B52564DAC /* preaudit.json */; };
 		487C0A68C9DF4736E834A8F7 /* CDRoom+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C00AAA27BF40E11193B1F /* CDRoom+CoreDataClass.swift */; };
@@ -55,6 +60,7 @@
 		487C0B1DFB45868C7D641B48 /* ModelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0D8958381B7E48757E65 /* ModelLayer.swift */; };
 		487C0B3ECCB3C8DF1E40F26C /* CDAudit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C03A4D202FD6C8C0DCAB7 /* CDAudit+CoreDataClass.swift */; };
 		487C0B3FDCBE627C600FA736 /* BuilderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0280CCB7182409BBE8E9 /* BuilderHelper.swift */; };
+		487C0B58465EF7C04EE93F8F /* SteamCooker.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0E771983AD655FEFC1B9 /* SteamCooker.json */; };
 		487C0B7B14EB4882F55BFAA4 /* HomeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0FCA5F1D6B41467DBCAD /* HomeListViewController.swift */; };
 		487C0B8B666530A679BF79AA /* PopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C033249F5BAF45A4E2AFA /* PopOverViewController.swift */; };
 		487C0BD7F1DF0AFEFB05050A /* TranslationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C03A2F6887784350EBCCB /* TranslationLayer.swift */; };
@@ -62,10 +68,14 @@
 		487C0C0B6AAD6438E6CF398B /* FeaturePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0EA5FE353F7749BA6F8C /* FeaturePresenter.swift */; };
 		487C0C838825086E0770A59D /* FeatureViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 487C0F0E28D1D0C27B2D8DF2 /* FeatureViewController.storyboard */; };
 		487C0CCCF0F2E54CD6D191E9 /* RoomListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 487C0403FCD811A5A3C6AA70 /* RoomListViewController.storyboard */; };
+		487C0CECAFD15986E5D011FF /* HotFoodCabinet.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0616D856AF68D896A1A9 /* HotFoodCabinet.json */; };
 		487C0CED17CC60EB955C7C01 /* PFRoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0E4C4EE333D6EFAA7215 /* PFRoomAPI.swift */; };
+		487C0D9AFC50762750AE0E4D /* FreezerFridge.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C00C1E0BEB6905A3EAF5E /* FreezerFridge.json */; };
 		487C0E30377A91EDC24DA2BD /* ZoneListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0436148EC05FE2581AC2 /* ZoneListViewController.swift */; };
 		487C0E36EADA87230EAAC067 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C004CEC4297383988FF70 /* LoginViewController.swift */; };
 		487C0E503E431AD787C0F05A /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0D834F81B2B629A69126 /* HomePresenter.swift */; };
+		487C0E9D34C56D6FDBECA1C9 /* IceMaker.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0F193E581A65A5D886E8 /* IceMaker.json */; };
+		487C0EBFA53E8A8096122C25 /* ConvectionOven.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0DD6AA94B86818D3F4B1 /* ConvectionOven.json */; };
 		487C0ED7A66DF107592432AB /* PresenterModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 487C078014FACE4006AD6F7A /* PresenterModal.storyboard */; };
 		487C0EF2551E185C1C343764 /* CDRoom+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C066BFB512554E5BB460A /* CDRoom+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
@@ -99,9 +109,11 @@
 		487C004CEC4297383988FF70 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		487C006036B1A5E29BBBBB79 /* CDZone+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDZone+CoreDataClass.swift"; sourceTree = "<group>"; };
 		487C00AAA27BF40E11193B1F /* CDRoom+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDRoom+CoreDataClass.swift"; sourceTree = "<group>"; };
+		487C00C1E0BEB6905A3EAF5E /* FreezerFridge.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FreezerFridge.json; sourceTree = "<group>"; };
 		487C00F2E0F041240EEC4824 /* HomeDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeDTO.swift; sourceTree = "<group>"; };
 		487C0150969D65E1245C202F /* PopOverPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopOverPresenter.swift; sourceTree = "<group>"; };
 		487C0176A47699294D68D8CC /* ParseDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseDataModel.swift; sourceTree = "<group>"; };
+		487C020E3B2B71833AE67D0C /* CombinationOven.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CombinationOven.json; sourceTree = "<group>"; };
 		487C0258D2F9D57C51A3D46B /* lighting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lighting.json; sourceTree = "<group>"; };
 		487C0280CCB7182409BBE8E9 /* BuilderHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuilderHelper.swift; sourceTree = "<group>"; };
 		487C02926DAC42E68D5F059F /* ZonePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZonePresenter.swift; sourceTree = "<group>"; };
@@ -112,8 +124,10 @@
 		487C03A2F6887784350EBCCB /* TranslationLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationLayer.swift; sourceTree = "<group>"; };
 		487C03A4D202FD6C8C0DCAB7 /* CDAudit+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDAudit+CoreDataClass.swift"; sourceTree = "<group>"; };
 		487C0403FCD811A5A3C6AA70 /* RoomListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RoomListViewController.storyboard; sourceTree = "<group>"; };
+		487C041DBF1F5B6753C98C31 /* RackOven.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RackOven.json; sourceTree = "<group>"; };
 		487C0436148EC05FE2581AC2 /* ZoneListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneListViewController.swift; sourceTree = "<group>"; };
 		487C046F2324ACBDDD52E289 /* plugload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = plugload.json; sourceTree = "<group>"; };
+		487C0616D856AF68D896A1A9 /* HotFoodCabinet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = HotFoodCabinet.json; sourceTree = "<group>"; };
 		487C066BFB512554E5BB460A /* CDRoom+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDRoom+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		487C06949DEE6E459B24DF35 /* FormFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormFactory.swift; sourceTree = "<group>"; };
 		487C06A0ABFB535F6533D603 /* HomeListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListCell.xib; sourceTree = "<group>"; };
@@ -123,6 +137,7 @@
 		487C080941112BEE2DFCA5A6 /* ZoneDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneDTO.swift; sourceTree = "<group>"; };
 		487C0853D485C19C3121BC98 /* CoreDataAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataAPI.swift; sourceTree = "<group>"; };
 		487C087930871E54E6748664 /* CDAudit+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDAudit+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		487C09419395638280CC7684 /* Fryer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Fryer.json; sourceTree = "<group>"; };
 		487C09E7BFD390D46EFB6FB0 /* FormBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormBuilder.swift; sourceTree = "<group>"; };
 		487C0A39AC6B004B52564DAC /* preaudit.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = preaudit.json; sourceTree = "<group>"; };
 		487C0A72B41F6A46089909DB /* FactoryHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactoryHelper.swift; sourceTree = "<group>"; };
@@ -133,16 +148,21 @@
 		487C0C4CF6406C592B05CEC4 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		487C0C8AC85C3BD96316E2D9 /* PFAuditAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFAuditAPI.swift; sourceTree = "<group>"; };
 		487C0C8D7C0CD8F8E871A36C /* GEFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GEFormViewController.swift; sourceTree = "<group>"; };
+		487C0C9CB71D4A5A50E2C03A /* ConveyorOven.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ConveyorOven.json; sourceTree = "<group>"; };
 		487C0CC29DB67E6191A4E1FE /* CDZone+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDZone+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		487C0D0F28FCED867B8E41F1 /* HomeListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeListCell.swift; sourceTree = "<group>"; };
 		487C0D51983BDBEB57429FBE /* FeatureViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureViewController.swift; sourceTree = "<group>"; };
 		487C0D834F81B2B629A69126 /* HomePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		487C0D8958381B7E48757E65 /* ModelLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelLayer.swift; sourceTree = "<group>"; };
+		487C0DD6AA94B86818D3F4B1 /* ConvectionOven.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ConvectionOven.json; sourceTree = "<group>"; };
 		487C0E4C4EE333D6EFAA7215 /* PFRoomAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFRoomAPI.swift; sourceTree = "<group>"; };
 		487C0E669C84568C8E88B6FD /* RoomPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomPresenter.swift; sourceTree = "<group>"; };
+		487C0E771983AD655FEFC1B9 /* SteamCooker.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SteamCooker.json; sourceTree = "<group>"; };
 		487C0EA5FE353F7749BA6F8C /* FeaturePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturePresenter.swift; sourceTree = "<group>"; };
 		487C0F0E28D1D0C27B2D8DF2 /* FeatureViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeatureViewController.storyboard; sourceTree = "<group>"; };
+		487C0F193E581A65A5D886E8 /* IceMaker.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = IceMaker.json; sourceTree = "<group>"; };
 		487C0F4762FDB1D0CBC61919 /* header.csv */ = {isa = PBXFileReference; lastKnownFileType = file.csv; path = header.csv; sourceTree = "<group>"; };
+		487C0F7134A7B1A04679CFD0 /* Griddle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Griddle.json; sourceTree = "<group>"; };
 		487C0FA36CFC01D2BB775C77 /* StateController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateController.swift; sourceTree = "<group>"; };
 		487C0FCA5F1D6B41467DBCAD /* HomeListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeListViewController.swift; sourceTree = "<group>"; };
 		A01F77AED5091697259E640E /* Pods_GEnergyOptimizer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GEnergyOptimizer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -329,6 +349,23 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		487C07EB859B00E03446F4F0 /* Appliances */ = {
+			isa = PBXGroup;
+			children = (
+				487C020E3B2B71833AE67D0C /* CombinationOven.json */,
+				487C0DD6AA94B86818D3F4B1 /* ConvectionOven.json */,
+				487C0C9CB71D4A5A50E2C03A /* ConveyorOven.json */,
+				487C00C1E0BEB6905A3EAF5E /* FreezerFridge.json */,
+				487C09419395638280CC7684 /* Fryer.json */,
+				487C0F7134A7B1A04679CFD0 /* Griddle.json */,
+				487C0616D856AF68D896A1A9 /* HotFoodCabinet.json */,
+				487C0F193E581A65A5D886E8 /* IceMaker.json */,
+				487C041DBF1F5B6753C98C31 /* RackOven.json */,
+				487C0E771983AD655FEFC1B9 /* SteamCooker.json */,
+			);
+			path = Appliances;
+			sourceTree = "<group>";
+		};
 		487C08AAD54BBA055C1A08C5 /* Plugload */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +436,7 @@
 				487C0A39AC6B004B52564DAC /* preaudit.json */,
 				487C02C5135F34CDA4F2531A /* hvac.json */,
 				487C046F2324ACBDDD52E289 /* plugload.json */,
+				487C07EB859B00E03446F4F0 /* Appliances */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -575,6 +613,16 @@
 				487C098E7053A832C7DE6BBF /* plugload.json in Resources */,
 				487C00846D6D5773850606F6 /* header.csv in Resources */,
 				487C0ED7A66DF107592432AB /* PresenterModal.storyboard in Resources */,
+				487C035CC3BCB3AA7D479197 /* CombinationOven.json in Resources */,
+				487C0EBFA53E8A8096122C25 /* ConvectionOven.json in Resources */,
+				487C05DC291146F71E1F1DCB /* ConveyorOven.json in Resources */,
+				487C0D9AFC50762750AE0E4D /* FreezerFridge.json in Resources */,
+				487C066EE8889AF35C22D0EC /* Fryer.json in Resources */,
+				487C09D2571A0F8F3F802EF5 /* Griddle.json in Resources */,
+				487C0CECAFD15986E5D011FF /* HotFoodCabinet.json in Resources */,
+				487C0E9D34C56D6FDBECA1C9 /* IceMaker.json in Resources */,
+				487C010D17623C382DA68C42 /* RackOven.json in Resources */,
+				487C0B58465EF7C04EE93F8F /* SteamCooker.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

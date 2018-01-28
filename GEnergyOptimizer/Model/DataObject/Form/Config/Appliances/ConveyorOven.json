@@ -1,0 +1,27 @@
+{
+  "gemini-form": [
+    {
+      "index": 0,
+      "section": "Conveyor Oven",
+      "elements": [
+        {
+          "index": 0,
+          "param": "Oven Length",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "98569875-9663-47dd-8eaa-ab397956b2c5"
+        },
+        {
+          "index": 1,
+          "param": "Conveyor Width",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "8f1acf51-c29b-4fdf-9883-f9e2a26c683f"
+        }
+      ],
+      "id": "7adb8912-a400-4683-b98c-bb63f3e9afe4"
+    }
+  ]
+}

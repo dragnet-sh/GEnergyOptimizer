@@ -14,6 +14,7 @@ class FeatureViewController: GEFormViewController {
 
     let presenter = FeaturePresenter()
     var entityType: EntityType? // Note : To be set via Delegate
+    var applianceType: EApplianceType?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +47,7 @@ class FeatureViewController: GEFormViewController {
 
     // *** Loads the Form Config Data via this Bundle Resource *** //
     override func getBundleResource() -> String! {
-        return presenter.bundleResource(entityType: entityType)
+        return presenter.bundleResource(entityType: entityType, applianceType: applianceType)
     }
 }
 

@@ -78,6 +78,21 @@ enum EApplianceType: String {
                          convectionOven, combinationOven, rackOven]
     static let getAllRaw = getAll.map { $0.rawValue }
     static let getDefault = getAllRaw[0]
+
+    static func getFileName(type: EApplianceType) -> String {
+        switch type {
+            case .griddle: return "Griddle"
+            case .steamCooker: return "SteamCooker"
+            case .fryer: return "Fryer"
+            case .hotFoodCabinets: return "HotFoodCabinet"
+            case .freezerFridge: return "FreezerFridge"
+            case .iceMaker: return "IceMaker"
+            case .conveyorOven: return "ConveyorOven"
+            case .convectionOven: return "ConvectionOven"
+            case .combinationOven: return "CombinationOven"
+            case .rackOven: return "RackOven"
+        }
+    }
 }
 
 enum Action {
