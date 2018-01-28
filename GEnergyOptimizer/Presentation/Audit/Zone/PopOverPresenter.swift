@@ -20,7 +20,7 @@ extension PopOverPresenter {
         modelLayer.savePopOverData(data: data, vc: vc) { status in
             if (status) {
                 delegate.loadData()
-                GUtils.message(title: "N/A", message: "Operation Complete", vc: vc, type: .toast)
+                GUtils.message(title: "N/A", msg: "Operation Complete", vc: vc, type: .toast)
             }
         }
     }

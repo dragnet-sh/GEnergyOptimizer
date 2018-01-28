@@ -51,15 +51,19 @@ class LoggerUtils {
 }
 
 class GUtils {
-    static func message(title: String, message: String, vc: UIViewController, type: EMessageType) {
+    static func message(msg: String) {
+        message(title: "N/A", msg: msg, vc: nil, type: .toast)
+    }
+
+    static func message(title: String, msg: String, vc: UIViewController? = nil, type: EMessageType) {
         switch type {
         case .toast:
-            Toast(text: message).show()
+            Toast(text: msg).show()
 
         case .alert:
-            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            vc.present(alert, animated: true, completion: nil)
+            vc?.present(alert, animated: true, completion: nil)
         }
     }
 

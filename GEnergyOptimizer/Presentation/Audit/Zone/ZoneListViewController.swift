@@ -25,8 +25,6 @@ class ZoneListViewController: UIViewController {
         Log.message(.info, message: "GEnergy - ZoneList View Controller")
         self.initTableView()
         self.setZoneHeader()
-        Log.message(.info, message: "View Did Load")
-        Log.message(.error, message: String(describing: presenter.getCount().rawValue))
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -34,8 +32,6 @@ class ZoneListViewController: UIViewController {
 
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.updateZoneTableData), name: .updateZoneTableData, object: nil)
-        Log.message(.error, message: "View Will Appear")
-        Log.message(.error, message: String(describing: presenter.getCount().rawValue))
 
         presenter.loadData()
     }
@@ -45,8 +41,6 @@ class ZoneListViewController: UIViewController {
 
         if (self.isMovingFromParentViewController) {
             if (presenter.getActiveZone() == EZone.plugload.rawValue) {
-                Log.message(.error, message: "Moving From Parent View Controller")
-                Log.message(.error, message: "POP")
                 presenter.counter(action: .pop)
             }
         }
@@ -157,7 +151,7 @@ extension ZoneListViewController {
 
     fileprivate func isNameEmpty(name: String) -> Bool {
         if (name.isEmpty) {
-            GUtils.message(title: "Alert", message: "Room Name Cannot be Empty", vc: self, type: .alert)
+            GUtils.message(title: "Alert", msg: "Room Name Cannot be Empty", vc: self, type: .alert)
             return true
         }
         return false

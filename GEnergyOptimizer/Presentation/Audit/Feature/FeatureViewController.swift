@@ -62,10 +62,10 @@ extension FeatureViewController {
 
         presenter.saveData(data: self.form.values(), model: super.getFormDTO(), vc: self) { status in
             if (status) {
-                GUtils.message(title: "Feature Save", message: "Feature Data Save - Successful", vc: self, type: .toast)
+                GUtils.message(title: "Feature Save", msg: "Feature Data Save - Successful", vc: self, type: .toast)
                 self.navigationController?.popViewController(animated: true)
             } else {
-                GUtils.message(title: "Feature Save", message: "Feature Data Save - Failed", vc: self, type: .toast)
+                GUtils.message(title: "Feature Save", msg: "Feature Data Save - Failed", vc: self, type: .toast)
             }
         }
     }

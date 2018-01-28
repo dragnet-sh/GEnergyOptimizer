@@ -104,7 +104,7 @@ extension RoomListViewController {
 
     fileprivate func isNameEmpty(name: String) -> Bool {
         if (name.isEmpty) {
-            GUtils.message(title: "Alert", message: "Room Name Cannot be Empty", vc: self, type: .alert)
+            GUtils.message(title: "Alert", msg: "Room Name Cannot be Empty", vc: self, type: .alert)
             return true
         }
         return false

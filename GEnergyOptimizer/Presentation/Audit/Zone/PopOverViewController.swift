@@ -31,6 +31,7 @@ extension PopOverViewController {
         let sectionZoneInfo = Section("GEnergy : Zone Info")
         let nameRow = TextRow(tag: ETagPO.name.rawValue)
         nameRow.placeholder = "Name"
+        nameRow.add(rule: RuleRequired())
         sectionZoneInfo.append(nameRow)
 
         //Appliance Picker Row
@@ -44,8 +45,14 @@ extension PopOverViewController {
         let saveRow = ButtonRow(tag: ETagPO.save.rawValue)
         saveRow.title = "SAVE"
         saveRow.onCellSelection { cellOf, rowOf in
-            self.dismiss(animated: true, completion: nil)
-            self.saveFormData()
+            nameRow.validate()
+            applianceRow.validate()
+
+            if (nameRow.isValid && applianceRow.isValid) {
+                self.saveFormData()
+                self.dismiss(animated: true, completion: nil)
+            } else { GUtils.message(msg: "Data Incomplete") }
+
         }
         sectionSave.append(saveRow)
 
@@ -53,6 +60,7 @@ extension PopOverViewController {
         //For PlugLoad - Only the Child has Appliance Type
         form.append(sectionZoneInfo)
         if (presenter.getCount() == ENode.child) {
+            applianceRow.add(rule: RuleRequired())
             form.append(sectionAppliance)
         }
         form.append(sectionSave)

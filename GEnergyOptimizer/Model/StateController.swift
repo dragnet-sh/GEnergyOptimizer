@@ -107,7 +107,6 @@ extension StateController {
     }
 
     func getCount() -> ENode {
-        Log.message(.error, message: "Get Count \(counterZLV.count)")
         return ENode(rawValue: counterZLV.count)!
     }
 
