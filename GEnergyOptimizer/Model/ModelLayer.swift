@@ -250,6 +250,16 @@ extension ModelLayer {
                         finished(.local, mapToFormData(featureData: fetchResults))
                     }
                 }()
+                case .appliances: {
+                    if let cdZone = state.getActiveCDZone() {
+                        guard let fetchResults = cdZone.hasFeature?.allObjects as? [CDFeatureData] else {
+                            Log.message(.error, message: "Guard Failed : Fetched Results - PreAudit Data")
+                            return
+                        }
+
+                        finished(.local, mapToFormData(featureData: fetchResults))
+                    }
+                }()
                 default: Log.message(.error, message: "Unable to figure out Entity to Associate !!")
                 }
             }

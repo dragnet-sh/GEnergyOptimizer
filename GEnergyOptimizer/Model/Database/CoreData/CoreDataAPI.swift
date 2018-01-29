@@ -301,10 +301,17 @@ extension CoreDataAPI {
                             pa.createdAt = NSDate()
                             pa.updatedAt = NSDate()
                             pa.sync = false
-
+                            //ToDo - Code Review !!
                             switch vc.dataBelongsTo() {
                             case .preaudit: pa.belongsToAudit = audit
                             case .zone: {
+                                if let activeCDZone = self.state.getActiveCDZone() {
+                                    pa.belongsToZone = activeCDZone
+                                } else {
+                                    finished(.Error("Active Core Data Zone is NIL - Core Data Save Failed !!"))
+                                }
+                            }()
+                            case .appliances: {
                                 if let activeCDZone = self.state.getActiveCDZone() {
                                     pa.belongsToZone = activeCDZone
                                 } else {
