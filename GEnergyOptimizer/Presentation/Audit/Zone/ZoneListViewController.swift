@@ -83,10 +83,6 @@ extension  ZoneListViewController: UITableViewDelegate {
     //ToDo: Code Review
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-
-        Log.message(.error, message: "Selection Zone List Item")
-        Log.message(.error, message: String(describing: presenter.getCount().rawValue))
-
         if let activeZone = presenter.getActiveZone() {
             switch activeZone {
             case EZone.plugload.rawValue:

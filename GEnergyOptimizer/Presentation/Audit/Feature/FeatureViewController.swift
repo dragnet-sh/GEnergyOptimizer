@@ -14,7 +14,7 @@ class FeatureViewController: GEFormViewController {
 
     let presenter = FeaturePresenter()
     var entityType: EntityType? // Note : To be set via Delegate
-    var applianceType: EApplianceType?
+    var applianceType: EApplianceType? // ToDo: Could it be possibly merged with Entity Type as Appliances are a subset of EntityType
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +47,7 @@ class FeatureViewController: GEFormViewController {
 
     // *** Loads the Form Config Data via this Bundle Resource *** //
     override func getBundleResource() -> String! {
+        //ToDo - What if the Appliance Type has not been set - Crashes while getting the filename !!
         return presenter.bundleResource(entityType: entityType, applianceType: applianceType)
     }
 }

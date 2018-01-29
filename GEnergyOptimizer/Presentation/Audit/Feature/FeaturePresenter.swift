@@ -31,10 +31,6 @@ extension FeaturePresenter {
         else { return EZone.none.rawValue }
     }
 
-    func getApplianceType() -> String {
-        return "hvac"
-    }
-
     func bundleResource(entityType: EntityType?, applianceType: EApplianceType?) -> String {
         if let entityType = entityType {
             switch entityType {

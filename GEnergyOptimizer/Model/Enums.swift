@@ -67,7 +67,7 @@ enum GError: Error {
     case none
 }
 
-
+//ToDo - Swap Label with FileName or just leave it the way it is
 enum EApplianceType: String {
     case griddle = "Griddle", steamCooker = "Steam Cooker", fryer = "Fryer", hotFoodCabinets = "Hot Food Cabinets"
     case freezerFridge = "Freezer Fridge", iceMaker = "Ice Maker"

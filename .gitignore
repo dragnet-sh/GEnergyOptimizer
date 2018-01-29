@@ -1,0 +1,14 @@
+##Git Ignore
+##Xcode | Pod | OSX | 
+
+.DS_Store
+.Trashes
+*.swp
+*.lock
+
+Pods/
+Podfile.lock
+
+build/
+*~.nib
+
