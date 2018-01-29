@@ -80,7 +80,7 @@ extension ZoneListViewController: UITableViewDataSource {
 
 //Mark: - Delegate Event
 extension  ZoneListViewController: UITableViewDelegate {
-    //ToDo: Code Review
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let dto = presenter.data[indexPath.row]

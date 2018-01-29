@@ -916,7 +916,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.geminienergyservices.alpha1.GEnergyOptimizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "aa740feb-8f52-4997-89ec-6e024ccf2d94";
+				PROVISIONING_PROFILE = "e67da0fb-893d-441a-8935-63a81f6217db";
 				PROVISIONING_PROFILE_SPECIFIER = GEnergyA1DVP;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -936,7 +936,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.geminienergyservices.alpha1.GEnergyOptimizer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0864eb54-9764-4a2a-82e8-170a8625476f";
+				PROVISIONING_PROFILE = "97e04107-7e24-4d6b-983b-07a0b388a7e6";
 				PROVISIONING_PROFILE_SPECIFIER = GEnergyA1DSP;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

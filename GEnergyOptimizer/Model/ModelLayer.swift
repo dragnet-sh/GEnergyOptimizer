@@ -179,10 +179,44 @@ extension ModelLayer {
         }
     }
 
-    func deleteZone(guid: String, finished: @escaping ()->Void) {
-        coreDataAPI.deleteZone(guid: guid) { status in
-            finished()
+    func deleteZone(guid: String, finished: @escaping () -> Void) {
+        func mainLoader() {
+            Log.message(.info, message: "Data Model : Deleting Zone")
+
+            switch state.getCount() {
+            case .parent: deleteParent()
+            case .child: deleteChild()
+            }
         }
+
+        func deleteParent() {
+            Log.message(.info, message: "Deleting - Parent")
+            coreDataAPI.getZone(id: guid) { result in
+                switch result {
+                case .Success(let data):
+                    self.coreDataAPI.getChild(parent: data) { result in
+                        for item in result {
+                            if let guid = item.guid {
+                                self.coreDataAPI.deleteZone(guid: guid) { status in
+
+                                }
+                            }
+                        }
+                        deleteChild()
+                    }
+                case .Error(let msg): Log.message(.error, message: msg.debugDescription)
+                }
+            }
+        }
+
+        func deleteChild() {
+            Log.message(.info, message: "Deleting - Child")
+            coreDataAPI.deleteZone(guid: guid) { status in
+                finished()
+            }
+        }
+
+        mainLoader()
     }
 
     func updateZone(guid: String, name: String, finished: @escaping ()->Void) {

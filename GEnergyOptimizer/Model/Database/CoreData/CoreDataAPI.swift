@@ -147,6 +147,39 @@ extension CoreDataAPI {
 
 extension CoreDataAPI {
 
+
+    // *** GET *** //
+
+    func getZone(id: String, finished: @escaping (Result<CDZone>) -> Void) {
+        Log.message(.info, message: "Core Data : Get Zone")
+        let fetchRequest: NSFetchRequest<CDZone> = CDZone.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "guid = %@", argumentArray: [id])
+
+        guard let zone = try! managedContext.fetch(fetchRequest).first as? CDZone else {
+            Log.message(.error, message: "Guard Failed : CDZone")
+            return
+        }
+
+        finished(.Success(zone))
+    }
+
+    func getChild(parent: CDZone, finished: @escaping ([CDZone]) -> Void) {
+        Log.message(.info, message: "Core Data : Zone - Get Children")
+
+        let fetchRequest: NSFetchRequest<CDZone> = CDZone.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "parent = %@", argumentArray: [parent])
+
+        do {
+            guard let result = try managedContext.fetch(fetchRequest) as? [CDZone] else {
+                Log.message(.error, message: "Guard Failed : Child CDZone")
+                return
+            }
+            finished(result)
+        } catch let error as NSError {
+            Log.message(.error, message: error.userInfo.description)
+        }
+    }
+
     // *** POST *** //
 
     func createZone(type: String, name: String, parent: CDZone? = nil, finished: @escaping (Result<CDZone>) -> Void) {
