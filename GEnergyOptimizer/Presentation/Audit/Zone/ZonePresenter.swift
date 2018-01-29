@@ -22,21 +22,8 @@ public class ZonePresenter {
 //Mark: - Zone Model CRUD
 
 extension ZonePresenter {
-
-    func createZone(name: String, type: String) {
-        modelLayer.createZone(name: name, type: type) {
-            self.loadData()
-        }
-    }
-
     func deleteZone(guid: String) {
         modelLayer.deleteZone(guid: guid) {
-            self.loadData()
-        }
-    }
-
-    func updateZone(guid: String, name: String) {
-        modelLayer.updateZone(guid: guid, name: name) {
             self.loadData()
         }
     }
@@ -54,7 +41,7 @@ extension ZonePresenter {
         state.registerCDZone(cdZone: cdZone)
     }
 
-    func counter(action: Action, dto: ZoneDTO? = nil) {
+    func counter(action: EAction, dto: ZoneDTO? = nil) {
         state.counter(action: action, dto: dto)
     }
 

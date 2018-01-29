@@ -95,8 +95,9 @@ enum EApplianceType: String {
     }
 }
 
-enum Action {
+enum EAction {
     case push, pop
+    case create, update
 }
 
 enum ENode: Int {

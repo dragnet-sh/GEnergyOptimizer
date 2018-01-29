@@ -9,6 +9,13 @@ class PopOverPresenter {
     var data = Dictionary<String, Any?>()
     fileprivate var modelLayer = ModelLayer()
     fileprivate var state = StateController.sharedInstance
+
+    func loadData() {
+        modelLayer.loadPopOverData() { source, data in
+            self.data = data
+            NotificationCenter.default.post(name: .loadPopOverDataForm, object: nil)
+        }
+    }
 }
 
 extension PopOverPresenter {
@@ -20,7 +27,16 @@ extension PopOverPresenter {
         modelLayer.savePopOverData(data: data, vc: vc) { status in
             if (status) {
                 delegate.loadData()
-                GUtils.message(title: "N/A", msg: "Operation Complete", vc: vc, type: .toast)
+                GUtils.message(msg: "Operation Complete")
+            }
+        }
+    }
+
+    func updateData(data: [String: Any?], delegate: ZonePresenter) {
+        modelLayer.updateZone(data: data) { status in
+            if (status) {
+                delegate.loadData()
+                GUtils.message(msg: "Operation Complete")
             }
         }
     }

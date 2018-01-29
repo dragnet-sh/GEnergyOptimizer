@@ -10,15 +10,16 @@ class FeaturePresenter {
     var data = Dictionary<String, Any?>()
     fileprivate var modelLayer = ModelLayer()
     fileprivate var state = StateController.sharedInstance
-}
 
-extension FeaturePresenter {
     func loadData(vc: GEFormViewController) {
         modelLayer.loadFeatureData(vc: vc) { source, data in
             self.data = data
             NotificationCenter.default.post(name: .loadFeatureDataForm, object: nil)
         }
     }
+}
+
+extension FeaturePresenter {
 
     func saveData(data: [String: Any?], model: GEnergyFormModel, vc: GEFormViewController,finished: @escaping (Bool)->Void) {
         modelLayer.saveFeatureData(data: data, model: model, vc: vc) { status in

@@ -13,14 +13,24 @@ import Eureka
 
 class PopOverViewController: FormViewController {
 
-    var activeHeader: String?
-    var activeEditLine: String?
     var delegate: ZonePresenter?
+    var action: EAction?
     let presenter = PopOverPresenter()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.buildForm()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(self.loadPopOverDataForm), name: .loadPopOverDataForm, object: nil)
+
+        if (action == EAction.update) {
+            presenter.loadData()
+        }
     }
 }
 
@@ -49,7 +59,15 @@ extension PopOverViewController {
             applianceRow.validate()
 
             if (nameRow.isValid && applianceRow.isValid) {
-                self.saveFormData()
+
+                if let action = self.action {
+                    switch action {
+                    case .create: self.saveFormData()
+                    case .update: self.updateFormData()
+                    default: Log.message(.error, message: "Unknown - Action")
+                    }
+                }
+
                 self.dismiss(animated: true, completion: nil)
             } else { GUtils.message(msg: "Data Incomplete") }
 
@@ -69,8 +87,28 @@ extension PopOverViewController {
 
 
 extension PopOverViewController {
+    @objc func loadPopOverDataForm() {
+        self.loadFormData()
+    }
+
+    fileprivate func loadFormData() {
+        Log.message(.info, message: "PopOver - Loading Form Data")
+
+        self.form.setValues(presenter.data)
+        self.tableView.reloadData()
+    }
+
     fileprivate func saveFormData() {
         Log.message(.info, message: "PopOver - Saving Form Data")
         presenter.saveData(data: self.form.values(), vc: self, delegate: delegate!)
     }
+
+    fileprivate func updateFormData() {
+        Log.message(.info, message: "PopOver - Updating Form Data")
+        presenter.updateData(data: self.form.values(), delegate: delegate!)
+    }
+}
+
+extension Notification.Name {
+    static let loadPopOverDataForm = Notification.Name(rawValue: "loadPopOverDataForm")
 }

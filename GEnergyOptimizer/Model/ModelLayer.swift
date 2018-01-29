@@ -219,9 +219,36 @@ extension ModelLayer {
         mainLoader()
     }
 
-    func updateZone(guid: String, name: String, finished: @escaping ()->Void) {
-        coreDataAPI.updateZone(guid: guid, name: name) { status in
-            finished()
+    func updateZone(data: [String: Any?], finished: @escaping (Bool)->Void) {
+        if let zone = state.getActiveCDZone() {
+            guard let id = zone.guid, let _name = data[ETagPO.name.rawValue]! else {
+                Log.message(.error, message: "Guard Failed : Zone GUID or Zone Name")
+                return
+            }
+
+            let name = String(describing: _name)
+            var type: String = ""
+
+            switch state.getActiveZone()! {
+            case EZone.plugload.rawValue:
+                switch state.getCount() {
+                case .parent: type = EZone.plugload.rawValue
+                case .child:
+                    guard let _type = data[ETagPO.type.rawValue]! else {
+                        Log.message(.error, message: "Guard Failed: Extracting Type form Form Data")
+                        return
+                    }
+                    type = String(describing: _type)
+                }
+
+            case EZone.lighting.rawValue: type = EZone.lighting.rawValue
+            case EZone.hvac.rawValue: type = EZone.hvac.rawValue
+            default: {}()
+            }
+
+            coreDataAPI.updateZone(guid: id, name: name, type: type) { result in
+                finished(result)
+            }
         }
     }
 }
@@ -392,6 +419,18 @@ extension ModelLayer {
 
 //Mark: - Pop Over Data Model
 extension ModelLayer {
+
+    func loadPopOverData(finished: @escaping PopOverDataSourceBlock) {
+        Log.message(.info, message: "Loading PopOver Data")
+
+        var data = Dictionary<String, Any?>()
+        if let zone = state.getActiveCDZone() {
+            data[ETagPO.name.rawValue] = zone.name
+            data[ETagPO.type.rawValue] = zone.type
+            finished(.local, data)
+        }
+
+    }
 
     func savePopOverData(data: [String: Any?], vc: PopOverViewController, finished: @escaping PopOverDataSaveBlock) {
         Log.message(.info, message: "Pop Over - Data Save")

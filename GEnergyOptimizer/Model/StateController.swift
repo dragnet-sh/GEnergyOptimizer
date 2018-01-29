@@ -99,10 +99,11 @@ extension StateController {
         return crosswalk[guid]
     }
 
-    func counter(action: Action, dto: ZoneDTO?) {
+    func counter(action: EAction, dto: ZoneDTO?) {
         switch action {
         case .push: counterZLV.append(dto!)
         case .pop: counterZLV.popLast()
+        default: Log.message(.error, message: "Action - Unknown")
         }
     }
 

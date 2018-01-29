@@ -238,7 +238,7 @@ extension CoreDataAPI {
 
     // *** UPDATE *** //
 
-    func updateZone(guid: String, name: String, finished: @escaping (Bool) -> Void) {
+    func updateZone(guid: String, name: String, type: String, finished: @escaping (Bool) -> Void) {
         Log.message(.info, message: "Core Data : Update Zone")
         let fetchRequest: NSFetchRequest<CDZone> = CDZone.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "guid = %@", argumentArray: [guid])
@@ -251,6 +251,7 @@ extension CoreDataAPI {
             }
 
             zone.name = name
+            zone.type = type
             zone.updatedAt = NSDate()
 
             try managedContext.save()

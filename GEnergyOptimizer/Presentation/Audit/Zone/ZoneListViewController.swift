@@ -55,6 +55,7 @@ extension ZoneListViewController {
 
         let vc = ControllerUtils.fromStoryboard(reference: "PresenterModal") as! PopOverViewController
         vc.delegate = self.presenter
+        vc.action = .create
         let presenter = Presentr(presentationType: .popup)
         presenter.dismissOnSwipe = true
         customPresentViewController(presenter, viewController: vc, animated: true) {}
@@ -128,8 +129,19 @@ extension  ZoneListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let zone = self.presenter.data[indexPath.row]
         let actions = ControllerUtils.getTableEditActions(
-                delete: { row in self.presenter.deleteZone(guid: zone.guid)},
-                edit: { row in Log.message(.info, message: "Edit - Zone List View Controller")}
+                delete: { row in self.presenter.deleteZone(guid: zone.guid) },
+                edit: { row in
+                    self.presenter.setActiveCDZone(cdZone: zone.cdZone)
+
+                    let vc = ControllerUtils.fromStoryboard(reference: "PresenterModal") as! PopOverViewController
+                    vc.delegate = self.presenter
+                    vc.action = .update
+
+                    let presenter = Presentr(presentationType: .popup)
+                    presenter.dismissOnSwipe = true
+                    self.customPresentViewController(presenter, viewController: vc, animated: true) {
+                    }
+                }
         )
 
         return actions
