@@ -83,34 +83,46 @@ extension  ZoneListViewController: UITableViewDelegate {
     //ToDo: Code Review
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        if let activeZone = presenter.getActiveZone() {
-            switch activeZone {
-            case EZone.plugload.rawValue:
+        let dto = presenter.data[indexPath.row]
 
-                if (presenter.getCount() == .parent) {
+        func switcher() {
 
-                    Log.message(.error, message: "PUSH")
-                    presenter.counter(action: .push, dto: presenter.data[indexPath.row])
+            guard let zone = presenter.getActiveZone() else {
+                Log.message(.error, message: "Guard Failed : Get Active Zone")
+                return
+            }
 
-                    let vc = ControllerUtils.fromStoryboard(reference: "ZoneListViewController") as! ZoneListViewController
-                    navigationController?.pushViewController(vc, animated: true)
-
-                } else if (presenter.getCount() == .child) {
-
-                    let vc = ControllerUtils.fromStoryboard(reference: "FeatureViewController") as! FeatureViewController
-                    vc.entityType = EntityType.appliances
-                    vc.applianceType = EApplianceType(rawValue: presenter.data[indexPath.row].type)
-                    navigationController?.pushViewController(vc, animated: true)
-
+            if zone == EZone.plugload.rawValue {
+                switch presenter.getCount() {
+                case .parent:
+                    presenter.counter(action: .push, dto: dto)
+                    loadZone()
+                case .child:
+                    loadFeature() { vc in
+                        vc.entityType = EntityType.appliances
+                    }
                 }
-
-            default:
-                let vc = ControllerUtils.fromStoryboard(reference: "FeatureViewController") as! FeatureViewController
-                vc.entityType = EntityType.zone
-                presenter.setActiveCDZone(cdZone: presenter.data[indexPath.row].cdZone)
-                navigationController?.pushViewController(vc, animated: true)
+            } else {
+                loadFeature() { vc in vc.entityType = EntityType.zone }
             }
         }
+
+
+        func loadFeature(setEntityType:(FeatureViewController)->Void) {
+            let vc = ControllerUtils.fromStoryboard(reference: "FeatureViewController") as! FeatureViewController
+            setEntityType(vc)
+            vc.applianceType = EApplianceType(rawValue: dto.type)
+
+            presenter.setActiveCDZone(cdZone: dto.cdZone)
+            navigationController?.pushViewController(vc, animated: true)
+        }
+
+        func loadZone() {
+            let vc = ControllerUtils.fromStoryboard(reference: "ZoneListViewController") as! ZoneListViewController
+            navigationController?.pushViewController(vc, animated: true)
+        }
+
+        switcher()
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
