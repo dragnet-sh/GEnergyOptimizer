@@ -28,7 +28,7 @@ class HomeListViewController: UIViewController, UINavigationBarDelegate {
         presenter = HomePresenter()
         presenter.loadData { source in
             Log.message(.info, message: "Fake - Data Loaded Form \(source)")
-            self.tableView.reloadData()
+            self.tableView.reloadData() //ToDo : Use Notification Center Instead
         }
     }
 }
