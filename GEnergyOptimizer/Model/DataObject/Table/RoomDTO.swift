@@ -9,10 +9,12 @@ class RoomDTO {
     var identifier: String
     var title: String
     var guid: String
+    var cdRoom: CDRoom
 
-    init(identifier: String, title: String, guid: String) {
+    init(identifier: String, title: String, guid: String, cdRoom: CDRoom) {
         self.identifier = identifier
         self.title = title
         self.guid = guid
+        self.cdRoom = cdRoom
     }
 }
