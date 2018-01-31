@@ -78,6 +78,7 @@
 		487C0EBFA53E8A8096122C25 /* ConvectionOven.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0DD6AA94B86818D3F4B1 /* ConvectionOven.json */; };
 		487C0ED7A66DF107592432AB /* PresenterModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 487C078014FACE4006AD6F7A /* PresenterModal.storyboard */; };
 		487C0EF2551E185C1C343764 /* CDRoom+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C066BFB512554E5BB460A /* CDRoom+CoreDataProperties.swift */; };
+		487C0FB995463C425FE2BCC9 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C08D0843EFF647751E835 /* BasePresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,7 @@
 		487C080941112BEE2DFCA5A6 /* ZoneDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneDTO.swift; sourceTree = "<group>"; };
 		487C0853D485C19C3121BC98 /* CoreDataAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataAPI.swift; sourceTree = "<group>"; };
 		487C087930871E54E6748664 /* CDAudit+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDAudit+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		487C08D0843EFF647751E835 /* BasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		487C09419395638280CC7684 /* Fryer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Fryer.json; sourceTree = "<group>"; };
 		487C09E7BFD390D46EFB6FB0 /* FormBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormBuilder.swift; sourceTree = "<group>"; };
 		487C0A39AC6B004B52564DAC /* preaudit.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = preaudit.json; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 				487C01F5FC90E0212CF08B6E /* Home */,
 				487C004CEC4297383988FF70 /* LoginViewController.swift */,
 				487C0C8D7C0CD8F8E871A36C /* GEFormViewController.swift */,
+				487C08D0843EFF647751E835 /* BasePresenter.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -754,6 +757,7 @@
 				487C0C0B6AAD6438E6CF398B /* FeaturePresenter.swift in Sources */,
 				487C0B8B666530A679BF79AA /* PopOverViewController.swift in Sources */,
 				487C0A324EC41B198CFA67E1 /* PopOverPresenter.swift in Sources */,
+				487C0FB995463C425FE2BCC9 /* BasePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

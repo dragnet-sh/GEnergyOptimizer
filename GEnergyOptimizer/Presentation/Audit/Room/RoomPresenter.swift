@@ -6,19 +6,20 @@
 import Foundation
 import CleanroomLogger
 
-public class RoomPresenter {
+public class RoomPresenter: BasePresenter {
     var data = [RoomDTO]()
     fileprivate var modelLayer = ModelLayer()
-}
+    fileprivate var state = StateController.sharedInstance
 
-extension RoomPresenter {
     func loadData() {
         modelLayer.loadRoom { source, data in
             self.data = data
             NotificationCenter.default.post(name: .updateRoomTableData, object: nil)
         }
     }
+}
 
+extension RoomPresenter {
     func createRoom(name: String) {
         modelLayer.createRoom(name: name) {
             self.loadData()
@@ -35,5 +36,13 @@ extension RoomPresenter {
         modelLayer.updateRoom(guid: guid, name: name) {
             self.loadData()
         }
+    }
+
+    func setActiveCDRoom(cdRoom: CDRoom) {
+        state.registerCDRoom(cdRoom: cdRoom)
+    }
+
+    func setActiveZone(zone: String) {
+        state.registerActiveZone(zone: zone)
     }
 }

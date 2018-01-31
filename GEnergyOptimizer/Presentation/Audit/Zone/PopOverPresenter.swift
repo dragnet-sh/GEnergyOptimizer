@@ -23,7 +23,7 @@ extension PopOverPresenter {
         return state.getCount()
     }
 
-    func saveData(data: [String: Any?], vc: PopOverViewController, delegate: ZonePresenter) {
+    func saveData(data: [String: Any?], vc: PopOverViewController, delegate: BasePresenter) {
         modelLayer.savePopOverData(data: data, vc: vc) { status in
             if (status) {
                 delegate.loadData()
@@ -32,8 +32,8 @@ extension PopOverPresenter {
         }
     }
 
-    func updateData(data: [String: Any?], delegate: ZonePresenter) {
-        modelLayer.updateZone(data: data) { status in
+    func updateData(data: [String: Any?], delegate: BasePresenter) {
+        modelLayer.updatePopOverData(data: data) { status in
             if (status) {
                 delegate.loadData()
                 GUtils.message(msg: "Operation Complete")

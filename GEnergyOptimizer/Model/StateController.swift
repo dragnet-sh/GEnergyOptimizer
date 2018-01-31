@@ -22,6 +22,7 @@ class StateController {
     // *** Core Data Objects *** //
     fileprivate var cdAudit: CDAudit?
     fileprivate var cdZone: CDZone?
+    fileprivate var cdRoom: CDRoom?
 
     // *** Parse Data Objects *** //
     fileprivate var pfAudit: PFAudit?
@@ -84,6 +85,16 @@ extension StateController {
         return cdZone
     }
 
+    public func getActiveCDRoom() -> CDRoom? {
+        Log.message(.info, message: "State : Get Active CDRoom")
+        guard let cdRoom = self.cdRoom else {
+            Log.message(.error, message: "CDRoom Not Set")
+            return nil
+        }
+
+        return cdRoom
+    }
+
     public func getActiveZone() -> String? {
         Log.message(.info, message: "State : Get Active Zone")
         guard let zone = self.activeZone else {
@@ -141,6 +152,11 @@ extension StateController {
     public func registerCDZone(cdZone: CDZone) {
         Log.message(.info, message: "Register : Core Data Zone")
         self.cdZone = cdZone
+    }
+
+    public func registerCDRoom(cdRoom: CDRoom) {
+        Log.message(.info, message: "Register : Core Data Room")
+        self.cdRoom = cdRoom
     }
 
     public func registerCrosswalk(guid: String, pfZone: PFZone) {

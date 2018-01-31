@@ -6,7 +6,7 @@
 import Foundation
 import CleanroomLogger
 
-public class ZonePresenter {
+public class ZonePresenter: BasePresenter {
     var data = [ZoneDTO]()
     fileprivate var modelLayer = ModelLayer()
     fileprivate var state = StateController.sharedInstance

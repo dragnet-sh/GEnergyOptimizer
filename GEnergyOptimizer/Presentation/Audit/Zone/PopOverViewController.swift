@@ -13,7 +13,7 @@ import Eureka
 
 class PopOverViewController: FormViewController {
 
-    var delegate: ZonePresenter?
+    var delegate: BasePresenter?
     var action: EAction?
     let presenter = PopOverPresenter()
 
@@ -38,7 +38,7 @@ extension PopOverViewController {
     func buildForm() {
 
         //Name Row
-        let sectionZoneInfo = Section("GEnergy : Zone Info")
+        let sectionZoneInfo = Section("GEnergy Optimizer : Info")
         let nameRow = TextRow(tag: ETagPO.name.rawValue)
         nameRow.placeholder = "Name"
         nameRow.add(rule: RuleRequired())

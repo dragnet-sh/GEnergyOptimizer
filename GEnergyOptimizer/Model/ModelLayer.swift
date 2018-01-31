@@ -15,6 +15,7 @@ typealias FeatureDataSourceBlock = (Source, [String: Any?])->Void
 typealias FeatureDataSaveBlock = (Bool)->Void
 typealias PopOverDataSourceBlock = (Source, [String: Any?])->Void
 typealias PopOverDataSaveBlock = (Bool)->Void
+typealias PopOverDataUpdateBlock = (Bool)->Void
 
 class ModelLayer {
 
@@ -73,7 +74,7 @@ extension ModelLayer {
                     return
                 }
 
-                let data = results.map { RoomDTO(identifier: "N/A", title: $0.name!, guid: $0.guid!) }
+                let data = results.map { RoomDTO(identifier: "N/A", title: $0.name!, guid: $0.guid!, cdRoom: $0) }
                 finished(.local, data)
             }
         }
@@ -423,13 +424,22 @@ extension ModelLayer {
     func loadPopOverData(finished: @escaping PopOverDataSourceBlock) {
         Log.message(.info, message: "Loading PopOver Data")
 
-        var data = Dictionary<String, Any?>()
-        if let zone = state.getActiveCDZone() {
-            data[ETagPO.name.rawValue] = zone.name
-            data[ETagPO.type.rawValue] = zone.type
-            finished(.local, data)
-        }
+        //ToDo: Code Review !!
 
+        var data = Dictionary<String, Any?>()
+        switch state.getActiveZone()! {
+        case EZone.none.rawValue:
+            if let activeRoom = state.getActiveCDRoom() {
+                data[ETagPO.name.rawValue] = activeRoom.name
+                finished(.local, data)
+            }
+        default:
+            if let zone = state.getActiveCDZone() {
+                data[ETagPO.name.rawValue] = zone.name
+                data[ETagPO.type.rawValue] = zone.type
+                finished(.local, data)
+            }
+        }
     }
 
     func savePopOverData(data: [String: Any?], vc: PopOverViewController, finished: @escaping PopOverDataSaveBlock) {
@@ -471,9 +481,30 @@ extension ModelLayer {
                 finished(true)
             }
 
+        case EZone.none.rawValue:
+            coreDataAPI.createRoom(name: name) { result in
+                finished(true)
+            }
+
         default: Log.message(.info, message: "MUST BE - HVAC")
         }
+    }
 
+    func updatePopOverData(data: [String: Any?], finished: @escaping PopOverDataUpdateBlock) {
+        guard let _name = data[ETagPO.name.rawValue]! else {
+            Log.message(.error, message: "Guard Failed : Extracting Name from Form Data")
+            return
+        }
 
+        let name = String(describing: _name)
+
+        switch state.getActiveZone()! {
+        case EZone.none.rawValue:
+            if let activeRoom = state.getActiveCDRoom() {
+                updateRoom(guid: activeRoom.guid!, name: name) { }
+                finished(true)
+            }
+        default: updateZone(data: data) { status in finished(status) }
+        }
     }
 }
