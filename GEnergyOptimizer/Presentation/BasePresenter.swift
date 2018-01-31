@@ -4,3 +4,7 @@
 //
 
 import Foundation
+
+protocol BasePresenter {
+    func loadData()
+}
