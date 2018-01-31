@@ -296,6 +296,17 @@ extension CoreDataAPI {
                 finished(.Success(zone))
             }
         }()
+        case .appliances: {
+            Log.message(.info, message: "Core Data : Zone - Appliances - Feature Data")
+            if let activeZone = self.state.getActiveCDZone() {
+                guard let zone = activeZone.hasFeature?.allObjects as? [CDFeatureData] else {
+                    Log.message(.error, message: "Guard Failed : Fetched Results - PreAudit Data - ZONE")
+                    finished(.Error("Unable to Fetch PreAudit - Zone"))
+                    return
+                }
+                finished(.Success(zone))
+            }
+        }()
         default: Log.message(.error, message: "Unknown Entity Type")
         }
     }
