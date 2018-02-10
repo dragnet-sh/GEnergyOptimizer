@@ -72,7 +72,7 @@ enum EApplianceType: String {
     case griddle = "Griddle", steamCooker = "Steam Cooker", fryer = "Fryer", hotFoodCabinets = "Hot Food Cabinets"
     case freezerFridge = "Freezer Fridge", iceMaker = "Ice Maker"
     case conveyorOven = "Conveyor Oven", convectionOven = "Convection Oven", combinationOven = "Combination Oven"
-    case rackOven = "Rack Oven"
+    case rackOven = "Rack Oven", none
 
     static let getAll = [griddle, steamCooker, fryer, hotFoodCabinets, freezerFridge, iceMaker, conveyorOven,
                          convectionOven, combinationOven, rackOven]
@@ -91,6 +91,7 @@ enum EApplianceType: String {
             case .convectionOven: return "ConvectionOven"
             case .combinationOven: return "CombinationOven"
             case .rackOven: return "RackOven"
+            default: return "none"
         }
     }
 }

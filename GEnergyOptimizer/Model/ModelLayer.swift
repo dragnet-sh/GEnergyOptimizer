@@ -42,12 +42,12 @@ extension ModelLayer {
 
             loadFromDB(from: .local)
 
-            dataLayer.loadAuditNetwork(identifier: identifier) {
-                self.dataLayer.sync() {
-                    Log.message(.info, message: "Sync -- Callback")
-                }
-                loadFromDB(from: .network)
-            }
+//            dataLayer.loadAuditNetwork(identifier: identifier) {
+//                self.dataLayer.sync() {
+//                    Log.message(.info, message: "Sync -- Callback")
+//                }
+//                loadFromDB(from: .network)
+//            }
         }
 
         func loadFromDB(from source: Source) {

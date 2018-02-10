@@ -1,0 +1,51 @@
+{
+  "gemini-form": [
+    {
+      "index": 1,
+      "section": "Fryer",
+      "elements": [
+        {
+          "index": 1,
+          "param": "Production Capacity (lbs/h)",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "19243580-8301-4024-bca4-de0b829781b3"
+        },
+        {
+          "index": 2,
+          "param": "Vat Width (in)",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "0432d324-a6dd-4698-9fc8-6ecca575d571"
+        },
+        {
+          "index": 3,
+          "param": "Fuel Type",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "Gas,Electric",
+          "id": "70be33b2-fe6d-4119-9083-71ac855906f3"
+        },
+        {
+          "index": 4,
+          "param": "Model Number",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "bfe879f9-4189-4e45-b76a-8f7065ff3990"
+        },
+        {
+          "index": 5,
+          "param": "Company",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "d32893c1-7856-44a0-8820-42d21c4ac437"
+        }
+      ],
+      "id": "83b6de00-f32b-467c-b463-691acc307c93"
+    }
+  ]
+}

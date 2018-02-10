@@ -147,7 +147,7 @@
         {
           "index": 19,
           "param": "Monday Operating Hours",
-          "data-type": "decimalrow",
+          "data-type": "textrow",
           "validation": "",
           "default-values": "",
           "id": "058cd431-2ab9-4227-aa85-396a436cb94f"
@@ -155,7 +155,7 @@
         {
           "index": 20,
           "param": "Tuesday Operating Hours",
-          "data-type": "decimalrow",
+          "data-type": "textrow",
           "validation": "",
           "default-values": "",
           "id": "5a4ef21d-d27d-4d4d-82f6-94b2d8021435"
@@ -163,7 +163,7 @@
         {
           "index": 21,
           "param": "Wednesday Operating Hours",
-          "data-type": "decimalrow",
+          "data-type": "textrow",
           "validation": "",
           "default-values": "",
           "id": "1970ec3e-3a75-424c-b9e3-09fc13a13705"
@@ -171,7 +171,7 @@
         {
           "index": 22,
           "param": "Thursday Operating Hours",
-          "data-type": "decimalrow",
+          "data-type": "textrow",
           "validation": "",
           "default-values": "",
           "id": "76890044-37a3-40f5-8cad-f46489341924"
@@ -179,7 +179,7 @@
         {
           "index": 23,
           "param": "Friday Operating Hours",
-          "data-type": "decimalrow",
+          "data-type": "textrow",
           "validation": "",
           "default-values": "",
           "id": "9699a2bd-51c8-444d-8250-197c15374ca5"
@@ -187,7 +187,7 @@
         {
           "index": 24,
           "param": "Saturday Operating Hours",
-          "data-type": "decimalrow",
+          "data-type": "textrow",
           "validation": "",
           "default-values": "",
           "id": "0bc8abdb-f385-48de-ac0d-42628fc0512c"
@@ -195,7 +195,7 @@
         {
           "index": 25,
           "param": "Sunday Operating Hours",
-          "data-type": "decimalrow",
+          "data-type": "textrow",
           "validation": "",
           "default-values": "",
           "id": "4d6afa16-955b-47e4-a53a-e6c25866b7c8"

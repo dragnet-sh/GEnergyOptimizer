@@ -1,0 +1,59 @@
+{
+  "gemini-form": [
+    {
+      "index": 1,
+      "section": "Griddle",
+      "elements": [
+        {
+          "index": 1,
+          "param": "Number of Sides",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "Single, Double",
+          "id": "78d2b6b0-95ad-4532-bc29-0976b55361c5"
+        },
+        {
+          "index": 2,
+          "param": "Surface Area",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "f1b65a61-1a3c-4376-bc7c-064e327eb04f"
+        },
+        {
+          "index": 3,
+          "param": "Nominal Width",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "3ee26fab-072d-44fb-af6f-808b012cf0d1"
+        },
+        {
+          "index": 4,
+          "param": "Fuel Type",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "Gas,Electric",
+          "id": "19a5e028-8ae3-41fd-a686-be18ed0a9efb"
+        },
+        {
+          "index": 5,
+          "param": "Model Number",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "74e02a21-9721-4dd1-a2f6-19898caa96cb"
+        },
+        {
+          "index": 6,
+          "param": "Company",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "1136eedb-4bdd-4e6c-bf38-82973ded4e5a"
+        }
+      ],
+      "id": "29cb7403-a875-4283-ac63-80d2a4ff57b1"
+    }
+  ]
+}

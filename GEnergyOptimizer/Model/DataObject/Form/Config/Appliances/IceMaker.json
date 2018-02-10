@@ -1,0 +1,59 @@
+{
+  "gemini-form": [
+    {
+      "index": 1,
+      "section": "Ice Maker",
+      "elements": [
+        {
+          "index": 1,
+          "param": "Ice Harvest Rate",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "7214e1cd-06db-4ce1-86d4-c5343e826a35"
+        },
+        {
+          "index": 2,
+          "param": "Energy Use Rate",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "37bf9fc6-08ea-4670-a449-2f97a81bcb01"
+        },
+        {
+          "index": 3,
+          "param": "Ice Type",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "Cube, Continuous",
+          "id": "1d4253dd-0647-4bc3-ae9d-6e221bd1fac8"
+        },
+        {
+          "index": 4,
+          "param": "Machine Type",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "1d0d8a01-b415-4035-8ff5-ae2408655cab"
+        },
+        {
+          "index": 5,
+          "param": "Model Number",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "9d9f60bf-d43b-4833-8b88-3ec8b4a974ec"
+        },
+        {
+          "index": 6,
+          "param": "Company",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "74a8bccc-ed3e-4143-8508-d2d60285f869"
+        }
+      ],
+      "id": "6f63eb6d-3967-42bc-95fd-0ef968858728"
+    }
+  ]
+}

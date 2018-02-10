@@ -104,6 +104,7 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CSV.swift/CSV.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CSwiftV/CSwiftV.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CleanroomLogger/CleanroomLogger.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework"
@@ -115,6 +116,7 @@ fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CSV.swift/CSV.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/CSwiftV/CSwiftV.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CleanroomLogger/CleanroomLogger.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework"

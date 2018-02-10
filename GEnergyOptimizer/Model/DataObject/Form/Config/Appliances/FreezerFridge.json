@@ -1,0 +1,51 @@
+{
+  "gemini-form": [
+    {
+      "index": 1,
+      "section": "Freezer Fridge",
+      "elements": [
+        {
+          "index": 1,
+          "param": "Product Type",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "ddb632c8-f30a-4bb3-ad5e-3353847bb874"
+        },
+        {
+          "index": 2,
+          "param": "Total Volume",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "006924cf-005e-43bb-aacf-00d88664a17f"
+        },
+        {
+          "index": 3,
+          "param": "Fridge Capacity",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "4614c44e-f346-42a4-a87a-0e1ed49dad2f"
+        },
+        {
+          "index": 4,
+          "param": "Model Number",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "466b8b41-f881-4616-9c22-6c395c6f5555"
+        },
+        {
+          "index": 5,
+          "param": "Company",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "9a3fb93c-69cf-4a37-9fc6-62525a24fef8"
+        }
+      ],
+      "id": "592fd587-43ee-400c-8b41-310577aedf01"
+    }
+  ]
+}

@@ -145,7 +145,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQe-ha-Oy4">
-                                                <rect key="frame" x="127" y="0.0" width="63" height="50"/>
+                                                <rect key="frame" x="123.66666666666666" y="0.0" width="63" height="50"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                 <state key="normal" title="Pre Audit"/>
                                                 <connections>
@@ -153,9 +153,12 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6kZ-Yf-IVc">
-                                                <rect key="frame" x="277" y="0.0" width="57" height="50"/>
+                                                <rect key="frame" x="270" y="0.0" width="64" height="50"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                <state key="normal" title="Settings"/>
+                                                <state key="normal" title="Calculate"/>
+                                                <connections>
+                                                    <action selector="btnCalculate:" destination="QFx-9v-kKd" eventType="touchUpInside" id="foY-xR-BG3"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

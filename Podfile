@@ -11,6 +11,7 @@ target 'GEnergyOptimizer' do
   pod 'Parse'
   pod 'PopupDialog', '~> 0.6'
   pod 'CSV.swift', '~> 2.1'
+  pod 'CSwiftV', '~> 0.0'
   pod 'Toaster'
   pod 'Presentr', '~> 1.3'
 end

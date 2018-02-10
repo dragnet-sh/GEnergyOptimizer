@@ -1,0 +1,51 @@
+{
+  "gemini-form": [
+    {
+      "index": 1,
+      "section": "Convection Oven",
+      "elements": [
+        {
+          "index": 1,
+          "param": "Production Capacity (lbs/h)",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "781125b1-f150-4d2c-92a6-018744fdb621"
+        },
+        {
+          "index": 2,
+          "param": "Oven Size",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "Full,Half",
+          "id": "1d3c19b5-f7c4-44b7-96ba-e17627ebb1e8"
+        },
+        {
+          "index": 3,
+          "param": "Fuel Type",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "Gas,Electric",
+          "id": "42f55bf5-1e1f-48d0-b538-02a9b2b03ba6"
+        },
+        {
+          "index": 4,
+          "param": "Model Number",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "b37a9651-56fa-4ae1-b46a-57ec4b527473"
+        },
+        {
+          "index": 5,
+          "param": "Company",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "ed2257b3-af41-4315-9f79-ac2538076bff"
+        }
+      ],
+      "id": "d71a915c-f00d-41cd-a75c-342e11a1b98f"
+    }
+  ]
+}

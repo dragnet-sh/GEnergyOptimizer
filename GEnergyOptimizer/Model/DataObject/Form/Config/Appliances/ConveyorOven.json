@@ -1,0 +1,51 @@
+{
+  "gemini-form": [
+    {
+      "index": 1,
+      "section": "Conveyor Oven",
+      "elements": [
+        {
+          "index": 1,
+          "param": "Oven Length",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "c957a506-1613-4464-900d-5624ae989fe0"
+        },
+        {
+          "index": 2,
+          "param": "Conveyor Width",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "12d77eae-b5fb-447f-bc2f-3396a16b50b0"
+        },
+        {
+          "index": 3,
+          "param": "Model Number",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "dfbbc0ba-25a0-496f-b5c8-9e9a89bfa4dc"
+        },
+        {
+          "index": 4,
+          "param": "Company",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "e1825d88-2dff-4511-882e-39aef26ee930"
+        },
+        {
+          "index": 5,
+          "param": "Fuel type",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "Gas,Electric",
+          "id": "3eeabeab-383b-4955-b34f-f7390af3aff9"
+        }
+      ],
+      "id": "b48d1256-edc9-4343-9d01-d96bd0ec3b49"
+    }
+  ]
+}

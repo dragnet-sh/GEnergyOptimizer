@@ -1,0 +1,59 @@
+{
+  "gemini-form": [
+    {
+      "index": 1,
+      "section": "Steam Cooker",
+      "elements": [
+        {
+          "index": 1,
+          "param": "Production Capacity (lb/h)",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "537dcb0e-c771-4e45-ab89-ea9eeca3d15d"
+        },
+        {
+          "index": 2,
+          "param": "Pan Capacity",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "3,4,5,6,8,10,12",
+          "id": "0bed11ba-c68f-4c32-bf74-298340ec55c3"
+        },
+        {
+          "index": 3,
+          "param": "Fuel Type",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "Gas,Electric",
+          "id": "1252043c-c50a-483b-a589-06613474a459"
+        },
+        {
+          "index": 4,
+          "param": "Steamer Type",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "Steam Generator,Boilerless",
+          "id": "3039d92f-543b-489a-92f4-63846e174ddd"
+        },
+        {
+          "index": 5,
+          "param": "Model Number",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "ac602a2f-95c7-43d6-bc63-7760473f12a9"
+        },
+        {
+          "index": 6,
+          "param": "Company",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "5e67acf3-4ae5-42b9-9e81-e6ff40a5b8e9"
+        }
+      ],
+      "id": "efbafd60-2d6d-4129-aa3e-1253ce19f831"
+    }
+  ]
+}

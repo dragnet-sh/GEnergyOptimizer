@@ -1,0 +1,43 @@
+{
+  "gemini-form": [
+    {
+      "index": 1,
+      "section": "Combination Oven",
+      "elements": [
+        {
+          "index": 1,
+          "param": "Size (Steam Pans)",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "0526aca5-5aba-47ed-be6c-9aadb742c154"
+        },
+        {
+          "index": 2,
+          "param": "Fuel Type",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "Gas,Electric",
+          "id": "8dd1fa4a-9eee-44aa-81f4-d659ff5e1825"
+        },
+        {
+          "index": 3,
+          "param": "Model Number",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "4892f09f-7ffd-436a-832b-8c983f101424"
+        },
+        {
+          "index": 4,
+          "param": "Company",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "523e115e-1365-40fc-a661-00ee377780bb"
+        }
+      ],
+      "id": "f47efe6c-6924-43f6-9675-5503b4d928a5"
+    }
+  ]
+}

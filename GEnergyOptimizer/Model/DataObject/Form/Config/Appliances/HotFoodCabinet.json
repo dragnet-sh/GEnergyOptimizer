@@ -1,0 +1,43 @@
+{
+  "gemini-form": [
+    {
+      "index": 1,
+      "section": "Hot Food Cabinets",
+      "elements": [
+        {
+          "index": 1,
+          "param": "Cabinet Volume",
+          "data-type": "decimalrow",
+          "validation": "",
+          "default-values": "",
+          "id": "3041b535-55d9-4722-87d3-3a5984346fcf"
+        },
+        {
+          "index": 2,
+          "param": "Size",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "Full Size, 1/2 Size",
+          "id": "b4e838ba-a2f8-4c40-8843-dec0c22f6aff"
+        },
+        {
+          "index": 3,
+          "param": "Model Number",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "625e0ade-0598-4869-8d85-0631145ec59d"
+        },
+        {
+          "index": 4,
+          "param": "Company",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "f31764fb-ea89-42c3-8b11-2468b5435e67"
+        }
+      ],
+      "id": "8892ea32-1e21-44ec-8e20-44dc213c3f77"
+    }
+  ]
+}
