@@ -54,6 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFAudit.registerSubclass()
         PFZone.registerSubclass()
         PFRoom.registerSubclass()
+        PlugLoad.registerSubclass()
 
         Log.message(.info, message: "Parse - Initialization - Processing")
         let configuration = ParseClientConfiguration {

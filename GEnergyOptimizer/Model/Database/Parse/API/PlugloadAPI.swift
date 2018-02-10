@@ -4,3 +4,18 @@
 //
 
 import Foundation
+
+class PlugloadAPI {
+
+    class var sharedInstance: PlugloadAPI {
+        struct Singleton {
+            static let instance = PlugloadAPI()
+        }
+        return Singleton.instance
+    }
+
+
+    func getAllMatch() {
+
+    }
+}

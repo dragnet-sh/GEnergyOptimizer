@@ -64,3 +64,17 @@ extension PFRoom: PFSubclassing {
     }
 }
 
+
+//Plugload
+
+public class PlugLoad: PFObject {
+    @NSManaged public var type: String
+    @NSManaged public var data: Dictionary<String, Any>
+}
+
+extension PlugLoad: PFSubclassing {
+    public static func parseClassName() -> String {
+        return String(describing: self)
+    }
+}
+
