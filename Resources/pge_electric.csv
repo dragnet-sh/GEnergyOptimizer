@@ -1,38 +1,25 @@
 rate,season,dc_period,demand_charge,ec_period,energy_charge
-A-1,summer,,-,,0.2473
-A-1,winter,,-,,0.1927
-A-1 TOU,summer,,-,on peak,0.26298
-A-1 TOU,summer,,-,part peak,0.23933
-A-1 TOU,summer,,-,off peak,0.21197
-A-1 TOU,winter,,-,part peak,0.22047
-A-1 TOU,winter,,-,off peak,0.19956
-A-6 TOU,summer,,-,on peak,0.55478
-A-6 TOU,summer,,-,part peak,0.25796
-A-6 TOU,summer,,-,off peak,0.18638
-A-6 TOU,winter,,-,part peak,0.20442
-A-6 TOU,winter,,-,off peak,0.18618
-A-6 TOU,winter,,Secondary,,Secondary
-A-10,summer,,18.26,,0.16286
-A-10,winter,,10.93,,0.12626
-A-10,summer,,9.58,,0.12854
-A-10,winter,,5.32,,0.09556
-A-10 TOU,summer,,18.26,peak,0.21766
+A-1,summer,,,none,0.2473
+A-1,winter,,,none,0.1927
+A-1 TOU,summer,,,on-peak,0.26298
+A-1 TOU,summer,,,part-peak,0.23933
+A-1 TOU,summer,,,off-peak,0.21197
+A-1 TOU,winter,,,part-peak,0.22047
+A-1 TOU,winter,,,off-peak,0.19956
+A-6 TOU,summer,,,on-peak,0.55478
+A-6 TOU,summer,,,part-peak,0.25796
+A-6 TOU,summer,,,off-peak,0.18638
+A-6 TOU,winter,,,part-peak,0.20442
+A-6 TOU,winter,,,off-peak,0.18618
+A-10,summer,,18.26,none,0.16286
+A-10,winter,,10.93,none,0.12626
+A-10 TOU,summer,,18.26,on-peak,0.21766
 A-10 TOU,summer,,18.26,part-peak,0.16253
 A-10 TOU,summer,,18.26,off-peak,0.13446
 A-10 TOU,winter,,10.93,part-peak,0.13435
 A-10 TOU,winter,,10.93,off-peak,0.11729
-A-10 TOU,summer,,9.58,peak,0.15142
-A-10 TOU,summer,,9.58,part-peak,0.12884
-A-10 TOU,summer,,9.58,off-peak,0.11539
-A-10 TOU,winter,,5.32,part-peak,0.10099
-A-10 TOU,winter,,5.32,off-peak,0.09021
-E-19 TOU,summer,max. peak,18.64,peak,0.15178
-E-19 TOU,summer,part peak,5.18,part peak,0.11127
-E-19 TOU,summer,maximum,17.56,off peak,0.08445
-E-19 TOU,winter,part peak,0.12,part peak,0.10573
-E-19 TOU,winter,maximum,17.56,off peak,0.09111
-E-19,summer,max. peak,12.77,peak,0.14209
-E-19,summer,part peak,2.91,part peak,0.09532
-E-19,summer,maximum,7.26,off peak,0.07618
-E-19,winter,part peak,1.04,part peak,0.08409
-E-19,winter,maximum,7.26,off peak,0.07327
+E-19 TOU,summer,max. peak,18.64,on-peak,0.15178
+E-19 TOU,summer,part peak,5.18,part-peak,0.11127
+E-19 TOU,summer,maximum,17.56,off-peak,0.08445
+E-19 TOU,winter,part peak,0.12,part-peak,0.10573
+E-19 TOU,winter,maximum,17.56,off-peak,0.09111
