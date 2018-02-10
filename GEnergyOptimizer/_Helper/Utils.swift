@@ -83,6 +83,12 @@ class GUtils {
         } else { return .none }
     }
 
+    static func getEAppliance(rawValue: String) -> EApplianceType {
+        if let eVal = EApplianceType(rawValue: rawValue) {
+            return eVal
+        } else { return .none }
+    }
+
     static func transform(value: String, type: String) -> Any? {
         guard let baseRowType = InitEnumMapper.sharedInstance.enumMap[type] else {
             Log.error?.message("Base Row Type Not Found - \(type)")
