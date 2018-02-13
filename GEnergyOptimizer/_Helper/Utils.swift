@@ -89,6 +89,12 @@ class GUtils {
         } else { return .none }
     }
 
+    static func getEPeak(rawValue: String) -> EPeak {
+        if let eVal = EPeak(rawValue: rawValue) {
+            return eVal
+        } else { return .none}
+    }
+
     static func transform(value: String, type: String) -> Any? {
         guard let baseRowType = InitEnumMapper.sharedInstance.enumMap[type] else {
             Log.error?.message("Base Row Type Not Found - \(type)")

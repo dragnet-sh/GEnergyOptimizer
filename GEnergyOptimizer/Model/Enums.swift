@@ -110,3 +110,15 @@ enum ETagPO: String {
     case type = "po-appliance"
     case save = "po-save"
 }
+
+enum EPeak: String {
+    case summerOff = "summer-off-peak"
+    case summerPart = "summer-part-peak"
+    case summerOn = "summer-on-peak"
+    case winterOff = "winter-off-peak"
+    case winterPart = "winter-part-peak"
+    case none
+
+    static let getAll = [summerOff, summerPart, summerOn, winterOff, winterPart]
+    static let getAllRaw = getAll.map { $0.rawValue }
+}

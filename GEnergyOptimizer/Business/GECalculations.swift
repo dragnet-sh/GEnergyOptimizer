@@ -80,17 +80,17 @@ extension GEnergyCalculations {
                 Log.message(.warning, message: freezers.debugDescription)
 
                 for freezer in freezers {
-                    var pricing_chart = self.get_bill_data(bill_type: "A-1 TOU")
+                    var pricing_chart = self.get_bill_data(bill_type: "A-1 TOU") //ToDo: Get the Bill Type from PreAudit
                     let peak = PeakHourCalculator()
-                    var peak_hour_schedule = peak.run(usage: "14:30 21:30,6:30 12:30")
-                    var hour_energy_use = 10.0
+                    var peak_hour_schedule = peak.run(usage: "14:30 21:30,6:30 12:30") //ToDo: Get the Peak Hour Usage from PreAudit
+                    var hour_energy_use = 10.0 // ****** The final missing piece !! (Talk about this with Anthony.)
 
-                    var summer = Double(peak_hour_schedule["summer-on-peak"]!) * hour_energy_use * Double(pricing_chart["summer-on-peak"]!)
-                    summer += Double(peak_hour_schedule["summer-part-peak"]!) * hour_energy_use * Double(pricing_chart["summer-part-peak"]!)
-                    summer += Double(peak_hour_schedule["summer-off-peak"]!) * hour_energy_use * Double(pricing_chart["summer-off-peak"]!)
+                    var summer = Double(peak_hour_schedule[EPeak.summerOn]!) * hour_energy_use * Double(pricing_chart[EPeak.summerOn]!)
+                    summer += Double(peak_hour_schedule[EPeak.summerPart]!) * hour_energy_use * Double(pricing_chart[EPeak.summerPart]!)
+                    summer += Double(peak_hour_schedule[EPeak.summerOff]!) * hour_energy_use * Double(pricing_chart[EPeak.summerOff]!)
 
-                    var winter = Double(peak_hour_schedule["winter-part-peak"]!) * hour_energy_use * Double(pricing_chart["winter-part-peak"]!)
-                    winter += Double(peak_hour_schedule["winter-off-peak"]!) * hour_energy_use * Double(pricing_chart["winter-off-peak"]!)
+                    var winter = Double(peak_hour_schedule[EPeak.winterPart]!) * hour_energy_use * Double(pricing_chart[EPeak.winterPart]!)
+                    winter += Double(peak_hour_schedule[EPeak.winterOff]!) * hour_energy_use * Double(pricing_chart[EPeak.winterOff]!)
 
                     var total_electric = summer + winter
                     var total_cost = total_electric
@@ -187,13 +187,13 @@ extension GEnergyCalculations {
         }
     }
 
-    func get_bill_data(bill_type: String) -> Dictionary<String, Double> {
+    func get_bill_data(bill_type: String) -> Dictionary<EPeak, Double> {
         let rows = open_csv(filename: "pge_electric")!
-        var outgoing = Dictionary<String, Double>()
+        var outgoing = Dictionary<EPeak, Double>()
         for row in rows {
             if row["rate"]! == bill_type {
                 let key = "\(row["season"]!)-\(row["ec_period"]!)"
-                outgoing[key] = Double(row["energy_charge"]!)
+                outgoing[GUtils.getEPeak(rawValue: key)] = Double(row["energy_charge"]!)
             }
         }
 
@@ -213,17 +213,11 @@ extension GEnergyCalculations {
 class PeakHourCalculator {
 
     let dateFormatter = DateFormatter()
-    var outgoing = Dictionary<String, Int>()
+    var outgoing = Dictionary<EPeak, Int>()
 
     init() {
-
         dateFormatter.dateFormat = "HH:mm"
-
-        outgoing["summer-off-peak"] = 0
-        outgoing["summer-part-peak"] = 0
-        outgoing["summer-on-peak"] = 0
-        outgoing["winter-off-peak"] = 0
-        outgoing["winter-part-peak"] = 0
+        EPeak.getAll.map { outgoing[$0] = 0 }
     }
 
     fileprivate func getTime(time: String) -> Date {
@@ -261,7 +255,7 @@ class PeakHourCalculator {
                 inBetween(now: now, start: getTime(time: "00:00"), end: getTime(time: "8:30"))
     }
 
-    public func run(usage: String) -> Dictionary<String, Int> {
+    public func run(usage: String) -> Dictionary<EPeak, Int> {
 
 //        let usage = "14:30 21:30,6:30 12:30"
         let usageSplit = usage.split(separator: ",")
@@ -279,12 +273,12 @@ class PeakHourCalculator {
             var _date = start
             while _date < end {
 
-                if isSummerOffPeak(now: _date) {outgoing["summer-off-peak"]! += delta}
-                if isSummerPartialPeak(now: _date) {outgoing["summer-part-peak"]! += delta}
-                if isSummerPeak(now: _date) {outgoing["summer-on-peak"]! += delta}
+                if isSummerOffPeak(now: _date) {outgoing[EPeak.summerOff]! += delta}
+                if isSummerPartialPeak(now: _date) {outgoing[EPeak.summerPart]! += delta}
+                if isSummerPeak(now: _date) {outgoing[EPeak.summerOn]! += delta}
 
-                if isWinterOffPeak(now: _date) {outgoing["winter-off-peak"]! += delta}
-                if isWinterPartialPeak(now: _date) {outgoing["winter-part-peak"]! += delta}
+                if isWinterOffPeak(now: _date) {outgoing[EPeak.winterOff]! += delta}
+                if isWinterPartialPeak(now: _date) {outgoing[EPeak.winterPart]! += delta}
 
                 _date = calendar.date(byAdding: step, to: _date)!
             }
