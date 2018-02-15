@@ -44,16 +44,11 @@ extension GEnergyCalculations {
                     }
 
                     switch GUtils.getEAppliance(rawValue: zone.type!) {
-                    case .freezerFridge: getFreezerFridge().compute(feature: feature)
+                    case .freezerFridge: Refrigerator().compute(feature: feature)
                     default: Log.message(.warning, message: zone.type!)
                     }
                 }
             }
         }
-    }
-
-
-    func getFreezerFridge() -> EnergyCalculator {
-        return Refrigerator()
     }
 }

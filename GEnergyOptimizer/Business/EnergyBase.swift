@@ -40,16 +40,16 @@ class EnergyCalculator {
 
 extension EnergyCalculator {
 
-    func costElectricity(hour_energy_use: Double) -> Double {
-        let pricing_chart = pricingChart()
-        let peak_hour_schedule = peakHourSchedule()
+    func costElectricity(hourEnergyUse: Double) -> Double {
+        let peakPricing = pricingChart()
+        let mappedUsageByPeak = peakHourSchedule()
 
-        var summer = Double(peak_hour_schedule[EPeak.summerOn]!) * hour_energy_use * Double(pricing_chart[EPeak.summerOn]!)
-        summer += Double(peak_hour_schedule[EPeak.summerPart]!) * hour_energy_use * Double(pricing_chart[EPeak.summerPart]!)
-        summer += Double(peak_hour_schedule[EPeak.summerOff]!) * hour_energy_use * Double(pricing_chart[EPeak.summerOff]!)
+        var summer = Double(mappedUsageByPeak[EPeak.summerOn]!) * hourEnergyUse * Double(peakPricing[EPeak.summerOn]!)
+        summer += Double(mappedUsageByPeak[EPeak.summerPart]!) * hourEnergyUse * Double(peakPricing[EPeak.summerPart]!)
+        summer += Double(mappedUsageByPeak[EPeak.summerOff]!) * hourEnergyUse * Double(peakPricing[EPeak.summerOff]!)
 
-        var winter = Double(peak_hour_schedule[EPeak.winterPart]!) * hour_energy_use * Double(pricing_chart[EPeak.winterPart]!)
-        winter += Double(peak_hour_schedule[EPeak.winterOff]!) * hour_energy_use * Double(pricing_chart[EPeak.winterOff]!)
+        var winter = Double(mappedUsageByPeak[EPeak.winterPart]!) * hourEnergyUse * Double(peakPricing[EPeak.winterPart]!)
+        winter += Double(mappedUsageByPeak[EPeak.winterOff]!) * hourEnergyUse * Double(peakPricing[EPeak.winterOff]!)
 
         return (summer + winter)
     }

@@ -19,7 +19,7 @@ class Refrigerator: EnergyCalculator {
                 Log.message(.warning, message: freezers.debugDescription)
                 for freezer in freezers {
                     var hour_energy_use = 10.0 // ****** The final missing piece !! ToDo: Talk about this with Anthony
-                    var total_electric = self.costElectricity(hour_energy_use: hour_energy_use)
+                    var total_electric = self.costElectricity(hourEnergyUse: hour_energy_use)
                     var total_cost = total_electric
 
                     Log.message(.warning, message: "Calculated Energy Value - \(total_cost.description)")
@@ -47,8 +47,8 @@ class Refrigerator: EnergyCalculator {
     //ToDo: Get the Peak Hour Usage from PreAudit
     override func peakHourSchedule() -> Dictionary<EPeak, Int> {
         let peak = PeakHourCalculator()
-        var peak_hour_schedule = peak.run(usage: "14:30 21:30,6:30 12:30")
+        var peakHour = peak.run(usage: "14:30 21:30,6:30 12:30")
 
-        return peak_hour_schedule
+        return peakHour
     }
 }
