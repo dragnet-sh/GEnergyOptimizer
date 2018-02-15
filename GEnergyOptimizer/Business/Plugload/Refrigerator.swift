@@ -4,53 +4,51 @@
 //
 
 import Foundation
+import CleanroomLogger
+import Parse
 
 class Refrigerator: EnergyCalculator {
-    func compute() -> Double {
 
-    }
+    override func compute(feature: [CDFeatureData]) {
+        let mappedFeature = mapFeatureData(feature: feature)
+        let energy_star = isEnergyStar(curr_values: mappedFeature) { status in
+            if (status) { return }
 
-    func __compute__freezer__fridge(feature: [CDFeatureData]) {
-
-        var curr_values = mapFeatureData(feature: feature)
-        Log.message(.warning, message: curr_values.debugDescription)
-
-        let model_number = String(describing: curr_values["Model Number"]!)
-        let company = String(describing: curr_values["Company"]!)
-
-        // **** Check to see if the device is already an Energy Star Rated **** //
-
-        let energy_star = isEnergyStar(model_number: model_number, company: company) { status in
-            if (status) {
-                Log.message(.warning, message: "**** Energy Star - \(company) - \(model_number) ****")
-                return
-            }
-
-            // **** Proceed with finding the Energy Efficient Device **** //
-
-            let best_model_num = self.find_best_model_fridge_freezer(curr_values: curr_values) { freezers in
-
+            Log.message(.warning, message: mappedFeature.debugDescription)
+            let best_model_num = self.findBestModel(curr_values: mappedFeature) { freezers in
                 Log.message(.warning, message: freezers.debugDescription)
-
                 for freezer in freezers {
-                    var pricing_chart = self.getBillData(bill_type: "A-1 TOU") //ToDo: Get the Bill Type from PreAudit
-                    let peak = PeakHourCalculator()
-                    var peak_hour_schedule = peak.run(usage: "14:30 21:30,6:30 12:30") //ToDo: Get the Peak Hour Usage from PreAudit
                     var hour_energy_use = 10.0 // ****** The final missing piece !! ToDo: Talk about this with Anthony
-
-                    var summer = Double(peak_hour_schedule[EPeak.summerOn]!) * hour_energy_use * Double(pricing_chart[EPeak.summerOn]!)
-                    summer += Double(peak_hour_schedule[EPeak.summerPart]!) * hour_energy_use * Double(pricing_chart[EPeak.summerPart]!)
-                    summer += Double(peak_hour_schedule[EPeak.summerOff]!) * hour_energy_use * Double(pricing_chart[EPeak.summerOff]!)
-
-                    var winter = Double(peak_hour_schedule[EPeak.winterPart]!) * hour_energy_use * Double(pricing_chart[EPeak.winterPart]!)
-                    winter += Double(peak_hour_schedule[EPeak.winterOff]!) * hour_energy_use * Double(pricing_chart[EPeak.winterOff]!)
-
-                    var total_electric = summer + winter
+                    var total_electric = self.costElectricity(hour_energy_use: hour_energy_use)
                     var total_cost = total_electric
 
                     Log.message(.warning, message: "Calculated Energy Value - \(total_cost.description)")
                 }
             }
         }
+    }
+
+    override func alternateProductMatchFilter(query: PFQuery<PFObject>, curr_values: Dictionary<String, Any>) -> PFQuery<PFObject> {
+        let prod_type = String(describing: curr_values["Product Type"]!)
+        let total_volume = String(describing: curr_values["Total Volume"]!)
+        let type = "solid_door_freezers_retrofits"
+
+        query.whereKey("data.style_type", equalTo: prod_type)
+        query.whereKey("data.total_volume", equalTo: Double(total_volume))
+
+        return query
+    }
+
+    //ToDo: Get the Bill Type from PreAudit
+    override func pricingChart() -> Dictionary<EPeak, Double> {
+        return getBillData(bill_type: "A-1 TOU")
+    }
+
+    //ToDo: Get the Peak Hour Usage from PreAudit
+    override func peakHourSchedule() -> Dictionary<EPeak, Int> {
+        let peak = PeakHourCalculator()
+        var peak_hour_schedule = peak.run(usage: "14:30 21:30,6:30 12:30")
+
+        return peak_hour_schedule
     }
 }
