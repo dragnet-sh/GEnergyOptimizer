@@ -7,6 +7,7 @@ import UIKit
 import CleanroomLogger
 import PopupDialog
 import Toaster
+import CSwiftV
 
 class ControllerUtils {
     static func fromStoryboard(reference: String) -> UIViewController {
@@ -106,5 +107,13 @@ class GUtils {
             case .decimalRow: return NSDecimalNumber(string: value)
             default: return value
         }
+    }
+
+    static func openCSV(filename: String) -> Array<Dictionary<String, String>>! {
+        let url = Bundle.main.url(forResource: filename, withExtension: "csv")!
+        let data = try! String(contentsOf: url)
+        let csv = CSwiftV(with: data)
+
+        return csv.keyedRows!
     }
 }
