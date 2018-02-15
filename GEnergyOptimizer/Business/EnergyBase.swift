@@ -9,19 +9,27 @@ import CoreData
 import Parse
 
 class EnergyCalculator {
-    func compute(feature: [CDFeatureData]) {
+    var preAudit = Dictionary<String, Any>()
+    var mappedFeature = Dictionary<String, Any>()
+
+    init(feature: [CDFeatureData], preAudit: [CDFeatureData]) {
+        self.preAudit = mapFeatureData(feature: preAudit)
+        self.mappedFeature = mapFeatureData(feature: feature)
+    }
+
+    func compute() {
         Log.message(.error, message: "Please override method Compute")
         fatalError("Must be over-ridden")
     }
 
-    func alternateProductMatchFilter(query: PFQuery<PFObject>, curr_values: Dictionary<String, Any>) -> PFQuery<PFObject> {
+    func alternateProductMatchFilter(query: PFQuery<PFObject>) -> PFQuery<PFObject> {
         Log.message(.error, message: "Please override method getBundleResource")
         fatalError("Must be over-ridden")
     }
 
-    func productMatchFilter(query: PFQuery<PFObject>, curr_values: Dictionary<String, Any>) -> PFQuery<PFObject> {
-        let model_number = String(describing: curr_values["Model Number"]!)
-        let company = String(describing: curr_values["Company"]!)
+    func productMatchFilter(query: PFQuery<PFObject>) -> PFQuery<PFObject> {
+        let model_number = String(describing: mappedFeature["Model Number"]!)
+        let company = String(describing: mappedFeature["Company"]!)
 
         query.whereKey("data.company", equalTo: company)
         query.whereKey("data.model_number", equalTo: model_number)
@@ -65,7 +73,7 @@ extension EnergyCalculator {
         Log.message(.warning, message: "Energy Star Check")
 
         if let query = PlugLoad.query() {
-            let queryWithProductMatchFilter = productMatchFilter(query: query, curr_values: curr_values)
+            let queryWithProductMatchFilter = productMatchFilter(query: query)
             queryWithProductMatchFilter.findObjectsInBackground { object, error in
                 if (error == nil) {
                     Log.message(.info, message: "Parse - Plugload Query - No Error")
@@ -87,7 +95,7 @@ extension EnergyCalculator {
 
     func findBestModel(curr_values: Dictionary<String, Any>, complete: @escaping ([PlugLoad]) -> Void) {
         if let query = PlugLoad.query() {
-            let queryWithAlternateProductMatchFilter = alternateProductMatchFilter(query: query, curr_values: curr_values)
+            let queryWithAlternateProductMatchFilter = alternateProductMatchFilter(query: query)
             queryWithAlternateProductMatchFilter.findObjectsInBackground { object, error in
                 if (error == nil) {
                     Log.message(.info, message: "Parse - Plugload Query - No Error")

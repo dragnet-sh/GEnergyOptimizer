@@ -9,13 +9,12 @@ import Parse
 
 class Refrigerator: EnergyCalculator {
 
-    override func compute(feature: [CDFeatureData]) {
-        let mappedFeature = mapFeatureData(feature: feature)
+    override func compute() {
         let energy_star = isEnergyStar(curr_values: mappedFeature) { status in
             if (status) { return }
 
-            Log.message(.warning, message: mappedFeature.debugDescription)
-            let best_model_num = self.findBestModel(curr_values: mappedFeature) { freezers in
+            Log.message(.warning, message: self.mappedFeature.debugDescription)
+            let best_model_num = self.findBestModel(curr_values: self.mappedFeature) { freezers in
                 Log.message(.warning, message: freezers.debugDescription)
                 for freezer in freezers {
                     var hour_energy_use = 10.0 // ****** The final missing piece !! ToDo: Talk about this with Anthony
@@ -28,9 +27,9 @@ class Refrigerator: EnergyCalculator {
         }
     }
 
-    override func alternateProductMatchFilter(query: PFQuery<PFObject>, curr_values: Dictionary<String, Any>) -> PFQuery<PFObject> {
-        let prod_type = String(describing: curr_values["Product Type"]!)
-        let total_volume = String(describing: curr_values["Total Volume"]!)
+    override func alternateProductMatchFilter(query: PFQuery<PFObject>) -> PFQuery<PFObject> {
+        let prod_type = String(describing: mappedFeature["Product Type"]!)
+        let total_volume = String(describing: mappedFeature["Total Volume"]!)
         let type = "solid_door_freezers_retrofits"
 
         query.whereKey("data.style_type", equalTo: prod_type)
@@ -39,15 +38,16 @@ class Refrigerator: EnergyCalculator {
         return query
     }
 
-    //ToDo: Get the Bill Type from PreAudit
+    //ToDo: Get the Bill Type from PreAudit - Also do some additional checks
     override func pricingChart() -> Dictionary<EPeak, Double> {
-        return getBillData(bill_type: "A-1 TOU")
+
+        return getBillData(bill_type: String(describing: preAudit["Electric Rate Structure"]!).trimmingCharacters(in: .whitespaces))
     }
 
-    //ToDo: Get the Peak Hour Usage from PreAudit
+    //ToDo: Get the Peak Hour Usage from PreAudit - Also do some additional checks
     override func peakHourSchedule() -> Dictionary<EPeak, Int> {
         let peak = PeakHourCalculator()
-        var peakHour = peak.run(usage: "14:30 21:30,6:30 12:30")
+        var peakHour = peak.run(usage: String(describing: preAudit["Monday Operating Hours"]!).trimmingCharacters(in: .whitespaces))
 
         return peakHour
     }
