@@ -54,11 +54,12 @@ extension HomeListViewController {
     @IBAction func btnLogout(_ sender: Any) {
         self.present(getLoginViewController(), animated: true)
     }
-    
+
+    // *** Loading the Energy Calculator *** //
     @IBAction func btnCalculate(_ sender: Any) {
         Log.message(.warning, message: "Calling Energy Calculation !!")
         let energyCalculation = GEnergyCalculations()
-        energyCalculation.test()
+        energyCalculation.run()
     }
 }
 

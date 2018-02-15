@@ -20,14 +20,14 @@ public class GEnergyCalculations {
     func test() {
         Log.message(.warning, message: "******* DEBUG MESSAGE FROM XCTest !! *******")
         state.registerAuditIdentifier(auditIdentifier: "test-001")
-        initialize()
+        run()
     }
 }
 
 
 extension GEnergyCalculations {
 
-    func initialize() {
+    func run() {
         if let identifier = state.getIdentifier() {
             if let audit = coreDataAPI.getAudit(id: identifier) {
                 let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: true)

@@ -19,6 +19,7 @@
 		34DCCF82941666505C8DA62B /* Pods_GEnergyOptimizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A01F77AED5091697259E640E /* Pods_GEnergyOptimizer.framework */; };
 		487C00005D78424CF25339AD /* FormBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C09E7BFD390D46EFB6FB0 /* FormBuilder.swift */; };
 		487C004B0A4AB306D31D874B /* FeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0D51983BDBEB57429FBE /* FeatureViewController.swift */; };
+		487C00584DF1C345AA660201 /* Refrigerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0891514C7276FBA79B2B /* Refrigerator.swift */; };
 		487C006DF8715ED7C1E8F9EE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C02E0126554B9837987E8 /* Utils.swift */; };
 		487C00846D6D5773850606F6 /* header.csv in Resources */ = {isa = PBXBuildFile; fileRef = 487C0F4762FDB1D0CBC61919 /* header.csv */; };
 		487C015B90C93ED9663F3C73 /* Fryer.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C080A4E1D4167F0F86C03 /* Fryer.json */; };
@@ -32,6 +33,7 @@
 		487C02EEE1116BD869D630A7 /* PlugloadAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0B3888F1C4E84CE9003C /* PlugloadAPI.swift */; };
 		487C032E297B6E2BA9FBAEAC /* PFPreAuditAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C00092FADBF381F0283C0 /* PFPreAuditAPI.swift */; };
 		487C0350F97BF238C6584EAC /* RoomPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0E669C84568C8E88B6FD /* RoomPresenter.swift */; };
+		487C035EB962DC6C7370E548 /* EnergyBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C07236C8DE8FA3299090C /* EnergyBase.swift */; };
 		487C03A3082A6110BA557C96 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0C4CF6406C592B05CEC4 /* Enums.swift */; };
 		487C03B6B438672D212C51DC /* FormDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C07623C4CF0D16624DE2B /* FormDataModel.swift */; };
 		487C03CE29609B28D298703B /* lighting.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0258D2F9D57C51A3D46B /* lighting.json */; };
@@ -74,6 +76,7 @@
 		487C0CED17CC60EB955C7C01 /* PFRoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0E4C4EE333D6EFAA7215 /* PFRoomAPI.swift */; };
 		487C0D88AD3FE5E485016D24 /* CombinationOven.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0DA52700628ED7753BDD /* CombinationOven.json */; };
 		487C0DC5E3B3C053B2682617 /* SteamCooker.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0D982D8D6E76D37710FC /* SteamCooker.json */; };
+		487C0DF20D6CBF467203B060 /* PeakHour.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C09F7B1C65BF4900AD848 /* PeakHour.swift */; };
 		487C0E30377A91EDC24DA2BD /* ZoneListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0436148EC05FE2581AC2 /* ZoneListViewController.swift */; };
 		487C0E36EADA87230EAAC067 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C004CEC4297383988FF70 /* LoginViewController.swift */; };
 		487C0E503E431AD787C0F05A /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0D834F81B2B629A69126 /* HomePresenter.swift */; };
@@ -135,6 +138,7 @@
 		487C06A0ABFB535F6533D603 /* HomeListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListCell.xib; sourceTree = "<group>"; };
 		487C06C55F0E61EA77C8AC59 /* HotFoodCabinet.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = HotFoodCabinet.json; sourceTree = "<group>"; };
 		487C0717EC9AEAAAC021D88F /* RackOven.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RackOven.json; sourceTree = "<group>"; };
+		487C07236C8DE8FA3299090C /* EnergyBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnergyBase.swift; sourceTree = "<group>"; };
 		487C07623C4CF0D16624DE2B /* FormDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDataModel.swift; sourceTree = "<group>"; };
 		487C078014FACE4006AD6F7A /* PresenterModal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresenterModal.storyboard; sourceTree = "<group>"; };
 		487C07C91AE8796EA65944E2 /* RoomListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListViewController.swift; sourceTree = "<group>"; };
@@ -143,9 +147,11 @@
 		487C080A4E1D4167F0F86C03 /* Fryer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Fryer.json; sourceTree = "<group>"; };
 		487C0853D485C19C3121BC98 /* CoreDataAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataAPI.swift; sourceTree = "<group>"; };
 		487C087930871E54E6748664 /* CDAudit+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDAudit+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		487C0891514C7276FBA79B2B /* Refrigerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Refrigerator.swift; sourceTree = "<group>"; };
 		487C08D0843EFF647751E835 /* BasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		487C094A2A0F68FF10E9AFBD /* IceMaker.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = IceMaker.json; sourceTree = "<group>"; };
 		487C09E7BFD390D46EFB6FB0 /* FormBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormBuilder.swift; sourceTree = "<group>"; };
+		487C09F7B1C65BF4900AD848 /* PeakHour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeakHour.swift; sourceTree = "<group>"; };
 		487C0A39AC6B004B52564DAC /* preaudit.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = preaudit.json; sourceTree = "<group>"; };
 		487C0A72B41F6A46089909DB /* FactoryHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactoryHelper.swift; sourceTree = "<group>"; };
 		487C0A8893E6DE7AA3A47A15 /* ConveyorOven.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ConveyorOven.json; sourceTree = "<group>"; };
@@ -292,6 +298,9 @@
 			isa = PBXGroup;
 			children = (
 				487C0ACEA8899C6F74495BAF /* GECalculations.swift */,
+				487C09F7B1C65BF4900AD848 /* PeakHour.swift */,
+				487C07236C8DE8FA3299090C /* EnergyBase.swift */,
+				487C0BAF9FF5B668D56C3CD6 /* Plugload */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -447,6 +456,14 @@
 				487C07EB859B00E03446F4F0 /* Appliances */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		487C0BAF9FF5B668D56C3CD6 /* Plugload */ = {
+			isa = PBXGroup;
+			children = (
+				487C0891514C7276FBA79B2B /* Refrigerator.swift */,
+			);
+			path = Plugload;
 			sourceTree = "<group>";
 		};
 		487C0D622CD54B4DEA03E8AE /* Room */ = {
@@ -768,6 +785,9 @@
 				487C0A324EC41B198CFA67E1 /* PopOverPresenter.swift in Sources */,
 				487C0FB995463C425FE2BCC9 /* BasePresenter.swift in Sources */,
 				487C02EEE1116BD869D630A7 /* PlugloadAPI.swift in Sources */,
+				487C0DF20D6CBF467203B060 /* PeakHour.swift in Sources */,
+				487C035EB962DC6C7370E548 /* EnergyBase.swift in Sources */,
+				487C00584DF1C345AA660201 /* Refrigerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

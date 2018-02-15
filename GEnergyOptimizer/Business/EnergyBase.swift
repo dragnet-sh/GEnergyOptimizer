@@ -19,7 +19,6 @@ class EnergyCalculator {
         fatalError("Must be over-ridden")
     }
 
-
     func productMatchFilter(query: PFQuery<PFObject>, curr_values: Dictionary<String, Any>) -> PFQuery<PFObject> {
         let model_number = String(describing: curr_values["Model Number"]!)
         let company = String(describing: curr_values["Company"]!)
