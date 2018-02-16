@@ -8,7 +8,6 @@
 
 import UIKit
 import CleanroomLogger
-import PopupDialog
 import Presentr
 
 class RoomListViewController: UIViewController {

@@ -9,7 +9,6 @@
 import Foundation
 import CleanroomLogger
 import CoreData
-import CSV
 import CSwiftV
 
 public class GEnergyCalculations {

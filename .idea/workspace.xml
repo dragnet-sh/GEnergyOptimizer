@@ -2,34 +2,47 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdebb900-8546-433d-8f4a-d7c6778e1601" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/CSV.swift/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/CSV.swift/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/CSV.swift/Sources/BinaryReader.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/CSV.swift/Sources/CSV.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/CSV.swift/Sources/CSVError.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/CSV.swift/Sources/CSVReader.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/CSV.swift/Sources/CSVWriter.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/CSV.swift/Sources/Endian.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/CSV.swift/Sources/UnicodeIterator.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/CSV.swift.xcscheme" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Target Support Files/CSV.swift/CSV.swift-dummy.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Target Support Files/CSV.swift/CSV.swift-prefix.pch" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Target Support Files/CSV.swift/CSV.swift-umbrella.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Target Support Files/CSV.swift/CSV.swift.modulemap" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Target Support Files/CSV.swift/CSV.swift.xcconfig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Target Support Files/CSV.swift/Info.plist" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer.xcworkspace/xcuserdata/bbudhathoki.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/GEnergyOptimizer.xcworkspace/xcuserdata/bbudhathoki.xcuserdatad/UserInterfaceState.xcuserstate" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/PopupDialog.xcscheme" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/FXBlurView.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/FXBlurView.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/InteractiveTransition.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PopupDialog+Keyboard.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PopupDialog.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PopupDialogButton.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PopupDialogContainerView.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PopupDialogDefaultButtons.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PopupDialogDefaultView.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PopupDialogDefaultViewController.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PopupDialogOverlayView.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PresentationController.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PresentationManager.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/TransitionAnimations.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/TransitionAnimator.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/UIImageView+Calculations.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/UIView+Animations.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/UIViewController+Visibility.swift" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Target Support Files/PopupDialog/Info.plist" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Target Support Files/PopupDialog/PopupDialog-dummy.m" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Target Support Files/PopupDialog/PopupDialog-prefix.pch" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Target Support Files/PopupDialog/PopupDialog-umbrella.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Target Support Files/PopupDialog/PopupDialog.modulemap" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Target Support Files/PopupDialog/PopupDialog.xcconfig" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/GEnergyOptimizer.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer/Business/Plugload/Refrigerator.swift" afterPath="$PROJECT_DIR$/GEnergyOptimizer/Business/Plugload/Refrigerator.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer/Business/GECalculations.swift" afterPath="$PROJECT_DIR$/GEnergyOptimizer/Business/GECalculations.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomListViewController.swift" afterPath="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomListViewController.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Zone/ZoneListViewController.swift" afterPath="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Zone/ZoneListViewController.swift" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer/_Helper/Utils.swift" afterPath="$PROJECT_DIR$/GEnergyOptimizer/_Helper/Utils.swift" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile" afterPath="$PROJECT_DIR$/Podfile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile.lock" afterPath="$PROJECT_DIR$/Podfile.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Manifest.lock" afterPath="$PROJECT_DIR$/Pods/Manifest.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/project.pbxproj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/Pods-GEnergyOptimizer.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/Pods-GEnergyOptimizer.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/PopupDialog.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/PopupDialog.xcscheme" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/Presentr.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/Presentr.xcscheme" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/Toaster.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/Toaster.xcscheme" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/xcschememanagement.plist" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer-acknowledgements.markdown" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer-acknowledgements.markdown" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer-acknowledgements.plist" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer-acknowledgements.plist" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer-frameworks.sh" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer-frameworks.sh" />
@@ -49,23 +62,51 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GECalculations.swift" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GECalculations.swift" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Business/GECalculations.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="27" column="28" lean-forward="false" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-              <folding>
-                <element signature="e#162#179#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="207">
+              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Podfile" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Podfile" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Podfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="15" column="28" lean-forward="false" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+            <state relative-caret-position="247">
+              <caret line="13" column="25" lean-forward="false" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Utils.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/_Helper/Utils.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="133">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RoomListViewController.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomListViewController.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ZoneListViewController.swift" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Zone/ZoneListViewController.swift">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -159,7 +200,6 @@
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Model/DataObject/Table/ZoneDTO.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Feature/FeatureViewController.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Feature/FeaturePresenter.swift" />
-        <option value="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Zone/ZoneListViewController.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Model/Database/CoreData/CoreDataAPI.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Zone/ZonePresenter.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Presentation/BasePresenter.swift" />
@@ -167,7 +207,6 @@
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Model/DataObject/Table/RoomDTO.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Model/StateController.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomPresenter.swift" />
-        <option value="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomListViewController.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Zone/PopOverPresenter.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Model/DataObject/Form/Config/Appliances/CombinationOven.json" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Model/DataObject/Form/Config/Appliances/ConvectionOven.json" />
@@ -192,13 +231,15 @@
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Business/GBase.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Business/Plugload/Refregerator.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Presentation/GEFormViewController.swift" />
-        <option value="$PROJECT_DIR$/GEnergyOptimizer/_Helper/Utils.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Business/Base.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Home/HomeListViewController.swift" />
-        <option value="$PROJECT_DIR$/GEnergyOptimizer/Business/GECalculations.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Business/EnergyBase.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Business/Plugload/Refrigerator.swift" />
         <option value="$PROJECT_DIR$/Podfile" />
+        <option value="$PROJECT_DIR$/GEnergyOptimizer/_Helper/Utils.swift" />
+        <option value="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomListViewController.swift" />
+        <option value="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Zone/ZoneListViewController.swift" />
+        <option value="$PROJECT_DIR$/GEnergyOptimizer/Business/GECalculations.swift" />
       </list>
     </option>
   </component>
@@ -313,44 +354,16 @@
     <configuration name="All in TestEnergyCalculations.swift" type="OCUnitRunConfiguration" factoryName="XCTest/Kiwi" temporary="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="GEnergyOptimizer" TARGET_NAME="GEnergyOptimizerTests" CONFIG_NAME="Debug" SCHEME_NAME="All in TestEnergyCalculations.swift" TEST_PATTERN="TestEnergyCalculations" TEST_MODE="PATTERN">
       <envs />
     </configuration>
-    <configuration name="CSwiftV" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pods" TARGET_NAME="CSwiftV" CONFIG_NAME="Debug" SCHEME_NAME="CSwiftV" MAKE_ACTIVE="TRUE">
-      <envs />
-      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
-        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
-      </EXTENSION>
-    </configuration>
     <configuration name="GEnergyOptimizer" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="GEnergyOptimizer" TARGET_NAME="GEnergyOptimizer" CONFIG_NAME="Debug" SCHEME_NAME="GEnergyOptimizer" RUN_TARGET_PROJECT_NAME="GEnergyOptimizer" RUN_TARGET_NAME="GEnergyOptimizer" MAKE_ACTIVE="TRUE">
       <envs />
       <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
         <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
       </EXTENSION>
     </configuration>
-    <configuration name="Presentr" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pods" TARGET_NAME="Presentr" CONFIG_NAME="Debug" SCHEME_NAME="Presentr" MAKE_ACTIVE="TRUE">
-      <envs />
-      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
-        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
-      </EXTENSION>
-    </configuration>
-    <configuration name="SwiftyDrop" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pods" TARGET_NAME="SwiftyDrop" CONFIG_NAME="Debug" SCHEME_NAME="SwiftyDrop" MAKE_ACTIVE="TRUE">
-      <envs />
-      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
-        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
-      </EXTENSION>
-    </configuration>
-    <configuration name="Toaster" type="AppleRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Pods" TARGET_NAME="Toaster" CONFIG_NAME="Debug" SCHEME_NAME="Toaster" MAKE_ACTIVE="TRUE">
-      <envs />
-      <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
-        <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
-      </EXTENSION>
-    </configuration>
-    <list size="7">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Application.GEnergyOptimizer" />
-      <item index="1" class="java.lang.String" itemvalue="Application.Toaster" />
-      <item index="2" class="java.lang.String" itemvalue="Application.Presentr" />
-      <item index="3" class="java.lang.String" itemvalue="Application.CSwiftV" />
-      <item index="4" class="java.lang.String" itemvalue="Application.SwiftyDrop" />
-      <item index="5" class="java.lang.String" itemvalue="XCTest/Kiwi.All in TestEnergyCalculations.swift" />
-      <item index="6" class="java.lang.String" itemvalue="XCTest/Kiwi.-[TestEnergyCalculations testEnergyCalculation]" />
+      <item index="1" class="java.lang.String" itemvalue="XCTest/Kiwi.All in TestEnergyCalculations.swift" />
+      <item index="2" class="java.lang.String" itemvalue="XCTest/Kiwi.-[TestEnergyCalculations testEnergyCalculation]" />
     </list>
     <recent_temporary>
       <list size="2">
@@ -466,7 +479,7 @@
       <workItem from="1517982085257" duration="13201000" />
       <workItem from="1518265712403" duration="41514000" />
       <workItem from="1518677365195" duration="25556000" />
-      <workItem from="1518773152379" duration="2464000" />
+      <workItem from="1518773152379" duration="2644000" />
     </task>
     <servers />
   </component>
@@ -503,7 +516,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1048520000" />
+    <option name="totallyTimeSpent" value="1048700000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -524,7 +537,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32328483" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992327" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6725572" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-1080" y="-286" width="1080" height="960" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6725572" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-1080" y="-286" width="1080" height="960" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24907847" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32770607" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -577,13 +590,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/DataObject/Form/Config/Appliances/ConvectionOven.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Model/DataObject/Form/Config/Appliances/ConveyorOven.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -708,6 +714,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -715,6 +722,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -791,13 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomListViewController.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-675">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Pods/Parse/Parse/PFSubclassing.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="988">
@@ -810,6 +811,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="23" column="11" lean-forward="false" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -831,16 +833,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="383">
           <caret line="46" column="18" lean-forward="false" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/_Helper/Utils.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1862">
-          <caret line="98" column="23" lean-forward="false" selection-start-line="98" selection-start-column="23" selection-end-line="98" selection-end-column="23" />
-          <folding>
-            <element signature="e#114#126#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -870,6 +862,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-313">
           <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -916,20 +909,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Business/GECalculations.swift">
+    <entry file="file://$PROJECT_DIR$/Podfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="27" column="28" lean-forward="false" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
-          <folding>
-            <element signature="e#162#179#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="247">
+          <caret line="13" column="25" lean-forward="false" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Podfile">
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/_Helper/Utils.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="28" lean-forward="false" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+        <state relative-caret-position="133">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomListViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Zone/ZoneListViewController.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Business/GECalculations.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
