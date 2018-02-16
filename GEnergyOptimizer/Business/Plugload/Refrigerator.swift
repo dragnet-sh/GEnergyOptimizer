@@ -22,6 +22,9 @@ class Refrigerator: EnergyCalculator {
                     var total_cost = total_electric
 
                     Log.message(.warning, message: "Calculated Energy Value - \(total_cost.description)")
+
+                    // *** Writing the Total Cost to a File *** //
+
                 }
             }
         }

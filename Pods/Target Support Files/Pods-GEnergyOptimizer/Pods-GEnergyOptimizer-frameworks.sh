@@ -103,7 +103,6 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/CSV.swift/CSV.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CSwiftV/CSwiftV.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CleanroomLogger/CleanroomLogger.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework"
@@ -111,11 +110,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Parse/Parse.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyDrop/SwiftyDrop.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/CSV.swift/CSV.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CSwiftV/CSwiftV.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CleanroomLogger/CleanroomLogger.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework"
@@ -123,6 +122,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Parse/Parse.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SwiftyDrop/SwiftyDrop.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
