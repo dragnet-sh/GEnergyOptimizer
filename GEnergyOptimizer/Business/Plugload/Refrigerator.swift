@@ -41,17 +41,16 @@ class Refrigerator: EnergyCalculator {
         return query
     }
 
-    //ToDo: Get the Bill Type from PreAudit - Also do some additional checks
     override func pricingChart() -> Dictionary<EPeak, Double> {
-
-        return getBillData(bill_type: String(describing: preAudit["Electric Rate Structure"]!).trimmingCharacters(in: .whitespaces))
+        let utilityCompany = String(describing: preAudit["Electric Rate Structure"]).trimmingCharacters(in: .whitespaces)
+        return getBillData(bill_type: utilityCompany)
     }
 
-    //ToDo: Get the Peak Hour Usage from PreAudit - Also do some additional checks
     override func peakHourSchedule() -> Dictionary<EPeak, Int> {
+        //ToDo: Consolidate the Operating Hours
+        let operatingHours = String(describing: preAudit["Monday Operating Hours"]!).trimmingCharacters(in: .whitespaces)
         let peak = PeakHourCalculator()
-        var peakHour = peak.run(usage: String(describing: preAudit["Monday Operating Hours"]!).trimmingCharacters(in: .whitespaces))
-
+        var peakHour = peak.run(usage: operatingHours)
         return peakHour
     }
 }

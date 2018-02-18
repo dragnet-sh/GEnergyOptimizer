@@ -2,52 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdebb900-8546-433d-8f4a-d7c6778e1601" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/PopupDialog.xcscheme" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/FXBlurView.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/FXBlurView.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/InteractiveTransition.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PopupDialog+Keyboard.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PopupDialog.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PopupDialogButton.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PopupDialogContainerView.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PopupDialogDefaultButtons.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PopupDialogDefaultView.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PopupDialogDefaultViewController.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PopupDialogOverlayView.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PresentationController.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/PresentationManager.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/TransitionAnimations.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/TransitionAnimator.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/UIImageView+Calculations.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/UIView+Animations.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/PopupDialog/Classes/UIViewController+Visibility.swift" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/PopupDialog/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Target Support Files/PopupDialog/Info.plist" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Target Support Files/PopupDialog/PopupDialog-dummy.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Target Support Files/PopupDialog/PopupDialog-prefix.pch" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Target Support Files/PopupDialog/PopupDialog-umbrella.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Target Support Files/PopupDialog/PopupDialog.modulemap" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Pods/Target Support Files/PopupDialog/PopupDialog.xcconfig" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer.xcworkspace/xcuserdata/bbudhathoki.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="$PROJECT_DIR$/GEnergyOptimizer.xcworkspace/xcuserdata/bbudhathoki.xcuserdatad/UserInterfaceState.xcuserstate" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/GEnergyOptimizer.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer/Business/GECalculations.swift" afterPath="$PROJECT_DIR$/GEnergyOptimizer/Business/GECalculations.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomListViewController.swift" afterPath="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomListViewController.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Zone/ZoneListViewController.swift" afterPath="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Zone/ZoneListViewController.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer/_Helper/Utils.swift" afterPath="$PROJECT_DIR$/GEnergyOptimizer/_Helper/Utils.swift" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile" afterPath="$PROJECT_DIR$/Podfile" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Podfile.lock" afterPath="$PROJECT_DIR$/Podfile.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Manifest.lock" afterPath="$PROJECT_DIR$/Pods/Manifest.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/project.pbxproj" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/project.pbxproj" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/Pods-GEnergyOptimizer.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/Pods-GEnergyOptimizer.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/Presentr.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/Presentr.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/Toaster.xcscheme" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/Toaster.xcscheme" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="$PROJECT_DIR$/Pods/Pods.xcodeproj/xcuserdata/bbudhathoki.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer-acknowledgements.markdown" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer-acknowledgements.markdown" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer-acknowledgements.plist" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer-acknowledgements.plist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer-frameworks.sh" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer-frameworks.sh" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer.debug.xcconfig" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer.debug.xcconfig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer.release.xcconfig" afterPath="$PROJECT_DIR$/Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer.release.xcconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GEnergyOptimizer/Business/Plugload/Refrigerator.swift" afterPath="$PROJECT_DIR$/GEnergyOptimizer/Business/Plugload/Refrigerator.swift" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -65,9 +22,11 @@
       <file leaf-file-name="GECalculations.swift" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Business/GECalculations.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="668">
+              <caret line="50" column="41" lean-forward="false" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="95" />
+              <folding>
+                <element signature="e#162#179#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -85,7 +44,7 @@
       <file leaf-file-name="Utils.swift" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/_Helper/Utils.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
+            <state relative-caret-position="-605">
               <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
@@ -95,7 +54,7 @@
       <file leaf-file-name="RoomListViewController.swift" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomListViewController.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
+            <state relative-caret-position="-742">
               <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
@@ -105,7 +64,7 @@
       <file leaf-file-name="ZoneListViewController.swift" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Zone/ZoneListViewController.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
+            <state relative-caret-position="-799">
               <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
               <folding />
             </state>
@@ -115,8 +74,8 @@
       <file leaf-file-name="Refrigerator.swift" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Business/Plugload/Refrigerator.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="950">
-              <caret line="50" column="26" lean-forward="false" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
+            <state relative-caret-position="729">
+              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding>
                 <element signature="e#114#131#0" expanded="true" />
               </folding>
@@ -127,8 +86,8 @@
       <file leaf-file-name="EnergyBase.swift" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Business/EnergyBase.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-851">
-              <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+            <state relative-caret-position="592">
+              <caret line="135" column="9" lean-forward="false" selection-start-line="135" selection-start-column="9" selection-end-line="135" selection-end-column="9" />
               <folding>
                 <element signature="e#114#131#0" expanded="true" />
               </folding>
@@ -139,7 +98,7 @@
       <file leaf-file-name="PeakHour.swift" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Business/PeakHour.swift">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="611">
+            <state relative-caret-position="1349">
               <caret line="71" column="54" lean-forward="false" selection-start-line="71" selection-start-column="54" selection-end-line="71" selection-end-column="54" />
               <folding />
             </state>
@@ -234,12 +193,12 @@
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Business/Base.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Home/HomeListViewController.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Business/EnergyBase.swift" />
-        <option value="$PROJECT_DIR$/GEnergyOptimizer/Business/Plugload/Refrigerator.swift" />
         <option value="$PROJECT_DIR$/Podfile" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/_Helper/Utils.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomListViewController.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Zone/ZoneListViewController.swift" />
         <option value="$PROJECT_DIR$/GEnergyOptimizer/Business/GECalculations.swift" />
+        <option value="$PROJECT_DIR$/GEnergyOptimizer/Business/Plugload/Refrigerator.swift" />
       </list>
     </option>
   </component>
@@ -479,7 +438,8 @@
       <workItem from="1517982085257" duration="13201000" />
       <workItem from="1518265712403" duration="41514000" />
       <workItem from="1518677365195" duration="25556000" />
-      <workItem from="1518773152379" duration="2644000" />
+      <workItem from="1518773152379" duration="3220000" />
+      <workItem from="1518926707461" duration="3284000" />
     </task>
     <servers />
   </component>
@@ -516,7 +476,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1048700000" />
+    <option name="totallyTimeSpent" value="1052560000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -528,7 +488,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -537,7 +497,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32328483" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32992327" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6725572" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-1080" y="-286" width="1080" height="960" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6725572" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-1080" y="-286" width="1080" height="960" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24907847" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32770607" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -722,7 +682,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="24" column="28" lean-forward="false" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -730,7 +689,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="311">
           <caret line="64" column="64" lean-forward="true" selection-start-line="64" selection-start-column="64" selection-end-line="64" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -803,7 +761,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="988">
           <caret line="52" column="22" lean-forward="false" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -811,7 +768,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="23" column="11" lean-forward="false" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -840,7 +796,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="592">
           <caret line="111" column="0" lean-forward="false" selection-start-line="111" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -862,7 +817,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-313">
           <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -881,31 +835,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Business/EnergyBase.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-851">
-          <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
-          <folding>
-            <element signature="e#114#131#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Business/PeakHour.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
+        <state relative-caret-position="1349">
           <caret line="71" column="54" lean-forward="false" selection-start-line="71" selection-start-column="54" selection-end-line="71" selection-end-column="54" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Business/Plugload/Refrigerator.swift">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
-          <caret line="50" column="26" lean-forward="false" selection-start-line="50" selection-start-column="26" selection-end-line="50" selection-end-column="26" />
-          <folding>
-            <element signature="e#114#131#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -919,7 +853,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/_Helper/Utils.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
+        <state relative-caret-position="-605">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
@@ -927,7 +861,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Room/RoomListViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
+        <state relative-caret-position="-742">
           <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
         </state>
@@ -935,17 +869,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Presentation/Audit/Zone/ZoneListViewController.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
+        <state relative-caret-position="-799">
           <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Business/EnergyBase.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="592">
+          <caret line="135" column="9" lean-forward="false" selection-start-line="135" selection-start-column="9" selection-end-line="135" selection-end-column="9" />
+          <folding>
+            <element signature="e#114#131#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Business/Plugload/Refrigerator.swift">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="729">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="e#114#131#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/GEnergyOptimizer/Business/GECalculations.swift">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="668">
+          <caret line="50" column="41" lean-forward="false" selection-start-line="50" selection-start-column="41" selection-end-line="50" selection-end-column="95" />
+          <folding>
+            <element signature="e#162#179#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
