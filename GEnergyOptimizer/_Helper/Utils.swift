@@ -115,4 +115,8 @@ class GUtils {
 
         return csv.keyedRows!
     }
+
+    static func toString(subject: Any) -> String {
+        return String(describing: subject).trimmingCharacters(in: .whitespaces)
+    }
 }

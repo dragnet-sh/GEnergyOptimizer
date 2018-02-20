@@ -7,18 +7,20 @@ import Foundation
 import CleanroomLogger
 import Parse
 
-class Refrigerator: EnergyCalculator {
+class Refrigerator: EnergyCalculator, Computable {
 
-    override func compute() {
+    func compute() {
         let energy_star = isEnergyStar(curr_values: mappedFeature) { status in
             if (status) { return }
 
             Log.message(.warning, message: self.mappedFeature.debugDescription)
+            let pricing = self.pricingChart()
+            let usage = self.peakHourSchedule()
             let best_model_num = self.findBestModel(curr_values: self.mappedFeature) { freezers in
                 Log.message(.warning, message: freezers.debugDescription)
                 for freezer in freezers {
                     var hour_energy_use = 10.0 // ****** The final missing piece !! ToDo: Talk about this with Anthony
-                    var total_electric = self.costElectricity(hourEnergyUse: hour_energy_use)
+                    var total_electric = self.costElectricity(hourEnergyUse: hour_energy_use, peakPricing: pricing, mappedUsageByPeak: usage)
                     var total_cost = total_electric
 
                     Log.message(.warning, message: "Calculated Energy Value - \(total_cost.description)")
@@ -41,14 +43,14 @@ class Refrigerator: EnergyCalculator {
         return query
     }
 
-    override func pricingChart() -> Dictionary<EPeak, Double> {
-        let utilityCompany = String(describing: preAudit["Electric Rate Structure"]).trimmingCharacters(in: .whitespaces)
+    func pricingChart() -> Dictionary<EPeak, Double> {
+        let utilityCompany = GUtils.toString(subject: preAudit["Electric Rate Structure"]!)
         return getBillData(bill_type: utilityCompany)
     }
 
-    override func peakHourSchedule() -> Dictionary<EPeak, Int> {
+    func peakHourSchedule() -> Dictionary<EPeak, Int> {
         //ToDo: Consolidate the Operating Hours
-        let operatingHours = String(describing: preAudit["Monday Operating Hours"]!).trimmingCharacters(in: .whitespaces)
+        let operatingHours = GUtils.toString(subject: preAudit["Monday Operating Hours"]!)
         let peak = PeakHourCalculator()
         var peakHour = peak.run(usage: operatingHours)
         return peakHour

@@ -8,6 +8,12 @@ import CleanroomLogger
 import CoreData
 import Parse
 
+protocol Computable {
+    func compute()
+    func pricingChart() -> Dictionary<EPeak, Double>
+    func peakHourSchedule() -> Dictionary<EPeak, Int>
+}
+
 class EnergyCalculator {
     var preAudit = Dictionary<String, Any>()
     var mappedFeature = Dictionary<String, Any>()
@@ -17,11 +23,7 @@ class EnergyCalculator {
         self.mappedFeature = mapFeatureData(feature: feature)
     }
 
-    func compute() {
-        Log.message(.error, message: "Please override method Compute")
-        fatalError("Must be over-ridden")
-    }
-
+    //ToDo: Not all of the Product Need to go through this ??
     func alternateProductMatchFilter(query: PFQuery<PFObject>) -> PFQuery<PFObject> {
         Log.message(.error, message: "Please override method getBundleResource")
         fatalError("Must be over-ridden")
@@ -36,21 +38,11 @@ class EnergyCalculator {
 
         return query
     }
-
-    func pricingChart() -> Dictionary<EPeak, Double> {
-        fatalError("Must be over-ridden")
-    }
-
-    func peakHourSchedule() -> Dictionary<EPeak, Int> {
-        fatalError("Must be over-ridden")
-    }
 }
 
 extension EnergyCalculator {
 
-    func costElectricity(hourEnergyUse: Double) -> Double {
-        let peakPricing = pricingChart()
-        let mappedUsageByPeak = peakHourSchedule()
+    func costElectricity(hourEnergyUse: Double, peakPricing: Dictionary<EPeak, Double>, mappedUsageByPeak: Dictionary<EPeak, Int>) -> Double {
 
         var summer = Double(mappedUsageByPeak[EPeak.summerOn]!) * hourEnergyUse * Double(peakPricing[EPeak.summerOn]!)
         summer += Double(mappedUsageByPeak[EPeak.summerPart]!) * hourEnergyUse * Double(peakPricing[EPeak.summerPart]!)
