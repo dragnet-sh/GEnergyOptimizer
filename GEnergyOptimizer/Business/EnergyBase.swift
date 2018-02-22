@@ -10,8 +10,6 @@ import Parse
 
 protocol Computable {
     func compute()
-    func pricingChart() -> Dictionary<EPeak, Double>
-    func peakHourSchedule() -> Dictionary<EPeak, Int>
 }
 
 class EnergyCalculator {
@@ -42,14 +40,14 @@ class EnergyCalculator {
 
 extension EnergyCalculator {
 
-    func costElectricity(hourEnergyUse: Double, peakPricing: Dictionary<EPeak, Double>, mappedUsageByPeak: Dictionary<EPeak, Int>) -> Double {
+    func costElectricity(hourEnergyUse: Double, pricing: Dictionary<EPeak, Double>, usageByPeak: Dictionary<EPeak, Int>) -> Double {
 
-        var summer = Double(mappedUsageByPeak[EPeak.summerOn]!) * hourEnergyUse * Double(peakPricing[EPeak.summerOn]!)
-        summer += Double(mappedUsageByPeak[EPeak.summerPart]!) * hourEnergyUse * Double(peakPricing[EPeak.summerPart]!)
-        summer += Double(mappedUsageByPeak[EPeak.summerOff]!) * hourEnergyUse * Double(peakPricing[EPeak.summerOff]!)
+        var summer = Double(usageByPeak[EPeak.summerOn]!) * hourEnergyUse * Double(pricing[EPeak.summerOn]!)
+        summer += Double(usageByPeak[EPeak.summerPart]!) * hourEnergyUse * Double(pricing[EPeak.summerPart]!)
+        summer += Double(usageByPeak[EPeak.summerOff]!) * hourEnergyUse * Double(pricing[EPeak.summerOff]!)
 
-        var winter = Double(mappedUsageByPeak[EPeak.winterPart]!) * hourEnergyUse * Double(peakPricing[EPeak.winterPart]!)
-        winter += Double(mappedUsageByPeak[EPeak.winterOff]!) * hourEnergyUse * Double(peakPricing[EPeak.winterOff]!)
+        var winter = Double(usageByPeak[EPeak.winterPart]!) * hourEnergyUse * Double(pricing[EPeak.winterPart]!)
+        winter += Double(usageByPeak[EPeak.winterOff]!) * hourEnergyUse * Double(pricing[EPeak.winterOff]!)
 
         return (summer + winter)
     }
@@ -123,18 +121,5 @@ extension EnergyCalculator {
         }
 
         return mapped
-    }
-
-    func getBillData(bill_type: String) -> Dictionary<EPeak, Double> {
-        let rows = GUtils.openCSV(filename: "pge_electric")!
-        var outgoing = Dictionary<EPeak, Double>()
-        for row in rows {
-            if row["rate"]! == bill_type {
-                let key = "\(row["season"]!)-\(row["ec_period"]!)"
-                outgoing[GUtils.getEPeak(rawValue: key)] = Double(row["energy_charge"]!)
-            }
-        }
-
-        return outgoing
     }
 }

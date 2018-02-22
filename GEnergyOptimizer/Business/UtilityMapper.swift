@@ -6,6 +6,8 @@
 import Foundation
 import CleanroomLogger
 
+// **** Needs to give both Gas and Electric Rate Structure Mapped on a Standard Layout ****
+
 class UtilityMapper {
 
     func getBillData(bill_type: String) -> Dictionary<EPeak, Double> {
