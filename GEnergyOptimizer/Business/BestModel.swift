@@ -15,7 +15,7 @@ class BestModel {
         self.filter = query
     }
 
-    func find(curr_values: Dictionary<String, Any>, complete: @escaping ([PlugLoad]) -> Void) {
+    func query(curr_values: Dictionary<String, Any>, complete: @escaping ([PlugLoad]) -> Void) {
         filter.findObjectsInBackground { object, error in
             if (error == nil) {
                 Log.message(.info, message: "Parse - Plugload Query - No Error")

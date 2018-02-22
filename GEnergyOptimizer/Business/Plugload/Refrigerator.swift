@@ -38,7 +38,7 @@ class Refrigerator: EnergyCalculator, Computable {
             Log.message(.warning, message: self.mappedFeature.debugDescription)
 
             let bestModel = BestModel(query: self.filter)
-            bestModel.find(curr_values: self.mappedFeature) { freezers in
+            bestModel.query(curr_values: self.mappedFeature) { freezers in
                 Log.message(.warning, message: freezers.debugDescription)
                 freezers.map { freezer in
                     var hourEnergyUse = 10.0 // ****** The final missing piece !!
