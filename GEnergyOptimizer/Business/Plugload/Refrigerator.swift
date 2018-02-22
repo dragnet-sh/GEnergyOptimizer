@@ -21,34 +21,33 @@ class Refrigerator: EnergyCalculator, Computable {
         return peak.run(usage: operatingHours)
     }()
 
+    lazy var filter: PFQuery<PFObject> = {
+        let query = PlugLoad.query()!
+        let type = String(describing: mappedFeature["Product Type"]!)
+        let volume = String(describing: mappedFeature["Total Volume"]!)
+
+        query.whereKey("data.style_type", equalTo: type)
+        query.whereKey("data.total_volume", equalTo: Double(volume))
+
+        return query
+    }()
+
     func compute() {
         let energy_star = isEnergyStar(curr_values: mappedFeature) { status in
             if (status) { return }
             Log.message(.warning, message: self.mappedFeature.debugDescription)
-            let best_model_num = self.findBestModel(curr_values: self.mappedFeature) { freezers in
+
+            let bestModel = BestModel(query: self.filter)
+            bestModel.find(curr_values: self.mappedFeature) { freezers in
                 Log.message(.warning, message: freezers.debugDescription)
-                for freezer in freezers {
+                freezers.map { freezer in
                     var hourEnergyUse = 10.0 // ****** The final missing piece !!
                     var total_electric = self.costElectricity(hourEnergyUse: hourEnergyUse, pricing: self.utilityPricing, usageByPeak: self.usageByPeak)
                     var total_cost = total_electric
 
                     Log.message(.warning, message: "Calculated Energy Value - \(total_cost.description)")
-
-                    // *** Writing the Total Cost to a File *** //
-
                 }
             }
         }
-    }
-
-    override func alternateProductMatchFilter(query: PFQuery<PFObject>) -> PFQuery<PFObject> {
-        let prod_type = String(describing: mappedFeature["Product Type"]!)
-        let total_volume = String(describing: mappedFeature["Total Volume"]!)
-        let type = "solid_door_freezers_retrofits"
-
-        query.whereKey("data.style_type", equalTo: prod_type)
-        query.whereKey("data.total_volume", equalTo: Double(total_volume))
-
-        return query
     }
 }
