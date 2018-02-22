@@ -5,7 +5,8 @@
 
 import Foundation
 
-class PeakHourCalculator {
+// *** Note : Every Utility Company can define it's own Peak Hours *** //
+class PeakHourMapper {
 
     let dateFormatter = DateFormatter()
     var outgoing = Dictionary<EPeak, Int>()
