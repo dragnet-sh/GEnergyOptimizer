@@ -21,12 +21,6 @@ class EnergyCalculator {
         self.mappedFeature = mapFeatureData(feature: feature)
     }
 
-    //ToDo: Not all of the Product Need to go through this ??
-    func alternateProductMatchFilter(query: PFQuery<PFObject>) -> PFQuery<PFObject> {
-        Log.message(.error, message: "Please override method getBundleResource")
-        fatalError("Must be over-ridden")
-    }
-
     func productMatchFilter(query: PFQuery<PFObject>) -> PFQuery<PFObject> {
         let model_number = String(describing: mappedFeature["Model Number"]!)
         let company = String(describing: mappedFeature["Company"]!)
@@ -82,31 +76,9 @@ extension EnergyCalculator {
             }
         }
     }
-
-    func findBestModel(curr_values: Dictionary<String, Any>, complete: @escaping ([PlugLoad]) -> Void) {
-        if let query = PlugLoad.query() {
-            let queryWithAlternateProductMatchFilter = alternateProductMatchFilter(query: query)
-            queryWithAlternateProductMatchFilter.findObjectsInBackground { object, error in
-                if (error == nil) {
-                    Log.message(.info, message: "Parse - Plugload Query - No Error")
-                } else {
-                    Log.message(.error, message: error.debugDescription)
-                    return
-                }
-
-                guard let data = object as? [PlugLoad] else {
-                    Log.message(.error, message: "Guard Failed : Plugload Data - Core Data Zone")
-                    return
-                }
-
-                complete(data)
-            }
-        }
-    }
 }
 
 extension EnergyCalculator {
-
     func mapFeatureData(feature: [CDFeatureData]) -> Dictionary<String, Any> {
         var mapped = Dictionary<String, Any>()
         feature.map {
