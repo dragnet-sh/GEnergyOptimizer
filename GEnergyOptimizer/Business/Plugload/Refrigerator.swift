@@ -21,7 +21,7 @@ class Refrigerator: EnergyCalculator, Computable {
         return peak.run(usage: operatingHours)
     }()
 
-    lazy var filter: PFQuery<PFObject> = {
+    lazy var filterAlternateMatch: PFQuery<PFObject> = {
         let query = PlugLoad.query()!
         let type = String(describing: mappedFeature["Product Type"]!)
         let volume = String(describing: mappedFeature["Total Volume"]!)
@@ -32,12 +32,14 @@ class Refrigerator: EnergyCalculator, Computable {
         return query
     }()
 
+
     func compute() {
-        let energy_star = isEnergyStar(curr_values: mappedFeature) { status in
+        let energyStar = EnergyStar(mappedFeature: self.mappedFeature)
+        energyStar.query() { status in
             if (status) { return }
             Log.message(.warning, message: self.mappedFeature.debugDescription)
 
-            let bestModel = BestModel(query: self.filter)
+            let bestModel = BestModel(query: self.filterAlternateMatch)
             bestModel.query(curr_values: self.mappedFeature) { freezers in
                 Log.message(.warning, message: freezers.debugDescription)
                 freezers.map { freezer in

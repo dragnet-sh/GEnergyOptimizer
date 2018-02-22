@@ -5,8 +5,6 @@
 
 import Foundation
 import CleanroomLogger
-import CoreData
-import Parse
 
 protocol Computable {
     func compute()
@@ -20,20 +18,9 @@ class EnergyCalculator {
         self.preAudit = mapFeatureData(feature: preAudit)
         self.mappedFeature = mapFeatureData(feature: feature)
     }
-
-    func productMatchFilter(query: PFQuery<PFObject>) -> PFQuery<PFObject> {
-        let model_number = String(describing: mappedFeature["Model Number"]!)
-        let company = String(describing: mappedFeature["Company"]!)
-
-        query.whereKey("data.company", equalTo: company)
-        query.whereKey("data.model_number", equalTo: model_number)
-
-        return query
-    }
 }
 
 extension EnergyCalculator {
-
     func costElectricity(hourEnergyUse: Double, pricing: Dictionary<EPeak, Double>, usageByPeak: Dictionary<EPeak, Int>) -> Double {
 
         var summer = Double(usageByPeak[EPeak.summerOn]!) * hourEnergyUse * Double(pricing[EPeak.summerOn]!)
@@ -49,36 +36,7 @@ extension EnergyCalculator {
     func costGas() {
 
     }
-}
 
-extension EnergyCalculator {
-
-    func isEnergyStar(curr_values: Dictionary<String, Any>, complete: @escaping (Bool) -> Void) {
-        Log.message(.warning, message: "Energy Star Check")
-
-        if let query = PlugLoad.query() {
-            let queryWithProductMatchFilter = productMatchFilter(query: query)
-            queryWithProductMatchFilter.findObjectsInBackground { object, error in
-                if (error == nil) {
-                    Log.message(.info, message: "Parse - Plugload Query - No Error")
-                } else {
-                    Log.message(.error, message: error.debugDescription)
-                    return
-                }
-
-                guard let data = object as? [PlugLoad] else {
-                    Log.message(.error, message: "Guard Failed : Plugload Data - Core Data Zone")
-                    return
-                }
-
-                if (data.count > 0) {complete(true)}
-                else {complete(false)}
-            }
-        }
-    }
-}
-
-extension EnergyCalculator {
     func mapFeatureData(feature: [CDFeatureData]) -> Dictionary<String, Any> {
         var mapped = Dictionary<String, Any>()
         feature.map {
