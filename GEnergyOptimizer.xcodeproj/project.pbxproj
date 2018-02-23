@@ -24,6 +24,7 @@
 		487C006DF8715ED7C1E8F9EE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C02E0126554B9837987E8 /* Utils.swift */; };
 		487C007CE0C4E7C81F491A7A /* PeakHourMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C054AC728BAFE30A431B0 /* PeakHourMapper.swift */; };
 		487C00846D6D5773850606F6 /* header.csv in Resources */ = {isa = PBXBuildFile; fileRef = 487C0F4762FDB1D0CBC61919 /* header.csv */; };
+		487C014CFBF711963B2567E0 /* pge_gas.csv in Resources */ = {isa = PBXBuildFile; fileRef = 487C0E8606927593C2F09607 /* pge_gas.csv */; };
 		487C015B90C93ED9663F3C73 /* Fryer.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C080A4E1D4167F0F86C03 /* Fryer.json */; };
 		487C018F6D5AC4056E24A868 /* FormFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C06949DEE6E459B24DF35 /* FormFactory.swift */; };
 		487C019C0D3C363716BA6B56 /* ParseDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0176A47699294D68D8CC /* ParseDataModel.swift */; };
@@ -51,13 +52,13 @@
 		487C0773AFF050B77B0374E3 /* GECalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0ACEA8899C6F74495BAF /* GECalculations.swift */; };
 		487C07B9ACDB3E1C830EA66E /* DataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0ABC563E7E0A7C3C9BA8 /* DataLayer.swift */; };
 		487C07CA55227074D34FFA9F /* CDZone+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C006036B1A5E29BBBBB79 /* CDZone+CoreDataClass.swift */; };
-		487C07EACE06E9C4487C78D3 /* pge_electric.csv in Resources */ = {isa = PBXBuildFile; fileRef = 487C07E9E1CF4E02839211B9 /* pge_electric.csv */; };
 		487C08271D80D022563955CC /* CDZone+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0CC29DB67E6191A4E1FE /* CDZone+CoreDataProperties.swift */; };
 		487C08279D0C229A83A1D318 /* HotFoodCabinet.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C06C55F0E61EA77C8AC59 /* HotFoodCabinet.json */; };
 		487C08913815E01DE6006DB7 /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0FA36CFC01D2BB775C77 /* StateController.swift */; };
 		487C094E23AF17E65CEB23A2 /* CoreDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0853D485C19C3121BC98 /* CoreDataAPI.swift */; };
 		487C098E7053A832C7DE6BBF /* plugload.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C046F2324ACBDDD52E289 /* plugload.json */; };
 		487C099A6B6530AF97F55601 /* FactoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0A72B41F6A46089909DB /* FactoryHelper.swift */; };
+		487C09B103443C784E96E93B /* pge_electric.csv in Resources */ = {isa = PBXBuildFile; fileRef = 487C09A30CA8FAA764471D7B /* pge_electric.csv */; };
 		487C0A324EC41B198CFA67E1 /* PopOverPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0150969D65E1245C202F /* PopOverPresenter.swift */; };
 		487C0A4D069561BD894028D3 /* preaudit.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0A39AC6B004B52564DAC /* preaudit.json */; };
 		487C0A68C9DF4736E834A8F7 /* CDRoom+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C00AAA27BF40E11193B1F /* CDRoom+CoreDataClass.swift */; };
@@ -148,7 +149,6 @@
 		487C07623C4CF0D16624DE2B /* FormDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDataModel.swift; sourceTree = "<group>"; };
 		487C078014FACE4006AD6F7A /* PresenterModal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresenterModal.storyboard; sourceTree = "<group>"; };
 		487C07C91AE8796EA65944E2 /* RoomListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListViewController.swift; sourceTree = "<group>"; };
-		487C07E9E1CF4E02839211B9 /* pge_electric.csv */ = {isa = PBXFileReference; lastKnownFileType = file.csv; path = pge_electric.csv; sourceTree = "<group>"; };
 		487C080941112BEE2DFCA5A6 /* ZoneDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneDTO.swift; sourceTree = "<group>"; };
 		487C080A4E1D4167F0F86C03 /* Fryer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Fryer.json; sourceTree = "<group>"; };
 		487C0853D485C19C3121BC98 /* CoreDataAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataAPI.swift; sourceTree = "<group>"; };
@@ -157,6 +157,7 @@
 		487C0891514C7276FBA79B2B /* Refrigerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Refrigerator.swift; sourceTree = "<group>"; };
 		487C08D0843EFF647751E835 /* BasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		487C094A2A0F68FF10E9AFBD /* IceMaker.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = IceMaker.json; sourceTree = "<group>"; };
+		487C09A30CA8FAA764471D7B /* pge_electric.csv */ = {isa = PBXFileReference; lastKnownFileType = file.csv; path = pge_electric.csv; sourceTree = "<group>"; };
 		487C09E7BFD390D46EFB6FB0 /* FormBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormBuilder.swift; sourceTree = "<group>"; };
 		487C0A39AC6B004B52564DAC /* preaudit.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = preaudit.json; sourceTree = "<group>"; };
 		487C0A72B41F6A46089909DB /* FactoryHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactoryHelper.swift; sourceTree = "<group>"; };
@@ -177,6 +178,7 @@
 		487C0D982D8D6E76D37710FC /* SteamCooker.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = SteamCooker.json; sourceTree = "<group>"; };
 		487C0DA52700628ED7753BDD /* CombinationOven.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = CombinationOven.json; sourceTree = "<group>"; };
 		487C0E4C4EE333D6EFAA7215 /* PFRoomAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFRoomAPI.swift; sourceTree = "<group>"; };
+		487C0E8606927593C2F09607 /* pge_gas.csv */ = {isa = PBXFileReference; lastKnownFileType = file.csv; path = pge_gas.csv; sourceTree = "<group>"; };
 		487C0EA5FE353F7749BA6F8C /* FeaturePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturePresenter.swift; sourceTree = "<group>"; };
 		487C0EAEAF589C2BEC0E07AE /* BestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BestModel.swift; sourceTree = "<group>"; };
 		487C0F0E28D1D0C27B2D8DF2 /* FeatureViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FeatureViewController.storyboard; sourceTree = "<group>"; };
@@ -212,7 +214,6 @@
 			children = (
 				1318636E1FE6B63800864276 /* ge_green_world_logo_large.png */,
 				1335BF3D1FD0118800402515 /* GeminiLogo.jpg */,
-				487C07E9E1CF4E02839211B9 /* pge_electric.csv */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -446,6 +447,7 @@
 			children = (
 				487C087C1601EE87A454A49D /* UtilityMapper.swift */,
 				487C054AC728BAFE30A431B0 /* PeakHourMapper.swift */,
+				487C0EACD09D6D4CD21AF4CB /* Data */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -509,6 +511,15 @@
 				487C080941112BEE2DFCA5A6 /* ZoneDTO.swift */,
 			);
 			path = Table;
+			sourceTree = "<group>";
+		};
+		487C0EACD09D6D4CD21AF4CB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				487C09A30CA8FAA764471D7B /* pge_electric.csv */,
+				487C0E8606927593C2F09607 /* pge_gas.csv */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		487C0F1CD64F054BB8F04D10 /* Audit */ = {
@@ -674,7 +685,8 @@
 				487C0270E2B349E0409B0167 /* IceMaker.json in Resources */,
 				487C0C118C3F4D9902F44CA1 /* RackOven.json in Resources */,
 				487C0DC5E3B3C053B2682617 /* SteamCooker.json in Resources */,
-				487C07EACE06E9C4487C78D3 /* pge_electric.csv in Resources */,
+				487C09B103443C784E96E93B /* pge_electric.csv in Resources */,
+				487C014CFBF711963B2567E0 /* pge_gas.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
