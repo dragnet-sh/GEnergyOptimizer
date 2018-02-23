@@ -11,6 +11,13 @@ import CleanroomLogger
 import CoreData
 import CSwiftV
 
+enum GEnergyError: Error {
+    case IdentifierNotSet
+    case AuditNone
+    case PreAuditNone
+    case ZoneNone
+}
+
 public class GEnergyCalculations {
 
     fileprivate var coreDataAPI = CoreDataAPI.sharedInstance
@@ -23,36 +30,43 @@ public class GEnergyCalculations {
     }
 }
 
-
 extension GEnergyCalculations {
-
     func run() {
-        if let identifier = state.getIdentifier() {
-            if let audit = coreDataAPI.getAudit(id: identifier) {
-                let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: true)
+        let preAudit = try! getPreAudit()
+        let zone = try! getZone()
 
-                guard let preAudit = audit.hasPreAuditFeature?.allObjects as? [CDFeatureData] else {
-                    Log.message(.error, message: "Guard Failed : PreAudit - Core Data")
-                    return
-                }
-
-                guard let results = audit.hasZone?.sortedArray(using: [sortDescriptor]) as? [CDZone] else {
-                    Log.message(.error, message: "Guard Failed : Fetched Results - Core Data Zone")
-                    return
-                }
-
-                for zone in results {
-                    guard let featureData = zone.hasFeature?.allObjects as? [CDFeatureData] else {
-                        Log.message(.error, message: "Guard Failed : Feature Data - Core Data Zone")
-                        return
-                    }
-
-                    switch GUtils.getEAppliance(rawValue: zone.type!) {
-                    case .freezerFridge: Refrigerator(feature: featureData, preAudit: preAudit).compute()
-                    default: Log.message(.warning, message: zone.type!)
-                    }
+        zone.forEach { zone in
+            if let featureData = zone.hasFeature?.allObjects as? [CDFeatureData] {
+                //ToDo: Use HashMap to get rid of the Switch
+                switch GUtils.getEAppliance(rawValue: zone.type!) {
+                case .freezerFridge: Refrigerator(feature: featureData, preAudit: preAudit).compute()
+                default: Log.message(.warning, message: zone.type!)
                 }
             }
         }
+    }
+
+    func getZone() throws -> [CDZone] {
+        let audit = try! getAudit()
+        let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: true)
+        if let zone = audit.hasZone?.sortedArray(using: [sortDescriptor]) as? [CDZone] {return zone}
+        else {throw GEnergyError.ZoneNone}
+    }
+
+    func getPreAudit() throws -> [CDFeatureData] {
+        let audit = try! getAudit()
+        if let preAudit = audit.hasPreAuditFeature?.allObjects as? [CDFeatureData] {return preAudit}
+        else {throw GEnergyError.PreAuditNone}
+    }
+
+    func getAudit() throws -> CDAudit {
+        let identifier = try! getAuditIdentifier()
+        if let audit = coreDataAPI.getAudit(id: identifier) {return audit}
+        else {throw GEnergyError.AuditNone}
+    }
+
+    func getAuditIdentifier() throws -> String {
+        if let identifier = state.getIdentifier() {return identifier}
+        else {throw GEnergyError.IdentifierNotSet}
     }
 }
