@@ -8,8 +8,6 @@
 
 import Foundation
 import CleanroomLogger
-import CoreData
-import CSwiftV
 
 enum GEnergyError: Error {
     case IdentifierNotSet

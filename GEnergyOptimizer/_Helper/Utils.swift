@@ -108,6 +108,22 @@ class GUtils {
         }
     }
 
+    static func mapFeatureData(feature: [CDFeatureData]) -> Dictionary<String, Any> {
+        var mapped = Dictionary<String, Any>()
+        feature.map {
+            let type = InitEnumMapper.sharedInstance.enumMap[$0.type!]
+            if let eBaseType = type as? BaseRowType {
+                switch eBaseType {
+                case .intRow: mapped[$0.key!] = $0.value_int
+                case .decimalRow: mapped[$0.key!] = $0.value_double
+                default: mapped[$0.key!] = $0.value_string
+                }
+            }
+        }
+
+        return mapped
+    }
+
     static func openCSV(filename: String) -> Array<Dictionary<String, String>>! {
         let url = Bundle.main.url(forResource: filename, withExtension: "csv")!
         let data = try! String(contentsOf: url)

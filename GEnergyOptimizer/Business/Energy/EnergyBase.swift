@@ -15,8 +15,8 @@ class EnergyCalculator {
     var mappedFeature = Dictionary<String, Any>()
 
     init(feature: [CDFeatureData], preAudit: [CDFeatureData]) {
-        self.preAudit = mapFeatureData(feature: preAudit)
-        self.mappedFeature = mapFeatureData(feature: feature)
+        self.preAudit = GUtils.mapFeatureData(feature: preAudit)
+        self.mappedFeature = GUtils.mapFeatureData(feature: feature)
     }
 }
 
@@ -35,21 +35,5 @@ extension EnergyCalculator {
 
     func costGas() {
 
-    }
-
-    func mapFeatureData(feature: [CDFeatureData]) -> Dictionary<String, Any> {
-        var mapped = Dictionary<String, Any>()
-        feature.map {
-            let type = InitEnumMapper.sharedInstance.enumMap[$0.type!]
-            if let eBaseType = type as? BaseRowType {
-                switch eBaseType {
-                case .intRow: mapped[$0.key!] = $0.value_int
-                case .decimalRow: mapped[$0.key!] = $0.value_double
-                default: mapped[$0.key!] = $0.value_string
-                }
-            }
-        }
-
-        return mapped
     }
 }
