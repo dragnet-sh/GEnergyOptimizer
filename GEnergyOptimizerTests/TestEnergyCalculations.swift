@@ -9,14 +9,15 @@ import XCTest
 @testable import GEnergyOptimizer
 
 class TestEnergyCalculations: XCTestCase {
-    var energyCalculation: GEnergyCalculations!
+    var utility: UtilityMapper!
     
     override func setUp() {
         super.setUp()
-        energyCalculation = GEnergyCalculations()
+        utility = GasRate()
     }
-    
-    func testEnergyCalculation() {
-        energyCalculation.test()
+
+    func testUtilityRate() {
+        let tmp = utility.getBillData()
+        print(tmp.debugDescription)
     }
 }
