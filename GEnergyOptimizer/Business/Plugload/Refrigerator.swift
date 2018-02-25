@@ -7,15 +7,15 @@ import Foundation
 import CleanroomLogger
 import Parse
 
-class Refrigerator: EnergyCalculator, Computable {
+class Refrigerator: EnergyBase, Computable {
 
-    lazy var utilityPricing: Dictionary<EPeak, Double> = {
+    lazy var utilityPricing: Dictionary<ERateKey, Double> = {
         let rateStructure = GUtils.toString(subject: preAudit["Electric Rate Structure"]!)
-        let utility = UtilityMapper()
-        return utility.getBillData(bill_type: rateStructure)
+        let utility = ElectricRate(type: rateStructure)
+        return utility.getBillData()
     }()
 
-    lazy var usageByPeak: Dictionary<EPeak, Int> = {
+    lazy var usageByPeak: Dictionary<ERateKey, Int> = {
         let operatingHours = GUtils.toString(subject: preAudit["Monday Operating Hours"]!)
         let peak = PeakHourMapper()
         return peak.run(usage: operatingHours)

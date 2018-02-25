@@ -9,11 +9,11 @@ import Foundation
 class PeakHourMapper {
 
     let dateFormatter = DateFormatter()
-    var outgoing = Dictionary<EPeak, Int>()
+    var outgoing = Dictionary<ERateKey, Int>()
 
     init() {
         dateFormatter.dateFormat = "HH:mm"
-        EPeak.getAll.map { outgoing[$0] = 0 }
+        ERateKey.getAllElectric.map { outgoing[$0] = 0 }
     }
 
     fileprivate func getTime(time: String) -> Date {
@@ -51,7 +51,7 @@ class PeakHourMapper {
                 inBetween(now: now, start: getTime(time: "00:00"), end: getTime(time: "8:30"))
     }
 
-    public func run(usage: String) -> Dictionary<EPeak, Int> {
+    public func run(usage: String) -> Dictionary<ERateKey, Int> {
 
         let usageSplit = usage.split(separator: ",")
 
@@ -68,12 +68,12 @@ class PeakHourMapper {
             var _date = start
             while _date < end {
 
-                if isSummerOffPeak(now: _date) {outgoing[EPeak.summerOff]! += delta}
-                if isSummerPartialPeak(now: _date) {outgoing[EPeak.summerPart]! += delta}
-                if isSummerPeak(now: _date) {outgoing[EPeak.summerOn]! += delta}
+                if isSummerOffPeak(now: _date) {outgoing[ERateKey.summerOff]! += delta}
+                if isSummerPartialPeak(now: _date) {outgoing[ERateKey.summerPart]! += delta}
+                if isSummerPeak(now: _date) {outgoing[ERateKey.summerOn]! += delta}
 
-                if isWinterOffPeak(now: _date) {outgoing[EPeak.winterOff]! += delta}
-                if isWinterPartialPeak(now: _date) {outgoing[EPeak.winterPart]! += delta}
+                if isWinterOffPeak(now: _date) {outgoing[ERateKey.winterOff]! += delta}
+                if isWinterPartialPeak(now: _date) {outgoing[ERateKey.winterPart]! += delta}
 
                 _date = calendar.date(byAdding: step, to: _date)!
             }

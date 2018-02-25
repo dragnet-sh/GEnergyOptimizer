@@ -10,7 +10,7 @@ protocol Computable {
     func compute()
 }
 
-class EnergyCalculator {
+class EnergyBase {
     var preAudit = Dictionary<String, Any>()
     var mappedFeature = Dictionary<String, Any>()
 
@@ -20,15 +20,15 @@ class EnergyCalculator {
     }
 }
 
-extension EnergyCalculator {
-    func costElectricity(hourEnergyUse: Double, pricing: Dictionary<EPeak, Double>, usageByPeak: Dictionary<EPeak, Int>) -> Double {
+extension EnergyBase {
+    func costElectricity(hourEnergyUse: Double, pricing: Dictionary<ERateKey, Double>, usageByPeak: Dictionary<ERateKey, Int>) -> Double {
 
-        var summer = Double(usageByPeak[EPeak.summerOn]!) * hourEnergyUse * Double(pricing[EPeak.summerOn]!)
-        summer += Double(usageByPeak[EPeak.summerPart]!) * hourEnergyUse * Double(pricing[EPeak.summerPart]!)
-        summer += Double(usageByPeak[EPeak.summerOff]!) * hourEnergyUse * Double(pricing[EPeak.summerOff]!)
+        var summer = Double(usageByPeak[ERateKey.summerOn]!) * hourEnergyUse * Double(pricing[ERateKey.summerOn]!)
+        summer += Double(usageByPeak[ERateKey.summerPart]!) * hourEnergyUse * Double(pricing[ERateKey.summerPart]!)
+        summer += Double(usageByPeak[ERateKey.summerOff]!) * hourEnergyUse * Double(pricing[ERateKey.summerOff]!)
 
-        var winter = Double(usageByPeak[EPeak.winterPart]!) * hourEnergyUse * Double(pricing[EPeak.winterPart]!)
-        winter += Double(usageByPeak[EPeak.winterOff]!) * hourEnergyUse * Double(pricing[EPeak.winterOff]!)
+        var winter = Double(usageByPeak[ERateKey.winterPart]!) * hourEnergyUse * Double(pricing[ERateKey.winterPart]!)
+        winter += Double(usageByPeak[ERateKey.winterOff]!) * hourEnergyUse * Double(pricing[ERateKey.winterOff]!)
 
         return (summer + winter)
     }

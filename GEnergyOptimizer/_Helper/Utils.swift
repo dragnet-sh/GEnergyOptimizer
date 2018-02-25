@@ -89,8 +89,8 @@ class GUtils {
         } else { return .none }
     }
 
-    static func getEPeak(rawValue: String) -> EPeak {
-        if let eVal = EPeak(rawValue: rawValue) {
+    static func getEPeak(rawValue: String) -> ERateKey {
+        if let eVal = ERateKey(rawValue: rawValue) {
             return eVal
         } else { return .none}
     }

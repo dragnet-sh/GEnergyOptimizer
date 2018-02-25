@@ -17,23 +17,16 @@ enum GEnergyError: Error {
 }
 
 public class GEnergyCalculations {
-
     fileprivate var coreDataAPI = CoreDataAPI.sharedInstance
     fileprivate var state = StateController.sharedInstance
-
-    func test() {
-        Log.message(.warning, message: "******* DEBUG MESSAGE FROM XCTest !! *******")
-        state.registerAuditIdentifier(auditIdentifier: "test-001")
-        run()
-    }
 }
 
 extension GEnergyCalculations {
     func run() {
         let preAudit = try! getPreAudit()
-        let zone = try! getZone()
+        let zones = try! getZone()
 
-        zone.forEach { zone in
+        zones.forEach { zone in
             if let featureData = zone.hasFeature?.allObjects as? [CDFeatureData] {
                 //ToDo: Use HashMap to get rid of the Switch
                 switch GUtils.getEAppliance(rawValue: zone.type!) {
