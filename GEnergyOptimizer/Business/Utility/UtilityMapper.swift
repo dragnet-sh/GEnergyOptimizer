@@ -8,17 +8,52 @@ import CleanroomLogger
 
 // **** Needs to give both Gas and Electric Rate Structure Mapped on a Standard Layout ****
 
-class UtilityMapper {
+protocol UtilityMapper {
+    func getBillData() -> Dictionary<ERateKey, Double>
+}
 
-    func getBillData(bill_type: String) -> Dictionary<EPeak, Double> {
-        let rows = GUtils.openCSV(filename: "pge_electric")!
-        var outgoing = Dictionary<EPeak, Double>()
+public class ElectricRate: UtilityMapper {
+    var type: String
+    var utilityCompany: String
+
+    init(type: String) {
+        self.type = type
+        self.utilityCompany = "pge_electric"
+    }
+
+    func getBillData() -> Dictionary<ERateKey, Double> {
+        let rows = GUtils.openCSV(filename: utilityCompany)!
+        var outgoing = Dictionary<ERateKey, Double>()
         for row in rows {
-            if row["rate"]! == bill_type {
+            if row["rate"]! == type {
                 let key = "\(row["season"]!)-\(row["ec_period"]!)"
                 outgoing[GUtils.getEPeak(rawValue: key)] = Double(row["energy_charge"]!)
             }
         }
+
+        return outgoing
+    }
+}
+
+// *** Averages the Gas Rate *** //
+public class GasRate: UtilityMapper {
+    var utilityCompany: String
+
+    init() {
+        self.utilityCompany = "pge_gas"
+    }
+
+    func getBillData() -> Dictionary<ERateKey, Double> {
+        let rows = GUtils.openCSV(filename: utilityCompany)!
+        var outgoing = Dictionary<ERateKey, Double>()
+        let gas = ERateKey.getAllGas
+        gas.map { outgoing[$0] = 0.0 }
+
+        rows.forEach { row in
+            gas.map { outgoing[$0]! += Double(row[$0.rawValue]! as String)! }
+        }
+
+        gas.map { outgoing[$0] = outgoing[$0]! / Double(rows.count) }
 
         return outgoing
     }
