@@ -9,6 +9,14 @@ import Parse
 
 class Refrigerator: EnergyBase, Computable {
 
+    lazy var rateStructure: String = {
+        GUtils.toString(subject: preAudit["Electric Rate Structure"]!)
+    }()
+
+    lazy var operatingHours: String = {
+        GUtils.toString(subject: preAudit["Monday Operating Hours"]!)
+    }()
+
     lazy var filterAlternateMatch: PFQuery<PFObject> = {
         let query = PlugLoad.query()!
         let type = String(describing: mappedFeature["Product Type"]!)
@@ -21,7 +29,7 @@ class Refrigerator: EnergyBase, Computable {
     }()
 
     func compute() {
-        let electric = ElectricCost(rateStructure: super.rateStructure, operatingHours: super.operatingHours)
+        let electric = ElectricCost(rateStructure: rateStructure, operatingHours: operatingHours)
         let bestModel = BestModel(query: self.filterAlternateMatch)
         let hourEnergyUse = 10.0
 

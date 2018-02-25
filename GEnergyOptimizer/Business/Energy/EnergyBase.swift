@@ -14,14 +14,6 @@ class EnergyBase {
     var preAudit = Dictionary<String, Any>()
     var mappedFeature = Dictionary<String, Any>()
 
-    lazy var rateStructure: String = {
-        GUtils.toString(subject: preAudit["Electric Rate Structure"]!)
-    }()
-
-    lazy var operatingHours: String = {
-        GUtils.toString(subject: preAudit["Monday Operating Hours"]!)
-    }()
-
     init(feature: [CDFeatureData], preAudit: [CDFeatureData]) {
         self.preAudit = GUtils.mapFeatureData(feature: preAudit)
         self.mappedFeature = GUtils.mapFeatureData(feature: feature)
