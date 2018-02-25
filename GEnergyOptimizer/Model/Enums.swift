@@ -125,8 +125,10 @@ enum ERateKey: String {
     case slab2 = "5.1_16.0"
     case slab3 = "16.1_41.0"
     case slab4 = "41.1_123.0"
+    case slab5 = "123.1_n_up"
     case summerTransport = "summer_first_4000_therms"
     case winterTransport = "winter_first_4000_therms"
+    case surcharge
 
     case gasWinter, gasSummer
 
@@ -135,6 +137,6 @@ enum ERateKey: String {
     static let getAllElectric = [summerOff, summerPart, summerOn, winterOff, winterPart]
     static let getAllElectricRaw = getAllElectric.map { $0.rawValue }
 
-    static let getAllGas = [slab1, slab2, slab3, slab4]
+    static let getAllGas = [slab1, slab2, slab3, slab4, slab5, winterTransport, summerTransport, surcharge]
     static let getAllGasRaw = getAllGas.map { $0.rawValue }
 }

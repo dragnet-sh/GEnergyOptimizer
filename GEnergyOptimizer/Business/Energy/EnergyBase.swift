@@ -35,8 +35,33 @@ protocol Consumption {
 }
 
 class GasCost: Consumption {
+
+    lazy var pricing: Dictionary<ERateKey, Double> = {
+        let utility = GasRate()
+        return utility.getBillData()
+    }()
+
+    // *** Gives the Average Cost Per Day *** //
     func cost(energyUsed: Double) -> Double {
-        return 0.0
+
+        var slabPricing = 0.0
+
+        if energyUsed <= 5 {
+            slabPricing = pricing[ERateKey.slab1]!
+        } else if energyUsed <= 16 {
+            slabPricing = pricing[ERateKey.slab2]!
+        } else if energyUsed <= 41 {
+            slabPricing = pricing[ERateKey.slab3]!
+        } else if energyUsed <= 123 {
+            slabPricing = pricing[ERateKey.slab4]!
+        } else {
+            slabPricing = pricing[ERateKey.slab5]!
+        }
+
+        // Since the values are per day - Dividing by 2 averages Summer | Winter as they are both of 6 months
+        slabPricing += (pricing[ERateKey.summerTransport]! + pricing[ERateKey.winterTransport]!) / 2 + pricing[ERateKey.surcharge]!
+
+        return  (slabPricing * energyUsed)
     }
 }
 
@@ -60,12 +85,12 @@ class ElectricCost: Consumption {
     }
 
     func cost(energyUsed: Double) -> Double {
-        var summer = Double(usageByPeak[ERateKey.summerOn]!) * energyUsed * Double(pricing[ERateKey.summerOn]!)
-        summer += Double(usageByPeak[ERateKey.summerPart]!) * energyUsed * Double(pricing[ERateKey.summerPart]!)
-        summer += Double(usageByPeak[ERateKey.summerOff]!) * energyUsed * Double(pricing[ERateKey.summerOff]!)
+        var summer = Double(usageByPeak[ERateKey.summerOn]!) * energyUsed * pricing[ERateKey.summerOn]!
+        summer += Double(usageByPeak[ERateKey.summerPart]!) * energyUsed * pricing[ERateKey.summerPart]!
+        summer += Double(usageByPeak[ERateKey.summerOff]!) * energyUsed * pricing[ERateKey.summerOff]!
 
-        var winter = Double(usageByPeak[ERateKey.winterPart]!) * energyUsed * Double(pricing[ERateKey.winterPart]!)
-        winter += Double(usageByPeak[ERateKey.winterOff]!) * energyUsed * Double(pricing[ERateKey.winterOff]!)
+        var winter = Double(usageByPeak[ERateKey.winterPart]!) * energyUsed * pricing[ERateKey.winterPart]!
+        winter += Double(usageByPeak[ERateKey.winterOff]!) * energyUsed * pricing[ERateKey.winterOff]!
 
         return (summer + winter)
     }
