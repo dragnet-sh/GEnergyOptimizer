@@ -24,7 +24,7 @@ public class ElectricRate: UtilityMapper {
     func getBillData() -> Dictionary<ERateKey, Double> {
         let rows = GUtils.openCSV(filename: utilityCompany)!
         var outgoing = Dictionary<ERateKey, Double>()
-        for row in rows {
+        rows.forEach { row in
             if row["rate"]! == type {
                 let key = "\(row["season"]!)-\(row["ec_period"]!)"
                 outgoing[GUtils.getEPeak(rawValue: key)] = Double(row["energy_charge"]!)
@@ -47,13 +47,13 @@ public class GasRate: UtilityMapper {
         let rows = GUtils.openCSV(filename: utilityCompany)!
         var outgoing = Dictionary<ERateKey, Double>()
         let gas = ERateKey.getAllGas
-        gas.map { outgoing[$0] = 0.0 }
+        gas.forEach() { outgoing[$0] = 0.0 }
 
         rows.forEach { row in
-            gas.map { outgoing[$0]! += Double(row[$0.rawValue]! as String)! }
+            gas.forEach() { outgoing[$0]! += Double(row[$0.rawValue]! as String)! }
         }
 
-        gas.map { outgoing[$0] = outgoing[$0]! / Double(rows.count) }
+        gas.forEach() { outgoing[$0] = outgoing[$0]! / Double(rows.count) }
 
         return outgoing
     }
