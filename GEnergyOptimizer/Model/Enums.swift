@@ -111,14 +111,30 @@ enum ETagPO: String {
     case save = "po-save"
 }
 
-enum EPeak: String {
+enum ERateKey: String {
     case summerOff = "summer-off-peak"
     case summerPart = "summer-part-peak"
     case summerOn = "summer-on-peak"
     case winterOff = "winter-off-peak"
     case winterPart = "winter-part-peak"
+
+    case summerNone = "summer-none"
+    case winterNone = "winter-none"
+
+    case slab1 = "0_5.0"
+    case slab2 = "5.1_16.0"
+    case slab3 = "16.1_41.0"
+    case slab4 = "41.1_123.0"
+    case summerTransport = "summer_first_4000_therms"
+    case winterTransport = "winter_first_4000_therms"
+
+    case gasWinter, gasSummer
+
     case none
 
-    static let getAll = [summerOff, summerPart, summerOn, winterOff, winterPart]
-    static let getAllRaw = getAll.map { $0.rawValue }
+    static let getAllElectric = [summerOff, summerPart, summerOn, winterOff, winterPart]
+    static let getAllElectricRaw = getAllElectric.map { $0.rawValue }
+
+    static let getAllGas = [slab1, slab2, slab3, slab4]
+    static let getAllGasRaw = getAllGas.map { $0.rawValue }
 }
