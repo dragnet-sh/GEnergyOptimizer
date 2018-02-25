@@ -9,16 +9,12 @@ import Parse
 
 class Refrigerator: EnergyBase, Computable {
 
-    lazy var utilityPricing: Dictionary<ERateKey, Double> = {
-        let rateStructure = GUtils.toString(subject: preAudit["Electric Rate Structure"]!)
-        let utility = ElectricRate(type: rateStructure)
-        return utility.getBillData()
+    lazy var rateStructure: String = {
+        GUtils.toString(subject: preAudit["Electric Rate Structure"]!)
     }()
 
-    lazy var usageByPeak: Dictionary<ERateKey, Int> = {
-        let operatingHours = GUtils.toString(subject: preAudit["Monday Operating Hours"]!)
-        let peak = PeakHourMapper()
-        return peak.run(usage: operatingHours)
+    lazy var operatingHours: String = {
+        GUtils.toString(subject: preAudit["Monday Operating Hours"]!)
     }()
 
     lazy var filterAlternateMatch: PFQuery<PFObject> = {
@@ -39,15 +35,14 @@ class Refrigerator: EnergyBase, Computable {
             if (status) { return }
             Log.message(.warning, message: self.mappedFeature.debugDescription)
 
+            var electric = ElectricCost(rateStructure: self.rateStructure, operatingHours: self.operatingHours)
             let bestModel = BestModel(query: self.filterAlternateMatch)
             bestModel.query(curr_values: self.mappedFeature) { freezers in
                 Log.message(.warning, message: freezers.debugDescription)
                 freezers.map { freezer in
                     var hourEnergyUse = 10.0 // ****** The final missing piece !!
-                    var total_electric = self.costElectricity(hourEnergyUse: hourEnergyUse, pricing: self.utilityPricing, usageByPeak: self.usageByPeak)
-                    var total_cost = total_electric
-
-                    Log.message(.warning, message: "Calculated Energy Value - \(total_cost.description)")
+                    var totalCost = electric.cost(energyUsed: hourEnergyUse)
+                    Log.message(.warning, message: "Calculated Energy Value - \(totalCost.description)")
                 }
             }
         }
