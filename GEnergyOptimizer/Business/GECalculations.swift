@@ -31,6 +31,7 @@ extension GEnergyCalculations {
             if let featureData = $0.hasFeature?.allObjects as? [CDFeatureData] {
                 switch applianceType(zone: $0) {
                 case .freezerFridge: Refrigerator(feature: featureData, preAudit: preAudit).compute()
+                case .fryer: Fryer(feature: featureData, preAudit: preAudit).compute()
                 default: Log.message(.warning, message: $0.type!)
                 }
             }
