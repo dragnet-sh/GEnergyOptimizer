@@ -13,11 +13,8 @@ class HVAC: EnergyBase, Computable {
 
         Log.message(.warning, message: feature.debugDescription)
         if let btuPerHour = feature["Cooling Capacity (Btu/hr)"], let seer = feature["SEER"] {
-            let btu = Int(String(describing: btuPerHour))!
-            let seer = Int(String(describing: seer))!
             let annualOperationHours = 8760.00
-
-            let power: Double = Double(btu / seer) / 1000
+            let power = Double(String(describing: btuPerHour))! / Double(String(describing: seer))! / 1000
             let energy: Double = power * annualOperationHours
 
             Log.message(.warning, message: "Calculated Energy Value [HVAC] - \(energy.description)")
