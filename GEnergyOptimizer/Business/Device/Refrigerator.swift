@@ -19,11 +19,11 @@ class Refrigerator: EnergyBase, Computable {
 
     lazy var filterAlternateMatch: PFQuery<PFObject> = {
         let query = PlugLoad.query()!
-        let type = String(describing: mappedFeature["Product Type"]!)
-        let volume = String(describing: mappedFeature["Total Volume"]!)
+        let type = mappedFeature["Product Type"]
+        let volume = mappedFeature["Total Volume"]
 
         query.whereKey("data.style_type", equalTo: type)
-        query.whereKey("data.total_volume", equalTo: Double(volume))
+        query.whereKey("data.total_volume", equalTo: volume)
 
         return query
     }()
@@ -36,7 +36,8 @@ class Refrigerator: EnergyBase, Computable {
         super.starValidator {
             bestModel.query(curr_values: self.mappedFeature) { freezers in
                 freezers.map { freezer in
-                    var hourEnergyUse = 10.0 // ****** The final missing piece !!
+                    //ToDo: Where does this value come from
+                    var hourEnergyUse = 10.0
                     var totalCost = electric.cost(energyUsed: hourEnergyUse)
                     Log.message(.warning, message: "Calculated Energy Value Cost [Plugload : Refrigerator] - \(totalCost.description)")
                 }
