@@ -35,11 +35,10 @@ class Refrigerator: EnergyBase, Computable {
 
         super.starValidator {
             bestModel.query(curr_values: self.mappedFeature) { freezers in
-                Log.message(.warning, message: freezers.debugDescription)
                 freezers.map { freezer in
                     var hourEnergyUse = 10.0 // ****** The final missing piece !!
                     var totalCost = electric.cost(energyUsed: hourEnergyUse)
-                    Log.message(.warning, message: "Calculated Energy Value - \(totalCost.description)")
+                    Log.message(.warning, message: "Calculated Energy Value Cost [Plugload : Refrigerator] - \(totalCost.description)")
                 }
             }
         }
