@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.5.1)
   - Bolts/Tasks (1.8.4)
   - CleanroomLogger (5.1.1)
   - CSwiftV (0.0.7)
@@ -7,7 +8,8 @@ PODS:
   - Parse (1.15.3):
     - Bolts/Tasks (~> 1.8)
   - Presentr (1.3)
-  - SwiftyDrop (4.0.2)
+  - SwiftyDropbox (4.3.0):
+    - Alamofire (~> 4.5.0)
   - Toaster (2.1.1)
 
 DEPENDENCIES:
@@ -17,10 +19,11 @@ DEPENDENCIES:
   - Gloss (= 2.0.0-beta.2)
   - Parse
   - Presentr (~> 1.3)
-  - SwiftyDrop (~> 4.0)
+  - SwiftyDropbox (~> 4.3)
   - Toaster
 
 SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   CleanroomLogger: d921cc92d8e89c067653c0700b74a96b4e07fdab
   CSwiftV: 602a0cb1df5f758d6005eacb6472c9bc752a7e7c
@@ -28,9 +31,9 @@ SPEC CHECKSUMS:
   Gloss: ec2bc49c3d2db468581ced33d49c26117c7343af
   Parse: cdc0f1f975ee8be0409e66f21b05df4ae067047c
   Presentr: 3f0825a42cb32ecd8fc6b6d0b0de87d7d0b42482
-  SwiftyDrop: a497afbcf50f7882ac7637c8308baf07c5ed15e6
+  SwiftyDropbox: f70ff647c8ef4195e1314c8a894652f3ba3da526
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
 
-PODFILE CHECKSUM: e08b3e7e6761f7d21ff6e525b972a51069673ae1
+PODFILE CHECKSUM: ad910ba2499b203dc10f27fadd3655a4a9e5e144
 
 COCOAPODS: 1.3.1

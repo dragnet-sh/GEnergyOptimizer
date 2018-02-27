@@ -21,9 +21,8 @@ public enum EStorage {
     case local, server
 }
 
-public enum ELogScope: String {
-    case parse = "Parse :"
-    case gemini = "GEnergy :"
+public enum DEnv: String {
+    case local, prod
 }
 
 // *** Accessing Data - Local or Via Network *** //

@@ -12,5 +12,5 @@ target 'GEnergyOptimizer' do
   pod 'CSwiftV', '~> 0.0'
   pod 'Toaster'
   pod 'Presentr', '~> 1.3'
-  pod 'SwiftyDrop', '~> 4.0'
+  pod 'SwiftyDropbox', '~> 4.3'
 end

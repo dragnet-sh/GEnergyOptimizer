@@ -64,6 +64,7 @@
 		487C0A0C0E9AE22E8E143C40 /* GEnergy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0542B89E1AFFAADEC49B /* GEnergy.swift */; };
 		487C0A324EC41B198CFA67E1 /* PopOverPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0150969D65E1245C202F /* PopOverPresenter.swift */; };
 		487C0A4D069561BD894028D3 /* preaudit.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0A39AC6B004B52564DAC /* preaudit.json */; };
+		487C0A613E8CD832CD0A052C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C052DF9D160600065DA02 /* Constants.swift */; };
 		487C0A68C9DF4736E834A8F7 /* CDRoom+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C00AAA27BF40E11193B1F /* CDRoom+CoreDataClass.swift */; };
 		487C0A8CEF5276FE93C4333C /* RoomDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C001332D8A6CAF12B0256 /* RoomDTO.swift */; };
 		487C0ADDE2C3C39DA7A63D23 /* ZoneDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C080941112BEE2DFCA5A6 /* ZoneDTO.swift */; };
@@ -143,6 +144,7 @@
 		487C0436148EC05FE2581AC2 /* ZoneListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneListViewController.swift; sourceTree = "<group>"; };
 		487C046CBA6CB57F53D16115 /* Fryer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fryer.swift; sourceTree = "<group>"; };
 		487C046F2324ACBDDD52E289 /* plugload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = plugload.json; sourceTree = "<group>"; };
+		487C052DF9D160600065DA02 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		487C05347380812558E3559A /* ConvectionOven.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ConvectionOven.json; sourceTree = "<group>"; };
 		487C0542B89E1AFFAADEC49B /* GEnergy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GEnergy.swift; sourceTree = "<group>"; };
 		487C054AC728BAFE30A431B0 /* PeakHourMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeakHourMapper.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 				487C0A72B41F6A46089909DB /* FactoryHelper.swift */,
 				487C02E0126554B9837987E8 /* Utils.swift */,
 				487C0280CCB7182409BBE8E9 /* BuilderHelper.swift */,
+				487C052DF9D160600065DA02 /* Constants.swift */,
 			);
 			path = _Helper;
 			sourceTree = "<group>";
@@ -724,6 +727,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/CSwiftV/CSwiftV.framework",
 				"${BUILT_PRODUCTS_DIR}/CleanroomLogger/CleanroomLogger.framework",
@@ -731,11 +735,12 @@
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 				"${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyDrop/SwiftyDrop.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyDropbox/SwiftyDropbox.framework",
 				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CSwiftV.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CleanroomLogger.framework",
@@ -743,7 +748,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gloss.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Presentr.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyDrop.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyDropbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -846,6 +851,7 @@
 				487C00A5061BD468A46C2DA7 /* Fryer.swift in Sources */,
 				487C0A0C0E9AE22E8E143C40 /* GEnergy.swift in Sources */,
 				487C0963E935CF39DEB77981 /* AuditFactory.swift in Sources */,
+				487C0A613E8CD832CD0A052C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
