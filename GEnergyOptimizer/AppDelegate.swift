@@ -9,58 +9,41 @@
 import UIKit
 import CleanroomLogger
 import Parse
+import SwiftyDropbox
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let runtime = "LOCAL"
+    let runtime = DEnv.local
 
-    var applicationId = ""
-    var clientKey = ""
-    var server = ""
+    var parseKeys = [
+        DEnv.local: [
+            "applicationId": Constants.Parse.Local.applicationId,
+            "clientKey": Constants.Parse.Local.clientKey,
+            "server": Constants.Parse.Local.server
+        ],
 
-    //*** Parse Configuration - Local Server ***//
-    let applicationIdLocal = "NLI214vDqkoFTJSTtIE2xLqMme6Evd0kA1BbJ20S"
-    let clientKeyLocal = "lgEhciURXhAjzITTgLUlXAEdiMJyIF4ZBXdwfpUr"
-    let serverLocal = "http://localhost:1337/parse"
-
-    //*** Parse Configuration - Test Server ***//
-    let applicationIdProd = "47f916f7005d19ddd78a6be6b4bdba3ca49615a0"
-    let clientKeyProd = "275302fd8b2b56dca85f127a6123f281b670c787"
-    let serverProd = "http://ec2-18-220-200-115.us-east-2.compute.amazonaws.com:80/parse"
+        DEnv.prod: [
+            "applicationId": Constants.Parse.Prod.applicationId,
+            "clientKey": Constants.Parse.Prod.clientKey,
+            "server": Constants.Parse.Prod.server
+        ]
+    ]
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-
-        switch runtime {
-            case "LOCAL":
-                applicationId = applicationIdLocal
-                clientKey = clientKeyLocal
-                server = serverLocal
-
-            case "PROD":
-                applicationId = applicationIdProd
-                clientKey = clientKeyProd
-                server = serverProd
-
-            default: Log.message(.error, message: "GEnergy Invalid Runtime.")
-        }
 
         Log.enable(configuration: LoggerUtils.getConfig())
         Log.info?.message("GEnergy - Entry Point")
         Log.message(.info, message: "Parse - Registering DTO - PFObjects")
 
-        PFPreAudit.registerSubclass()
-        PFAudit.registerSubclass()
-        PFZone.registerSubclass()
-        PFRoom.registerSubclass()
-        PlugLoad.registerSubclass()
+        register()
 
         Log.message(.info, message: "Parse - Initialization - Processing")
         let configuration = ParseClientConfiguration {
-            $0.applicationId = self.applicationId
-            $0.clientKey = self.clientKey
-            $0.server = self.server
+            $0.applicationId = self.parseKeys[self.runtime]!["applicationId"]!
+            $0.clientKey = self.parseKeys[self.runtime]!["clientKey"]!
+            $0.server = self.parseKeys[self.runtime]!["server"]!
             $0.isLocalDatastoreEnabled = true
         }
 
@@ -70,6 +53,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GUtils.applicationDocumentsDirectory()
 
         return true
+    }
+
+    fileprivate func register() {
+        PFPreAudit.registerSubclass()
+        PFAudit.registerSubclass()
+        PFZone.registerSubclass()
+        PFRoom.registerSubclass()
+        PlugLoad.registerSubclass()
     }
 }
 
