@@ -46,7 +46,23 @@ final class Settings {
         }
     }
 
-    static var dropboxLocation: String? {
-        return UserDefaults.standard.string(forKey: "dropbox_location_pref")
+    static var auditDataSave: Bool {
+        get{
+            return UserDefaults.standard.bool(forKey: "audit_data_save_pref")
+        }
+
+        set(enabled) {
+            UserDefaults.standard.set(enabled, forKey: "audit_data_save_pref")
+        }
+    }
+
+    static var auditDataSaveLocation: String? {
+        get {
+            return UserDefaults.standard.string(forKey: "audit_data_save_location_pref")
+        }
+
+        set(location) {
+            UserDefaults.standard.set(location, forKey: "audit_data_save_location_pref")
+        }
     }
 }
