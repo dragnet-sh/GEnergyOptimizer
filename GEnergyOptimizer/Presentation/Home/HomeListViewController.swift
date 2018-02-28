@@ -9,6 +9,7 @@
 import UIKit
 import CleanroomLogger
 import InAppSettingsKit
+import SwiftyDropbox
 
 class HomeListViewController: UIViewController, UINavigationBarDelegate {
 
@@ -133,6 +134,25 @@ extension HomeListViewController: IASKSettingsDelegate {
     func settingsViewControllerDidEnd(_ sender: IASKAppSettingsViewController!) {
         print("IASK Delegate Active")
         sender.dismiss(animated: true, completion: nil)
+    }
+
+    func settingsViewController(_ sender: IASKAppSettingsViewController!, buttonTappedFor specifier: IASKSpecifier!) {
+        if specifier.key() == "dropbox_link_pref" {
+
+            Log.message(.error, message: UserDefaults.standard.debugDescription)
+
+            if DropboxClientsManager.authorizedClient == nil {
+                sender.dismiss(animated: true) { [weak self] in
+                    DropboxClientsManager.authorizeFromController(UIApplication.shared,
+                            controller: self,
+                            openURL: { UIApplication.shared.openURL($0) })
+                }
+            } else {
+                DropboxClientsManager.unlinkClients()
+                Settings.dropboxLinkButtonTitle = "Connect to Dropbox"
+                Settings.dropboxAccount = ""
+            }
+        }
     }
 }
 

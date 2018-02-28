@@ -50,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             switch authResult {
             case .success:
                 print("Success! User is logged into Dropbox.")
+                enableDropboxSettings()
             case .cancel:
                 print("Authorization flow was manually canceled by user!")
             case .error(_, let description):
@@ -83,7 +84,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func setupDefaults() {
-
         var bundlePath = Bundle.main.bundlePath
         bundlePath.append("/Settings.bundle/Root.inApp.plist")
 
@@ -96,6 +96,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         defaults.set(defaultValue, forKey: key)
                         Log.message(.error, message: "Set default value \(defaultValue) for \(key)")
                     }
+                }
+            }
+        }
+    }
+
+    private func enableDropboxSettings() {
+        Settings.dropboxLinkButtonTitle = "Unlink Dropbox"
+        if let client = DropboxClientsManager.authorizedClient {
+            client.users.getCurrentAccount().response { (response, _) in
+                if let account = response {
+                    Settings.dropboxAccount = account.name.displayName
                 }
             }
         }
