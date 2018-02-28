@@ -34,11 +34,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         Log.enable(configuration: LoggerUtils.getConfig())
-        Log.info?.message("GEnergy - Entry Point")
-        Log.message(.info, message: "Parse - Registering DTO - PFObjects")
+        Log.message(.info, message: "GEnergy - Entry Point")
 
-        register()
+        registerPSub()
+        configureParse()
+        GUtils.applicationDocumentsDirectory()
+        DropboxClientsManager.setupWithAppKey(Constants.Dropbox.kDBAppKey)
 
+        return true
+    }
+
+    fileprivate func configureParse() {
         Log.message(.info, message: "Parse - Initialization - Processing")
         let configuration = ParseClientConfiguration {
             $0.applicationId = self.parseKeys[self.runtime]!["applicationId"]!
@@ -49,13 +55,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         Parse.initialize(with: configuration)
         Log.message(.info, message: "Parse - Initialization - Complete")
-
-        GUtils.applicationDocumentsDirectory()
-
-        return true
     }
 
-    fileprivate func register() {
+    fileprivate func registerPSub() {
+        Log.message(.info, message: "Parse - Registering DTO - PFObjects")
+
         PFPreAudit.registerSubclass()
         PFAudit.registerSubclass()
         PFZone.registerSubclass()
