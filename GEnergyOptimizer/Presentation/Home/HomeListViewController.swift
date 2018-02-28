@@ -8,6 +8,7 @@
 
 import UIKit
 import CleanroomLogger
+import InAppSettingsKit
 
 class HomeListViewController: UIViewController, UINavigationBarDelegate {
 
@@ -61,6 +62,20 @@ extension HomeListViewController {
         let energy = GEnergy()
         energy.calculate()
     }
+
+    // *** Loading the Settings *** //
+    @IBAction func btnSettings(_ sender: Any) {
+
+        let settingsViewController = IASKAppSettingsViewController()
+        settingsViewController.delegate = self
+        settingsViewController.showCreditsFooter = false
+        settingsViewController.neverShowPrivacySettings = true
+
+        let controller = UINavigationController(rootViewController: settingsViewController)
+        controller.modalTransitionStyle = .coverVertical
+
+        self.present(controller, animated: true, completion: nil)
+    }
 }
 
 
@@ -113,5 +128,12 @@ extension HomeListViewController {
     }
 }
 
+//Mark: - IASSettingsDelegate
+extension HomeListViewController: IASKSettingsDelegate {
+    func settingsViewControllerDidEnd(_ sender: IASKAppSettingsViewController!) {
+        print("IASK Delegate Active")
+        sender.dismiss(animated: true, completion: nil)
+    }
+}
 
 
