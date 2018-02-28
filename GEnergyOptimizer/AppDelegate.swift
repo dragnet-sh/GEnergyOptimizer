@@ -36,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Log.enable(configuration: LoggerUtils.getConfig())
         Log.message(.info, message: "GEnergy - Entry Point")
 
+        setupDefaults()
         registerPSub()
         configureParse()
         GUtils.applicationDocumentsDirectory()
@@ -79,6 +80,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFZone.registerSubclass()
         PFRoom.registerSubclass()
         PlugLoad.registerSubclass()
+    }
+
+    private func setupDefaults() {
+
+        var bundlePath = Bundle.main.bundlePath
+        bundlePath.append("/Settings.bundle/Root.inApp.plist")
+
+        if let settingsDictionary = NSDictionary(contentsOfFile: bundlePath),
+                let preferencesArray = settingsDictionary["PreferenceSpecifiers"] as? NSArray {
+            let defaults = UserDefaults.standard
+            preferencesArray.forEach { element in
+                if let element = element as? NSDictionary, let key = element["Key"] as? String {
+                    if let defaultValue = element["DefaultValue"], defaults.object(forKey: key) == nil {
+                        defaults.set(defaultValue, forKey: key)
+                        Log.message(.error, message: "Set default value \(defaultValue) for \(key)")
+                    }
+                }
+            }
+        }
     }
 }
 
