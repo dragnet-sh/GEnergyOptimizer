@@ -24,3 +24,29 @@ struct Constants {
         }
     }
 }
+
+final class Settings {
+    static var dropboxAccount: String? {
+        get {
+            return UserDefaults.standard.string(forKey: "dropbox_account_pref")
+        }
+
+        set(account) {
+            UserDefaults.standard.set(account, forKey: "dropbox_account_pref")
+        }
+    }
+
+    static var dropboxLinkButtonTitle: String? {
+        get {
+            return UserDefaults.standard.string(forKey: "dropbox_link_pref")
+        }
+
+        set(title) {
+            UserDefaults.standard.set(title, forKey: "dropbox_link_pref")
+        }
+    }
+
+    static var dropboxLocation: String? {
+        return UserDefaults.standard.string(forKey: "dropbox_location_pref")
+    }
+}
