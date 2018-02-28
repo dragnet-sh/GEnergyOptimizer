@@ -13,4 +13,6 @@ target 'GEnergyOptimizer' do
   pod 'Toaster'
   pod 'Presentr', '~> 1.3'
   pod 'SwiftyDropbox', '~> 4.3'
+  pod 'InAppSettingsKit'
+  pod 'MBProgressHUD'
 end

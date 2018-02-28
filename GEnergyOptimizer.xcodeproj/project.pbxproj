@@ -16,6 +16,7 @@
 		13C23BFB1FFF9185009D79A9 /* TestEnergyCalculations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C23BFA1FFF9185009D79A9 /* TestEnergyCalculations.swift */; };
 		13E2E304200A3454003F54A4 /* CDFeatureData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2E300200A3454003F54A4 /* CDFeatureData+CoreDataClass.swift */; };
 		13E2E305200A3454003F54A4 /* CDFeatureData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E2E301200A3454003F54A4 /* CDFeatureData+CoreDataProperties.swift */; };
+		13EEB1F7204700FC0089D263 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 13EEB1F6204700FC0089D263 /* Settings.bundle */; };
 		34DCCF82941666505C8DA62B /* Pods_GEnergyOptimizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A01F77AED5091697259E640E /* Pods_GEnergyOptimizer.framework */; };
 		487C00005D78424CF25339AD /* FormBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C09E7BFD390D46EFB6FB0 /* FormBuilder.swift */; };
 		487C004B0A4AB306D31D874B /* FeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0D51983BDBEB57429FBE /* FeatureViewController.swift */; };
@@ -25,6 +26,7 @@
 		487C007CE0C4E7C81F491A7A /* PeakHourMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C054AC728BAFE30A431B0 /* PeakHourMapper.swift */; };
 		487C00846D6D5773850606F6 /* header.csv in Resources */ = {isa = PBXBuildFile; fileRef = 487C0F4762FDB1D0CBC61919 /* header.csv */; };
 		487C00A5061BD468A46C2DA7 /* Fryer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C046CBA6CB57F53D16115 /* Fryer.swift */; };
+		487C01409D784B97C302C799 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0609C3EF74717B0FF91B /* Enums.swift */; };
 		487C014CFBF711963B2567E0 /* pge_gas.csv in Resources */ = {isa = PBXBuildFile; fileRef = 487C0E8606927593C2F09607 /* pge_gas.csv */; };
 		487C015B90C93ED9663F3C73 /* Fryer.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C080A4E1D4167F0F86C03 /* Fryer.json */; };
 		487C018F6D5AC4056E24A868 /* FormFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C06949DEE6E459B24DF35 /* FormFactory.swift */; };
@@ -37,7 +39,6 @@
 		487C02EEE1116BD869D630A7 /* PlugloadAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0B3888F1C4E84CE9003C /* PlugloadAPI.swift */; };
 		487C0321A5CEFE18BFCF14D4 /* UtilityMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C087C1601EE87A454A49D /* UtilityMapper.swift */; };
 		487C032E297B6E2BA9FBAEAC /* PFPreAuditAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C00092FADBF381F0283C0 /* PFPreAuditAPI.swift */; };
-		487C03A3082A6110BA557C96 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0C4CF6406C592B05CEC4 /* Enums.swift */; };
 		487C03B6B438672D212C51DC /* FormDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C07623C4CF0D16624DE2B /* FormDataModel.swift */; };
 		487C03CE29609B28D298703B /* lighting.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0258D2F9D57C51A3D46B /* lighting.json */; };
 		487C0469C3EE3AE7A780D354 /* GEFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0C8D7C0CD8F8E871A36C /* GEFormViewController.swift */; };
@@ -64,7 +65,7 @@
 		487C0A0C0E9AE22E8E143C40 /* GEnergy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0542B89E1AFFAADEC49B /* GEnergy.swift */; };
 		487C0A324EC41B198CFA67E1 /* PopOverPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0150969D65E1245C202F /* PopOverPresenter.swift */; };
 		487C0A4D069561BD894028D3 /* preaudit.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0A39AC6B004B52564DAC /* preaudit.json */; };
-		487C0A613E8CD832CD0A052C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C052DF9D160600065DA02 /* Constants.swift */; };
+		487C0A613E8CD832CD0A052C /* Commons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C052DF9D160600065DA02 /* Commons.swift */; };
 		487C0A68C9DF4736E834A8F7 /* CDRoom+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C00AAA27BF40E11193B1F /* CDRoom+CoreDataClass.swift */; };
 		487C0A8CEF5276FE93C4333C /* RoomDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C001332D8A6CAF12B0256 /* RoomDTO.swift */; };
 		487C0ADDE2C3C39DA7A63D23 /* ZoneDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C080941112BEE2DFCA5A6 /* ZoneDTO.swift */; };
@@ -118,6 +119,7 @@
 		13C23BFA1FFF9185009D79A9 /* TestEnergyCalculations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestEnergyCalculations.swift; sourceTree = "<group>"; };
 		13E2E300200A3454003F54A4 /* CDFeatureData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDFeatureData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		13E2E301200A3454003F54A4 /* CDFeatureData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDFeatureData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		13EEB1F6204700FC0089D263 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		487C00006A3A8F0204806CF3 /* RoomPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomPresenter.swift; sourceTree = "<group>"; };
 		487C00092FADBF381F0283C0 /* PFPreAuditAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFPreAuditAPI.swift; sourceTree = "<group>"; };
 		487C001332D8A6CAF12B0256 /* RoomDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDTO.swift; sourceTree = "<group>"; };
@@ -144,11 +146,12 @@
 		487C0436148EC05FE2581AC2 /* ZoneListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneListViewController.swift; sourceTree = "<group>"; };
 		487C046CBA6CB57F53D16115 /* Fryer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fryer.swift; sourceTree = "<group>"; };
 		487C046F2324ACBDDD52E289 /* plugload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = plugload.json; sourceTree = "<group>"; };
-		487C052DF9D160600065DA02 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		487C052DF9D160600065DA02 /* Commons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commons.swift; sourceTree = "<group>"; };
 		487C05347380812558E3559A /* ConvectionOven.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ConvectionOven.json; sourceTree = "<group>"; };
 		487C0542B89E1AFFAADEC49B /* GEnergy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GEnergy.swift; sourceTree = "<group>"; };
 		487C054AC728BAFE30A431B0 /* PeakHourMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeakHourMapper.swift; sourceTree = "<group>"; };
 		487C05F131646B0DA5BA014C /* FreezerFridge.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FreezerFridge.json; sourceTree = "<group>"; };
+		487C0609C3EF74717B0FF91B /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		487C066BFB512554E5BB460A /* CDRoom+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDRoom+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		487C06949DEE6E459B24DF35 /* FormFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormFactory.swift; sourceTree = "<group>"; };
 		487C06A0ABFB535F6533D603 /* HomeListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListCell.xib; sourceTree = "<group>"; };
@@ -175,7 +178,6 @@
 		487C0AD00AFF79848118D6B3 /* PFZoneAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFZoneAPI.swift; sourceTree = "<group>"; };
 		487C0B30FABF88B4BBCA9B97 /* GEModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GEModel.xcdatamodel; sourceTree = "<group>"; };
 		487C0B3888F1C4E84CE9003C /* PlugloadAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlugloadAPI.swift; sourceTree = "<group>"; };
-		487C0C4CF6406C592B05CEC4 /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		487C0C8AC85C3BD96316E2D9 /* PFAuditAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFAuditAPI.swift; sourceTree = "<group>"; };
 		487C0C8D7C0CD8F8E871A36C /* GEFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GEFormViewController.swift; sourceTree = "<group>"; };
 		487C0CC29DB67E6191A4E1FE /* CDZone+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDZone+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -259,6 +261,7 @@
 		13792E2C1FC8263F007C525C /* GEnergyOptimizer */ = {
 			isa = PBXGroup;
 			children = (
+				13EEB1F12046AE0A0089D263 /* Supporting Files */,
 				13792E311FC8263F007C525C /* Main.storyboard */,
 				13792E2D1FC8263F007C525C /* AppDelegate.swift */,
 				487C0FAE22A81E30DCAF5301 /* Model */,
@@ -280,6 +283,14 @@
 				487C00006A3A8F0204806CF3 /* RoomPresenter.swift */,
 			);
 			path = GEnergyOptimizerTests;
+			sourceTree = "<group>";
+		};
+		13EEB1F12046AE0A0089D263 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				13EEB1F6204700FC0089D263 /* Settings.bundle */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		487C00169495D9FD8B74E5B4 /* Database */ = {
@@ -431,7 +442,8 @@
 				487C0A72B41F6A46089909DB /* FactoryHelper.swift */,
 				487C02E0126554B9837987E8 /* Utils.swift */,
 				487C0280CCB7182409BBE8E9 /* BuilderHelper.swift */,
-				487C052DF9D160600065DA02 /* Constants.swift */,
+				487C052DF9D160600065DA02 /* Commons.swift */,
+				487C0609C3EF74717B0FF91B /* Enums.swift */,
 			);
 			path = _Helper;
 			sourceTree = "<group>";
@@ -559,7 +571,6 @@
 				487C00169495D9FD8B74E5B4 /* Database */,
 				487C005EA506AC52A2F0E6EA /* Translation */,
 				487C0489EBC89721CE5398E8 /* DataObject */,
-				487C0C4CF6406C592B05CEC4 /* Enums.swift */,
 				487C0FA36CFC01D2BB775C77 /* StateController.swift */,
 			);
 			path = Model;
@@ -700,6 +711,7 @@
 				487C019E5450A75C2BEE74E1 /* ConveyorOven.json in Resources */,
 				487C0B9F952F758BA9C5CA5F /* FreezerFridge.json in Resources */,
 				487C015B90C93ED9663F3C73 /* Fryer.json in Resources */,
+				13EEB1F7204700FC0089D263 /* Settings.bundle in Resources */,
 				487C0F35EA54E3FE75E52130 /* Griddle.json in Resources */,
 				487C08279D0C229A83A1D318 /* HotFoodCabinet.json in Resources */,
 				487C0270E2B349E0409B0167 /* IceMaker.json in Resources */,
@@ -733,6 +745,8 @@
 				"${BUILT_PRODUCTS_DIR}/CleanroomLogger/CleanroomLogger.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/Gloss/Gloss.framework",
+				"${BUILT_PRODUCTS_DIR}/InAppSettingsKit/InAppSettingsKit.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 				"${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyDropbox/SwiftyDropbox.framework",
@@ -746,6 +760,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CleanroomLogger.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gloss.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/InAppSettingsKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Presentr.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyDropbox.framework",
@@ -809,7 +825,6 @@
 				487C0B1DFB45868C7D641B48 /* ModelLayer.swift in Sources */,
 				487C07B9ACDB3E1C830EA66E /* DataLayer.swift in Sources */,
 				487C019C0D3C363716BA6B56 /* ParseDataModel.swift in Sources */,
-				487C03A3082A6110BA557C96 /* Enums.swift in Sources */,
 				13E2E304200A3454003F54A4 /* CDFeatureData+CoreDataClass.swift in Sources */,
 				487C018F6D5AC4056E24A868 /* FormFactory.swift in Sources */,
 				487C00005D78424CF25339AD /* FormBuilder.swift in Sources */,
@@ -851,7 +866,8 @@
 				487C00A5061BD468A46C2DA7 /* Fryer.swift in Sources */,
 				487C0A0C0E9AE22E8E143C40 /* GEnergy.swift in Sources */,
 				487C0963E935CF39DEB77981 /* AuditFactory.swift in Sources */,
-				487C0A613E8CD832CD0A052C /* Constants.swift in Sources */,
+				487C0A613E8CD832CD0A052C /* Commons.swift in Sources */,
+				487C01409D784B97C302C799 /* Enums.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

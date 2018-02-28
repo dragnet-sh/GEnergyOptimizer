@@ -189,6 +189,11 @@
                         <viewLayoutGuide key="safeArea" id="Odo-Ys-02E"/>
                     </view>
                     <navigationItem key="navigationItem" id="Rd0-qX-nLG">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="PuF-gQ-Ng3">
+                            <connections>
+                                <action selector="btnSettings:" destination="QFx-9v-kKd" id="H55-0F-9SA"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="Xrq-cm-jMZ">
                             <connections>
                                 <action selector="btnLogout:" destination="QFx-9v-kKd" id="rOf-6h-8yB"/>
