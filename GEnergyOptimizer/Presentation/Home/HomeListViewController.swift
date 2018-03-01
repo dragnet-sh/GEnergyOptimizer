@@ -40,9 +40,10 @@ class HomeListViewController: UIViewController, UINavigationBarDelegate {
 extension HomeListViewController {
 
     // *** Loading the Room View Controller *** //
-    @IBAction func roomButtonPressed(_ sender: Any) {
-        let vc = ControllerUtils.fromStoryboard(reference: "RoomListViewController") as! RoomListViewController
-        navigationController?.pushViewController(vc, animated: true)
+    @IBAction func uploadButtonPressed(_ sender: Any) {
+        DropBoxUploader().upload(data: "FooBar,sam\r\nOne,smith\r\nTwo,Dony\r\nThree,Brasco".data(using: String.Encoding.utf8)!, finished: {
+            Log.message(.warning, message: "Finished Uploading - Call Back")
+        })
     }
 
     // *** Loading the PreAudit View Controller *** //
@@ -136,6 +137,7 @@ extension HomeListViewController: IASKSettingsDelegate {
         sender.dismiss(animated: true, completion: nil)
     }
 
+    // *** Gets called from the Settings ***
     func settingsViewController(_ sender: IASKAppSettingsViewController!, buttonTappedFor specifier: IASKSpecifier!) {
         if specifier.key() == "dropbox_link_pref" {
 
