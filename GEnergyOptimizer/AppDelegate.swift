@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey: Any] = [:]) -> Bool {
         if let authResult = DropboxClientsManager.handleRedirectURL(url) {
             switch authResult {
             case .success:
@@ -59,6 +59,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
+}
+
+extension AppDelegate {
 
     fileprivate func configureParse() {
         Log.message(.info, message: "Parse - Initialization - Processing")
