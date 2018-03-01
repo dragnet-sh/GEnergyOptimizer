@@ -136,3 +136,23 @@ class GUtils {
         return String(describing: subject).trimmingCharacters(in: .whitespaces)
     }
 }
+
+// Mark: - Date Helper
+extension GUtils {
+
+    static func folderByDate(_ date: Date = Date()) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyMMdd"
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.locale = NSLocale.system
+        return formatter.string(from: date)
+    }
+
+    static func fileByTime(_ date: Date = Date()) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hhmm"
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.locale = NSLocale.system
+        return formatter.string(from: date)
+    }
+}
