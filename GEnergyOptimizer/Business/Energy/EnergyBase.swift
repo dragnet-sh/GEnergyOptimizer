@@ -13,10 +13,12 @@ protocol Computable {
 class EnergyBase {
     var preAudit = Dictionary<String, Any>()
     var mappedFeature = Dictionary<String, Any>()
+    var operatingHours = Dictionary<EDay, String>()
 
     init(feature: [CDFeatureData], preAudit: [CDFeatureData]) {
         self.preAudit = GUtils.mapFeatureData(feature: preAudit)
         self.mappedFeature = GUtils.mapFeatureData(feature: feature)
+        self.operatingHours = GUtils.mapOperationHours(preAudit: preAudit)
     }
 
     func starValidator(complete: @escaping () -> Void) {
@@ -67,7 +69,7 @@ class GasCost: Consumption {
 
 class ElectricCost: Consumption {
     var rateStructure: String
-    var operatingHours: String
+    var operatingHours: Dictionary<EDay, String>
 
     lazy var pricing: Dictionary<ERateKey, Double> = {
         let utility = ElectricRate(type: rateStructure)
@@ -79,7 +81,7 @@ class ElectricCost: Consumption {
         return peak.run(usage: operatingHours)
     }()
 
-    init(rateStructure: String, operatingHours: String) {
+    init(rateStructure: String, operatingHours: Dictionary<EDay, String>) {
         self.rateStructure = rateStructure
         self.operatingHours = operatingHours
     }
