@@ -139,3 +139,15 @@ enum ERateKey: String {
     static let getAllGas = [slab1, slab2, slab3, slab4, slab5, winterTransport, summerTransport, surcharge]
     static let getAllGasRaw = getAllGas.map { $0.rawValue }
 }
+
+enum EDay: String {
+    case mon = "Monday Operating Hours"
+    case tue = "Tuesday Operating Hours"
+    case wed = "Wednesday Operating Hours"
+    case thu = "Thursday Operating Hours"
+    case fri = "Friday Operating Hours"
+    case sat = "Saturday Operating Hours"
+    case sun = "Sunday Operating Hours"
+
+    static  let getAllDays = [mon, tue, wed, thu, fri, sat, sun]
+}
