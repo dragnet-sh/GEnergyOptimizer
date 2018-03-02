@@ -13,10 +13,6 @@ class Refrigerator: EnergyBase, Computable {
         GUtils.toString(subject: preAudit["Electric Rate Structure"]!)
     }()
 
-    lazy var operatingHours: String = {
-        GUtils.toString(subject: preAudit["Monday Operating Hours"]!)
-    }()
-
     lazy var filterAlternateMatch: PFQuery<PFObject> = {
         let query = PlugLoad.query()!
         let type = mappedFeature["Product Type"]
@@ -29,7 +25,7 @@ class Refrigerator: EnergyBase, Computable {
     }()
 
     func compute() {
-        let electric = ElectricCost(rateStructure: rateStructure, operatingHours: operatingHours)
+        let electric = ElectricCost(rateStructure: rateStructure, operatingHours: super.operatingHours)
         let bestModel = BestModel(query: self.filterAlternateMatch)
         let hourEnergyUse = 10.0
 
