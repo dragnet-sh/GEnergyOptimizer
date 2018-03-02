@@ -118,6 +118,7 @@ extension ModelLayer {
                 }
 
             case EZone.lighting.rawValue: loadParent()
+            case EZone.motors.rawValue: loadParent()
 
             default: Log.message(.info, message: "MUST BE - HVAC")
             }
@@ -164,21 +165,21 @@ extension ModelLayer {
         mainLoader()
     }
 
-    func createZone(name: String, type: String, finished: @escaping ()->Void) {
-        coreDataAPI.createZone(type: type, name: name) { result in
-            switch result {
-            case .Success(let data): self.pfZoneAPI.initialize(name: name, type: type) { status, pfZone in
-                if (status) {
-                    Log.message(.info, message: "Parse API : Initialize Zone - Registering Crosswalk")
-                    self.state.registerCrosswalk(guid: data.guid!, pfZone: pfZone)
-                }
-            }
-            finished()
-
-            case .Error(let message): Log.message(.info, message: message)
-            }
-        }
-    }
+//    func createZone(name: String, type: String, finished: @escaping ()->Void) {
+//        coreDataAPI.createZone(type: type, name: name) { result in
+//            switch result {
+//            case .Success(let data): self.pfZoneAPI.initialize(name: name, type: type) { status, pfZone in
+//                if (status) {
+//                    Log.message(.info, message: "Parse API : Initialize Zone - Registering Crosswalk")
+//                    self.state.registerCrosswalk(guid: data.guid!, pfZone: pfZone)
+//                }
+//            }
+//            finished()
+//
+//            case .Error(let message): Log.message(.info, message: message)
+//            }
+//        }
+//    }
 
     func deleteZone(guid: String, finished: @escaping () -> Void) {
         func mainLoader() {
@@ -244,6 +245,7 @@ extension ModelLayer {
 
             case EZone.lighting.rawValue: type = EZone.lighting.rawValue
             case EZone.hvac.rawValue: type = EZone.hvac.rawValue
+            case EZone.motors.rawValue: type = EZone.motors.rawValue
             default: {}()
             }
 
@@ -271,11 +273,13 @@ extension ModelLayer {
                 let countHVAC = zones.filter { $0.type! == EZone.hvac.rawValue }.count
                 let countLighting = zones.filter { $0.type! == EZone.lighting.rawValue }.count
                 let countPlugLoad = zones.filter { $0.type! == EZone.plugload.rawValue }.count
+                let countMotors = zones.filter { $0.type! == EZone.motors.rawValue }.count
 
                 data.append(contentsOf: [
 //                    HomeListDTO(auditZone: EZone.hvac.rawValue, count: countHVAC.description),
                     HomeDTO(auditZone: EZone.lighting.rawValue, count: countLighting.description),
-                    HomeDTO(auditZone: EZone.plugload.rawValue, count: countPlugLoad.description)
+                    HomeDTO(auditZone: EZone.plugload.rawValue, count: countPlugLoad.description),
+                    HomeDTO(auditZone: EZone.motors.rawValue, count: countMotors.description)
                 ])
 
                 finished(.local, data)
@@ -477,6 +481,12 @@ extension ModelLayer {
 
         case EZone.lighting.rawValue:
             let type = EZone.lighting.rawValue
+            coreDataAPI.createZone(type: type, name: name) { result in
+                finished(true)
+            }
+
+        case EZone.motors.rawValue:
+            let type = EZone.motors.rawValue
             coreDataAPI.createZone(type: type, name: name) { result in
                 finished(true)
             }

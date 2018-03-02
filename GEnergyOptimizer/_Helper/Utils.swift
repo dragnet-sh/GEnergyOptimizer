@@ -137,7 +137,7 @@ class GUtils {
     }
 }
 
-// Mark: - Date Helper
+// Mark: - File | Folder Management (DropBox Upload)
 extension GUtils {
 
     static func folderByDate(_ date: Date = Date()) -> String {

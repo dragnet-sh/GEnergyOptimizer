@@ -6,9 +6,9 @@
 import Foundation
 
 public enum EZone: String {
-    case hvac = "HVAC", lighting = "Lighting", plugload = "PlugLoad", none
+    case hvac = "HVAC", lighting = "Lighting", plugload = "PlugLoad", motors = "Motors", none
 
-    static let getAll = [hvac, lighting, plugload]
+    static let getAll = [hvac, lighting, plugload, motors]
 }
 
 public enum ERoom: String {

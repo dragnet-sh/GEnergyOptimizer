@@ -69,6 +69,7 @@
 		487C0A68C9DF4736E834A8F7 /* CDRoom+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C00AAA27BF40E11193B1F /* CDRoom+CoreDataClass.swift */; };
 		487C0A8CEF5276FE93C4333C /* RoomDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C001332D8A6CAF12B0256 /* RoomDTO.swift */; };
 		487C0ADDE2C3C39DA7A63D23 /* ZoneDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C080941112BEE2DFCA5A6 /* ZoneDTO.swift */; };
+		487C0B087143D9A9C492F30F /* DropBoxUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0287FCCF831B7852D79C /* DropBoxUploader.swift */; };
 		487C0B1DFB45868C7D641B48 /* ModelLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0D8958381B7E48757E65 /* ModelLayer.swift */; };
 		487C0B3ECCB3C8DF1E40F26C /* CDAudit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C03A4D202FD6C8C0DCAB7 /* CDAudit+CoreDataClass.swift */; };
 		487C0B3FDCBE627C600FA736 /* BuilderHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0280CCB7182409BBE8E9 /* BuilderHelper.swift */; };
@@ -92,6 +93,7 @@
 		487C0ED7A66DF107592432AB /* PresenterModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 487C078014FACE4006AD6F7A /* PresenterModal.storyboard */; };
 		487C0EF2551E185C1C343764 /* CDRoom+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C066BFB512554E5BB460A /* CDRoom+CoreDataProperties.swift */; };
 		487C0F35EA54E3FE75E52130 /* Griddle.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C020995917A0B33B63F8A /* Griddle.json */; };
+		487C0F484A30643FD399E4F9 /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C06116BD1CA6C25C35791 /* Uploader.swift */; };
 		487C0FB995463C425FE2BCC9 /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C08D0843EFF647751E835 /* BasePresenter.swift */; };
 /* End PBXBuildFile section */
 
@@ -132,6 +134,7 @@
 		487C020995917A0B33B63F8A /* Griddle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Griddle.json; sourceTree = "<group>"; };
 		487C0258D2F9D57C51A3D46B /* lighting.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = lighting.json; sourceTree = "<group>"; };
 		487C0280CCB7182409BBE8E9 /* BuilderHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuilderHelper.swift; sourceTree = "<group>"; };
+		487C0287FCCF831B7852D79C /* DropBoxUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropBoxUploader.swift; sourceTree = "<group>"; };
 		487C02926DAC42E68D5F059F /* ZonePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZonePresenter.swift; sourceTree = "<group>"; };
 		487C02AD4D9EDCE6CD558AA1 /* EnergyBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnergyBase.swift; sourceTree = "<group>"; };
 		487C02C5135F34CDA4F2531A /* hvac.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hvac.json; sourceTree = "<group>"; };
@@ -152,6 +155,7 @@
 		487C054AC728BAFE30A431B0 /* PeakHourMapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeakHourMapper.swift; sourceTree = "<group>"; };
 		487C05F131646B0DA5BA014C /* FreezerFridge.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FreezerFridge.json; sourceTree = "<group>"; };
 		487C0609C3EF74717B0FF91B /* Enums.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		487C06116BD1CA6C25C35791 /* Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
 		487C066BFB512554E5BB460A /* CDRoom+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDRoom+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		487C06949DEE6E459B24DF35 /* FormFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormFactory.swift; sourceTree = "<group>"; };
 		487C06A0ABFB535F6533D603 /* HomeListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListCell.xib; sourceTree = "<group>"; };
@@ -314,6 +318,8 @@
 		487C00B68ED8CD8D6632A9D2 /* Uploader */ = {
 			isa = PBXGroup;
 			children = (
+				487C06116BD1CA6C25C35791 /* Uploader.swift */,
+				487C0287FCCF831B7852D79C /* DropBoxUploader.swift */,
 			);
 			path = Uploader;
 			sourceTree = "<group>";
@@ -868,6 +874,8 @@
 				487C0963E935CF39DEB77981 /* AuditFactory.swift in Sources */,
 				487C0A613E8CD832CD0A052C /* Commons.swift in Sources */,
 				487C01409D784B97C302C799 /* Enums.swift in Sources */,
+				487C0F484A30643FD399E4F9 /* Uploader.swift in Sources */,
+				487C0B087143D9A9C492F30F /* DropBoxUploader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
