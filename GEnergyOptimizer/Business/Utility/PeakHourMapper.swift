@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import CleanroomLogger
 
 // *** Note : Every Utility Company can define it's own Peak Hours *** //
 class PeakHourMapper {
@@ -51,32 +52,45 @@ class PeakHourMapper {
                 inBetween(now: now, start: getTime(time: "00:00"), end: getTime(time: "8:30"))
     }
 
-    public func run(usage: String) -> Dictionary<ERateKey, Int> {
+    public func run(usage: Dictionary<EDay, String>) -> Dictionary<ERateKey, Int> {
 
-        let usageSplit = usage.split(separator: ",")
+        for (day, hourRange) in usage {
 
-        usageSplit.map {
-            let timeRange = $0.split(separator: " ")
-            let start = dateFormatter.date(from: String(timeRange[0]))!
-            let end = dateFormatter.date(from: String(timeRange[1]))!
-            let delta = 1
+            for range in hourRange.split(separator: ",") {
 
-            let calendar = Calendar.autoupdatingCurrent
-            var step = DateComponents()
-            step.minute = delta
+                let time = range.split(separator: " ")
+                if time.count < 2 {
+                    continue
+                }
 
-            var _date = start
-            while _date < end {
+                if let start = dateFormatter.date(from: String(time[0])),
+                   let end = dateFormatter.date(from: String(time[1])) {
 
-                if isSummerOffPeak(now: _date) {outgoing[ERateKey.summerOff]! += delta}
-                if isSummerPartialPeak(now: _date) {outgoing[ERateKey.summerPart]! += delta}
-                if isSummerPeak(now: _date) {outgoing[ERateKey.summerOn]! += delta}
+                    let delta = 1
+                    let calendar = Calendar.autoupdatingCurrent
+                    var step = DateComponents()
+                    step.minute = delta
 
-                if isWinterOffPeak(now: _date) {outgoing[ERateKey.winterOff]! += delta}
-                if isWinterPartialPeak(now: _date) {outgoing[ERateKey.winterPart]! += delta}
+                    var _date = start
+                    while _date < end {
 
-                _date = calendar.date(byAdding: step, to: _date)!
+                        if isSummerOffPeak(now: _date) {outgoing[ERateKey.summerOff]! += delta}
+                        if isSummerPartialPeak(now: _date) {outgoing[ERateKey.summerPart]! += delta}
+                        if isSummerPeak(now: _date) {outgoing[ERateKey.summerOn]! += delta}
+
+                        if isWinterOffPeak(now: _date) {outgoing[ERateKey.winterOff]! += delta}
+                        if isWinterPartialPeak(now: _date) {outgoing[ERateKey.winterPart]! += delta}
+
+                        _date = calendar.date(byAdding: step, to: _date)!
+                    }
+                }
             }
+        }
+
+        if usage.count > 0 {
+            ERateKey.getAllElectric.forEach({
+                outgoing[$0] = outgoing[$0]! / usage.count
+            })
         }
 
         return outgoing
