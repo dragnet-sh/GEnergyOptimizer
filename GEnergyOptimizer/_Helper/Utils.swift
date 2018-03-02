@@ -124,6 +124,18 @@ class GUtils {
         return mapped
     }
 
+    static func mapOperationHours(preAudit: [CDFeatureData]) -> Dictionary<EDay, String> {
+        var mappedHours = Dictionary<EDay, String>()
+        EDay.getAllDays.forEach { day in
+            if let hourRange = mapFeatureData(feature: preAudit)[day.rawValue] {
+                if let hourRange = hourRange as? String {
+                    mappedHours[day] = hourRange
+                }
+            }
+        }
+        return mappedHours
+    }
+
     static func openCSV(filename: String) -> Array<Dictionary<String, String>>! {
         let url = Bundle.main.url(forResource: filename, withExtension: "csv")!
         let data = try! String(contentsOf: url)
