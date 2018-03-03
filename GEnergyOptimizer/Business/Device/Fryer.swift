@@ -26,7 +26,7 @@ class Fryer: EnergyBase, Computable {
         return query
     }()
 
-    func compute() -> [[String: String]]? {
+    func compute(complete: @escaping ([[String: String]]?) -> Void) {
         let electric = ElectricCost(rateStructure: rateStructure, operatingHours: super.operatingHours)
         let gas = GasCost()
         let bestModel = BestModel(query: self.filterAlternateMatch)
@@ -34,10 +34,15 @@ class Fryer: EnergyBase, Computable {
         super.starValidator {
             bestModel.query(curr_values: self.mappedFeature) { fryers in
                 fryers.forEach { fryer in
-
-                    Log.message(.warning, message: fryer.debugDescription)
-
+                    var entry = [String: String]()
+                    if let fields = self.fields() {
+                        fields.forEach { field in
+                            if let value = fryer.data[field] { entry[field] = String(describing: value) }
+                            else { entry[field] = "" }
+                        }
+                    }
                     //ToDo: Verify where do these values come from
+                    Log.message(.error, message: fryer.debugDescription)
                     let idleRunHours = 7.0
                     let daysInOperation = 7.0
 
@@ -47,11 +52,27 @@ class Fryer: EnergyBase, Computable {
                         let electricCost = electric.cost(energyUsed: idleEnergyRate)
                         let totalCost = gasCost + electricCost
                         Log.message(.warning, message: "Calculated Energy Value Cost [Plugload : Fryer] - \(totalCost.description)")
+
+                        entry["__gas_energy"] = gasEnergy.description
+                        entry["__gas_cost"] = gasCost.description
+                        entry["__electric_cost"] = electricCost.description
+                        entry["__cost"] = totalCost.description
                     }
+
+                    entry["__idle_run_hours"] = idleRunHours.description
+                    entry["__days_in_operation"] = daysInOperation.description
+
+                    super.outgoing.append(entry)
                 }
+                complete(super.outgoing)
             }
         }
+    }
 
-        return nil
+    func fields() -> [String]? {
+        return [
+            "company", "energy_efficiency", "fuel_type", "idle_energy_rate", "model_number", "preheat_energy",
+            "production_capacity", "rebate", "shortening_capacity", "vat_width"
+        ]
     }
 }
