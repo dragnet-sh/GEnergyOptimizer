@@ -24,7 +24,7 @@ class Refrigerator: EnergyBase, Computable {
         return query
     }()
 
-    func compute() -> [[String: String]]? {
+    func compute(complete: @escaping ([[String: String]]?) -> Void) {
         let electric = ElectricCost(rateStructure: rateStructure, operatingHours: super.operatingHours)
         let bestModel = BestModel(query: self.filterAlternateMatch)
         let hourEnergyUse = 10.0
@@ -32,17 +32,32 @@ class Refrigerator: EnergyBase, Computable {
         super.starValidator {
             bestModel.query(curr_values: self.mappedFeature) { freezers in
                 freezers.map { freezer in
-
-                    Log.message(.warning, message: freezer.debugDescription)
+                    var entry = [String: String]()
+                    if let fields = self.fields() {
+                        fields.forEach { field in
+                            if let value = freezer.data[field] { entry[field] = String(describing: value) }
+                            else { entry[field] = "" }
+                        }
+                    }
 
                     //ToDo: Where does this value come from
                     var hourEnergyUse = 10.0
                     var totalCost = electric.cost(energyUsed: hourEnergyUse)
                     Log.message(.warning, message: "Calculated Energy Value Cost [Plugload : Refrigerator] - \(totalCost.description)")
+
+                    entry["__hour_energy_use"] = hourEnergyUse.description
+                    entry["__cost"] = totalCost.description
+                    super.outgoing.append(entry)
                 }
+                complete(super.outgoing)
             }
         }
+    }
 
-        return nil
+    func fields() -> [String]? {
+        return [
+            "company", "daily_energy_use", "pgne_measure_code", "purchase_price_per_unit",
+            "rebate", "style_type", "total_volume", "vendor"
+        ]
     }
 }
