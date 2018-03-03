@@ -52,19 +52,45 @@ class PeakHourMapper {
                 inBetween(now: now, start: getTime(time: "00:00"), end: getTime(time: "8:30"))
     }
 
+    public func annualOperatingHours(_ usage: Dictionary<EDay, String>) -> Double {
+        var sum = 0.0
+        for (day, hourRange) in usage {
+            for range in hourRange.split(separator: ",") {
+                let time = range.split(separator: " ")
+                if time.count < 2 {continue}
+
+                let t1 = String(time[0])
+                let t2 = String(time[1])
+
+                if let start = dateFormatter.date(from: t1), let end = dateFormatter.date(from: t2) {
+                    if start > end {
+                        Log.message(.error, message: "Start Time is Greater that End Time !!")
+                        continue
+                    }
+                    let delta = end.timeIntervalSince1970 - start.timeIntervalSince1970
+                    sum += delta
+                }
+            }
+        }
+
+        let weekInYear: Double = 57.142
+        let totalSeconds: Double = sum * weekInYear
+        let totalHours: Double = totalSeconds / (60 * 60)
+
+        return totalHours
+    }
+
     public func run(usage: Dictionary<EDay, String>) -> Dictionary<ERateKey, Int> {
 
         for (day, hourRange) in usage {
-
             for range in hourRange.split(separator: ",") {
-
                 let time = range.split(separator: " ")
-                if time.count < 2 {
-                    continue
-                }
+                if time.count < 2 {continue}
 
-                if let start = dateFormatter.date(from: String(time[0])),
-                   let end = dateFormatter.date(from: String(time[1])) {
+                let t1 = String(time[0])
+                let t2 = String(time[1])
+
+                if let start = dateFormatter.date(from: t1), let end = dateFormatter.date(from: t2) {
 
                     let delta = 1
                     let calendar = Calendar.autoupdatingCurrent
