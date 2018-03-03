@@ -24,7 +24,7 @@ class Refrigerator: EnergyBase, Computable {
         return query
     }()
 
-    func compute() {
+    func compute() -> [[String: String]]? {
         let electric = ElectricCost(rateStructure: rateStructure, operatingHours: super.operatingHours)
         let bestModel = BestModel(query: self.filterAlternateMatch)
         let hourEnergyUse = 10.0
@@ -32,6 +32,9 @@ class Refrigerator: EnergyBase, Computable {
         super.starValidator {
             bestModel.query(curr_values: self.mappedFeature) { freezers in
                 freezers.map { freezer in
+
+                    Log.message(.warning, message: freezer.debugDescription)
+
                     //ToDo: Where does this value come from
                     var hourEnergyUse = 10.0
                     var totalCost = electric.cost(energyUsed: hourEnergyUse)
@@ -39,5 +42,7 @@ class Refrigerator: EnergyBase, Computable {
                 }
             }
         }
+
+        return nil
     }
 }

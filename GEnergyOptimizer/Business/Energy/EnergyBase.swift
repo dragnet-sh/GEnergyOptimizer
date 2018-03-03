@@ -7,7 +7,7 @@ import Foundation
 import CleanroomLogger
 
 protocol Computable {
-    func compute()
+    func compute() -> [[String: String]]?
 }
 
 class EnergyBase {

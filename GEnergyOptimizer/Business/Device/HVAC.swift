@@ -7,7 +7,7 @@ import Foundation
 import CleanroomLogger
 
 class HVAC: EnergyBase, Computable {
-    func compute() {
+    func compute() -> [[String: String]]? {
         let feature = super.mappedFeature
         let preaudit = super.preAudit
 
@@ -19,5 +19,7 @@ class HVAC: EnergyBase, Computable {
 
             Log.message(.warning, message: "Calculated Energy Value [HVAC] - \(energy.description)")
         }
+
+        return nil
     }
 }

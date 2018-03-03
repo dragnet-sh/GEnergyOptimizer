@@ -26,7 +26,7 @@ class Fryer: EnergyBase, Computable {
         return query
     }()
 
-    func compute() {
+    func compute() -> [[String: String]]? {
         let electric = ElectricCost(rateStructure: rateStructure, operatingHours: super.operatingHours)
         let gas = GasCost()
         let bestModel = BestModel(query: self.filterAlternateMatch)
@@ -34,6 +34,9 @@ class Fryer: EnergyBase, Computable {
         super.starValidator {
             bestModel.query(curr_values: self.mappedFeature) { fryers in
                 fryers.forEach { fryer in
+
+                    Log.message(.warning, message: fryer.debugDescription)
+
                     //ToDo: Verify where do these values come from
                     let idleRunHours = 7.0
                     let daysInOperation = 7.0
@@ -48,5 +51,7 @@ class Fryer: EnergyBase, Computable {
                 }
             }
         }
+
+        return nil
     }
 }
