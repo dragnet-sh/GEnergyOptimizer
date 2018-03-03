@@ -7,20 +7,25 @@ import Foundation
 import CleanroomLogger
 
 class GEnergy {
-    var gHVAC: GHVAC
-    var gPlugload: GPlugLoad
+    private var gHVAC: GHVAC
+    private var gPlugload: GPlugLoad
 
     init() {
         self.gHVAC = GHVAC()
         self.gPlugload = GPlugLoad()
     }
 
-    func calculate() {
+    public func crunch() {
+        calculate()
+        upload()
+    }
+
+    private func calculate() {
         gHVAC._calculate()
         gPlugload._calculate()
     }
 
-    func upload() {
+    private func upload() {
         gHVAC._upload()
         gPlugload._upload()
     }
