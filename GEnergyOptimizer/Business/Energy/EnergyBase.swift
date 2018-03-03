@@ -7,18 +7,21 @@ import Foundation
 import CleanroomLogger
 
 protocol Computable {
-    func compute() -> [[String: String]]?
+    func compute(complete: @escaping ([[String: String]]?) -> Void)
+    func fields() -> [String]?
 }
 
 class EnergyBase {
     var preAudit = Dictionary<String, Any>()
     var mappedFeature = Dictionary<String, Any>()
     var operatingHours = Dictionary<EDay, String>()
+    var outgoing: [[String: String]]
 
     init(feature: [CDFeatureData], preAudit: [CDFeatureData]) {
         self.preAudit = GUtils.mapFeatureData(feature: preAudit)
         self.mappedFeature = GUtils.mapFeatureData(feature: feature)
         self.operatingHours = GUtils.mapOperationHours(preAudit: preAudit)
+        self.outgoing = [[String: String]]()
     }
 
     func starValidator(complete: @escaping () -> Void) {
