@@ -63,6 +63,7 @@ extension HomeListViewController {
         Log.message(.warning, message: "Calling Energy Calculation !!")
         let energy = GEnergy()
         energy.calculate()
+        energy.upload()
     }
 
     // *** Loading the Settings *** //

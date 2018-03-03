@@ -7,6 +7,32 @@ import Foundation
 import CleanroomLogger
 
 class GEnergy {
+    var gHVAC: GHVAC
+    var gPlugload: GPlugLoad
+
+    init() {
+        self.gHVAC = GHVAC()
+        self.gPlugload = GPlugLoad()
+    }
+
+    func calculate() {
+        gHVAC._calculate()
+        gPlugload._calculate()
+    }
+
+    func upload() {
+        gHVAC._upload()
+        gPlugload._upload()
+    }
+}
+
+protocol CalculateAndUpload {
+    func _features() -> [CDFeatureData]?
+    func _calculate()
+    func _upload()
+}
+
+class GAudit {
     public var audit: CDAudit
     public var preaudit: [CDFeatureData]
     public var zone: [CDZone]
@@ -17,39 +43,10 @@ class GEnergy {
         self.preaudit = try! factory.setPreAudit()
         self.zone = try! factory.setZone()
     }
-
-    func calculate() {
-        self.hvac()
-        self.plugload()
-    }
-
-    func hvac() {
-        Log.message(.error, message: "#### GEnergy Calculations Dry Run ####")
-        let zhvac = ZHVAC()
-        guard let feature = zhvac.features() else {return}
-        HVAC(feature: feature, preAudit: preaudit).compute()
-    }
-
-    func plugload() {
-        zone.filter { zone in GUtils.getEAppliance(rawValue: zone.type!) != .none }
-                .forEach { zone in
-                    let plugload = ZPlugLoad(plZone: zone)
-                    guard let feature = plugload.features() else {return}
-                    switch plugload.type() {
-                    case .freezerFridge: Refrigerator(feature: feature, preAudit: preaudit).compute()
-                    case .fryer: Fryer(feature: feature, preAudit: preaudit).compute()
-                    default: Log.message(.warning, message: "UNKNOWN")
-                    }
-                }
-    }
 }
 
-protocol Features {
-    func features() -> [CDFeatureData]?
-}
-
-class ZHVAC: GEnergy, Features {
-    func features() -> [CDFeatureData]? {
+class GHVAC: GAudit, CalculateAndUpload {
+    func _features() -> [CDFeatureData]? {
         let model = BuilderHelper.decodeJSON(bundleResource: FileResource.preaudit.rawValue)!
         let sId2Ele = BuilderHelper.mapSectionIdsToElements(model: model)!
         let sId2Name = BuilderHelper.mapSectionIdsToName(model: model)!
@@ -70,21 +67,49 @@ class ZHVAC: GEnergy, Features {
 
         return feature
     }
+
+    func _calculate() {
+        guard let feature = _features() else {return}
+        HVAC(feature: feature, preAudit: super.preaudit).compute()
+    }
+
+    func _upload() {
+    }
 }
 
-class ZPlugLoad: GEnergy, Features {
-    var plZone: CDZone
+class GPlugLoad: GAudit, CalculateAndUpload {
+    var plZone: CDZone?
+
+    override init() {
+        super.init()
+    }
 
     init(plZone: CDZone) {
         self.plZone = plZone
     }
 
-    func features() -> [CDFeatureData]? {
-        return plZone.hasFeature?.allObjects as? [CDFeatureData]
+    func _features() -> [CDFeatureData]? {
+        return plZone!.hasFeature?.allObjects as? [CDFeatureData]
     }
 
     func type() -> EApplianceType {
-        return GUtils.getEAppliance(rawValue: plZone.type!)
+        return GUtils.getEAppliance(rawValue: plZone!.type!)
+    }
+
+    func _calculate() {
+        super.zone.filter { zone in GUtils.getEAppliance(rawValue: zone.type!) != .none }
+                .forEach { zone in
+                    let plugload = GPlugLoad(plZone: zone)
+                    guard let feature = plugload._features() else {return}
+                    switch plugload.type() {
+                    case .freezerFridge: Refrigerator(feature: feature, preAudit: preaudit).compute()
+                    case .fryer: Fryer(feature: feature, preAudit: preaudit).compute()
+                    default: Log.message(.warning, message: "UNKNOWN")
+                    }
+                }
+    }
+
+    func _upload() {
     }
 }
 
