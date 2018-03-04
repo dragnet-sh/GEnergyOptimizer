@@ -24,7 +24,7 @@ class Refrigerator: EnergyBase, Computable {
         return query
     }()
 
-    func compute(complete: @escaping ([[String: String]]?) -> Void) {
+    func compute(complete: @escaping (OutgoingRows?) -> Void) {
         let electric = ElectricCost(rateStructure: rateStructure, operatingHours: super.operatingHours)
         let bestModel = BestModel(query: self.filterAlternateMatch)
         let hourEnergyUse = 10.0
@@ -49,7 +49,11 @@ class Refrigerator: EnergyBase, Computable {
                     entry["__cost"] = totalCost.description
                     super.outgoing.append(entry)
                 }
-                complete(super.outgoing)
+
+                let entity = EApplianceType.getFileName(type: .freezerFridge)
+                let type = OutgoingRows.type.computed
+                let result = OutgoingRows(rows: super.outgoing, entity: entity, type: type)
+                complete(result)
             }
         }
     }
