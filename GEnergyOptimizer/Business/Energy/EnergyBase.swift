@@ -34,6 +34,18 @@ class EnergyBase {
             complete()
         }
     }
+
+    func createEntry(_ object: Computable, _ feature: [String: Any]) -> [String: String] {
+        var entry = [String: String]()
+        if let fields = object.fields() {
+            fields.filter { !$0.starts(with: "__") }
+                    .forEach { field in
+                        if let value = feature[field] { entry[field] = String(describing: value) }
+                        else { entry[field] = "" }
+                    }
+        }
+        return entry
+    }
 }
 
 class OutgoingRows {
@@ -49,17 +61,23 @@ class OutgoingRows {
     let baseDir: String = "/Gemini/Audit"
     var parentFolder: String
 
-    init(rows: [Row], entity: String, type: EType) {
+    init(rows: [Row], entity: String, type: EType = .computed) {
         self.rows = rows
         self.entity = entity
         self.eType = type
         self.parentFolder = try! AuditFactory.sharedInstance.getIdentifier()
     }
 
+    func setHeader(header: [String]) {
+        self.header = header
+    }
+
     func upload() {
         Log.message(.warning, message: "**** Uploading ****")
-        var path: String = "\(baseDir)/\(parentFolder)/\(eType.rawValue)"
+        var path: String = "\(baseDir)/\(parentFolder)/\(eType.rawValue)/\(entity).csv"
         Log.message(.error, message: path.description)
+        Log.message(.error, message: header.debugDescription)
+        Log.message(.error, message: rows.debugDescription)
     }
 }
 
