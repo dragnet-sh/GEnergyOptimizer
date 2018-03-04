@@ -17,7 +17,8 @@ class EnergyBase {
     var operatingHours = Dictionary<EDay, String>()
     var outgoing: [[String: String]]
 
-    init(feature: [CDFeatureData], preAudit: [CDFeatureData]) {
+    init(feature: [CDFeatureData]) {
+        let preAudit = try! AuditFactory.sharedInstance.setPreAudit()
         self.preAudit = GUtils.mapFeatureData(feature: preAudit)
         self.mappedFeature = GUtils.mapFeatureData(feature: feature)
         self.operatingHours = GUtils.mapOperationHours(preAudit: preAudit)
