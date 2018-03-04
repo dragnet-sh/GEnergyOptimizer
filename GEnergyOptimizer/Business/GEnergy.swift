@@ -35,15 +35,18 @@ protocol CalculateAndUpload {
     func _features() -> [CDFeatureData]?
     func _calculate()
     func _upload()
+    //_ filename: String, _ basePath: String, data: Data
 }
 
 class GAudit {
+    public var identifier: String
     public var audit: CDAudit
     public var preaudit: [CDFeatureData]
     public var zone: [CDZone]
     let factory = AuditFactory.sharedInstance
 
     init() {
+        self.identifier = try! factory.getIdentifier()
         self.audit = try! factory.setAudit()
         self.preaudit = try! factory.setPreAudit()
         self.zone = try! factory.setZone()
@@ -75,10 +78,16 @@ class GHVAC: GAudit, CalculateAndUpload {
 
     func _calculate() {
         guard let feature = _features() else {return}
-        HVAC(feature: feature, preAudit: super.preaudit).compute()
+        HVAC(feature: feature).compute() { result in
+            Log.message(.warning, message: result.debugDescription)
+        }
     }
 
     func _upload() {
+        // We have the Computed Rows
+        // Now make rows for the Core Raw Data
+
+
     }
 }
 
@@ -107,14 +116,36 @@ class GPlugLoad: GAudit, CalculateAndUpload {
                     let plugload = GPlugLoad(plZone: zone)
                     guard let feature = plugload._features() else {return}
                     switch plugload.type() {
-                    case .freezerFridge: Refrigerator(feature: feature, preAudit: preaudit).compute()
-                    case .fryer: Fryer(feature: feature, preAudit: preaudit).compute()
+                    case .freezerFridge:
+                    Refrigerator(feature: feature).compute() { result in
+                        Log.message(.warning, message: result.debugDescription)
+                    }
+                    case .fryer: Fryer(feature: feature).compute() { result in
+                        Log.message(.warning, message: result.debugDescription)
+                    }
                     default: Log.message(.warning, message: "UNKNOWN")
                     }
                 }
+        return
     }
 
     func _upload() {
+    }
+}
+
+struct OutgoingRows {
+    typealias Row = [String: String]
+    enum type {
+        case raw, computed
+    }
+    var rows: [Row]
+    var entity: String
+    var type: type
+
+    init(rows: [Row], entity: String, type: type) {
+        self.rows = rows
+        self.entity = entity
+        self.type = type
     }
 }
 

@@ -26,7 +26,7 @@ class Fryer: EnergyBase, Computable {
         return query
     }()
 
-    func compute(complete: @escaping ([[String: String]]?) -> Void) {
+    func compute(complete: @escaping (OutgoingRows?) -> Void) {
         let electric = ElectricCost(rateStructure: rateStructure, operatingHours: super.operatingHours)
         let gas = GasCost()
         let bestModel = BestModel(query: self.filterAlternateMatch)
@@ -42,7 +42,6 @@ class Fryer: EnergyBase, Computable {
                         }
                     }
                     //ToDo: Verify where do these values come from
-                    Log.message(.error, message: fryer.debugDescription)
                     let idleRunHours = 7.0
                     let daysInOperation = 7.0
 
@@ -64,7 +63,11 @@ class Fryer: EnergyBase, Computable {
 
                     super.outgoing.append(entry)
                 }
-                complete(super.outgoing)
+
+                let entity = EApplianceType.getFileName(type: .fryer)
+                let type = OutgoingRows.type.computed
+                let result = OutgoingRows(rows: super.outgoing, entity: entity, type: type)
+                complete(result)
             }
         }
     }

@@ -7,7 +7,7 @@ import Foundation
 import CleanroomLogger
 
 class HVAC: EnergyBase, Computable {
-    func compute(complete: @escaping ([[String: String]]?) -> Void) {
+    func compute(complete: @escaping (OutgoingRows?) -> Void) {
         let feature = super.mappedFeature
         let preaudit = super.preAudit
 
@@ -27,7 +27,11 @@ class HVAC: EnergyBase, Computable {
             entry["__energy"] = energy.description
 
             super.outgoing.append(entry)
-            complete(super.outgoing)
+
+            let entity = EZone.hvac.rawValue
+            let type = OutgoingRows.type.computed
+            let result = OutgoingRows(rows: super.outgoing, entity: entity, type: type)
+            complete(result)
         }
     }
 
