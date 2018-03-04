@@ -65,7 +65,7 @@ class Fryer: EnergyBase, Computable {
                 }
 
                 let entity = EApplianceType.getFileName(type: .fryer)
-                let type = OutgoingRows.type.computed
+                let type = OutgoingRows.EType.computed
                 let result = OutgoingRows(rows: super.outgoing, entity: entity, type: type)
                 complete(result)
             }

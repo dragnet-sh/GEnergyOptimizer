@@ -29,7 +29,7 @@ class HVAC: EnergyBase, Computable {
             super.outgoing.append(entry)
 
             let entity = EZone.hvac.rawValue
-            let type = OutgoingRows.type.computed
+            let type = OutgoingRows.EType.computed
             let result = OutgoingRows(rows: super.outgoing, entity: entity, type: type)
             complete(result)
         }
