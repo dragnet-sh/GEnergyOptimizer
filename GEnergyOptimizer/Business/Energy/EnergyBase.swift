@@ -36,6 +36,33 @@ class EnergyBase {
     }
 }
 
+class OutgoingRows {
+    typealias Row = [String: String]
+    enum EType: String {
+        case raw, computed
+    }
+    var header: [String]?
+    var rows: [Row]
+    var entity: String
+    var eType: EType
+
+    let baseDir: String = "/Gemini/Audit"
+    var parentFolder: String
+
+    init(rows: [Row], entity: String, type: EType) {
+        self.rows = rows
+        self.entity = entity
+        self.eType = type
+        self.parentFolder = try! AuditFactory.sharedInstance.getIdentifier()
+    }
+
+    func upload() {
+        Log.message(.warning, message: "**** Uploading ****")
+        var path: String = "\(baseDir)/\(parentFolder)/\(eType.rawValue)"
+        Log.message(.error, message: path.description)
+    }
+}
+
 protocol Consumption {
   func cost(energyUsed: Double) -> Double
 }

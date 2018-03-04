@@ -59,7 +59,7 @@
 		487C08913815E01DE6006DB7 /* StateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0FA36CFC01D2BB775C77 /* StateController.swift */; };
 		487C094E23AF17E65CEB23A2 /* CoreDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0853D485C19C3121BC98 /* CoreDataAPI.swift */; };
 		487C0963E935CF39DEB77981 /* AuditFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0389091CDF0F798DDA19 /* AuditFactory.swift */; };
-		487C098E7053A832C7DE6BBF /* plugload.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C046F2324ACBDDD52E289 /* plugload.json */; };
+		487C098E7053A832C7DE6BBF /* motors.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C046F2324ACBDDD52E289 /* motors.json */; };
 		487C099A6B6530AF97F55601 /* FactoryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0A72B41F6A46089909DB /* FactoryHelper.swift */; };
 		487C09B103443C784E96E93B /* pge_electric.csv in Resources */ = {isa = PBXBuildFile; fileRef = 487C09A30CA8FAA764471D7B /* pge_electric.csv */; };
 		487C0A0C0E9AE22E8E143C40 /* GEnergy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0542B89E1AFFAADEC49B /* GEnergy.swift */; };
@@ -148,7 +148,7 @@
 		487C0403FCD811A5A3C6AA70 /* RoomListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RoomListViewController.storyboard; sourceTree = "<group>"; };
 		487C0436148EC05FE2581AC2 /* ZoneListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneListViewController.swift; sourceTree = "<group>"; };
 		487C046CBA6CB57F53D16115 /* Fryer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fryer.swift; sourceTree = "<group>"; };
-		487C046F2324ACBDDD52E289 /* plugload.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = plugload.json; sourceTree = "<group>"; };
+		487C046F2324ACBDDD52E289 /* motors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = motors.json; sourceTree = "<group>"; };
 		487C052DF9D160600065DA02 /* Commons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Commons.swift; sourceTree = "<group>"; };
 		487C05347380812558E3559A /* ConvectionOven.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ConvectionOven.json; sourceTree = "<group>"; };
 		487C0542B89E1AFFAADEC49B /* GEnergy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GEnergy.swift; sourceTree = "<group>"; };
@@ -516,7 +516,7 @@
 				487C0258D2F9D57C51A3D46B /* lighting.json */,
 				487C0A39AC6B004B52564DAC /* preaudit.json */,
 				487C02C5135F34CDA4F2531A /* hvac.json */,
-				487C046F2324ACBDDD52E289 /* plugload.json */,
+				487C046F2324ACBDDD52E289 /* motors.json */,
 				487C07EB859B00E03446F4F0 /* Appliances */,
 			);
 			path = Config;
@@ -709,7 +709,7 @@
 				487C03CE29609B28D298703B /* lighting.json in Resources */,
 				487C0A4D069561BD894028D3 /* preaudit.json in Resources */,
 				487C05E9F03B7AB099E31A39 /* hvac.json in Resources */,
-				487C098E7053A832C7DE6BBF /* plugload.json in Resources */,
+				487C098E7053A832C7DE6BBF /* motors.json in Resources */,
 				487C00846D6D5773850606F6 /* header.csv in Resources */,
 				487C0ED7A66DF107592432AB /* PresenterModal.storyboard in Resources */,
 				487C0D88AD3FE5E485016D24 /* CombinationOven.json in Resources */,

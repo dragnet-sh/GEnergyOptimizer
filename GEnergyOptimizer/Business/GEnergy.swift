@@ -7,49 +7,50 @@ import Foundation
 import CleanroomLogger
 
 class GEnergy {
+    private var gAudit: GAudit
     private var gHVAC: GHVAC
     private var gPlugload: GPlugLoad
 
+
     init() {
+        self.gAudit = GAudit()
         self.gHVAC = GHVAC()
         self.gPlugload = GPlugLoad()
     }
 
     public func crunch() {
         calculate()
-        upload()
+    }
+
+    public func backup() {
+        gAudit.backup()
     }
 
     private func calculate() {
         gHVAC._calculate()
         gPlugload._calculate()
     }
-
-    private func upload() {
-        gHVAC._upload()
-        gPlugload._upload()
-    }
 }
 
 protocol CalculateAndUpload {
     func _features() -> [CDFeatureData]?
     func _calculate()
-    func _upload()
-    //_ filename: String, _ basePath: String, data: Data
 }
 
 class GAudit {
-    public var identifier: String
     public var audit: CDAudit
     public var preaudit: [CDFeatureData]
     public var zone: [CDZone]
     let factory = AuditFactory.sharedInstance
 
     init() {
-        self.identifier = try! factory.getIdentifier()
         self.audit = try! factory.setAudit()
         self.preaudit = try! factory.setPreAudit()
         self.zone = try! factory.setZone()
+    }
+
+    func backup() {
+        // Create OutgoingRows and call it's upload Method // -- Simple : )
     }
 }
 
@@ -78,16 +79,7 @@ class GHVAC: GAudit, CalculateAndUpload {
 
     func _calculate() {
         guard let feature = _features() else {return}
-        HVAC(feature: feature).compute() { result in
-            Log.message(.warning, message: result.debugDescription)
-        }
-    }
-
-    func _upload() {
-        // We have the Computed Rows
-        // Now make rows for the Core Raw Data
-
-
+        HVAC(feature: feature).compute() { result in result!.upload() }
     }
 }
 
@@ -116,36 +108,11 @@ class GPlugLoad: GAudit, CalculateAndUpload {
                     let plugload = GPlugLoad(plZone: zone)
                     guard let feature = plugload._features() else {return}
                     switch plugload.type() {
-                    case .freezerFridge:
-                    Refrigerator(feature: feature).compute() { result in
-                        Log.message(.warning, message: result.debugDescription)
-                    }
-                    case .fryer: Fryer(feature: feature).compute() { result in
-                        Log.message(.warning, message: result.debugDescription)
-                    }
+                    case .freezerFridge: Refrigerator(feature: feature).compute() { result in result!.upload() }
+                    case .fryer: Fryer(feature: feature).compute() { result in result!.upload() }
                     default: Log.message(.warning, message: "UNKNOWN")
                     }
                 }
         return
     }
-
-    func _upload() {
-    }
 }
-
-struct OutgoingRows {
-    typealias Row = [String: String]
-    enum type {
-        case raw, computed
-    }
-    var rows: [Row]
-    var entity: String
-    var type: type
-
-    init(rows: [Row], entity: String, type: type) {
-        self.rows = rows
-        self.entity = entity
-        self.type = type
-    }
-}
-

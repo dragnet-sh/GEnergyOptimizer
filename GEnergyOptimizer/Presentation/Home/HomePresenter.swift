@@ -12,6 +12,7 @@ class HomePresenter {
     var data = [HomeDTO]()
     fileprivate var modelLayer = ModelLayer()
     fileprivate var state = StateController.sharedInstance
+    fileprivate var gEnergy = GEnergy()
 }
 
 
@@ -31,5 +32,13 @@ extension HomePresenter {
 
     func setActiveZone(zone: String) {
         state.registerActiveZone(zone: zone)
+    }
+
+    func calculate() {
+        gEnergy.crunch()
+    }
+
+    func backup() {
+        gEnergy.backup()
     }
 }

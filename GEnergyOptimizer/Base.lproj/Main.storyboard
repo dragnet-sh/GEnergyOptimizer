@@ -136,28 +136,27 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BPE-yM-9dy">
                                         <rect key="frame" x="30" y="27" width="334" height="50"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KS6-Tr-B6t">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                <state key="normal" title="Upload"/>
-                                                <connections>
-                                                    <action selector="uploadButtonPressed:" destination="QFx-9v-kKd" eventType="touchUpInside" id="N2b-bH-f2X"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQe-ha-Oy4">
-                                                <rect key="frame" x="128.66666666666666" y="0.0" width="63" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="66" height="50"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                <state key="normal" title="Pre Audit"/>
+                                                <state key="normal" title="Pre-Audit"/>
                                                 <connections>
                                                     <action selector="preAuditButtonPressed:" destination="QFx-9v-kKd" eventType="touchUpInside" id="xYM-Bo-HgM"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6kZ-Yf-IVc">
-                                                <rect key="frame" x="270" y="0.0" width="64" height="50"/>
+                                                <rect key="frame" x="91.666666666666657" y="0.0" width="126" height="50"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                <state key="normal" title="Calculate"/>
+                                                <state key="normal" title="Calculate | Upload"/>
                                                 <connections>
                                                     <action selector="btnCalculate:" destination="QFx-9v-kKd" eventType="touchUpInside" id="foY-xR-BG3"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8R-75-Kf2">
+                                                <rect key="frame" x="243" y="0.0" width="91" height="50"/>
+                                                <state key="normal" title="Backup Audit"/>
+                                                <connections>
+                                                    <action selector="btnBackupAudit:" destination="QFx-9v-kKd" eventType="touchUpInside" id="NQb-Js-LOn"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -189,9 +188,9 @@
                         <viewLayoutGuide key="safeArea" id="Odo-Ys-02E"/>
                     </view>
                     <navigationItem key="navigationItem" id="Rd0-qX-nLG">
-                        <barButtonItem key="leftBarButtonItem" title="Settings" id="PuF-gQ-Ng3">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="awR-mB-nui">
                             <connections>
-                                <action selector="btnSettings:" destination="QFx-9v-kKd" id="H55-0F-9SA"/>
+                                <action selector="btnSettings:" destination="QFx-9v-kKd" id="TyR-9R-OR0"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="Xrq-cm-jMZ">
