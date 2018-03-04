@@ -34,7 +34,7 @@ class Fryer: EnergyBase, Computable {
         super.starValidator {
             bestModel.query(curr_values: self.mappedFeature) { fryers in
                 fryers.forEach { appliance in
-                    var entry = super.createEntry(self, appliance.data)
+                    var entry = EnergyBase.createEntry(self, appliance.data)
 
                     //ToDo: Verify where do these values come from
                     let idleRunHours = 7.0

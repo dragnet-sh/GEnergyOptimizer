@@ -32,7 +32,7 @@ class Refrigerator: EnergyBase, Computable {
         super.starValidator {
             bestModel.query(curr_values: self.mappedFeature) { freezers in
                 freezers.forEach { appliance in
-                    var entry = super.createEntry(self, appliance.data)
+                    var entry = EnergyBase.createEntry(self, appliance.data)
 
                     //ToDo: Where does this value come from
                     var hourEnergyUse = 10.0

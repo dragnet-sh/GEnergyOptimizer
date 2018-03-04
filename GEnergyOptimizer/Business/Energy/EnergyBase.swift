@@ -35,7 +35,7 @@ class EnergyBase {
         }
     }
 
-    func createEntry(_ object: Computable, _ feature: [String: Any]) -> [String: String] {
+    static func createEntry(_ object: Computable, _ feature: [String: Any]) -> [String: String] {
         var entry = [String: String]()
         if let fields = object.fields() {
             fields.filter { !$0.starts(with: "__") }

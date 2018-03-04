@@ -19,7 +19,7 @@ class HVAC: EnergyBase, Computable {
 
             Log.message(.warning, message: "Calculated Energy Value [HVAC] - \(energy.description)")
 
-            var entry = super.createEntry(self, feature)
+            var entry = EnergyBase.createEntry(self, feature)
             entry["__annual_operation_hours"] = annualOperationHours.description
             entry["__power"] = power.description
             entry["__energy"] = energy.description
