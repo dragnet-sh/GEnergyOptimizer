@@ -7,7 +7,7 @@ import Foundation
 import CleanroomLogger
 
 protocol Computable {
-    func compute(complete: @escaping ([[String: String]]?) -> Void)
+    func compute(complete: @escaping (OutgoingRows?) -> Void)
     func fields() -> [String]?
 }
 
