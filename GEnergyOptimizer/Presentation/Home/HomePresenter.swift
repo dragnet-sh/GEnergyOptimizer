@@ -12,7 +12,6 @@ class HomePresenter {
     var data = [HomeDTO]()
     fileprivate var modelLayer = ModelLayer()
     fileprivate var state = StateController.sharedInstance
-    fileprivate var gEnergy = GEnergy()
 }
 
 
@@ -35,10 +34,12 @@ extension HomePresenter {
     }
 
     func calculate() {
+        let gEnergy = GEnergy()
         gEnergy.crunch()
     }
 
     func backup() {
+        let gEnergy = GEnergy()
         gEnergy.backup()
     }
 }
