@@ -31,14 +31,8 @@ class Refrigerator: EnergyBase, Computable {
 
         super.starValidator {
             bestModel.query(curr_values: self.mappedFeature) { freezers in
-                freezers.map { freezer in
-                    var entry = [String: String]()
-                    if let fields = self.fields() {
-                        fields.forEach { field in
-                            if let value = freezer.data[field] { entry[field] = String(describing: value) }
-                            else { entry[field] = "" }
-                        }
-                    }
+                freezers.forEach { appliance in
+                    var entry = super.createEntry(self, appliance.data)
 
                     //ToDo: Where does this value come from
                     var hourEnergyUse = 10.0
@@ -51,8 +45,8 @@ class Refrigerator: EnergyBase, Computable {
                 }
 
                 let entity = EApplianceType.getFileName(type: .freezerFridge)
-                let type = OutgoingRows.EType.computed
-                let result = OutgoingRows(rows: super.outgoing, entity: entity, type: type)
+                let result = OutgoingRows(rows: super.outgoing, entity: entity)
+                result.setHeader(header: self.fields()!)
                 complete(result)
             }
         }
@@ -61,7 +55,7 @@ class Refrigerator: EnergyBase, Computable {
     func fields() -> [String]? {
         return [
             "company", "daily_energy_use", "pgne_measure_code", "purchase_price_per_unit",
-            "rebate", "style_type", "total_volume", "vendor"
+            "rebate", "style_type", "total_volume", "vendor", "__hour_energy_use", "__cost"
         ]
     }
 }

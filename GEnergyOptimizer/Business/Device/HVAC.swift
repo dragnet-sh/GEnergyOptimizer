@@ -19,23 +19,23 @@ class HVAC: EnergyBase, Computable {
 
             Log.message(.warning, message: "Calculated Energy Value [HVAC] - \(energy.description)")
 
-            var entry = [String: String]()
+            var entry = super.createEntry(self, feature)
             entry["__annual_operation_hours"] = annualOperationHours.description
-            entry["btu_per_hour"] = btuPerHour.description
-            entry["seer"] = seer.description
             entry["__power"] = power.description
             entry["__energy"] = energy.description
 
             super.outgoing.append(entry)
 
             let entity = EZone.hvac.rawValue
-            let type = OutgoingRows.EType.computed
-            let result = OutgoingRows(rows: super.outgoing, entity: entity, type: type)
+            let result = OutgoingRows(rows: super.outgoing, entity: entity)
+            result.setHeader(header: fields()!)
             complete(result)
         }
     }
 
     func fields() -> [String]? {
-        return nil
+        return [
+             "Cooling Capacity (Btu/hr)", "SEER", "__annual_operation_hours", "__power", "__energy"
+        ]
     }
 }

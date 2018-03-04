@@ -33,19 +33,14 @@ class Fryer: EnergyBase, Computable {
 
         super.starValidator {
             bestModel.query(curr_values: self.mappedFeature) { fryers in
-                fryers.forEach { fryer in
-                    var entry = [String: String]()
-                    if let fields = self.fields() {
-                        fields.forEach { field in
-                            if let value = fryer.data[field] { entry[field] = String(describing: value) }
-                            else { entry[field] = "" }
-                        }
-                    }
+                fryers.forEach { appliance in
+                    var entry = super.createEntry(self, appliance.data)
+
                     //ToDo: Verify where do these values come from
                     let idleRunHours = 7.0
                     let daysInOperation = 7.0
 
-                    if let preheatEnergy = fryer.data["preheat_energy"] as? Double, let idleEnergyRate = fryer.data["idle_energy_rate"] as? Double {
+                    if let preheatEnergy = appliance.data["preheat_energy"] as? Double, let idleEnergyRate = appliance.data["idle_energy_rate"] as? Double {
                         let gasEnergy = preheatEnergy * daysInOperation + idleRunHours * idleEnergyRate
                         let gasCost = gas.cost(energyUsed: gasEnergy)
                         let electricCost = electric.cost(energyUsed: idleEnergyRate)
@@ -65,8 +60,8 @@ class Fryer: EnergyBase, Computable {
                 }
 
                 let entity = EApplianceType.getFileName(type: .fryer)
-                let type = OutgoingRows.EType.computed
-                let result = OutgoingRows(rows: super.outgoing, entity: entity, type: type)
+                let result = OutgoingRows(rows: super.outgoing, entity: entity)
+                result.setHeader(header: self.fields()!)
                 complete(result)
             }
         }
@@ -75,7 +70,9 @@ class Fryer: EnergyBase, Computable {
     func fields() -> [String]? {
         return [
             "company", "energy_efficiency", "fuel_type", "idle_energy_rate", "model_number", "preheat_energy",
-            "production_capacity", "rebate", "shortening_capacity", "vat_width"
+            "production_capacity", "rebate", "shortening_capacity", "vat_width",
+
+            "__idle_run_hours", "__days_in_operation", "__gas_energy", "__gas_cost", "__electric_cost", "__cost"
         ]
     }
 }
