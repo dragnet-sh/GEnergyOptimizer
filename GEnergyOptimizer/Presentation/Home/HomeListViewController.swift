@@ -39,13 +39,6 @@ class HomeListViewController: UIViewController, UINavigationBarDelegate {
 //Mark: - Touch Events
 extension HomeListViewController {
 
-    // *** Loading the Room View Controller *** //
-    @IBAction func uploadButtonPressed(_ sender: Any) {
-        DropBoxUploader().upload(data: "FooBar,sam\r\nOne,smith\r\nTwo,Dony\r\nThree,Brasco".data(using: String.Encoding.utf8)!, finished: {
-            Log.message(.warning, message: "Finished Uploading - Call Back")
-        })
-    }
-
     // *** Loading the PreAudit View Controller *** //
     @IBAction func preAuditButtonPressed(_ sender: Any) {
         let featureViewController = ControllerUtils.fromStoryboard(reference: "FeatureViewController") as! FeatureViewController
