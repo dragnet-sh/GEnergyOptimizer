@@ -45,7 +45,7 @@ class Fryer: EnergyBase, Computable {
                         let gasCost = gas.cost(energyUsed: gasEnergy)
                         let electricCost = electric.cost(energyUsed: idleEnergyRate)
                         let totalCost = gasCost + electricCost
-                        Log.message(.warning, message: "Calculated Energy Value Cost [Plugload : Fryer] - \(totalCost.description)")
+//                        Log.message(.warning, message: "Calculated Energy Value Cost [Plugload : Fryer] - \(totalCost.description)")
 
                         entry["__gas_energy"] = gasEnergy.description
                         entry["__gas_cost"] = gasCost.description

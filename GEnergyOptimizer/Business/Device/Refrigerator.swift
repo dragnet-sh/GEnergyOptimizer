@@ -37,7 +37,7 @@ class Refrigerator: EnergyBase, Computable {
                     //ToDo: Where does this value come from
                     var hourEnergyUse = 10.0
                     var totalCost = electric.cost(energyUsed: hourEnergyUse)
-                    Log.message(.warning, message: "Calculated Energy Value Cost [Plugload : Refrigerator] - \(totalCost.description)")
+//                    Log.message(.warning, message: "Calculated Energy Value Cost [Plugload : Refrigerator] - \(totalCost.description)")
 
                     entry["__hour_energy_use"] = hourEnergyUse.description
                     entry["__cost"] = totalCost.description
