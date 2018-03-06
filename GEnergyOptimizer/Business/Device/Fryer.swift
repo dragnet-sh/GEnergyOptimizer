@@ -26,7 +26,7 @@ class Fryer: EnergyBase, Computable {
         return query
     }()
 
-    func compute(complete: @escaping (OutgoingRows?) -> Void) {
+    func compute(_ complete: @escaping (OutgoingRows?) -> Void) {
         let electric = ElectricCost(rateStructure: rateStructure, operatingHours: super.operatingHours)
         let gas = GasCost()
         let bestModel = BestModel(query: self.filterAlternateMatch)

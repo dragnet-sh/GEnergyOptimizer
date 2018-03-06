@@ -6,7 +6,7 @@
 import Foundation
 
 protocol Uploadable {
-    func upload(path: String, data: Data, finished: () -> Void)
+    func upload(path: String, data: Data, finished: @escaping () -> Void)
 }
 
 class Uploader {

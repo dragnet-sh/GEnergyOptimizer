@@ -7,7 +7,7 @@ import Foundation
 import CleanroomLogger
 
 protocol Computable {
-    func compute(complete: @escaping (OutgoingRows?) -> Void)
+    func compute(_ complete: @escaping (OutgoingRows?) -> Void)
     func fields() -> [String]?
 }
 
@@ -17,7 +17,7 @@ class EnergyBase {
     var operatingHours = Dictionary<EDay, String>()
     var outgoing: [[String: String]]
 
-    init(feature: [CDFeatureData]) {
+    init(_ feature: [CDFeatureData]) {
         let preAudit = try! AuditFactory.sharedInstance.setPreAudit()
         self.preAudit = GUtils.mapFeatureData(feature: preAudit)
         self.mappedFeature = GUtils.mapFeatureData(feature: feature)
@@ -72,7 +72,7 @@ class OutgoingRows {
         self.header = header
     }
 
-    func upload(completed: @escaping () -> Void) {
+    func upload(_ completed: @escaping () -> Void) {
         Log.message(.warning, message: "**** Uploading ****")
         var path: String = "\(baseDir)/\(parentFolder)/\(eType.rawValue)/\(entity).csv"
         Log.message(.error, message: path.description)
