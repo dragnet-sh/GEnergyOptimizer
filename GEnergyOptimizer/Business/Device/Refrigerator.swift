@@ -24,7 +24,7 @@ class Refrigerator: EnergyBase, Computable {
         return query
     }()
 
-    func compute(complete: @escaping (OutgoingRows?) -> Void) {
+    func compute(_ complete: @escaping (OutgoingRows?) -> Void) {
         let electric = ElectricCost(rateStructure: rateStructure, operatingHours: super.operatingHours)
         let bestModel = BestModel(query: self.filterAlternateMatch)
         let hourEnergyUse = 10.0

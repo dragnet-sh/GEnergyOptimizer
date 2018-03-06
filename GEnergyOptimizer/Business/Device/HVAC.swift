@@ -7,7 +7,7 @@ import Foundation
 import CleanroomLogger
 
 class HVAC: EnergyBase, Computable {
-    func compute(complete: @escaping (OutgoingRows?) -> Void) {
+    func compute(_ complete: @escaping (OutgoingRows?) -> Void) {
         let feature = super.mappedFeature
         let preaudit = super.preAudit
 
