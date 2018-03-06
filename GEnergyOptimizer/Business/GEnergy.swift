@@ -5,36 +5,58 @@
 
 import Foundation
 import CleanroomLogger
+import MBProgressHUD
+import SwiftyDropbox
 
 class GEnergy {
     private var gAudit: GAudit
     private var gHVAC: GHVAC
     private var gPlugload: GPlugLoad
+    private var delegate: UIViewController
 
-
-    init() {
+    init(_ delegate: UIViewController) {
         self.gAudit = GAudit()
         self.gHVAC = GHVAC()
         self.gPlugload = GPlugLoad()
+        self.delegate = delegate
     }
 
     public func crunch() {
-        calculate()
+
+        // -- 0. Check Internet Connectivity
+
+        // -- 1. Check DropBox Authorization
+        guard let client = DropboxClientsManager.authorizedClient else {
+            Log.message(.error, message: "Un-Authorized")
+            GUtils.message(msg: "Unable to Connect to DropBox")
+            return
+        }
+
+        let hud = MBProgressHUD.showAdded(to: delegate.view, animated: true)
+        hud.label.text = "Processing"
+        let group = DispatchGroup()
+        let backgroundQ = DispatchQueue.global(priority: .background)
+
+        group.enter()
+        self.gHVAC._calculate() {group.leave()}
+
+        group.enter()
+        self.gPlugload._calculate() {group.leave()}
+
+        group.notify(queue: .main) {
+            GUtils.showSucceeded(hud)
+            hud.hide(animated: true, afterDelay: 1)
+        }
     }
 
     public func backup() {
         gAudit.backup()
     }
-
-    private func calculate() {
-        gHVAC._calculate()
-        gPlugload._calculate()
-    }
 }
 
 protocol CalculateAndUpload {
     func _features() -> [CDFeatureData]?
-    func _calculate()
+    func _calculate(completed: @escaping () -> Void)
 }
 
 class GAudit {
@@ -77,9 +99,23 @@ class GHVAC: GAudit, CalculateAndUpload {
         return feature
     }
 
-    func _calculate() {
+    func _calculate(completed: @escaping () -> Void) {
         guard let feature = _features() else {return}
-        HVAC(feature: feature).compute() { result in result!.upload() }
+        let group = DispatchGroup()
+        let backgroundQ = DispatchQueue.global(qos: .background)
+
+        group.enter()
+        backgroundQ.async(group: group, execute: {
+            HVAC(feature).compute { result in
+                result?.upload {
+                    group.leave()
+                }
+            }
+        })
+
+        group.notify(queue: .main) {
+            completed()
+        }
     }
 }
 
@@ -102,17 +138,25 @@ class GPlugLoad: GAudit, CalculateAndUpload {
         return GUtils.getEAppliance(rawValue: plZone!.type!)
     }
 
-    func _calculate() {
-        super.zone.filter { zone in GUtils.getEAppliance(rawValue: zone.type!) != .none }
-                .forEach { zone in
-                    let plugload = GPlugLoad(plZone: zone)
-                    guard let feature = plugload._features() else {return}
-                    switch plugload.type() {
-                    case .freezerFridge: Refrigerator(feature: feature).compute() { result in result!.upload() }
-                    case .fryer: Fryer(feature: feature).compute() { result in result!.upload() }
-                    default: Log.message(.warning, message: "UNKNOWN")
-                    }
-                }
-        return
+    func _calculate(completed: @escaping () -> Void) {
+        let group = DispatchGroup()
+        let backgroundQ = DispatchQueue.global(priority: .background)
+        let _zone = self.zone.filter { zone in GUtils.getEAppliance(rawValue: zone.type!) != .none }
+
+        for eachZone in _zone {
+            let plugLoad = GPlugLoad(plZone: eachZone)
+            guard let feature = plugLoad._features() else {return}
+
+            group.enter()
+            switch plugLoad.type() {
+            case .freezerFridge: Refrigerator(feature).compute {$0?.upload {group.leave()}}
+            case .fryer: Fryer(feature).compute {$0?.upload {group.leave()}}
+            default: Log.message(.warning, message: "UNKNOWN"); group.leave()
+            }
+        }
+
+        group.notify(queue: .main) {
+            completed()
+        }
     }
 }
