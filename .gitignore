@@ -11,4 +11,4 @@ Podfile.lock
 
 build/
 *~.nib
-
+.idea/workspace.xml
