@@ -78,6 +78,39 @@ class OutgoingRows {
         Log.message(.error, message: path.description)
         Log.message(.error, message: header.debugDescription)
         Log.message(.error, message: rows.debugDescription)
+
+        var buffer: String = header!.joined(separator: ",")
+        buffer.append("\r\n")
+        for row in rows {
+            if let header = self.header {
+                var tmp = [String]()
+                header.forEach { item in
+                    if let value = row[item] {tmp.append(sanitize(value))}
+                    else {tmp.append("")}
+                }
+                buffer.append(tmp.joined(separator: ","))
+                buffer.append("\r\n")
+            }
+        }
+
+        let dropbox = DropBoxUploader()
+        if let data = buffer.data(using: .utf8) {
+            dropbox.upload(path: path, data: data) {
+                Log.message(.warning, message: "Upload Done !!")
+            }
+        }
+
+        Log.message(.warning, message: buffer.debugDescription)
+    }
+
+    //-- ToDo: What about if there is a quote within the value ?? huh
+    func sanitize(_ value: String) -> String {
+        var fix: String = value
+        if value.contains(",") {
+            fix.append("\"\(value)\"")
+        }
+
+        return fix
     }
 }
 
@@ -93,6 +126,7 @@ class GasCost: Consumption {
     }()
 
     // *** Gives the Average Cost Per Day *** //
+    //ToDo: How do you interpret the slabs for other utitlity companies ??
     func cost(energyUsed: Double) -> Double {
 
         var slabPricing = 0.0
