@@ -33,13 +33,13 @@ extension HomePresenter {
         state.registerActiveZone(zone: zone)
     }
 
-    func calculate() {
-        let gEnergy = GEnergy()
+    func calculate(_ view: UIViewController) {
+        let gEnergy = GEnergy(view)
         gEnergy.crunch()
     }
 
-    func backup() {
-        let gEnergy = GEnergy()
+    func backup(_ view: UIViewController) {
+        let gEnergy = GEnergy(view)
         gEnergy.backup()
     }
 }

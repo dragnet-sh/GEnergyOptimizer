@@ -54,12 +54,12 @@ extension HomeListViewController {
     // *** Loading the Energy Calculator *** //
     @IBAction func btnCalculate(_ sender: Any) {
         Log.message(.warning, message: "Calling Energy Calculation !!")
-        presenter.calculate()
+        presenter.calculate(self)
     }
     
     @IBAction func btnBackupAudit(_ sender: Any) {
         Log.message(.warning, message: "Backing up Audit Data")
-        presenter.backup()
+        presenter.backup(self)
     }
 
     // *** Loading the Settings *** //
