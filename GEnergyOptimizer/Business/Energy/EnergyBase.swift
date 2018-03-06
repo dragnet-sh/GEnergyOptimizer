@@ -72,7 +72,7 @@ class OutgoingRows {
         self.header = header
     }
 
-    func upload() {
+    func upload(completed: @escaping () -> Void) {
         Log.message(.warning, message: "**** Uploading ****")
         var path: String = "\(baseDir)/\(parentFolder)/\(eType.rawValue)/\(entity).csv"
         Log.message(.error, message: path.description)
@@ -92,11 +92,10 @@ class OutgoingRows {
                 buffer.append("\r\n")
             }
         }
-
         let dropbox = DropBoxUploader()
         if let data = buffer.data(using: .utf8) {
             dropbox.upload(path: path, data: data) {
-                Log.message(.warning, message: "Upload Done !!")
+                completed()
             }
         }
 
