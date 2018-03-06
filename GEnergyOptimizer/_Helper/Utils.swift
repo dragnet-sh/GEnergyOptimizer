@@ -7,6 +7,7 @@ import UIKit
 import CleanroomLogger
 import Toaster
 import CSwiftV
+import MBProgressHUD
 
 class ControllerUtils {
     static func fromStoryboard(reference: String) -> UIViewController {
@@ -166,5 +167,27 @@ extension GUtils {
         formatter.calendar = Calendar(identifier: .gregorian)
         formatter.locale = NSLocale.system
         return formatter.string(from: date)
+    }
+}
+
+
+// Mark: - MBProgressHUD
+extension GUtils {
+    static func showFailed(_ hud: MBProgressHUD?, message: String? = nil) {
+        if let hud = hud {
+            hud.customView = UIImageView(image: UIImage(named: "Failure"))
+            hud.mode = .customView
+            hud.label.text = "Failed"
+            hud.detailsLabel.text = message
+        }
+    }
+
+    static func showSucceeded(_ hud: MBProgressHUD?) {
+        if let hud = hud {
+            hud.customView = UIImageView(image: UIImage(named: "Success"))
+            hud.mode = .customView
+            hud.label.text = "Succeeded"
+            hud.detailsLabel.text = ""
+        }
     }
 }
