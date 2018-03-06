@@ -15,6 +15,9 @@ class StateController {
         return Singleton.instance
     }
 
+    // *** Grand Central Dispatch *** //
+    fileprivate var dispatch_group: DispatchGroup?
+
     // *** Global Audit Identifier *** //
     fileprivate var auditIdentifier: String?
     fileprivate var activeZone: String?
@@ -44,6 +47,10 @@ class StateController {
 extension StateController {
 
     // *** Access Point *** //
+
+    public func getDispatchGroup() -> DispatchGroup? {
+        return dispatch_group
+    }
 
     public func getIdentifier() -> String? {
         Log.message(.info, message: "State : Get Identifier")
@@ -123,6 +130,10 @@ extension StateController {
     }
 
     // *** Global Registration *** //
+
+    public func registerDispatchGroup(dispatch_group: DispatchGroup) {
+        self.dispatch_group = dispatch_group
+    }
 
     public func registerActiveZone(zone: String) {
         Log.message(.info, message: "Register : Active Zone :: \(zone)")
