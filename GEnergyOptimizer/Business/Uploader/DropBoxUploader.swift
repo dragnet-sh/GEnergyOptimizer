@@ -8,20 +8,15 @@ import CleanroomLogger
 import SwiftyDropbox
 
 class DropBoxUploader: Uploader, Uploadable {
-    func upload(_ filename: String = "\(GUtils.fileByTime()).csv", data: Data, finished: () -> Void) {
-        if let location = Settings.auditDataSaveLocation as? NSString {
-            var path = location.appendingPathComponent(GUtils.folderByDate()) as NSString
-            path = path.appendingPathComponent(filename) as NSString
+    func upload(path: String, data: Data, finished: () -> Void) {
+        guard let client = DropboxClientsManager.authorizedClient else {
+            Log.message(.error, message: "Un-Authorized")
+            return
+        }
 
-            guard let client = DropboxClientsManager.authorizedClient else {
-                Log.message(.error, message: "Un-Authorized")
-                return
-            }
-
-            client.files.upload(path: path as String, input: data).response { type, error in
-                Log.message(.warning, message: type.debugDescription)
-                Log.message(.warning, message: error.debugDescription)
-            }
+        client.files.upload(path: path, mode: .overwrite, autorename: false, clientModified: nil, mute: false, propertyGroups: nil, input: data).response { type, error in
+            Log.message(.warning, message: type.debugDescription)
+            Log.message(.warning, message: error.debugDescription)
         }
     }
 }
