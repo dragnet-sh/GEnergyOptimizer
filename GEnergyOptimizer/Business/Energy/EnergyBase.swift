@@ -25,6 +25,7 @@ class EnergyBase {
         self.outgoing = [[String: String]]()
     }
 
+    // ToDo: Relay this info back to the Main Class
     func starValidator(complete: @escaping () -> Void) {
         let energyStar = EnergyStar(mappedFeature: self.mappedFeature)
         energyStar.query() { status in
@@ -89,6 +90,7 @@ class OutgoingRows {
                 buffer.append("\r\n")
             }
         }
+        Log.message(.info, message: buffer.debugDescription)
         let dropbox = DropBoxUploader()
         if let data = buffer.data(using: .utf8) {
             dropbox.upload(path: path, data: data) {
