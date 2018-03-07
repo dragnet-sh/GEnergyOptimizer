@@ -24,24 +24,30 @@ class EnergyStar {
         return query
     }
 
-    func query(complete: @escaping (Bool) -> Void) {
+    func query(complete: @escaping (Bool, GError?) -> Void) {
         Log.message(.warning, message: "Energy Star Check")
 
         filter.findObjectsInBackground { object, error in
-            if (error == nil) {
-                Log.message(.info, message: "Parse - Plugload Query - No Error")
-            } else {
-                Log.message(.error, message: error.debugDescription)
+
+            if let error = error as? NSError {
+                if (error.code == 100) {
+                    Log.message(.error, message: "Parse Network Not Available !!")
+                    complete(false, .noNetwork)
+                } else {
+                    Log.message(.error, message: error.debugDescription)
+                    complete(false, .parseResponseError)
+                }
                 return
             }
 
             guard let data = object as? [PlugLoad] else {
-                Log.message(.error, message: "Guard Failed : Plugload Data - Core Data Zone")
+                Log.message(.error, message: "Guard Failed : PlugLoad Data - Core Data Zone")
+                complete(false, .guardFailed)
                 return
             }
 
-            if (data.count > 0) {complete(true)}
-            else {complete(false)}
+            if (data.count > 0) {complete(true, .none)}
+            else {complete(false, .none)}
         }
     }
 }
