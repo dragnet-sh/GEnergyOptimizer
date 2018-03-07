@@ -31,38 +31,54 @@ class Fryer: EnergyBase, Computable {
         let gas = GasCost()
         let bestModel = BestModel(query: self.filterAlternateMatch)
 
-        super.starValidator {
-            bestModel.query(curr_values: self.mappedFeature) { fryers in
-                fryers.forEach { appliance in
-                    var entry = EnergyBase.createEntry(self, appliance.data)
+        super.starValidator { status, error in
+            Log.message(.error, message: "################################################################")
+            Log.message(.error, message: error.debugDescription)
 
-                    //ToDo: Verify where do these values come from
-                    let idleRunHours = 7.0
-                    let daysInOperation = 7.0
+            if error == .none {
+                bestModel.query(curr_values: self.mappedFeature) { result in
+                    Log.message(.info, message: "Best Model Query Loop !!")
+                    switch result {
+                    case .Success(let data):
+                        data.forEach { appliance in
+                            var entry = EnergyBase.createEntry(self, appliance.data)
 
-                    if let preheatEnergy = appliance.data["preheat_energy"] as? Double, let idleEnergyRate = appliance.data["idle_energy_rate"] as? Double {
-                        let gasEnergy = preheatEnergy * daysInOperation + idleRunHours * idleEnergyRate
-                        let gasCost = gas.cost(energyUsed: gasEnergy)
-                        let electricCost = electric.cost(energyUsed: idleEnergyRate)
-                        let totalCost = gasCost + electricCost
-//                        Log.message(.warning, message: "Calculated Energy Value Cost [Plugload : Fryer] - \(totalCost.description)")
+                            //ToDo: Verify where do these values come from
+                            let idleRunHours = 7.0
+                            let daysInOperation = 7.0
 
-                        entry["__gas_energy"] = gasEnergy.description
-                        entry["__gas_cost"] = gasCost.description
-                        entry["__electric_cost"] = electricCost.description
-                        entry["__cost"] = totalCost.description
+                            if let preheatEnergy = appliance.data["preheat_energy"] as? Double, let idleEnergyRate = appliance.data["idle_energy_rate"] as? Double {
+                                let gasEnergy = preheatEnergy * daysInOperation + idleRunHours * idleEnergyRate
+                                let gasCost = gas.cost(energyUsed: gasEnergy)
+                                let electricCost = electric.cost(energyUsed: idleEnergyRate)
+                                let totalCost = gasCost + electricCost
+                                Log.message(.warning, message: "Calculated Energy Value Cost [Plugload : Fryer] - \(totalCost.description)")
+
+                                entry["__gas_energy"] = gasEnergy.description
+                                entry["__gas_cost"] = gasCost.description
+                                entry["__electric_cost"] = electricCost.description
+                                entry["__cost"] = totalCost.description
+                            }
+
+                            entry["__idle_run_hours"] = idleRunHours.description
+                            entry["__days_in_operation"] = daysInOperation.description
+
+                            super.outgoing.append(entry)
+                        }
+
+                        let entity = EApplianceType.getFileName(type: .fryer)
+                        let result = OutgoingRows(rows: super.outgoing, entity: entity)
+                        result.setHeader(header: self.fields()!)
+                        complete(result)
+
+                    case .Error(let message):
+                        Log.message(.error, message: message)
+                        complete(nil)
                     }
-
-                    entry["__idle_run_hours"] = idleRunHours.description
-                    entry["__days_in_operation"] = daysInOperation.description
-
-                    super.outgoing.append(entry)
                 }
-
-                let entity = EApplianceType.getFileName(type: .fryer)
-                let result = OutgoingRows(rows: super.outgoing, entity: entity)
-                result.setHeader(header: self.fields()!)
-                complete(result)
+            } else {
+                Log.message(.error, message: "Returning ***************** After Star Validator")
+                complete(nil)
             }
         }
     }

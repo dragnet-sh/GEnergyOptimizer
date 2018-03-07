@@ -29,25 +29,41 @@ class Refrigerator: EnergyBase, Computable {
         let bestModel = BestModel(query: self.filterAlternateMatch)
         let hourEnergyUse = 10.0
 
-        super.starValidator {
-            bestModel.query(curr_values: self.mappedFeature) { freezers in
-                freezers.forEach { appliance in
-                    var entry = EnergyBase.createEntry(self, appliance.data)
+        super.starValidator { status, error in
+            Log.message(.error, message: "################################################################")
+            Log.message(.error, message: error.debugDescription)
 
-                    //ToDo: Where does this value come from
-                    var hourEnergyUse = 10.0
-                    var totalCost = electric.cost(energyUsed: hourEnergyUse)
-//                    Log.message(.warning, message: "Calculated Energy Value Cost [Plugload : Refrigerator] - \(totalCost.description)")
+            if error == .none {
+                bestModel.query(curr_values: self.mappedFeature) { result in
+                    Log.message(.info, message: "Best Model Query Loop !!")
+                    switch result {
+                    case .Success(let data):
+                        data.forEach { appliance in
+                            var entry = EnergyBase.createEntry(self, appliance.data)
 
-                    entry["__hour_energy_use"] = hourEnergyUse.description
-                    entry["__cost"] = totalCost.description
-                    super.outgoing.append(entry)
+                            //ToDo: Where does this value come from
+                            var hourEnergyUse = 10.0
+                            var totalCost = electric.cost(energyUsed: hourEnergyUse)
+                            Log.message(.warning, message: "Calculated Energy Value Cost [Plugload : Refrigerator] - \(totalCost.description)")
+
+                            entry["__hour_energy_use"] = hourEnergyUse.description
+                            entry["__cost"] = totalCost.description
+                            super.outgoing.append(entry)
+                        }
+
+                        let entity = EApplianceType.getFileName(type: .freezerFridge)
+                        let result = OutgoingRows(rows: super.outgoing, entity: entity)
+                        result.setHeader(header: self.fields()!)
+                        complete(result)
+
+                    case .Error(let message):
+                        Log.message(.error, message: message)
+                        complete(nil)
+                    }
                 }
-
-                let entity = EApplianceType.getFileName(type: .freezerFridge)
-                let result = OutgoingRows(rows: super.outgoing, entity: entity)
-                result.setHeader(header: self.fields()!)
-                complete(result)
+            } else {
+                Log.message(.error, message: "Returning ************** After Star Validator")
+                complete(nil)
             }
         }
     }
