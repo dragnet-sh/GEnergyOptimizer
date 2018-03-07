@@ -57,13 +57,11 @@ class OutgoingRows {
     var rows: [Row]
     var entity: String
     var eType: EType
-
-    let baseDir: String = "/Gemini/Audit"
     var parentFolder: String
 
     init(rows: [Row], entity: String, type: EType = .computed) {
         self.rows = rows
-        self.entity = entity
+        self.entity = entity.lowercased()
         self.eType = type
         self.parentFolder = try! AuditFactory.sharedInstance.getIdentifier()
     }
@@ -74,10 +72,9 @@ class OutgoingRows {
 
     func upload(_ completed: @escaping () -> Void) {
         Log.message(.warning, message: "**** Uploading ****")
-        var path: String = "\(baseDir)/\(parentFolder)/\(eType.rawValue)/\(entity).csv"
+        let baseDir = getBaseDir()
+        var path: String = "\(baseDir)\(parentFolder)/\(eType.rawValue)/\(entity).csv"
         Log.message(.error, message: path.description)
-        Log.message(.error, message: header.debugDescription)
-        Log.message(.error, message: rows.debugDescription)
 
         var buffer: String = header!.joined(separator: ",")
         buffer.append("\r\n")
@@ -98,8 +95,6 @@ class OutgoingRows {
                 completed()
             }
         }
-
-        Log.message(.warning, message: buffer.debugDescription)
     }
 
     //-- ToDo: What about if there is a quote within the value ?? huh
@@ -110,6 +105,21 @@ class OutgoingRows {
         }
 
         return fix
+    }
+
+    func getBaseDir() -> String {
+        if var baseDir = Settings.auditDataSaveLocation {
+            Log.message(.info, message: "Base Dir : \(baseDir)")
+
+            if !(baseDir.starts(with: "/")) {baseDir = "/\(baseDir)"}
+            let regex = try! NSRegularExpression(pattern: "^.*/$")
+            let match = regex.matches(in: baseDir, range: NSRange(location: 0, length: baseDir.count))
+            if !(match.count > 0) {
+                baseDir.append("/")
+            }
+
+            return baseDir
+        } else {return "/Gemini/Energy/Audit/"}
     }
 }
 
