@@ -26,7 +26,7 @@ class GEnergy {
 
     public func crunch() {
 
-        // -- 0. Check Internet Connectivity
+        // -- 1. Check Internet Connectivity
         guard let net = NetworkReachabilityManager() else {
             GUtils.message(msg: "No Internet Connection")
             return
@@ -36,11 +36,7 @@ class GEnergy {
         net.stopListening()
         guard isReachable else {GUtils.message(msg: "No Internet Connection"); return}
 
-        // -- 1. Check if Parse Server is working
-
-
-
-        // -- . Check DropBox Authorization
+        // -- 2. Check DropBox Authorization
         guard let client = DropboxClientsManager.authorizedClient else {
             Log.message(.error, message: "Un-Authorized")
             GUtils.message(msg: "Unable to Connect to DropBox")
@@ -59,9 +55,12 @@ class GEnergy {
         self.gPlugload._calculate(hud) {group.leave()}
 
         group.notify(queue: .main) {
-            self.gHVAC.status && self.gPlugload.status ?
-                    GUtils.showSucceeded(hud) : GUtils.showFailed(hud);
-            GUtils.message(msg: "There were one or more errors while processing !!")
+            if self.gHVAC.status && self.gPlugload.status {
+                GUtils.showSucceeded(hud)
+            } else {
+                GUtils.showFailed(hud)
+                GUtils.message(msg: "There were one or more errors while processing !!")
+            }
 
             hud.hide(animated: true, afterDelay: 1)
         }
@@ -125,12 +124,15 @@ class GHVAC: GAudit, CalculateAndUpload {
 
         group.enter()
         backgroundQ.async(group: group, execute: {
-            HVAC(feature).compute { result in
-                guard let result = result else {
+            HVAC(feature).compute { rows in
+                guard let rows = rows else {
                     super.status = false; group.leave()
                     return
                 }
-                result.upload {group.leave()}
+                rows.upload { error in
+                    if error != .none {self.status = false}
+                    group.leave()
+                }
             }
         })
 
@@ -178,7 +180,10 @@ class GPlugLoad: GAudit, CalculateAndUpload {
                     self.status = false; group.leave()
                     return
                 }
-//                rows.upload {group.leave()}
+                rows.upload { error in
+                    if error != .none {self.status = false}
+                    group.leave()
+                }
             }
 
             case .fryer: Fryer(feature).compute { rows in
@@ -186,7 +191,10 @@ class GPlugLoad: GAudit, CalculateAndUpload {
                     self.status = false; group.leave()
                     return
                 }
-//                rows.upload {group.leave()}
+                rows.upload { error in
+                    if error != .none {self.status = false}
+                    group.leave()
+                }
             }
 
             default: Log.message(.warning, message: "UNKNOWN"); group.leave()

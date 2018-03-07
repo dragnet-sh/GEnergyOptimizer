@@ -188,7 +188,7 @@
                         <viewLayoutGuide key="safeArea" id="Odo-Ys-02E"/>
                     </view>
                     <navigationItem key="navigationItem" id="Rd0-qX-nLG">
-                        <barButtonItem key="leftBarButtonItem" title="Settings" id="awR-mB-nui">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" image="Settings" id="awR-mB-nui">
                             <connections>
                                 <action selector="btnSettings:" destination="QFx-9v-kKd" id="TyR-9R-OR0"/>
                             </connections>
@@ -227,6 +227,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Settings" width="48" height="48"/>
         <image name="ge_green_world_logo_large.png" width="720" height="310"/>
     </resources>
 </document>

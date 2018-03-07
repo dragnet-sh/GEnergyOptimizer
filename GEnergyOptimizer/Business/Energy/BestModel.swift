@@ -15,21 +15,29 @@ class BestModel {
         self.filter = query
     }
 
-    func query(curr_values: Dictionary<String, Any>, complete: @escaping ([PlugLoad]) -> Void) {
+    func query(curr_values: Dictionary<String, Any>, complete: @escaping (Result<[PlugLoad]>) -> Void) {
+        Log.message(.info, message: "Best Model")
+
         filter.findObjectsInBackground { object, error in
-            if (error == nil) {
-                Log.message(.info, message: "Parse - Plugload Query - No Error")
-            } else {
-                Log.message(.error, message: error.debugDescription)
+
+            if let error = error as? NSError {
+                if (error.code == 100) {
+                    Log.message(.error, message: "Parse Network Not Available")
+                    complete(.Error("Parse Network Not Available"))
+                } else {
+                    Log.message(.error, message: error.debugDescription)
+                    complete(.Error("Other Parse Network Error"))
+                }
                 return
             }
 
             guard let data = object as? [PlugLoad] else {
-                Log.message(.error, message: "Guard Failed : Plugload Data - Core Data Zone")
+                Log.message(.error, message: "Guard Failed : PlugLoad Data - Core Data Zone")
+                complete(.Error("Guard Failed : PlugLoad Data - Care Data Zone"))
                 return
             }
 
-            complete(data)
+            complete(.Success(data))
         }
     }
 }

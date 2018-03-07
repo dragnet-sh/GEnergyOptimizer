@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1318636F1FE6B63800864276 /* ge_green_world_logo_large.png in Resources */ = {isa = PBXBuildFile; fileRef = 1318636E1FE6B63800864276 /* ge_green_world_logo_large.png */; };
-		1335BF3E1FD0118800402515 /* GeminiLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1335BF3D1FD0118800402515 /* GeminiLogo.jpg */; };
 		13792E2E1FC8263F007C525C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13792E2D1FC8263F007C525C /* AppDelegate.swift */; };
 		13792E331FC8263F007C525C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13792E311FC8263F007C525C /* Main.storyboard */; };
 		13792E351FC8263F007C525C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13792E341FC8263F007C525C /* Assets.xcassets */; };
@@ -109,7 +108,6 @@
 
 /* Begin PBXFileReference section */
 		1318636E1FE6B63800864276 /* ge_green_world_logo_large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ge_green_world_logo_large.png; sourceTree = "<group>"; };
-		1335BF3D1FD0118800402515 /* GeminiLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = GeminiLogo.jpg; sourceTree = "<group>"; };
 		13792E2A1FC8263F007C525C /* GEnergyOptimizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GEnergyOptimizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13792E2D1FC8263F007C525C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13792E321FC8263F007C525C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -227,7 +225,6 @@
 			isa = PBXGroup;
 			children = (
 				1318636E1FE6B63800864276 /* ge_green_world_logo_large.png */,
-				1335BF3D1FD0118800402515 /* GeminiLogo.jpg */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -697,7 +694,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1335BF3E1FD0118800402515 /* GeminiLogo.jpg in Resources */,
 				13792E381FC8263F007C525C /* LaunchScreen.storyboard in Resources */,
 				13792E351FC8263F007C525C /* Assets.xcassets in Resources */,
 				13792E331FC8263F007C525C /* Main.storyboard in Resources */,

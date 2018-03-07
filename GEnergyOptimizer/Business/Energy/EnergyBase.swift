@@ -68,7 +68,7 @@ class OutgoingRows {
         self.header = header
     }
 
-    func upload(_ completed: @escaping () -> Void) {
+    func upload(_ completed: @escaping (GError) -> Void) {
         Log.message(.warning, message: "**** Uploading ****")
         let baseDir = getBaseDir()
         var path: String = "\(baseDir)\(parentFolder)/\(eType.rawValue)/\(entity).csv"
@@ -88,12 +88,15 @@ class OutgoingRows {
             }
         }
         Log.message(.info, message: buffer.debugDescription)
+
         let dropbox = DropBoxUploader()
         if let data = buffer.data(using: .utf8) {
-            dropbox.upload(path: path, data: data) {
-                completed()
+            dropbox.upload(path: path, data: data) { error in
+                completed(error)
             }
+            return
         }
+        completed(.noData)
     }
 
     //-- ToDo: What about if there is a quote within the value ?? huh

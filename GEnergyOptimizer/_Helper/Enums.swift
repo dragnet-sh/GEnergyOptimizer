@@ -65,6 +65,9 @@ enum GError: Error {
     case noNetwork
     case guardFailed
     case parseResponseError
+    case noData
+    case notAuthorized
+    case dropBoxResponseError
     case none
 }
 
