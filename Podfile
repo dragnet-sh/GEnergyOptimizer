@@ -15,4 +15,5 @@ target 'GEnergyOptimizer' do
   pod 'SwiftyDropbox', '~> 4.3'
   pod 'InAppSettingsKit'
   pod 'MBProgressHUD'
+  pod 'Alamofire'
 end
