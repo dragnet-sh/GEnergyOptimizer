@@ -26,13 +26,10 @@ class EnergyBase {
     }
 
     // ToDo: Relay this info back to the Main Class
-    func starValidator(complete: @escaping () -> Void) {
+    func starValidator(complete: @escaping (Bool, GError?) -> Void) {
         let energyStar = EnergyStar(mappedFeature: self.mappedFeature)
-        energyStar.query() { status in
-            if (status) {
-                return
-            }
-            complete()
+        energyStar.query() { status, error in
+            complete(status, error)
         }
     }
 
