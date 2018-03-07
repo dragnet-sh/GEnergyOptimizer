@@ -31,6 +31,7 @@ class HVAC: EnergyBase, Computable {
             result.setHeader(header: fields()!)
             complete(result)
         } else {
+            Log.message(.error, message: "HVAC - One of the Feature Data returned Nil.")
             complete(nil)
         }
 
