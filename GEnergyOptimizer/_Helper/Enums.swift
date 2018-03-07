@@ -63,6 +63,8 @@ enum CellIdentifiers: String {
 
 enum GError: Error {
     case noNetwork
+    case guardFailed
+    case parseResponseError
     case none
 }
 
