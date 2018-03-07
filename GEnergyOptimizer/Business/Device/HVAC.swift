@@ -30,7 +30,10 @@ class HVAC: EnergyBase, Computable {
             let result = OutgoingRows(rows: super.outgoing, entity: entity)
             result.setHeader(header: fields()!)
             complete(result)
+        } else {
+            complete(nil)
         }
+
     }
 
     func fields() -> [String]? {
