@@ -7,12 +7,15 @@ import Foundation
 import CleanroomLogger
 import MBProgressHUD
 import SwiftyDropbox
+import Alamofire
+import Parse
 
 class GEnergy {
     private var gAudit: GAudit
     private var gHVAC: GHVAC
     private var gPlugload: GPlugLoad
     private var delegate: UIViewController
+    var status: Bool = true
 
     init(_ delegate: UIViewController) {
         self.gAudit = GAudit()
@@ -24,8 +27,20 @@ class GEnergy {
     public func crunch() {
 
         // -- 0. Check Internet Connectivity
+        guard let net = NetworkReachabilityManager() else {
+            GUtils.message(msg: "No Internet Connection")
+            return
+        }
+        net.startListening()
+        let isReachable = net.isReachable
+        net.stopListening()
+        guard isReachable else {GUtils.message(msg: "No Internet Connection"); return}
 
-        // -- 1. Check DropBox Authorization
+        // -- 1. Check if Parse Server is working
+
+
+
+        // -- . Check DropBox Authorization
         guard let client = DropboxClientsManager.authorizedClient else {
             Log.message(.error, message: "Un-Authorized")
             GUtils.message(msg: "Unable to Connect to DropBox")
@@ -38,13 +53,16 @@ class GEnergy {
         let backgroundQ = DispatchQueue.global(priority: .background)
 
         group.enter()
-        self.gHVAC._calculate() {group.leave()}
+        self.gHVAC._calculate(hud) {group.leave()}
 
         group.enter()
-        self.gPlugload._calculate() {group.leave()}
+        self.gPlugload._calculate(hud) {group.leave()}
 
         group.notify(queue: .main) {
-            GUtils.showSucceeded(hud)
+            self.gHVAC.status && self.gPlugload.status ?
+                    GUtils.showSucceeded(hud) : GUtils.showFailed(hud);
+            GUtils.message(msg: "There were one or more errors while processing !!")
+
             hud.hide(animated: true, afterDelay: 1)
         }
     }
@@ -56,7 +74,7 @@ class GEnergy {
 
 protocol CalculateAndUpload {
     func _features() -> [CDFeatureData]?
-    func _calculate(completed: @escaping () -> Void)
+    func _calculate(_ hud: MBProgressHUD, completed: @escaping () -> Void)
 }
 
 class GAudit {
@@ -64,6 +82,7 @@ class GAudit {
     public var preaudit: [CDFeatureData]
     public var zone: [CDZone]
     let factory = AuditFactory.sharedInstance
+    var status: Bool = true
 
     init() {
         self.audit = try! factory.setAudit()
@@ -99,7 +118,7 @@ class GHVAC: GAudit, CalculateAndUpload {
         return feature
     }
 
-    func _calculate(completed: @escaping () -> Void) {
+    func _calculate(_ hud: MBProgressHUD, completed: @escaping () -> Void) {
         guard let feature = _features() else {return}
         let group = DispatchGroup()
         let backgroundQ = DispatchQueue.global(qos: .background)
@@ -107,9 +126,11 @@ class GHVAC: GAudit, CalculateAndUpload {
         group.enter()
         backgroundQ.async(group: group, execute: {
             HVAC(feature).compute { result in
-                result?.upload {
-                    group.leave()
+                guard let result = result else {
+                    super.status = false; group.leave()
+                    return
                 }
+                result.upload {group.leave()}
             }
         })
 
@@ -138,19 +159,36 @@ class GPlugLoad: GAudit, CalculateAndUpload {
         return GUtils.getEAppliance(rawValue: plZone!.type!)
     }
 
-    func _calculate(completed: @escaping () -> Void) {
+    func _calculate(_ hud: MBProgressHUD, completed: @escaping () -> Void) {
         let group = DispatchGroup()
         let backgroundQ = DispatchQueue.global(priority: .background)
         let _zone = self.zone.filter { zone in GUtils.getEAppliance(rawValue: zone.type!) != .none }
 
         for eachZone in _zone {
             let plugLoad = GPlugLoad(plZone: eachZone)
-            guard let feature = plugLoad._features() else {return}
+            guard let feature = plugLoad._features() else {
+                Log.message(.error, message: "Zone - Feature Data Null.")
+                super.status = false; return
+            }
 
             group.enter()
             switch plugLoad.type() {
-            case .freezerFridge: Refrigerator(feature).compute {$0?.upload {group.leave()}}
-            case .fryer: Fryer(feature).compute {$0?.upload {group.leave()}}
+            case .freezerFridge: Refrigerator(feature).compute { rows in
+                guard let rows = rows else {
+                    self.status = false; group.leave()
+                    return
+                }
+//                rows.upload {group.leave()}
+            }
+
+            case .fryer: Fryer(feature).compute { rows in
+                guard let rows = rows else {
+                    self.status = false; group.leave()
+                    return
+                }
+//                rows.upload {group.leave()}
+            }
+
             default: Log.message(.warning, message: "UNKNOWN"); group.leave()
             }
         }
