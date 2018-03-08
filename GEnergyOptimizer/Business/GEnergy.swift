@@ -126,7 +126,7 @@ class GHVAC: GAudit, CalculateAndUpload {
         backgroundQ.async(group: group, execute: {
             HVAC(feature).compute { rows in
                 guard let rows = rows else {
-                    super.status = false; group.leave()
+                    group.leave()
                     return
                 }
                 rows.upload { error in

@@ -21,6 +21,7 @@ public class ElectricRate: UtilityMapper {
         self.utilityCompany = "pge_electric"
     }
 
+    //ToDo: Will potentially crash if the CSV is messed up !!
     func getBillData() -> Dictionary<ERateKey, Double> {
         let rows = GUtils.openCSV(filename: utilityCompany)!
         var outgoing = Dictionary<ERateKey, Double>()

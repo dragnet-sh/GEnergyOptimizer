@@ -8,9 +8,9 @@ import CleanroomLogger
 import Parse
 
 class Fryer: EnergyBase, Computable {
-    lazy var rateStructure: String = {
-        GUtils.toString(subject: preAudit["Electric Rate Structure"]!)
-    }()
+//    lazy var rateStructure: String = {
+//        GUtils.toString(subject: preAudit["Electric Rate Structure"]?)
+//    }()
 
     lazy var filterAlternateMatch: PFQuery<PFObject> = {
         let query = PlugLoad.query()!
@@ -27,7 +27,14 @@ class Fryer: EnergyBase, Computable {
     }()
 
     func compute(_ complete: @escaping (OutgoingRows?) -> Void) {
-        let electric = ElectricCost(rateStructure: rateStructure, operatingHours: super.operatingHours)
+
+        guard let utilityRate = preAudit["Electric Rate Structure"] else {
+            complete(nil)
+            return
+        }
+
+        let rate = GUtils.toString(subject: utilityRate)
+        let electric = ElectricCost(rateStructure: rate, operatingHours: super.operatingHours)
         let gas = GasCost()
         let bestModel = BestModel(query: self.filterAlternateMatch)
 
@@ -51,6 +58,7 @@ class Fryer: EnergyBase, Computable {
                                 let gasEnergy = preheatEnergy * daysInOperation + idleRunHours * idleEnergyRate
                                 let gasCost = gas.cost(energyUsed: gasEnergy)
                                 let electricCost = electric.cost(energyUsed: idleEnergyRate)
+                                Log.message(.info, message: electricCost.debugDescription)
                                 let totalCost = gasCost + electricCost
                                 Log.message(.warning, message: "Calculated Energy Value Cost [Plugload : Fryer] - \(totalCost.description)")
 

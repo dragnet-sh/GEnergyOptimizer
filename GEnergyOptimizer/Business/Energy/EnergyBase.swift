@@ -170,9 +170,14 @@ class ElectricCost: Consumption {
         return utility.getBillData()
     }()
 
-    lazy var usageByPeak: Dictionary<ERateKey, Int> = {
+    lazy var usageByPeak: Dictionary<ERateKey, Double> = {
         let peak = PeakHourMapper()
         return peak.run(usage: operatingHours)
+    }()
+
+    lazy var usageByDay: Double = {
+        let peak = PeakHourMapper()
+        return peak.annualOperatingHours(operatingHours) / 365
     }()
 
     init(rateStructure: String, operatingHours: Dictionary<EDay, String>) {
@@ -180,14 +185,25 @@ class ElectricCost: Consumption {
         self.operatingHours = operatingHours
     }
 
+    //ToDo: What about cases where is no Time of Use ??
     func cost(energyUsed: Double) -> Double {
-        var summer = Double(usageByPeak[ERateKey.summerOn]!) * energyUsed * pricing[ERateKey.summerOn]!
-        summer += Double(usageByPeak[ERateKey.summerPart]!) * energyUsed * pricing[ERateKey.summerPart]!
-        summer += Double(usageByPeak[ERateKey.summerOff]!) * energyUsed * pricing[ERateKey.summerOff]!
 
-        var winter = Double(usageByPeak[ERateKey.winterPart]!) * energyUsed * pricing[ERateKey.winterPart]!
-        winter += Double(usageByPeak[ERateKey.winterOff]!) * energyUsed * pricing[ERateKey.winterOff]!
+        var regex = try! NSRegularExpression(pattern: "^.*tou$")
+        let match = regex.matches(in: rateStructure.lowercased(), range: NSRange(location: 0, length: rateStructure.count))
+        if (match.count > 0) {
+            var summer = Double(usageByPeak[ERateKey.summerOn]!) * energyUsed * pricing[ERateKey.summerOn]!
+            summer += Double(usageByPeak[ERateKey.summerPart]!) * energyUsed * pricing[ERateKey.summerPart]!
+            summer += Double(usageByPeak[ERateKey.summerOff]!) * energyUsed * pricing[ERateKey.summerOff]!
 
-        return (summer + winter)
+            var winter = Double(usageByPeak[ERateKey.winterPart]!) * energyUsed * pricing[ERateKey.winterPart]!
+            winter += Double(usageByPeak[ERateKey.winterOff]!) * energyUsed * pricing[ERateKey.winterOff]!
+
+            return (summer + winter) / 2
+        } else {
+            let summer = usageByDay * energyUsed * pricing[ERateKey.summerNone]!
+            let winter = usageByDay * energyUsed * pricing[ERateKey.winterNone]!
+
+            return (summer + winter) / 2
+        }
     }
 }
