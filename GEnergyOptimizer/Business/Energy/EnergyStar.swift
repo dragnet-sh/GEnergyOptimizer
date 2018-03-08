@@ -8,24 +8,32 @@ import Parse
 import CleanroomLogger
 
 class EnergyStar {
-    var filter: PFQuery<PFObject>!
+    var filter: PFQuery<PFObject>?
 
     init(mappedFeature: Dictionary<String, Any>) {
         self.filter = matchFilter(query: PlugLoad.query()!, mappedFeature: mappedFeature)
     }
 
-    func matchFilter(query: PFQuery<PFObject>, mappedFeature: Dictionary<String, Any>) -> PFQuery<PFObject> {
-        let model_number = String(describing: mappedFeature["Model Number"]!)
-        let company = String(describing: mappedFeature["Company"]!)
+    func matchFilter(query: PFQuery<PFObject>, mappedFeature: Dictionary<String, Any>) -> PFQuery<PFObject>? {
 
-        query.whereKey("data.company", equalTo: company)
-        query.whereKey("data.model_number", equalTo: model_number)
-
-        return query
+        if let model_number = mappedFeature["Model Number"], let company = mappedFeature["Company"] {
+            query.whereKey("data.company", equalTo: GUtils.toString(subject: company))
+            query.whereKey("data.model_number", equalTo: GUtils.toString(subject: model_number))
+            return query
+        } else {
+            Log.message(.error, message: "Alternate Match Filter - Query Parameters Nil.")
+            return nil
+        }
     }
 
     func query(complete: @escaping (Bool, GError?) -> Void) {
         Log.message(.warning, message: "Energy Star Check")
+
+        guard let filter = self.filter else {
+            Log.message(.error, message: "Guard Failed - Energy Star - Filter")
+            complete(false, .guardFailed)
+            return
+        }
 
         filter.findObjectsInBackground { object, error in
 
