@@ -19,7 +19,6 @@
 		34DCCF82941666505C8DA62B /* Pods_GEnergyOptimizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A01F77AED5091697259E640E /* Pods_GEnergyOptimizer.framework */; };
 		487C00005D78424CF25339AD /* FormBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C09E7BFD390D46EFB6FB0 /* FormBuilder.swift */; };
 		487C004B0A4AB306D31D874B /* FeatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0D51983BDBEB57429FBE /* FeatureViewController.swift */; };
-		487C004B20F355C4442EEC9F /* RoomPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C00006A3A8F0204806CF3 /* RoomPresenter.swift */; };
 		487C00584DF1C345AA660201 /* Refrigerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0891514C7276FBA79B2B /* Refrigerator.swift */; };
 		487C006DF8715ED7C1E8F9EE /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C02E0126554B9837987E8 /* Utils.swift */; };
 		487C007CE0C4E7C81F491A7A /* PeakHourMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C054AC728BAFE30A431B0 /* PeakHourMapper.swift */; };
@@ -42,7 +41,6 @@
 		487C03CE29609B28D298703B /* lighting.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0258D2F9D57C51A3D46B /* lighting.json */; };
 		487C0469C3EE3AE7A780D354 /* GEFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0C8D7C0CD8F8E871A36C /* GEFormViewController.swift */; };
 		487C04748BDB90E7EB1E7B03 /* HomeDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C00F2E0F041240EEC4824 /* HomeDTO.swift */; };
-		487C04A7BBE09E7BDB69268E /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C07C91AE8796EA65944E2 /* RoomListViewController.swift */; };
 		487C052060FEF15FE2A76A65 /* PFZoneAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0AD00AFF79848118D6B3 /* PFZoneAPI.swift */; };
 		487C05DEA266805FF524BBBF /* ZonePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C02926DAC42E68D5F059F /* ZonePresenter.swift */; };
 		487C05E9F03B7AB099E31A39 /* hvac.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C02C5135F34CDA4F2531A /* hvac.json */; };
@@ -81,7 +79,6 @@
 		487C0C10E1FAD8F0605D26E9 /* EnergyStar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0341E5D53FD4FA57F601 /* EnergyStar.swift */; };
 		487C0C118C3F4D9902F44CA1 /* RackOven.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0717EC9AEAAAC021D88F /* RackOven.json */; };
 		487C0C838825086E0770A59D /* FeatureViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 487C0F0E28D1D0C27B2D8DF2 /* FeatureViewController.storyboard */; };
-		487C0CCCF0F2E54CD6D191E9 /* RoomListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 487C0403FCD811A5A3C6AA70 /* RoomListViewController.storyboard */; };
 		487C0CED17CC60EB955C7C01 /* PFRoomAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C0E4C4EE333D6EFAA7215 /* PFRoomAPI.swift */; };
 		487C0D39CCB0EE2F502A01C3 /* EnergyBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487C02AD4D9EDCE6CD558AA1 /* EnergyBase.swift */; };
 		487C0D88AD3FE5E485016D24 /* CombinationOven.json in Resources */ = {isa = PBXBuildFile; fileRef = 487C0DA52700628ED7753BDD /* CombinationOven.json */; };
@@ -120,7 +117,6 @@
 		13E2E300200A3454003F54A4 /* CDFeatureData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDFeatureData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		13E2E301200A3454003F54A4 /* CDFeatureData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDFeatureData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		13EEB1F6204700FC0089D263 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		487C00006A3A8F0204806CF3 /* RoomPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomPresenter.swift; sourceTree = "<group>"; };
 		487C00092FADBF381F0283C0 /* PFPreAuditAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PFPreAuditAPI.swift; sourceTree = "<group>"; };
 		487C001332D8A6CAF12B0256 /* RoomDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDTO.swift; sourceTree = "<group>"; };
 		487C004CEC4297383988FF70 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -143,7 +139,6 @@
 		487C0389091CDF0F798DDA19 /* AuditFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuditFactory.swift; sourceTree = "<group>"; };
 		487C03A2F6887784350EBCCB /* TranslationLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslationLayer.swift; sourceTree = "<group>"; };
 		487C03A4D202FD6C8C0DCAB7 /* CDAudit+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDAudit+CoreDataClass.swift"; sourceTree = "<group>"; };
-		487C0403FCD811A5A3C6AA70 /* RoomListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RoomListViewController.storyboard; sourceTree = "<group>"; };
 		487C0436148EC05FE2581AC2 /* ZoneListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneListViewController.swift; sourceTree = "<group>"; };
 		487C046CBA6CB57F53D16115 /* Fryer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fryer.swift; sourceTree = "<group>"; };
 		487C046F2324ACBDDD52E289 /* motors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = motors.json; sourceTree = "<group>"; };
@@ -162,7 +157,6 @@
 		487C0717EC9AEAAAC021D88F /* RackOven.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RackOven.json; sourceTree = "<group>"; };
 		487C07623C4CF0D16624DE2B /* FormDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormDataModel.swift; sourceTree = "<group>"; };
 		487C078014FACE4006AD6F7A /* PresenterModal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PresenterModal.storyboard; sourceTree = "<group>"; };
-		487C07C91AE8796EA65944E2 /* RoomListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomListViewController.swift; sourceTree = "<group>"; };
 		487C080941112BEE2DFCA5A6 /* ZoneDTO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoneDTO.swift; sourceTree = "<group>"; };
 		487C080A4E1D4167F0F86C03 /* Fryer.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Fryer.json; sourceTree = "<group>"; };
 		487C0853D485C19C3121BC98 /* CoreDataAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataAPI.swift; sourceTree = "<group>"; };
@@ -281,7 +275,6 @@
 			children = (
 				13C23BFA1FFF9185009D79A9 /* TestEnergyCalculations.swift */,
 				13C23BF41FFF9130009D79A9 /* Info.plist */,
-				487C00006A3A8F0204806CF3 /* RoomPresenter.swift */,
 			);
 			path = GEnergyOptimizerTests;
 			sourceTree = "<group>";
@@ -529,15 +522,6 @@
 			path = Device;
 			sourceTree = "<group>";
 		};
-		487C0D622CD54B4DEA03E8AE /* Room */ = {
-			isa = PBXGroup;
-			children = (
-				487C07C91AE8796EA65944E2 /* RoomListViewController.swift */,
-				487C0403FCD811A5A3C6AA70 /* RoomListViewController.storyboard */,
-			);
-			path = Room;
-			sourceTree = "<group>";
-		};
 		487C0D7CE809BF52909A2ED5 /* Table */ = {
 			isa = PBXGroup;
 			children = (
@@ -561,7 +545,6 @@
 			isa = PBXGroup;
 			children = (
 				487C051B4EB1272E8F8136C3 /* Feature */,
-				487C0D622CD54B4DEA03E8AE /* Room */,
 				487C06161F14F38EA9572A0A /* Zone */,
 			);
 			path = Audit;
@@ -699,7 +682,6 @@
 				13792E331FC8263F007C525C /* Main.storyboard in Resources */,
 				1318636F1FE6B63800864276 /* ge_green_world_logo_large.png in Resources */,
 				487C0C838825086E0770A59D /* FeatureViewController.storyboard in Resources */,
-				487C0CCCF0F2E54CD6D191E9 /* RoomListViewController.storyboard in Resources */,
 				487C01FA258D297F629D6C9C /* ZoneListViewController.storyboard in Resources */,
 				487C02892678BC45AF096F1B /* HomeListCell.xib in Resources */,
 				487C03CE29609B28D298703B /* lighting.json in Resources */,
@@ -821,7 +803,6 @@
 				487C006DF8715ED7C1E8F9EE /* Utils.swift in Sources */,
 				487C0B3FDCBE627C600FA736 /* BuilderHelper.swift in Sources */,
 				487C004B0A4AB306D31D874B /* FeatureViewController.swift in Sources */,
-				487C04A7BBE09E7BDB69268E /* RoomListViewController.swift in Sources */,
 				487C0E30377A91EDC24DA2BD /* ZoneListViewController.swift in Sources */,
 				487C0E503E431AD787C0F05A /* HomePresenter.swift in Sources */,
 				487C0B1DFB45868C7D641B48 /* ModelLayer.swift in Sources */,
@@ -863,7 +844,6 @@
 				487C066BC6C58631CC4CAC80 /* BestModel.swift in Sources */,
 				487C0D39CCB0EE2F502A01C3 /* EnergyBase.swift in Sources */,
 				487C0C10E1FAD8F0605D26E9 /* EnergyStar.swift in Sources */,
-				487C004B20F355C4442EEC9F /* RoomPresenter.swift in Sources */,
 				487C0815F656CF2F7B25612C /* HVAC.swift in Sources */,
 				487C00A5061BD468A46C2DA7 /* Fryer.swift in Sources */,
 				487C0A0C0E9AE22E8E143C40 /* GEnergy.swift in Sources */,
