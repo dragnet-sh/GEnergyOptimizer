@@ -55,7 +55,7 @@ class Fryer: EnergyBase, Computable {
                             let daysInOperation = 7.0
 
                             if let preheatEnergy = appliance.data["preheat_energy"] as? Double, let idleEnergyRate = appliance.data["idle_energy_rate"] as? Double {
-                                let gasEnergy = preheatEnergy * daysInOperation + idleRunHours * idleEnergyRate
+                                let gasEnergy = preheatEnergy * daysInOperation + idleRunHours * idleEnergyRate //ToDo: Verify the formula
                                 let gasCost = gas.cost(energyUsed: gasEnergy)
                                 let electricCost = electric.cost(energyUsed: idleEnergyRate)
                                 Log.message(.info, message: electricCost.debugDescription)
