@@ -64,7 +64,7 @@ class RackOven: EnergyBase, Computable {
             "production_capacity", "size", "model_number", "company",
 
             "__idle_run_hours", "__daily_operating_hours", "__gas_energy", "__electric_energy",
-            "__gas_cost", "__electric_cost"
+            "__gas_cost", "__electric_cost", "__total_cost"
         ]
     }
 }
