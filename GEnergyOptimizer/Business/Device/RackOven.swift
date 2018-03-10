@@ -51,6 +51,7 @@ class RackOven: EnergyBase, Computable {
             entry["__electric_energy"] = electricEnergy.description
             entry["__gas_cost"] = gasCost.description
             entry["__electric_cost"] = electricCost.description
+            entry["__total_cost"] = totalCost.description
 
             return entry
 

@@ -22,54 +22,39 @@ class Refrigerator: EnergyBase, Computable {
 
     func compute(_ complete: @escaping (OutgoingRows?) -> Void) {
 
-        let electric = ElectricCost(rateStructure: utilityRate(), operatingHours: super.operatingHours)
-        let hourEnergyUse = 10.0
+        Log.message(.info, message: "### Computing - Refrigerator ###")
+        __compute(delegate: self, type: .freezerFridge, handler: { (data) in
 
-        super.starValidator { status, error in
-            Log.message(.error, message: "################################################################")
-            Log.message(.error, message: error.debugDescription)
+            var entry = EnergyBase.createEntry(self, data)
+            let operatingHours = 24
 
-            if error == .none {
-                super.bestModel { result in
-                    Log.message(.info, message: "Best Model Query Loop !!")
-                    switch result {
-                    case .Success(let data):
-                        data.forEach { appliance in
-                            var entry = EnergyBase.createEntry(self, appliance.data)
+            guard let dailyEnergyUse = data["daily_energy_use"] as? Double else {
 
-                            //ToDo: Where does this value come from
-                            var hourEnergyUse = 10.0
-                            var totalCost = electric.cost(energyUsed: hourEnergyUse)
-                            Log.message(.warning, message: "Calculated Energy Value Cost [Plugload : Refrigerator] - \(totalCost.description)")
-
-                            entry["__hour_energy_use"] = hourEnergyUse.description
-                            entry["__cost"] = totalCost.description
-                            super.outgoing.append(entry)
-                        }
-
-                        let entity = EApplianceType.getFileName(type: .freezerFridge)
-                        let result = OutgoingRows(rows: super.outgoing, entity: entity)
-                        result.setHeader(header: self.fields()!)
-                        complete(result)
-
-                    case .Error(let message):
-                        Log.message(.error, message: message)
-                        complete(nil)
-                    }
-                }
-            } else {
-                Log.message(.error, message: "Returning ************** After Star Validator")
+                Log.message(.error, message: "Daily Energy Use Nil")
                 complete(nil)
+                return nil
             }
-        }
+
+            let electricEnergy: Double = dailyEnergyUse
+            let electricCost = super.electricCost().cost(energyUsed: electricEnergy)
+            let totalCost = electricCost
+
+            entry["__daily_operating_hours"] = operatingHours.description
+            entry["__electric_energy"] = electricEnergy.description
+            entry["__electric_cost"] = electricCost.description
+
+            return entry
+
+        }) {complete($0)}
+
     }
 
     func fields() -> [String]? {
         return [
-            "company", "daily_energy_use", "pgne_measure_code", "purchase_price_per_unit",
-            "rebate", "style_type", "total_volume", "vendor",
+            "company", "model_number", "style_type", "total_volume","daily_energy_use", "rebate",
+            "pgne_measure_code", "purchase_price_per_unit", "vendor",
 
-            "__hour_energy_use", "__cost"
+            "__daily_operating_hours", "__electric_energy", "__electric_cost"
         ]
     }
 }

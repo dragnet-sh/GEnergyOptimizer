@@ -118,12 +118,13 @@ extension EnergyBase {
                             }
                         }
 
-                        let entity = EApplianceType.getFileName(type: .rackOven)
+                        let entity = EApplianceType.getFileName(type: type)
                         print(self.outgoing.debugDescription)
 
                         if let header = delegate.fields() {
                             let rows = OutgoingRows(rows: self.outgoing, entity: entity)
                             rows.setHeader(header: header)
+
                             completed(rows)
                         } else {completed(nil)}
 
