@@ -8,9 +8,6 @@ import CleanroomLogger
 import Parse
 
 class Fryer: EnergyBase, Computable {
-//    lazy var rateStructure: String = {
-//        GUtils.toString(subject: preAudit["Electric Rate Structure"]?)
-//    }()
 
     lazy var filterAlternateMatch: PFQuery<PFObject> = {
         let query = PlugLoad.query()!
@@ -28,13 +25,7 @@ class Fryer: EnergyBase, Computable {
 
     func compute(_ complete: @escaping (OutgoingRows?) -> Void) {
 
-        guard let utilityRate = preAudit["Electric Rate Structure"] else {
-            complete(nil)
-            return
-        }
-
-        let rate = GUtils.toString(subject: utilityRate)
-        let electric = ElectricCost(rateStructure: rate, operatingHours: super.operatingHours)
+        let electric = ElectricCost(rateStructure: utilityRate(), operatingHours: super.operatingHours)
         let gas = GasCost()
         let bestModel = BestModel(query: self.filterAlternateMatch)
 
@@ -54,19 +45,27 @@ class Fryer: EnergyBase, Computable {
                             let idleRunHours = 7.0
                             let daysInOperation = 7.0
 
-                            if let preheatEnergy = appliance.data["preheat_energy"] as? Double, let idleEnergyRate = appliance.data["idle_energy_rate"] as? Double {
-                                let gasEnergy = preheatEnergy * daysInOperation + idleRunHours * idleEnergyRate //ToDo: Verify the formula
-                                let gasCost = gas.cost(energyUsed: gasEnergy)
-                                let electricCost = electric.cost(energyUsed: idleEnergyRate)
-                                Log.message(.info, message: electricCost.debugDescription)
-                                let totalCost = gasCost + electricCost
-                                Log.message(.warning, message: "Calculated Energy Value Cost [Plugload : Fryer] - \(totalCost.description)")
-
-                                entry["__gas_energy"] = gasEnergy.description
-                                entry["__gas_cost"] = gasCost.description
-                                entry["__electric_cost"] = electricCost.description
-                                entry["__cost"] = totalCost.description
+                            guard   let preheatEnergy = appliance.data["preheat_energy"] as? Double,
+                                    let idleEnergyRate = appliance.data["idle_energy_rate"] as? Double else {
+                                Log.message(.error, message: "Pre Heat Energy | Idle Energy Rate Nil")
+                                complete(nil)
+                                return
                             }
+
+                            // *** Note : Both the Electric Cost and Gas Cost can be null ***** //
+
+                            let gasEnergy = preheatEnergy * daysInOperation + idleRunHours * idleEnergyRate //ToDo: Verify the formula
+
+                            let gasCost = gas.cost(energyUsed: gasEnergy)
+                            let electricCost = electric.cost(energyUsed: idleEnergyRate)
+                            let totalCost = gasCost + electricCost
+
+                            Log.message(.warning, message: "Calculated Energy Value Cost [Plugload : Fryer] - \(totalCost.description)")
+
+                            entry["__gas_energy"] = gasEnergy.description
+                            entry["__gas_cost"] = gasCost.description
+                            entry["__electric_cost"] = electricCost.description
+                            entry["__cost"] = totalCost.description
 
                             entry["__idle_run_hours"] = idleRunHours.description
                             entry["__days_in_operation"] = daysInOperation.description

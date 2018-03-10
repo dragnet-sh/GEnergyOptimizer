@@ -22,13 +22,7 @@ class Refrigerator: EnergyBase, Computable {
 
     func compute(_ complete: @escaping (OutgoingRows?) -> Void) {
 
-        guard let utilityRate = preAudit["Electric Rate Structure"] else {
-            complete(nil)
-            return
-        }
-
-        let rate = GUtils.toString(subject: utilityRate)
-        let electric = ElectricCost(rateStructure: rate, operatingHours: super.operatingHours)
+        let electric = ElectricCost(rateStructure: utilityRate(), operatingHours: super.operatingHours)
         let bestModel = BestModel(query: self.filterAlternateMatch)
         let hourEnergyUse = 10.0
 

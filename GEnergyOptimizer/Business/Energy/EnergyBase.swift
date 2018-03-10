@@ -44,6 +44,12 @@ class EnergyBase {
         }
         return entry
     }
+
+    func utilityRate() -> String {
+        let rate = GUtils.toString(subject: preAudit["Electric Rate Structure"]!)
+        Log.message(.info, message: "Utility Rate - \(rate.description)")
+        return rate
+    }
 }
 
 class OutgoingRows {
