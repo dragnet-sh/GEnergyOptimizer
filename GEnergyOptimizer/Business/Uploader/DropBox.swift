@@ -7,6 +7,14 @@ import Foundation
 import CleanroomLogger
 import SwiftyDropbox
 
+protocol Uploadable {
+    func upload(path: String, data: Data, finished: @escaping (GError) -> Void)
+}
+
+class Uploader {
+
+}
+
 class DropBoxUploader: Uploader, Uploadable {
     func upload(path: String, data: Data, finished: @escaping (GError) -> Void) {
         Log.message(.info, message: "## DropBox - Uploader ##")

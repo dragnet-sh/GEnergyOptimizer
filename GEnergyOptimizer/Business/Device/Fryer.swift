@@ -9,7 +9,7 @@ import Parse
 
 class Fryer: EnergyBase, Computable {
 
-    lazy var filterAlternateMatch: PFQuery<PFObject> = {
+    override func filterQuery() -> PFQuery<PFObject>? {
         let query = PlugLoad.query()!
         let productionCapacity = mappedFeature["Production Capacity (lbs/h)"]
         let vatWidth = mappedFeature["Vat Width (in)"]
@@ -21,20 +21,19 @@ class Fryer: EnergyBase, Computable {
         query.whereKey("type", equalTo: "fryers_retrofits")
 
         return query
-    }()
+    }
 
     func compute(_ complete: @escaping (OutgoingRows?) -> Void) {
 
         let electric = ElectricCost(rateStructure: utilityRate(), operatingHours: super.operatingHours)
         let gas = GasCost()
-        let bestModel = BestModel(query: self.filterAlternateMatch)
 
         super.starValidator { status, error in
             Log.message(.error, message: "################################################################")
             Log.message(.error, message: error.debugDescription)
 
             if error == .none {
-                bestModel.query(curr_values: self.mappedFeature) { result in
+                super.bestModel { result in
                     Log.message(.info, message: "Best Model Query Loop !!")
                     switch result {
                     case .Success(let data):
@@ -51,8 +50,6 @@ class Fryer: EnergyBase, Computable {
                                 complete(nil)
                                 return
                             }
-
-                            // *** Note : Both the Electric Cost and Gas Cost can be null ***** //
 
                             let gasEnergy = preheatEnergy * daysInOperation + idleRunHours * idleEnergyRate //ToDo: Verify the formula
 

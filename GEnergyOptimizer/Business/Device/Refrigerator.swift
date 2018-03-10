@@ -9,7 +9,7 @@ import Parse
 
 class Refrigerator: EnergyBase, Computable {
 
-    lazy var filterAlternateMatch: PFQuery<PFObject> = {
+    override func filterQuery() -> PFQuery<PFObject>? {
         let query = PlugLoad.query()!
         let type = mappedFeature["Product Type"]
         let volume = mappedFeature["Total Volume"]
@@ -18,12 +18,11 @@ class Refrigerator: EnergyBase, Computable {
         query.whereKey("data.total_volume", equalTo: volume)
 
         return query
-    }()
+    }
 
     func compute(_ complete: @escaping (OutgoingRows?) -> Void) {
 
         let electric = ElectricCost(rateStructure: utilityRate(), operatingHours: super.operatingHours)
-        let bestModel = BestModel(query: self.filterAlternateMatch)
         let hourEnergyUse = 10.0
 
         super.starValidator { status, error in
@@ -31,7 +30,7 @@ class Refrigerator: EnergyBase, Computable {
             Log.message(.error, message: error.debugDescription)
 
             if error == .none {
-                bestModel.query(curr_values: self.mappedFeature) { result in
+                super.bestModel { result in
                     Log.message(.info, message: "Best Model Query Loop !!")
                     switch result {
                     case .Success(let data):
@@ -68,7 +67,9 @@ class Refrigerator: EnergyBase, Computable {
     func fields() -> [String]? {
         return [
             "company", "daily_energy_use", "pgne_measure_code", "purchase_price_per_unit",
-            "rebate", "style_type", "total_volume", "vendor", "__hour_energy_use", "__cost"
+            "rebate", "style_type", "total_volume", "vendor",
+
+            "__hour_energy_use", "__cost"
         ]
     }
 }

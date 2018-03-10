@@ -15,7 +15,7 @@ class BestModel {
         self.filter = query
     }
 
-    func query(curr_values: Dictionary<String, Any>, complete: @escaping (Result<[PlugLoad]>) -> Void) {
+    func query(complete: @escaping (Result<[PlugLoad]>) -> Void) {
         Log.message(.info, message: "Entry - Best Model")
 
         filter.findObjectsInBackground { object, error in

@@ -5,8 +5,14 @@
 
 import Foundation
 import CleanroomLogger
+import Parse
 
 class HVAC: EnergyBase, Computable {
+
+    override func filterQuery() -> PFQuery<PFObject>? {
+        return nil
+    }
+
     func compute(_ complete: @escaping (OutgoingRows?) -> Void) {
         let feature = super.mappedFeature
         let preaudit = super.preAudit
@@ -39,7 +45,9 @@ class HVAC: EnergyBase, Computable {
 
     func fields() -> [String]? {
         return [
-             "Cooling Capacity (Btu/hr)", "SEER", "__annual_operation_hours", "__power", "__energy"
+            "Cooling Capacity (Btu/hr)", "SEER",
+
+            "__annual_operation_hours", "__power", "__energy"
         ]
     }
 }
