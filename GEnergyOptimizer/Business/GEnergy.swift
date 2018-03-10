@@ -102,6 +102,18 @@ class GAudit {
     func backup() {
         // Create OutgoingRows and call it's upload Method // -- Simple : )
     }
+
+    func upload(_ group: DispatchGroup, _ rows: OutgoingRows?) {
+        guard let rows = rows else {
+            group.leave()
+            return
+        }
+
+        rows.upload { error in
+            if error != .none {self.status = false}
+            group.leave()
+        }
+    }
 }
 
 class GHVAC: GAudit, CalculateAndUpload {
@@ -134,21 +146,10 @@ class GHVAC: GAudit, CalculateAndUpload {
 
         group.enter()
         backgroundQ.async(group: group, execute: {
-            HVAC(feature).compute { rows in
-                guard let rows = rows else {
-                    group.leave()
-                    return
-                }
-                rows.upload { error in
-                    if error != .none {self.status = false}
-                    group.leave()
-                }
-            }
+            HVAC(feature).compute {rows in self.upload(group, rows)}
         })
 
-        group.notify(queue: .main) {
-            completed()
-        }
+        group.notify(queue: .main) {completed()}
     }
 }
 
@@ -185,45 +186,14 @@ class GPlugLoad: GAudit, CalculateAndUpload {
 
             group.enter()
             switch plugLoad.type() {
-            case .freezerFridge: Refrigerator(feature).compute { rows in
-                guard let rows = rows else {
-                    self.status = false; group.leave()
-                    return
-                }
-                rows.upload { error in
-                    if error != .none {self.status = false}
-                    group.leave()
-                }
-            }
-
-            case .fryer: Fryer(feature).compute { rows in
-                guard let rows = rows else {
-                    self.status = false; group.leave()
-                    return
-                }
-                rows.upload { error in
-                    if error != .none {self.status = false}
-                    group.leave()
-                }
-            }
-
-            case .rackOven: RackOven(feature).compute { rows in
-                guard let rows = rows else {
-                    self.status = false; group.leave()
-                    return
-                }
-                rows.upload { error in
-                    if error != .none {self.status = false}
-                    group.leave()
-                }
-            }
+            case .freezerFridge: Refrigerator(feature).compute {rows in self.upload(group, rows)}
+            case .fryer: Fryer(feature).compute {rows in self.upload(group, rows)}
+            case .rackOven: RackOven(feature).compute {rows in self.upload(group, rows)}
 
             default: Log.message(.warning, message: "UNKNOWN"); group.leave()
             }
         }
 
-        group.notify(queue: .main) {
-            completed()
-        }
+        group.notify(queue: .main) {completed()}
     }
 }
