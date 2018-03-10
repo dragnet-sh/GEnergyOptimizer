@@ -207,6 +207,17 @@ class GPlugLoad: GAudit, CalculateAndUpload {
                 }
             }
 
+            case .rackOven: RackOven(feature).compute { rows in
+                guard let rows = rows else {
+                    self.status = false; group.leave()
+                    return
+                }
+                rows.upload { error in
+                    if error != .none {self.status = false}
+                    group.leave()
+                }
+            }
+
             default: Log.message(.warning, message: "UNKNOWN"); group.leave()
             }
         }
