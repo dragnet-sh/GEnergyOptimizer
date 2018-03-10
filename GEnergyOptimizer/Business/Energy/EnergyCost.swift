@@ -17,6 +17,7 @@ class GasCost: EnergyCost {
     }()
 
     // *** Gives the Average Cost Per Day *** //
+    // *** DAILY ENERGY Used is Multiplied by the Rate for each of the Slab *** //
     //ToDo: How do you interpret the slabs for other utitlity companies ??
     func cost(energyUsed: Double) -> Double {
 
