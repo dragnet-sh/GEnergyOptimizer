@@ -57,6 +57,11 @@ class PeakHourMapper {
         return operatingHours.yearly()
     }
 
+    public func dailyOperatingHours(_ usage: Dictionary<EDay, String>) -> Double {
+        let operatingHours = OperationHours(usage)
+        return operatingHours.daily()
+    }
+
     public func run(usage: Dictionary<EDay, String>) -> Dictionary<ERateKey, Double> {
 
         // *** Initializing the Outgoing Array one more time *** // [just in-case]
