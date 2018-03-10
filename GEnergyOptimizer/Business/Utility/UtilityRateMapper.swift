@@ -21,13 +21,25 @@ public class ElectricRate: UtilityMapper {
         self.utilityCompany = "pge_electric"
     }
 
-    //ToDo: Will potentially crash if the CSV is messed up !!
-    func getBillData() -> Dictionary<ERateKey, Double> {
+    func getBillData() -> Dictionary<ERateKey, Double>? {
         let rows = GUtils.openCSV(filename: utilityCompany)!
         var outgoing = Dictionary<ERateKey, Double>()
+        let gas = ERateKey.getAllGas
+        gas.forEach() { outgoing[$0] = 0.0 }
+
+
+
         rows.forEach { row in
-            if row["rate"]! == type {
-                let key = "\(row["season"]!)-\(row["ec_period"]!)"
+
+            guard   let rate = row["rate"],
+                    let season = row["season"],
+                    let period = row["ec_period"] else {
+                Log.message(.error, message: "Utility Rate CSV is probably invalid.")
+                return nil
+            }
+
+            if rate == type {
+                let key = "\(season)-\(period)"
                 outgoing[GUtils.getEPeak(rawValue: key)] = Double(row["energy_charge"]!)
             }
         }

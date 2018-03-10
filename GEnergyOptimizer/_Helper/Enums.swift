@@ -138,7 +138,7 @@ enum ERateKey: String {
 
     case none
 
-    static let getAllElectric = [summerOff, summerPart, summerOn, winterOff, winterPart]
+    static let getAllElectric = [summerOff, summerPart, summerOn, winterOff, winterPart, summerNone, winterNone]
     static let getAllElectricRaw = getAllElectric.map { $0.rawValue }
 
     static let getAllGas = [slab1, slab2, slab3, slab4, slab5, winterTransport, summerTransport, surcharge]
