@@ -16,7 +16,7 @@ class BestModel {
     }
 
     func query(curr_values: Dictionary<String, Any>, complete: @escaping (Result<[PlugLoad]>) -> Void) {
-        Log.message(.info, message: "Best Model")
+        Log.message(.info, message: "Entry - Best Model")
 
         filter.findObjectsInBackground { object, error in
 
@@ -37,6 +37,7 @@ class BestModel {
                 return
             }
 
+            Log.message(.info, message: "Best Model Matches - \(data.count.description)")
             complete(.Success(data))
         }
     }
