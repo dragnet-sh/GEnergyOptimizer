@@ -24,75 +24,49 @@ class Fryer: EnergyBase, Computable {
     }
 
     func compute(_ complete: @escaping (OutgoingRows?) -> Void) {
+        Log.message(.info, message: "### Computing - Fryer ###")
+        __compute(delegate: self, type: .fryer, handler: { (data) in
 
-        let electric = ElectricCost(rateStructure: utilityRate(), operatingHours: super.operatingHours)
-        let gas = GasCost()
+            var entry = EnergyBase.createEntry(self, data)
 
-        super.starValidator { status, error in
-            Log.message(.error, message: "################################################################")
-            Log.message(.error, message: error.debugDescription)
+            let idleRunHours = 3.0
+            let operatingHours = super.dailyOperatingHours()
 
-            if error == .none {
-                super.bestModel { result in
-                    Log.message(.info, message: "Best Model Query Loop !!")
-                    switch result {
-                    case .Success(let data):
-                        data.forEach { appliance in
-                            var entry = EnergyBase.createEntry(self, appliance.data)
-
-                            //ToDo: Verify where do these values come from
-                            let idleRunHours = 7.0
-                            let daysInOperation = 7.0
-
-                            guard   let preheatEnergy = appliance.data["preheat_energy"] as? Double,
-                                    let idleEnergyRate = appliance.data["idle_energy_rate"] as? Double else {
-                                Log.message(.error, message: "Pre Heat Energy | Idle Energy Rate Nil")
-                                complete(nil)
-                                return
-                            }
-
-                            let gasEnergy = preheatEnergy * daysInOperation + idleRunHours * idleEnergyRate //ToDo: Verify the formula
-
-                            let gasCost = gas.cost(energyUsed: gasEnergy)
-                            let electricCost = electric.cost(energyUsed: idleEnergyRate)
-                            let totalCost = gasCost + electricCost
-
-                            Log.message(.warning, message: "Calculated Energy Value Cost [Plugload : Fryer] - \(totalCost.description)")
-
-                            entry["__gas_energy"] = gasEnergy.description
-                            entry["__gas_cost"] = gasCost.description
-                            entry["__electric_cost"] = electricCost.description
-                            entry["__cost"] = totalCost.description
-
-                            entry["__idle_run_hours"] = idleRunHours.description
-                            entry["__days_in_operation"] = daysInOperation.description
-
-                            super.outgoing.append(entry)
-                        }
-
-                        let entity = EApplianceType.getFileName(type: .fryer)
-                        let result = OutgoingRows(rows: super.outgoing, entity: entity)
-                        result.setHeader(header: self.fields()!)
-                        complete(result)
-
-                    case .Error(let message):
-                        Log.message(.error, message: message)
-                        complete(nil)
-                    }
-                }
-            } else {
-                Log.message(.error, message: "Returning ***************** After Star Validator")
+            guard   let preheatEnergyRate = data["preheat_energy"] as? Double,
+                    let idleEnergyRate = data["idle_energy_rate"] as? Double else {
+                Log.message(.error, message: "Pre Heat Energy | Idle Energy Rate Nil")
                 complete(nil)
+                return nil
             }
-        }
+
+            let gasEnergy = preheatEnergyRate * operatingHours + idleEnergyRate * idleRunHours
+            let electricEnergy = idleEnergyRate * idleRunHours
+
+            let gasCost = super.gasCost().cost(energyUsed: gasEnergy)
+            let electricCost = super.electricCost().cost(energyUsed: electricEnergy)
+            let totalCost = gasCost + electricCost
+
+            entry["__idle_run_hours"] = idleRunHours.description
+            entry["__daily_operating_hours"] = operatingHours.description
+            entry["__gas_energy"] = gasEnergy.description
+            entry["__electric_energy"] = electricEnergy.description
+            entry["__gas_cost"] = gasCost.description
+            entry["__electric_cost"] = electricCost.description
+            entry["__total_cost"] = totalCost.description
+
+            return entry
+
+        }) {complete($0)}
+
     }
 
     func fields() -> [String]? {
         return [
-            "company", "energy_efficiency", "fuel_type", "idle_energy_rate", "model_number", "preheat_energy",
-            "production_capacity", "rebate", "shortening_capacity", "vat_width",
+            "company", "model_number", "vat_width", "shortening_capacity", "fuel_type", "idle_energy_rate",
+            "preheat_energy", "energy_efficiency", "production_capacity",  "rebate", "pgne_measure_code",
 
-            "__idle_run_hours", "__days_in_operation", "__gas_energy", "__gas_cost", "__electric_cost", "__cost"
+            "__idle_run_hours", "__daily_operating_hours", "__gas_energy", "__electric_energy",
+            "__gas_cost", "__electric_cost", "__total_cost"
         ]
     }
 }
