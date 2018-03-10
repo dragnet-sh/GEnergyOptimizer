@@ -26,6 +26,8 @@ class GEnergy {
 
     public func crunch() {
 
+        // ****** Note : Before Crunch - Make sure all the required constraints are Met ****** //
+
         // -- 1. Check Internet Connectivity
         guard let net = NetworkReachabilityManager() else {
             GUtils.message(msg: "No Internet Connection")
@@ -37,9 +39,17 @@ class GEnergy {
         guard isReachable else {GUtils.message(msg: "No Internet Connection"); return}
 
         // -- 2. Check DropBox Authorization
-        guard let client = DropboxClientsManager.authorizedClient else {
+        guard let _ = DropboxClientsManager.authorizedClient else {
             Log.message(.error, message: "Un-Authorized")
             GUtils.message(msg: "Unable to Connect to DropBox")
+            return
+        }
+
+        // -- 3. Check Utility Rate Structure
+        let preAudit = GUtils.mapFeatureData(feature: gAudit.preaudit)
+        guard let _ = preAudit["Electric Rate Structure"] else {
+            Log.message(.error, message: "Empty Rate Structure")
+            GUtils.message(msg: "Empty Rate Structure")
             return
         }
 
