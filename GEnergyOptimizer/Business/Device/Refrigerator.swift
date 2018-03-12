@@ -31,7 +31,6 @@ class Refrigerator: EnergyBase, Computable {
             guard let dailyEnergyUse = data["daily_energy_use"] as? Double else {
 
                 Log.message(.error, message: "Daily Energy Use Nil")
-                complete(nil)
                 return nil
             }
 

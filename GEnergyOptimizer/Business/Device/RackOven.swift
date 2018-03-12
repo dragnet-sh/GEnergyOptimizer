@@ -35,7 +35,6 @@ class RackOven: EnergyBase, Computable {
                     let fuelType = data["fuel_type"] else {
 
                 Log.message(.error, message: "Pre Heat | Idle | Fan Control Energy Rate Nil")
-                complete(nil)
                 return nil
             }
 
