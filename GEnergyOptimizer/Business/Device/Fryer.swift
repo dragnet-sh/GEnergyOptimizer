@@ -29,18 +29,26 @@ class Fryer: EnergyBase, Computable {
 
             var entry = EnergyBase.createEntry(self, data)
 
-            let idleRunHours = 3.0
+            let idleRunHours = super.dailyOperatingHours()
             let operatingHours = super.dailyOperatingHours()
 
+            //ToDo: Some entries have "-" as the value for Preheat Energy - Handle this !!
             guard   let preheatEnergyRate = data["preheat_energy"] as? Double,
-                    let idleEnergyRate = data["idle_energy_rate"] as? Double else {
-                Log.message(.error, message: "Pre Heat Energy | Idle Energy Rate Nil")
-                complete(nil)
+                    let idleEnergyRate = data["idle_energy_rate"] as? Double,
+                    let fuelType = data["fuel_type"] else {
+
+                Log.message(.error, message: "Pre Heat Energy | Idle Energy Rate | Fuel Type Nil")
                 return nil
             }
 
-            let gasEnergy = preheatEnergyRate * operatingHours + idleEnergyRate * idleRunHours
-            let electricEnergy = idleEnergyRate * idleRunHours
+            var gasEnergy = 0.0
+            var electricEnergy = 0.0
+
+            switch EFuelType.eVal(rawValue: fuelType) {
+            case .gas: gasEnergy = preheatEnergyRate * operatingHours + idleEnergyRate * idleRunHours
+            case .electric: electricEnergy = idleEnergyRate * idleRunHours
+            default: Log.message(.error, message: "Unknown Fuel Type !!"); return nil
+            }
 
             let gasCost = super.gasCost().cost(energyUsed: gasEnergy)
             let electricCost = super.electricCost().cost(energyUsed: electricEnergy)
