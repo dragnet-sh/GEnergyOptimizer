@@ -12,6 +12,16 @@ protocol Computable {
     func fields() -> [String]?
 }
 
+enum EFuelType: String {
+    case gas, electric, none
+    static func eVal(rawValue: Any) -> EFuelType {
+        let type = GUtils.toString(subject: rawValue).lowercased()
+        if let eVal = EFuelType(rawValue: type) {
+            return eVal
+        } else {return .none}
+    }
+}
+
 class EnergyBase {
     var preAudit = Dictionary<String, Any>()
     var mappedFeature = Dictionary<String, Any>()
