@@ -68,7 +68,8 @@ class RackOven: EnergyBase, Computable {
 
     func fields() -> [String]? {
         return [
-            "production_capacity", "size", "model_number", "company",
+            "company", "model_number", "size", "fuel_type", "preheat_energy", "idle_energy_rate",
+            "energy_efficiency", "production_capacity", "fan_control_energy_rate", "rebate",
 
             "__idle_run_hours", "__daily_operating_hours", "__gas_energy", "__electric_energy",
             "__gas_cost", "__electric_cost", "__total_cost"
