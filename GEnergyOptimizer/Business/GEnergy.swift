@@ -114,6 +114,12 @@ class GAudit {
             group.leave()
         }
     }
+
+    func compute(_ group: DispatchGroup, _ device: Computable) {
+        device.compute { rows in
+           self.upload(group, rows)
+        }
+    }
 }
 
 class GHVAC: GAudit, CalculateAndUpload {
@@ -146,7 +152,7 @@ class GHVAC: GAudit, CalculateAndUpload {
 
         group.enter()
         backgroundQ.async(group: group, execute: {
-            HVAC(feature).compute {rows in self.upload(group, rows)}
+            self.compute(group, HVAC(feature))
         })
 
         group.notify(queue: .main) {completed()}
@@ -186,9 +192,9 @@ class GPlugLoad: GAudit, CalculateAndUpload {
 
             group.enter()
             switch plugLoad.type() {
-            case .freezerFridge: Refrigerator(feature).compute {rows in self.upload(group, rows)}
-            case .fryer: Fryer(feature).compute {rows in self.upload(group, rows)}
-            case .rackOven: RackOven(feature).compute {rows in self.upload(group, rows)}
+            case .freezerFridge: compute(group, Refrigerator(feature))
+            case .fryer: compute(group, Fryer(feature))
+            case .rackOven: compute(group, RackOven(feature))
 
             default: Log.message(.warning, message: "UNKNOWN"); group.leave()
             }
