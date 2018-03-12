@@ -120,11 +120,7 @@ extension EnergyBase {
                             if let _entry = handler(appliance.data) {
                                 Log.message(.info, message: _entry.debugDescription)
                                 self.outgoing.append(_entry)
-                            } else {
-                                Log.message(.error, message: "Entry Row Nil")
-                                completed(nil)
-                                return
-                            }
+                            } else {Log.message(.error, message: "Entry Data Nil")}
                         }
 
                         let entity = EApplianceType.getFileName(type: type)
