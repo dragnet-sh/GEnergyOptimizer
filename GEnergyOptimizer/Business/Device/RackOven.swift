@@ -26,20 +26,27 @@ class RackOven: EnergyBase, Computable {
 
             var entry = EnergyBase.createEntry(self, data)
 
-            let idleRunHours = 3.0
+            let idleRunHours = super.dailyOperatingHours()
             let operatingHours = super.dailyOperatingHours()
 
             guard   let preheatEnergyRate = data["preheat_energy"] as? Double,
                     let idleEnergyRate = data["idle_energy_rate"] as? Double,
-                    let fanEnergyRate = data["fan_control_energy_rate"] as? Double else {
+                    let fanEnergyRate = data["fan_control_energy_rate"] as? Double,
+                    let fuelType = data["fuel_type"] else {
 
                 Log.message(.error, message: "Pre Heat | Idle | Fan Control Energy Rate Nil")
                 complete(nil)
                 return nil
             }
 
-            let gasEnergy = preheatEnergyRate * operatingHours + idleEnergyRate * idleRunHours
-            let electricEnergy = idleEnergyRate * idleRunHours + fanEnergyRate * operatingHours
+            var gasEnergy = 0.0
+            var electricEnergy: Double = fanEnergyRate * operatingHours
+
+            switch EFuelType.eVal(rawValue: fuelType) {
+            case .gas: gasEnergy = preheatEnergyRate * operatingHours + idleEnergyRate * idleRunHours
+            case .electric: electricEnergy += idleEnergyRate * idleRunHours
+            default: Log.message(.error, message: "Unknown Fuel Type !!"); return nil
+            }
 
             let gasCost = super.gasCost().cost(energyUsed: gasEnergy)
             let electricCost = super.electricCost().cost(energyUsed: electricEnergy)
