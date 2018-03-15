@@ -195,7 +195,12 @@ class GPlugLoad: GAudit, CalculateAndUpload {
             case .freezerFridge: compute(group, Refrigerator(feature))
             case .fryer: compute(group, Fryer(feature))
             case .rackOven: compute(group, RackOven(feature))
-
+            case .combinationOven: compute(group, CombinationOven(feature))
+            case .convectionOven: compute(group, ConvectionOven(feature))
+            case .conveyorOven: compute(group, ConveyorOven(feature))
+            case .griddle: compute(group, Griddle(feature))
+            case .steamCooker: compute(group, SteamCooker(feature))
+            case .iceMaker: compute(group, IceMaker(feature))
             default: Log.message(.warning, message: "UNKNOWN"); group.leave()
             }
         }
