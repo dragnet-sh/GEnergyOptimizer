@@ -32,7 +32,7 @@ class Lighting: EnergyBase, Computable {
         let time = hourPercentage * 8760
         let energy = power * time
 
-        Log.message(.info, message: "Calculated Energy Value [HVAC] - \(energy.description)")
+        Log.message(.info, message: "Calculated Energy Value [Lighting] - \(energy.description)")
         var entry = EnergyBase.createEntry(self, feature)
         entry["__annual_operation_hours"] = time.description
         entry["__power"] = power.description
