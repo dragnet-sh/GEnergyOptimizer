@@ -1,1 +1,152 @@
-{"gemini-form": [{"index": 1, "section": "Lighting (General Info)", "elements": [{"index": 1, "param": "Measured Lux", "data-type": "introw", "validation": "", "default-values": "", "id": "34a09fe0-774b-4f5c-8091-c691e83b09b5"}, {"index": 2, "param": "Area", "data-type": "introw", "validation": "", "default-values": "", "id": "61cc2db1-bda7-4ac1-9477-d3656edbdddf"}, {"index": 3, "param": "Lamp Type", "data-type": "pickerinputrow", "validation": "", "default-values": "flourescent, halogen, high pressure sodium, incandescent, pulse start metal halide, metal halide, mercury vapor, compact fluorescent, halogen incandescent, EXIT (Compact Flourescent), EXIT (Incandescent), EXIT (LED)", "id": "302f71cc-7f8a-49f9-a5eb-d9c2e93003b1"}, {"index": 4, "param": "Ballasts/Fixture", "data-type": "introw", "validation": "", "default-values": "", "id": "348a5bf4-0ecf-4ba8-b6ec-46ad09f8a343"}, {"index": 5, "param": "Number of Fixtures", "data-type": "introw", "validation": "", "default-values": "", "id": "4dc843fa-44d0-41a3-a65d-39df42d48084"}, {"index": 6, "param": "Model Number", "data-type": "textrow", "validation": "", "default-values": "", "id": "5bb0f588-1a37-446d-8ab6-e80cf1bd6aeb"}], "id": "9624904c-432b-46ab-bd66-9e9db0cefcca"}, {"index": 7, "section": "Power / Usage", "elements": [{"index": 7, "param": "Hours (%)", "data-type": "introw", "validation": "", "default-values": "", "id": "8d12f599-c0cc-4332-bdb7-b5dcc83ed08c"}, {"index": 8, "param": "Nominal Watts", "data-type": "introw", "validation": "", "default-values": "", "id": "0a8f1bbe-68a1-4c1c-b7ba-9ed84180c91b"}, {"index": 9, "param": "Actual Watts", "data-type": "introw", "validation": "", "default-values": "", "id": "7e035725-6f1c-4afe-ab0a-2b2d692dc745"}, {"index": 10, "param": "Strike Time", "data-type": "pickerinputrow", "validation": "", "default-values": "rapid, instant, programmed", "id": "7038ca4e-c711-465f-8369-f8f4f86e1159"}], "id": "f9cbc90d-c537-4832-b7d7-385a5c54c46f"}, {"index": 11, "section": "Ballast", "elements": [{"index": 11, "param": "Ballast factor", "data-type": "pickerinputrow", "validation": "", "default-values": "very high, high, normal, reduced", "id": "42321761-ac53-4301-b38e-23ddb29977b0"}, {"index": 12, "param": "Ballast type", "data-type": "pickerinputrow", "validation": "", "default-values": "electronic, magnetic", "id": "453daa4a-f877-4abe-a20c-3967b8340a8e"}], "id": "04ac15e3-c8e9-4e26-b82c-20c3b0f4bbf7"}, {"index": 13, "section": "Peak Hours", "elements": [{"index": 13, "param": "Peak Hours", "data-type": "introw", "validation": "", "default-values": "", "id": "deec9dd0-e749-4df9-81e8-3410be0c2c77"}, {"index": 14, "param": "Part Peak Hours", "data-type": "introw", "validation": "", "default-values": "", "id": "c44316ac-2bcf-4849-9dd2-c6d537f2f9ee"}, {"index": 15, "param": "Off Peak Hours", "data-type": "introw", "validation": "", "default-values": "", "id": "4dae3c7f-e95f-4b7e-a835-b85fc9640ff0"}], "id": "32ac3266-7d91-4e77-9994-772a577c8046"}]}
+{
+  "gemini-form": [
+    {
+      "index": 1,
+      "section": "Lighting (General Info)",
+      "elements": [
+        {
+          "index": 1,
+          "param": "Measured Lux",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "34a09fe0-774b-4f5c-8091-c691e83b09b5"
+        },
+        {
+          "index": 2,
+          "param": "Area",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "61cc2db1-bda7-4ac1-9477-d3656edbdddf"
+        },
+        {
+          "index": 3,
+          "param": "Lamp Type",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "flourescent, halogen, high pressure sodium, incandescent, pulse start metal halide, metal halide, mercury vapor, compact fluorescent, halogen incandescent, EXIT (Compact Flourescent), EXIT (Incandescent), EXIT (LED)",
+          "id": "302f71cc-7f8a-49f9-a5eb-d9c2e93003b1"
+        },
+        {
+          "index": 4,
+          "param": "Ballasts/Fixture",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "348a5bf4-0ecf-4ba8-b6ec-46ad09f8a343"
+        },
+        {
+          "index": 5,
+          "param": "Number of Fixtures",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "4dc843fa-44d0-41a3-a65d-39df42d48084"
+        },
+        {
+          "index": 6,
+          "param": "Model Number",
+          "data-type": "textrow",
+          "validation": "",
+          "default-values": "",
+          "id": "5bb0f588-1a37-446d-8ab6-e80cf1bd6aeb"
+        }
+      ],
+      "id": "9624904c-432b-46ab-bd66-9e9db0cefcca"
+    },
+    {
+      "index": 7,
+      "section": "Power / Usage",
+      "elements": [
+        {
+          "index": 7,
+          "param": "Hours (%)",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "8d12f599-c0cc-4332-bdb7-b5dcc83ed08c"
+        },
+        {
+          "index": 8,
+          "param": "Nominal Watts",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "0a8f1bbe-68a1-4c1c-b7ba-9ed84180c91b"
+        },
+        {
+          "index": 9,
+          "param": "Actual Watts",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "7e035725-6f1c-4afe-ab0a-2b2d692dc745"
+        },
+        {
+          "index": 10,
+          "param": "Strike Time",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "rapid, instant, programmed",
+          "id": "7038ca4e-c711-465f-8369-f8f4f86e1159"
+        }
+      ],
+      "id": "f9cbc90d-c537-4832-b7d7-385a5c54c46f"
+    },
+    {
+      "index": 11,
+      "section": "Ballast",
+      "elements": [
+        {
+          "index": 11,
+          "param": "Ballast factor",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "very high, high, normal, reduced",
+          "id": "42321761-ac53-4301-b38e-23ddb29977b0"
+        },
+        {
+          "index": 12,
+          "param": "Ballast type",
+          "data-type": "pickerinputrow",
+          "validation": "",
+          "default-values": "electronic, magnetic",
+          "id": "453daa4a-f877-4abe-a20c-3967b8340a8e"
+        }
+      ],
+      "id": "04ac15e3-c8e9-4e26-b82c-20c3b0f4bbf7"
+    },
+    {
+      "index": 13,
+      "section": "Peak Hours",
+      "elements": [
+        {
+          "index": 13,
+          "param": "Peak Hours",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "deec9dd0-e749-4df9-81e8-3410be0c2c77"
+        },
+        {
+          "index": 14,
+          "param": "Part Peak Hours",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "c44316ac-2bcf-4849-9dd2-c6d537f2f9ee"
+        },
+        {
+          "index": 15,
+          "param": "Off Peak Hours",
+          "data-type": "introw",
+          "validation": "",
+          "default-values": "",
+          "id": "4dae3c7f-e95f-4b7e-a835-b85fc9640ff0"
+        }
+      ],
+      "id": "32ac3266-7d91-4e77-9994-772a577c8046"
+    }
+  ]
+}
