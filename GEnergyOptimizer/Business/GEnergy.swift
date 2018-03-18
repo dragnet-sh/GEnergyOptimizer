@@ -14,6 +14,7 @@ class GEnergy {
     private var gAudit: GAudit
     private var gHVAC: GHVAC
     private var gPlugload: GPlugLoad
+    private var gLighting: GLighting
     private var delegate: UIViewController
     var status: Bool = true
 
@@ -21,6 +22,7 @@ class GEnergy {
         self.gAudit = GAudit()
         self.gHVAC = GHVAC()
         self.gPlugload = GPlugLoad()
+        self.gLighting = GLighting()
         self.delegate = delegate
     }
 
@@ -64,8 +66,11 @@ class GEnergy {
         group.enter()
         self.gPlugload._calculate(hud) {group.leave()}
 
+        group.enter()
+        self.gLighting._calculate(hud) {group.leave()}
+
         group.notify(queue: .main) {
-            if self.gHVAC.status && self.gPlugload.status {
+            if self.gHVAC.status && self.gPlugload.status && self.gLighting.status {
                 GUtils.showSucceeded(hud)
             } else {
                 GUtils.showFailed(hud)
@@ -119,6 +124,42 @@ class GAudit {
         device.compute { rows in
            self.upload(group, rows)
         }
+    }
+}
+
+class GLighting: GAudit, CalculateAndUpload {
+    var lZone: CDZone?
+
+    override init() {
+        super.init()
+    }
+
+    init(zone: CDZone) {
+        self.lZone = zone
+    }
+
+    func _features() -> [CDFeatureData]? {
+        return lZone!.hasFeature?.allObjects as? [CDFeatureData]
+    }
+
+    func _calculate(_ hud: MBProgressHUD, completed: @escaping () -> Void) {
+        let group = DispatchGroup()
+        let backgroundQ = DispatchQueue.global(priority: .background)
+        let _zone = super.zone.filter {zone in zone.type! == EZone.lighting.rawValue}
+
+        for eachZone in _zone {
+            let lighting = GLighting(zone: eachZone)
+            guard let feature = lighting._features() else {
+                Log.message(.error, message: "Zone - Feature Data Null.")
+                super.status = false;
+                return
+            }
+
+            group.enter()
+            self.compute(group, Lighting(feature))
+        }
+
+        group.notify(queue: .main) {completed()}
     }
 }
 
@@ -181,7 +222,7 @@ class GPlugLoad: GAudit, CalculateAndUpload {
     func _calculate(_ hud: MBProgressHUD, completed: @escaping () -> Void) {
         let group = DispatchGroup()
         let backgroundQ = DispatchQueue.global(priority: .background)
-        let _zone = self.zone.filter { zone in GUtils.getEAppliance(rawValue: zone.type!) != .none }
+        let _zone = super.zone.filter { zone in GUtils.getEAppliance(rawValue: zone.type!) != .none }
 
         for eachZone in _zone {
             let plugLoad = GPlugLoad(plZone: eachZone)
