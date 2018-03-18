@@ -15,6 +15,7 @@ class GEnergy {
     private var gHVAC: GHVAC
     private var gPlugload: GPlugLoad
     private var gLighting: GLighting
+    private var gMotors: GMotors
     private var delegate: UIViewController
     var status: Bool = true
 
@@ -23,6 +24,7 @@ class GEnergy {
         self.gHVAC = GHVAC()
         self.gPlugload = GPlugLoad()
         self.gLighting = GLighting()
+        self.gMotors = GMotors()
         self.delegate = delegate
     }
 
@@ -68,6 +70,9 @@ class GEnergy {
 
         group.enter()
         self.gLighting._calculate(hud) {group.leave()}
+
+        group.enter()
+        self.gMotors._calculate(hud) {group.leave()}
 
         group.notify(queue: .main) {
             if self.gHVAC.status && self.gPlugload.status && self.gLighting.status {
@@ -124,6 +129,42 @@ class GAudit {
         device.compute { rows in
            self.upload(group, rows)
         }
+    }
+}
+
+class GMotors: GAudit, CalculateAndUpload {
+    var mZone: CDZone?
+
+    override init() {
+        super.init()
+    }
+
+    init(zone: CDZone) {
+        self.mZone = zone
+    }
+
+    func _features() -> [CDFeatureData]? {
+        return mZone!.hasFeature?.allObjects as? [CDFeatureData]
+    }
+
+    func _calculate(_ hud: MBProgressHUD, completed: @escaping () -> Void) {
+        let group = DispatchGroup()
+        let backgroundQ = DispatchQueue.global(priority: .background)
+        let _zone = super.zone.filter {zone in zone.type! == EZone.motors.rawValue}
+
+        for eachZone in _zone {
+            let lighting = GMotors(zone: eachZone)
+            guard let feature = lighting._features() else {
+                Log.message(.error, message: "Zone - Feature Data Null.")
+                super.status = false;
+                return
+            }
+
+            group.enter()
+            self.compute(group, Motors(feature))
+        }
+
+        group.notify(queue: .main) {completed()}
     }
 }
 
