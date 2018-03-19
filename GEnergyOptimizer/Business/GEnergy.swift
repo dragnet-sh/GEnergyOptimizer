@@ -111,6 +111,62 @@ class GAudit {
 
     func backup() {
         // Create OutgoingRows and call it's upload Method // -- Simple : )
+
+        let plugloadZone: [CDZone] = zone.filter {zone in zone.type! == EZone.plugload.rawValue}
+        let motorZone: [CDZone] = zone.filter {zone in zone.type! == EZone.motors.rawValue}
+        let lightingZone: [CDZone] = zone.filter {zone in zone.type! == EZone.lighting.rawValue}
+
+        Log.message(.info, message: "###### Zone - Plugload ######")
+        plugloadZone.forEach { parent in
+            let child = self.zone.filter { zone in GUtils.getEAppliance(rawValue: zone.type!) != .none }
+            child.forEach { zone in
+                let plugload = GPlugLoad(plZone: zone)
+                if let features = plugload._features() {
+                    let data = GUtils.mapFeatureData(feature: features)
+
+                    Log.message(.info, message: "**********************")
+                    Log.message(.info, message: parent.name.debugDescription)
+                    Log.message(.info, message: zone.name.debugDescription)
+                    Log.message(.info, message: data.debugDescription)
+                }
+            }
+        }
+
+        Log.message(.info, message: "###### Zone - Motors ######")
+        motorZone.forEach { zone in
+            if let features = zone.hasFeature?.allObjects as? [CDFeatureData] {
+                let data = GUtils.mapFeatureData(feature: features)
+
+                Log.message(.info, message: "**********************")
+                Log.message(.info, message: zone.name.debugDescription)
+                Log.message(.info, message: data.debugDescription)
+            }
+        }
+
+        Log.message(.info, message: "###### Zone - Lighting ######")
+        lightingZone.forEach { zone in
+            if let features = zone.hasFeature?.allObjects as? [CDFeatureData] {
+                let data = GUtils.mapFeatureData(feature: features)
+
+                Log.message(.info, message: "**********************")
+                Log.message(.info, message: zone.name.debugDescription)
+                Log.message(.info, message: data.debugDescription)
+            }
+        }
+
+        Log.message(.info, message: "###### Zone - HVAC ######")
+        if let features = GHVAC()._features() {
+            let data = GUtils.mapFeatureData(feature: features)
+
+            Log.message(.info, message: "**********************")
+            Log.message(.info, message: "HVAC")
+            Log.message(.info, message: data.debugDescription)
+        }
+
+        Log.message(.info, message: "###### PreAudit ######")
+        Log.message(.info, message: "PreAudit")
+        let data = GUtils.mapFeatureData(feature: preaudit)
+        Log.message(.info, message: data.debugDescription)
     }
 
     func upload(_ group: DispatchGroup, _ rows: OutgoingRows?) {
