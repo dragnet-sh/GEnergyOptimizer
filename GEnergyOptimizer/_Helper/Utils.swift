@@ -125,6 +125,14 @@ class GUtils {
         return mapped
     }
 
+    static func featureToString(feature: Dictionary<String, Any>) -> Dictionary<String, String> {
+        var mapped = Dictionary<String, String>()
+        for (key, value) in feature {
+            mapped[key] = GUtils.toString(subject: value)
+        }
+        return mapped
+    }
+
     static func mapOperationHours(preAudit: [CDFeatureData]) -> Dictionary<EDay, String> {
         var mappedHours = Dictionary<EDay, String>()
         EDay.getAllDays.forEach { day in
