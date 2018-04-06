@@ -25,7 +25,7 @@
           "param": "Ice Type",
           "data-type": "pickerinputrow",
           "validation": "",
-          "default-values": "Cube, Continuous",
+          "default-values": "Cube,Continuous",
           "id": "1d4253dd-0647-4bc3-ae9d-6e221bd1fac8"
         },
         {
