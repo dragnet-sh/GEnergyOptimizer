@@ -27,13 +27,15 @@ class EnergyBase {
     var mappedFeature = Dictionary<String, Any>()
     var operatingHours = Dictionary<EDay, String>()
     var outgoing: [[String: String]]
+    var zone: String
 
-    init(_ feature: [CDFeatureData]) {
+    init(_ feature: [CDFeatureData], _ zone: String) {
         let preAudit = try! AuditFactory.sharedInstance.setPreAudit()
         self.preAudit = GUtils.mapFeatureData(feature: preAudit)
         self.mappedFeature = GUtils.mapFeatureData(feature: feature)
         self.operatingHours = GUtils.mapOperationHours(preAudit: preAudit)
         self.outgoing = [[String: String]]()
+        self.zone = zone
     }
 
     // ToDo: Relay this info back to the Main Class
@@ -127,7 +129,7 @@ extension EnergyBase {
                         print(self.outgoing.debugDescription)
 
                         if let header = delegate.fields() {
-                            let rows = OutgoingRows(rows: self.outgoing, entity: entity)
+                            let rows = OutgoingRows(rows: self.outgoing, entity: entity, zone: self.zone)
                             rows.setHeader(header: header)
 
                             completed(rows)

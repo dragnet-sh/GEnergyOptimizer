@@ -16,12 +16,14 @@ class OutgoingRows {
     var entity: String
     var eType: EType
     var parentFolder: String
+    var zone: String
 
-    init(rows: [Row], entity: String, type: EType = .computed) {
+    init(rows: [Row], entity: String, type: EType = .computed, zone: String) {
         self.rows = rows
         self.entity = entity.lowercased()
         self.eType = type
         self.parentFolder = try! AuditFactory.sharedInstance.getIdentifier()
+        self.zone = zone
     }
 
     func setHeader(header: [String]) {
@@ -31,7 +33,7 @@ class OutgoingRows {
     func upload(_ completed: @escaping (GError) -> Void) {
         Log.message(.warning, message: "**** Uploading ****")
         let baseDir = getBaseDir()
-        var path: String = "\(baseDir)\(parentFolder)/\(eType.rawValue)/\(entity).csv"
+        var path: String = "\(baseDir)\(parentFolder)/\(eType.rawValue)/\(zone)/\(entity).csv"
         Log.message(.error, message: path.description)
 
         var buffer: String = header!.joined(separator: ",")

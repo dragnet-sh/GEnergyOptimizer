@@ -217,7 +217,7 @@ class GMotors: GAudit, CalculateAndUpload {
             }
 
             group.enter()
-            self.compute(group, Motors(feature))
+            self.compute(group, Motors(feature, eachZone.name!))
         }
 
         group.notify(queue: .main) {completed()}
@@ -253,7 +253,7 @@ class GLighting: GAudit, CalculateAndUpload {
             }
 
             group.enter()
-            self.compute(group, Lighting(feature))
+            self.compute(group, Lighting(feature, eachZone.name!))
         }
 
         group.notify(queue: .main) {completed()}
@@ -290,7 +290,7 @@ class GHVAC: GAudit, CalculateAndUpload {
 
         group.enter()
         backgroundQ.async(group: group, execute: {
-            self.compute(group, HVAC(feature))
+            self.compute(group, HVAC(feature, "hvac"))
         })
 
         group.notify(queue: .main) {completed()}
@@ -327,18 +327,26 @@ class GPlugLoad: GAudit, CalculateAndUpload {
                 Log.message(.error, message: "Zone - Feature Data Null.")
                 super.status = false; return
             }
+            var zone = eachZone.name!
+            let parent = eachZone.parent
+
+            if let parent = eachZone.parent {
+                zone = "\(parent.name!)/\(eachZone.name!)"
+            }
+
+            Log.message(.warning, message: zone)
 
             group.enter()
             switch plugLoad.type() {
-            case .freezerFridge: compute(group, Refrigerator(feature))
-            case .fryer: compute(group, Fryer(feature))
-            case .rackOven: compute(group, RackOven(feature))
-            case .combinationOven: compute(group, CombinationOven(feature))
-            case .convectionOven: compute(group, ConvectionOven(feature))
-            case .conveyorOven: compute(group, ConveyorOven(feature))
-            case .griddle: compute(group, Griddle(feature))
-            case .steamCooker: compute(group, SteamCooker(feature))
-            case .iceMaker: compute(group, IceMaker(feature))
+            case .freezerFridge: compute(group, Refrigerator(feature, zone))
+            case .fryer: compute(group, Fryer(feature, zone))
+            case .rackOven: compute(group, RackOven(feature, zone))
+            case .combinationOven: compute(group, CombinationOven(feature, zone))
+            case .convectionOven: compute(group, ConvectionOven(feature, zone))
+            case .conveyorOven: compute(group, ConveyorOven(feature, zone))
+            case .griddle: compute(group, Griddle(feature, zone))
+            case .steamCooker: compute(group, SteamCooker(feature, zone))
+            case .iceMaker: compute(group, IceMaker(feature, zone))
             default: Log.message(.warning, message: "UNKNOWN"); group.leave()
             }
         }
