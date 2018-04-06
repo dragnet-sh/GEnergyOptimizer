@@ -14,12 +14,12 @@ class IceMaker: EnergyBase, Computable {
         let iceHarvestRate = mappedFeature["Ice Harvest Rate"]
         let energyUseRate = mappedFeature["Energy Use Rate"]
         let iceType = mappedFeature["Ice Type"]
-        let machineType = mappedFeature["Machine Type"]
+        guard let machineType = mappedFeature["Machine Type"] else {return nil}
 
         query.whereKey("data.ice_harvest_rate", equalTo: iceHarvestRate)
         query.whereKey("data.energy_use_rate", equalTo: energyUseRate)
         query.whereKey("data.ice_type", equalTo: iceType)
-        query.whereKey("data.machine_type", equalTo: machineType)
+        query.whereKey("data.machine_type", matchesRegex: GUtils.toString(subject: machineType), modifiers: "i")
 
         return query
     }
