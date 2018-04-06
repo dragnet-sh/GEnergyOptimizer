@@ -15,7 +15,7 @@ import SwiftyDropbox
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let runtime = DEnv.local
+    let runtime = DEnv.prod
 
     var parseKeys = [
         DEnv.local: [
