@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1318636F1FE6B63800864276 /* ge_green_world_logo_large.png in Resources */ = {isa = PBXBuildFile; fileRef = 1318636E1FE6B63800864276 /* ge_green_world_logo_large.png */; };
+		135DA35620774FC90023E328 /* Motors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135DA35420774FC90023E328 /* Motors.swift */; };
+		135DA35720774FC90023E328 /* Lighting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135DA35520774FC90023E328 /* Lighting.swift */; };
 		13792E2E1FC8263F007C525C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13792E2D1FC8263F007C525C /* AppDelegate.swift */; };
 		13792E331FC8263F007C525C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13792E311FC8263F007C525C /* Main.storyboard */; };
 		13792E351FC8263F007C525C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13792E341FC8263F007C525C /* Assets.xcassets */; };
@@ -113,6 +115,8 @@
 
 /* Begin PBXFileReference section */
 		1318636E1FE6B63800864276 /* ge_green_world_logo_large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ge_green_world_logo_large.png; sourceTree = "<group>"; };
+		135DA35420774FC90023E328 /* Motors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Motors.swift; sourceTree = "<group>"; };
+		135DA35520774FC90023E328 /* Lighting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lighting.swift; sourceTree = "<group>"; };
 		13792E2A1FC8263F007C525C /* GEnergyOptimizer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GEnergyOptimizer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13792E2D1FC8263F007C525C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13792E321FC8263F007C525C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -540,6 +544,8 @@
 		487C0BAF9FF5B668D56C3CD6 /* Device */ = {
 			isa = PBXGroup;
 			children = (
+				135DA35520774FC90023E328 /* Lighting.swift */,
+				135DA35420774FC90023E328 /* Motors.swift */,
 				487C0891514C7276FBA79B2B /* Refrigerator.swift */,
 				487C06DFF514E28ED6EE7679 /* HVAC.swift */,
 				487C046CBA6CB57F53D16115 /* Fryer.swift */,
@@ -635,7 +641,6 @@
 				13792E271FC8263F007C525C /* Frameworks */,
 				13792E281FC8263F007C525C /* Resources */,
 				5D4A5AEA11F9C030AF4A2361 /* [CP] Embed Pods Frameworks */,
-				C28898E67EE4F679079CA986 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -788,21 +793,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C28898E67EE4F679079CA986 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GEnergyOptimizer/Pods-GEnergyOptimizer-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D48F43317CE32ED16501E689 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -869,11 +859,13 @@
 				487C0B8B666530A679BF79AA /* PopOverViewController.swift in Sources */,
 				487C0A324EC41B198CFA67E1 /* PopOverPresenter.swift in Sources */,
 				487C0FB995463C425FE2BCC9 /* BasePresenter.swift in Sources */,
+				135DA35620774FC90023E328 /* Motors.swift in Sources */,
 				487C02EEE1116BD869D630A7 /* PlugloadAPI.swift in Sources */,
 				487C00584DF1C345AA660201 /* Refrigerator.swift in Sources */,
 				487C0321A5CEFE18BFCF14D4 /* UtilityRateMapper.swift in Sources */,
 				487C007CE0C4E7C81F491A7A /* PeakHourMapper.swift in Sources */,
 				487C0D39CCB0EE2F502A01C3 /* EBase.swift in Sources */,
+				135DA35720774FC90023E328 /* Lighting.swift in Sources */,
 				487C0815F656CF2F7B25612C /* HVAC.swift in Sources */,
 				487C00A5061BD468A46C2DA7 /* Fryer.swift in Sources */,
 				487C0A0C0E9AE22E8E143C40 /* GEnergy.swift in Sources */,
