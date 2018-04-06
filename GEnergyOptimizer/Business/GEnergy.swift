@@ -87,7 +87,7 @@ class GEnergy {
     }
 
     public func backup() {
-        gAudit.backup()
+        gAudit.backup(delegate)
     }
 }
 
@@ -109,8 +109,10 @@ class GAudit {
         self.zone = try! factory.setZone()
     }
 
-    func backup() {
+    func backup(_ delegate: UIViewController) {
         // Create OutgoingRows and call it's upload Method // -- Simple : )
+
+        var _outgoing = [OutgoingRows]()
 
         let plugloadZone: [CDZone] = zone.filter {zone in zone.type! == EZone.plugload.rawValue}
         let motorZone: [CDZone] = zone.filter {zone in zone.type! == EZone.motors.rawValue}
@@ -123,11 +125,21 @@ class GAudit {
                 let plugload = GPlugLoad(plZone: zone)
                 if let features = plugload._features() {
                     let data = GUtils.mapFeatureData(feature: features)
+                    let _data = GUtils.featureToString(feature: data)
 
                     Log.message(.info, message: "**********************")
                     Log.message(.info, message: parent.name.debugDescription)
                     Log.message(.info, message: zone.name.debugDescription)
                     Log.message(.info, message: data.debugDescription)
+                    Log.message(.info, message: _data.debugDescription)
+                    Log.message(.info, message: Array(_data.keys).debugDescription)
+
+                    let subPath = "\(parent.name!)/\(zone.name!)"
+                    Log.message(.info, message: subPath.debugDescription)
+
+                    let outgoing = OutgoingRows(rows: [_data], entity: EntityType.appliances.rawValue, type: .raw, zone: subPath)
+                    outgoing.setHeader(header: Array(_data.keys))
+                    _outgoing.append(outgoing)
                 }
             }
         }
@@ -167,6 +179,24 @@ class GAudit {
         Log.message(.info, message: "PreAudit")
         let data = GUtils.mapFeatureData(feature: preaudit)
         Log.message(.info, message: data.debugDescription)
+
+        Log.message(.warning, message: _outgoing.debugDescription)
+        let hud = MBProgressHUD.showAdded(to: delegate.view, animated: true)
+        hud.label.text = "Processing"
+        let group = DispatchGroup()
+        let backgroundQ = DispatchQueue.global(priority: .background)
+
+        _outgoing.forEach { rows in
+            group.enter()
+            rows.upload { error in
+                group.leave()
+                if (error != .none) {
+                    Log.message(.error, message: "### Upload Error ###")
+                }
+            }
+        }
+
+        group.notify(queue: .main) {hud.hide(animated: true, afterDelay: 1)}
     }
 
     func upload(_ group: DispatchGroup, _ rows: OutgoingRows?) {
