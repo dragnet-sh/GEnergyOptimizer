@@ -11,11 +11,11 @@ class Refrigerator: EnergyBase, Computable {
 
     override func filterQuery() -> PFQuery<PFObject>? {
         let query = PlugLoad.query()!
-        let type = mappedFeature["Product Type"]
-        let volume = mappedFeature["Total Volume"]
+        guard let volume = mappedFeature["Total Volume"] else {return nil}
+        guard let type = mappedFeature["Product Type"] else {return nil}
 
-        query.whereKey("data.style_type", equalTo: type)
         query.whereKey("data.total_volume", equalTo: volume)
+        query.whereKey("data.style_type", matchesRegex: GUtils.toString(subject: type), modifiers: "i")
 
         return query
     }
