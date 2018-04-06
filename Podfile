@@ -16,4 +16,5 @@ target 'GEnergyOptimizer' do
   pod 'InAppSettingsKit'
   pod 'MBProgressHUD'
   pod 'Alamofire'
+  pod 'TPKeyboardAvoiding', '~> 1.3'
 end
