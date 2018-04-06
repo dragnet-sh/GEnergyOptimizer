@@ -45,7 +45,7 @@ class Motors: EnergyBase, Computable {
         super.outgoing.append(entry)
 
         let entity = EZone.motors.rawValue
-        let result = OutgoingRows(rows: super.outgoing, entity: entity)
+        let result = OutgoingRows(rows: super.outgoing, entity: entity, zone: self.zone)
         result.setHeader(header: fields()!)
         complete(result)
     }
