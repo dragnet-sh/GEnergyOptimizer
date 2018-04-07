@@ -148,10 +148,15 @@ class GAudit {
         motorZone.forEach { zone in
             if let features = zone.hasFeature?.allObjects as? [CDFeatureData] {
                 let data = GUtils.mapFeatureData(feature: features)
+                let _data = GUtils.featureToString(feature: data)
 
                 Log.message(.info, message: "**********************")
                 Log.message(.info, message: zone.name.debugDescription)
                 Log.message(.info, message: data.debugDescription)
+
+                let outgoing = OutgoingRows(rows: [_data], entity: EZone.motors.rawValue, type: .raw, zone: zone.name!)
+                outgoing.setHeader(header: Array(_data.keys))
+                _outgoing.append(outgoing)
             }
         }
 
@@ -159,26 +164,43 @@ class GAudit {
         lightingZone.forEach { zone in
             if let features = zone.hasFeature?.allObjects as? [CDFeatureData] {
                 let data = GUtils.mapFeatureData(feature: features)
+                let _data = GUtils.featureToString(feature: data)
 
                 Log.message(.info, message: "**********************")
                 Log.message(.info, message: zone.name.debugDescription)
                 Log.message(.info, message: data.debugDescription)
+
+                let outgoing = OutgoingRows(rows: [_data], entity: EZone.lighting.rawValue, type: .raw, zone: zone.name!)
+                outgoing.setHeader(header: Array(_data.keys))
+                _outgoing.append(outgoing)
             }
         }
 
         Log.message(.info, message: "###### Zone - HVAC ######")
         if let features = GHVAC()._features() {
             let data = GUtils.mapFeatureData(feature: features)
+            let _data = GUtils.featureToString(feature: data)
 
             Log.message(.info, message: "**********************")
             Log.message(.info, message: "HVAC")
             Log.message(.info, message: data.debugDescription)
+
+            let outgoing = OutgoingRows(rows: [_data], entity: EZone.hvac.rawValue, type: .raw, zone: "hvac")
+            outgoing.setHeader(header: Array(_data.keys))
+            _outgoing.append(outgoing)
         }
 
         Log.message(.info, message: "###### PreAudit ######")
         Log.message(.info, message: "PreAudit")
+
         let data = GUtils.mapFeatureData(feature: preaudit)
+        let _data = GUtils.featureToString(feature: data)
+
         Log.message(.info, message: data.debugDescription)
+        let outgoing = OutgoingRows(rows: [_data], entity: "preaudit", type: .raw, zone: "preaudit")
+        outgoing.setHeader(header: Array(_data.keys))
+        _outgoing.append(outgoing)
+
 
         Log.message(.warning, message: _outgoing.debugDescription)
         let hud = MBProgressHUD.showAdded(to: delegate.view, animated: true)
