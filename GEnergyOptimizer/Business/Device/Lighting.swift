@@ -30,13 +30,15 @@ class Lighting: EnergyBase, Computable {
 
         let power = actualWatts * ballastFixture * numberOfFixtures
         let time = hourPercentage * 8760
-        let energy = power * time
+        let energy = Double(power) * Double(time) //this needs to be divided by thousand - so it gives me kw instead of w
+        let electricCost = super.electricCost().cost(energyUsed: energy)
 
         Log.message(.info, message: "Calculated Energy Value [Lighting] - \(energy.description)")
         var entry = EnergyBase.createEntry(self, feature)
         entry["__annual_operation_hours"] = time.description
         entry["__power"] = power.description
         entry["__energy"] = energy.description
+        entry["__total_cost"] = electricCost.description
 
         super.outgoing.append(entry)
 
@@ -50,7 +52,7 @@ class Lighting: EnergyBase, Computable {
         return [
             "Measured Lux", "Area", "Lamp Type", "Ballasts/Fixture", "Number of Fixtures", "Model Number",
 
-            "__annual_operation_hours", "__power", "__energy"
+            "__annual_operation_hours", "__power", "__energy", "__total_cost"
         ]
     }
 }
