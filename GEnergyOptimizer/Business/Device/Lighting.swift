@@ -21,7 +21,7 @@ class Lighting: EnergyBase, Computable {
         guard   let actualWatts = feature["Actual Watts"] as? Int64,
                 let ballastFixture = feature["Ballasts/Fixture"] as? Int64,
                 let numberOfFixtures = feature["Number of Fixtures"] as? Int64,
-                let hourPercentage = feature["Hours (%)"] as? Int64 else {
+                let hourPercentage = feature["Hours (%)"] as? Double else {
 
             Log.message(.error, message: "Actual Watts | Ballasts/Fixture | Number of Fixtures | Hour % Nil")
             complete(nil)
@@ -30,7 +30,7 @@ class Lighting: EnergyBase, Computable {
 
         let power = actualWatts * ballastFixture * numberOfFixtures
         let time = hourPercentage * 8760
-        let energy = Double(power) * Double(time) //this needs to be divided by thousand - so it gives me kw instead of w
+        let energy = Double(power) * Double(time) / 1000
         let electricCost = super.electricCost().cost(energyUsed: energy)
 
         Log.message(.info, message: "Calculated Energy Value [Lighting] - \(energy.description)")
