@@ -78,7 +78,7 @@
         {
           "index": 9,
           "param": "Hours (%)",
-          "data-type": "introw",
+          "data-type": "decimalrow",
           "validation": "",
           "default-values": "",
           "id": "86f01473-953a-4361-9817-2a7ea2c7954b"
