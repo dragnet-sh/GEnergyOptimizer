@@ -89,6 +89,11 @@ extension EnergyBase {
         return ElectricCost(rateStructure: utilityRate(), operatingHours: operatingHours)
     }
 
+    func electricCostActual(totalHours: Double) -> EnergyCost {
+        Log.message(.error, message: "Super Electric Cost Actual")
+        return ElectricCostActual(totalHours: totalHours, rateStructure: utilityRate(), operatingHours: operatingHours)
+    }
+
     func gasCost() -> EnergyCost {
         return GasCost()
     }
