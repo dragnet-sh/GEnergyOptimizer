@@ -38,9 +38,11 @@ public class ElectricRate: UtilityMapper {
             if rate == type {
                 let key = "\(season)-\(period)"
                 outgoing[GUtils.getEPeak(rawValue: key)] = Double(row["energy_charge"]!)
+                outgoing[ERateKey.averageElectric] = Double(row["average"]!)
             }
         }
 
+        Log.message(.error, message: outgoing.description)
         return outgoing
     }
 }
