@@ -124,7 +124,7 @@
         {
           "index": 13,
           "param": "Peak Hours",
-          "data-type": "introw",
+          "data-type": "decimalrow",
           "validation": "",
           "default-values": "",
           "id": "deec9dd0-e749-4df9-81e8-3410be0c2c77"
@@ -132,7 +132,7 @@
         {
           "index": 14,
           "param": "Part Peak Hours",
-          "data-type": "introw",
+          "data-type": "decimalrow",
           "validation": "",
           "default-values": "",
           "id": "c44316ac-2bcf-4849-9dd2-c6d537f2f9ee"
@@ -140,7 +140,7 @@
         {
           "index": 15,
           "param": "Off Peak Hours",
-          "data-type": "introw",
+          "data-type": "decimalrow",
           "validation": "",
           "default-values": "",
           "id": "4dae3c7f-e95f-4b7e-a835-b85fc9640ff0"

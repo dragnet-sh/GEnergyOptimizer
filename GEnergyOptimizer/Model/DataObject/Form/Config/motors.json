@@ -55,7 +55,7 @@
         {
           "index": 7,
           "param": "Efficiency",
-          "data-type": "introw",
+          "data-type": "decimalrow",
           "validation": "",
           "default-values": "",
           "id": "ea5aec08-96e0-4c34-8171-92ce75f1e78b"
@@ -86,7 +86,7 @@
         {
           "index": 10,
           "param": "Peak Hours",
-          "data-type": "introw",
+          "data-type": "decimalrow",
           "validation": "",
           "default-values": "",
           "id": "6738d10c-f083-4723-953f-4a3587a3ab92"
@@ -94,7 +94,7 @@
         {
           "index": 11,
           "param": "Part Peak Hours",
-          "data-type": "introw",
+          "data-type": "decimalrow",
           "validation": "",
           "default-values": "",
           "id": "97fdd80a-1972-493c-a288-39085fdea7bc"
@@ -102,7 +102,7 @@
         {
           "index": 12,
           "param": "Off Peak Hours",
-          "data-type": "introw",
+          "data-type": "decimalrow",
           "validation": "",
           "default-values": "",
           "id": "78de6d29-f498-4f85-ac53-59005b52b36c"
