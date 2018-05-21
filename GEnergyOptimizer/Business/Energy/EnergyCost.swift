@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import CleanroomLogger
 
 protocol EnergyCost {
     func cost(energyUsed: Double) -> Double
@@ -79,12 +80,12 @@ class ElectricCost: EnergyCost {
             var winter = Double(usageByPeak[ERateKey.winterPart]!) * energyUsed * pricing[ERateKey.winterPart]!
             winter += Double(usageByPeak[ERateKey.winterOff]!) * energyUsed * pricing[ERateKey.winterOff]!
 
-            return (summer + winter) / 2
+            return (summer + winter)
         } else {
             let summer = usageByDay * energyUsed * pricing[ERateKey.summerNone]!
             let winter = usageByDay * energyUsed * pricing[ERateKey.winterNone]!
 
-            return (summer + winter) / 2
+            return (summer + winter)
         }
     }
 }
