@@ -102,10 +102,18 @@ class PeakHourMapper {
             }
         }
 
-        // *** This gives the Average for a day *** //
+        // *** This gives the Average for a Year *** //
         if usage.count > 0 {
             ERateKey.getAllElectric.forEach({
-                outgoing[$0] = outgoing[$0]! / Double(usage.count)
+                outgoing[$0] = (outgoing[$0]! / (Double(usage.count) * 60)) * 365
+            })
+
+            ERateKey.getAllSummer.forEach({
+                outgoing[$0] = outgoing[$0]! * 0.50411
+            })
+
+            ERateKey.getAllWinter.forEach({
+                outgoing[$0] = outgoing[$0]! * (1 - 0.50411)
             })
         }
 
@@ -150,6 +158,6 @@ class OperationHours: PeakHourMapper {
     }
 
     func daily() -> Double {
-        return weekly() / 7
+        return weekly() / Double(usage.count) // -- You can't divide this by 7 need to change this ?? **** //ToDo
     }
 }
