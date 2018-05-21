@@ -23,7 +23,7 @@ class Motors: EnergyBase, Computable {
                 let nrs = feature["Nameplate Rotational Speed (NRS)"] as? Int64,
                 let hp = feature["Horsepower (HP)"] as? Int64,
                 let efficiency = feature["Efficiency"] as? Int64,
-                let hourPercentage = feature["Hours (%)"] as? Int64 else {
+                let hourPercentage = feature["Hours (%)"] as? Double else {
 
             Log.message(.error, message: "SRS | MRS | NRS | HP | Efficiency | Hours % Nil")
             complete(nil)
@@ -31,9 +31,15 @@ class Motors: EnergyBase, Computable {
         }
 
         let percentageLoad = Double(srs - mrs) / Double(srs - nrs)
-        let power = Double(hp) * 0.746 * Double(percentageLoad) / Double(efficiency)
+        let power = Double(hp) * 0.746 * Double(percentageLoad) / (Double(efficiency) * 1000.00)
         let time = hourPercentage * 8760
-        let energy = power * Double(time)
+        let energy = Double(power) * Double(time)
+        let electricCost = super.electricCost().cost(energyUsed: power)
+
+        // Motor Cost
+        // -- New Motor depends on the Motor Size HP
+        // -- Minimum Allowable Efficiency for that HP
+        // -- Cross Reference this
 
         Log.message(.info, message: "Calculated Energy Value [Motors] - \(energy.description)")
         var entry = EnergyBase.createEntry(self, feature)
@@ -41,6 +47,7 @@ class Motors: EnergyBase, Computable {
         entry["__annual_operation_hours"] = time.description
         entry["__power"] = power.description
         entry["__energy"] = energy.description
+        entry["__total_cost"] = electricCost.description
 
         super.outgoing.append(entry)
 
@@ -55,7 +62,7 @@ class Motors: EnergyBase, Computable {
             "Synchronous Rotational Speed (SRS)", "Measured Rotational Speed (MRS)", "Nameplate Rotational Speed (NRS)",
             "Horsepower (HP)", "Efficiency", "Hours (%)",
 
-            "__percentage_load", "__annual_operation_hours", "__power", "__energy"
+            "__percentage_load", "__annual_operation_hours", "__power", "__energy", "__total_cost"
         ]
     }
 }
