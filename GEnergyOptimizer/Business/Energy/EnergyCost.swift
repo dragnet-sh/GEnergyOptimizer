@@ -62,6 +62,11 @@ class ElectricCost: EnergyCost {
         return peak.annualOperatingHours(operatingHours) / 365
     }()
 
+    lazy var usageByYear: Double = {
+        let peak = PeakHourMapper()
+        return peak.annualOperatingHours(operatingHours)
+    }()
+
     init(rateStructure: String, operatingHours: Dictionary<EDay, String>) {
         self.rateStructure = rateStructure
         self.operatingHours = operatingHours
@@ -82,10 +87,31 @@ class ElectricCost: EnergyCost {
 
             return (summer + winter)
         } else {
-            let summer = usageByDay * energyUsed * pricing[ERateKey.summerNone]!
-            let winter = usageByDay * energyUsed * pricing[ERateKey.winterNone]!
+            // Note - For every rate it's either Summer or Winter as there is no TOU
+            let summer = usageByYear * energyUsed * pricing[ERateKey.summerNone]!
+            let winter = usageByYear * energyUsed * pricing[ERateKey.winterNone]!
 
-            return (summer + winter)
+            return (summer * 0.50411  + winter * (1 - 0.50411))
         }
     }
+}
+
+
+class ElectricCostActual: ElectricCost {
+    var totalHours: Double
+
+    init(totalHours: Double, rateStructure: String, operatingHours: Dictionary<EDay, String>) {
+        self.totalHours = totalHours
+        super.init(rateStructure: rateStructure, operatingHours: operatingHours)
+    }
+
+    override func cost(energyUsed: Double) -> Double {
+        Log.message(.error, message: "COST --- Electric Cost Actual")
+        Log.message(.error, message: energyUsed.description)
+        Log.message(.error, message: totalHours.description)
+        Log.message(.error, message: pricing[ERateKey.averageElectric]!.description)
+
+        return  (totalHours * energyUsed * pricing[ERateKey.averageElectric]!)
+    }
+
 }
