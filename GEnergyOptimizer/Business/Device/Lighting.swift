@@ -28,10 +28,10 @@ class Lighting: EnergyBase, Computable {
             return
         }
 
-        let power = actualWatts * ballastFixture * numberOfFixtures
+        let power = Double(actualWatts * ballastFixture * numberOfFixtures) / 1000.00
         let time = hourPercentage * 8760
-        let energy = Double(power) * Double(time) / 1000
-        let electricCost = super.electricCost().cost(energyUsed: energy)
+        let energy = Double(power) * Double(time)
+        let electricCost = super.electricCost().cost(energyUsed: Double(power))
 
         Log.message(.info, message: "Calculated Energy Value [Lighting] - \(energy.description)")
         var entry = EnergyBase.createEntry(self, feature)
