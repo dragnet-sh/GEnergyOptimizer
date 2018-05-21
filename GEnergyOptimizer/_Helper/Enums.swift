@@ -125,6 +125,8 @@ enum ERateKey: String {
     case summerNone = "summer-none"
     case winterNone = "winter-none"
 
+    case averageElectric = "average"
+
     case slab1 = "0_5.0"
     case slab2 = "5.1_16.0"
     case slab3 = "16.1_41.0"
