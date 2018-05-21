@@ -7,6 +7,9 @@ import Foundation
 import CleanroomLogger
 import Parse
 
+
+//ToDo: Use the Peak Hours which are the placeholders as of now and calculate the Peak Hours Cost on the basis
+//ToDo: of operating hours -- the difference would be the savings if used efficiently
 class Lighting: EnergyBase, Computable {
 
     override func filterQuery() -> PFQuery<PFObject>? {
@@ -33,12 +36,27 @@ class Lighting: EnergyBase, Computable {
         let energy = Double(power) * Double(time)
         let electricCost = super.electricCost().cost(energyUsed: Double(power))
 
+        var totalHours : Double = 0.0
+
+        if let peakHours = feature["Peak Hours"] as? Double {totalHours += peakHours}
+        if let partPeakHours = feature["Part Peak Hours"] as? Double {totalHours += partPeakHours}
+        if let offPeakHours = feature["Off Peak Hours"] as? Double {totalHours += offPeakHours}
+        let operationHoursActual: Double = totalHours * 365.00
+
+        Log.message(.error, message: totalHours.description)
+        let electricCostActual = super.electricCostActual(totalHours: operationHoursActual).cost(energyUsed: Double(power))
+
         Log.message(.info, message: "Calculated Energy Value [Lighting] - \(energy.description)")
         var entry = EnergyBase.createEntry(self, feature)
-        entry["__annual_operation_hours"] = time.description
+        entry["__annual_operation_hours_%h"] = time.description
         entry["__power"] = power.description
         entry["__energy"] = energy.description
         entry["__total_cost"] = electricCost.description
+
+        entry["__annual_operation_hours_actual"] = operationHoursActual.description
+        entry["__total_cost_actual"] = electricCostActual.description
+        entry["__annual_operation_hours_pa"] = super.annualOperatingHours().description
+        Log.message(.error, message: entry.description)
 
         super.outgoing.append(entry)
 
@@ -52,7 +70,8 @@ class Lighting: EnergyBase, Computable {
         return [
             "Measured Lux", "Area", "Lamp Type", "Ballasts/Fixture", "Number of Fixtures", "Model Number",
 
-            "__annual_operation_hours", "__power", "__energy", "__total_cost"
+            "__annual_operation_hours_%h", "__power", "__energy", "__total_cost",
+            "__annual_operation_hours_actual", "__total_cost_actual", "__annual_operation_hours_pa"
         ]
     }
 }

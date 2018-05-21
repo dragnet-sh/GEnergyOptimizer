@@ -7,6 +7,8 @@ import Foundation
 import CleanroomLogger
 import Parse
 
+//ToDo: Use the Peak Hours which are the placeholders as of now and calculate the Peak Hours Cost on the basis
+//of operating hours -- the difference would be the savings if used efficiently
 class Motors: EnergyBase, Computable {
 
     override func filterQuery() -> PFQuery<PFObject>? {
@@ -22,7 +24,7 @@ class Motors: EnergyBase, Computable {
                 let mrs = feature["Measured Rotational Speed (MRS)"] as? Int64,
                 let nrs = feature["Nameplate Rotational Speed (NRS)"] as? Int64,
                 let hp = feature["Horsepower (HP)"] as? Int64,
-                let efficiency = feature["Efficiency"] as? Int64,
+                let efficiency = feature["Efficiency"] as? Double,
                 let hourPercentage = feature["Hours (%)"] as? Double else {
 
             Log.message(.error, message: "SRS | MRS | NRS | HP | Efficiency | Hours % Nil")
@@ -31,23 +33,38 @@ class Motors: EnergyBase, Computable {
         }
 
         let percentageLoad = Double(srs - mrs) / Double(srs - nrs)
-        let power = Double(hp) * 0.746 * Double(percentageLoad) / (Double(efficiency) * 1000.00)
+        let power = Double(hp) * 0.746 * Double(percentageLoad) / Double(efficiency)
         let time = hourPercentage * 8760
         let energy = Double(power) * Double(time)
-        let electricCost = super.electricCost().cost(energyUsed: power)
+        let electricCost = super.electricCost().cost(energyUsed: Double(power))
 
         // Motor Cost
         // -- New Motor depends on the Motor Size HP
         // -- Minimum Allowable Efficiency for that HP
         // -- Cross Reference this
 
+        var totalHours : Double = 0.0
+
+        if let peakHours = feature["Peak Hours"] as? Double {totalHours += peakHours}
+        if let partPeakHours = feature["Part Peak Hours"] as? Double {totalHours += partPeakHours}
+        if let offPeakHours = feature["Off Peak Hours"] as? Double {totalHours += offPeakHours}
+        let operationHoursActual: Double = totalHours * 365.00
+
+        Log.message(.error, message: totalHours.description)
+        let electricCostActual = super.electricCostActual(totalHours: operationHoursActual).cost(energyUsed: Double(power))
+
         Log.message(.info, message: "Calculated Energy Value [Motors] - \(energy.description)")
         var entry = EnergyBase.createEntry(self, feature)
         entry["__percentage_load"] = percentageLoad.description
-        entry["__annual_operation_hours"] = time.description
+        entry["__annual_operation_hours_%h"] = time.description
         entry["__power"] = power.description
         entry["__energy"] = energy.description
         entry["__total_cost"] = electricCost.description
+
+        entry["__annual_operation_hours_actual"] = operationHoursActual.description
+        entry["__total_cost_actual"] = electricCostActual.description
+        entry["__annual_operation_hours_pa"] = super.annualOperatingHours().description
+        Log.message(.error, message: entry.description)
 
         super.outgoing.append(entry)
 
@@ -62,7 +79,8 @@ class Motors: EnergyBase, Computable {
             "Synchronous Rotational Speed (SRS)", "Measured Rotational Speed (MRS)", "Nameplate Rotational Speed (NRS)",
             "Horsepower (HP)", "Efficiency", "Hours (%)",
 
-            "__percentage_load", "__annual_operation_hours", "__power", "__energy", "__total_cost"
+            "__percentage_load", "__annual_operation_hours_%h", "__power", "__energy", "__total_cost",
+            "__annual_operation_hours_actual", "__total_cost_actual", "__annual_operation_hours_pa"
         ]
     }
 }
